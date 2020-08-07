@@ -1,16 +1,28 @@
 .Toolbar {
-    height: 56px;
+    height: 100px;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #703B09;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     box-sizing: border-box;
     z-index: 90;
+    background: linear-gradient(rgba(48,56,104,1),rgba(12,30,60,0));
+}
+
+.Toolbar::after{
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(48,56,104,0.3);
+    filter: blur(7px);
+    z-index: -1;
 }
 
 .Toolbar nav {
@@ -19,6 +31,38 @@
 
 .Logo {
     height: 80%;
+}
+
+.Beside {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.Beside label{
+    display: flex;
+}
+
+
+.Beside input:focus {
+    position: absolute;
+    transform: translateX(-110%);
+    width: 30%;
+    background-color: white;
+    border: 2px solid white;
+}
+
+.Beside input{
+    transition: all ease-in-out 250ms;
+    width: 0;
+    border-radius: 25px;
+    background: transparent;
+    border: none;
+}
+
+.Beside input::after {
+
+    /* background-image: url('../../../assets/images/nav/lupa.svg'); */
 }
 
 @media (max-width: 499px) {

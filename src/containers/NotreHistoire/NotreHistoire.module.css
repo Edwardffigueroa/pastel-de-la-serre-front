@@ -1,0 +1,13 @@
+.Wrapper {
+    height: 100%;
+    background-size: cover;
+    background-image: url('../../assets/images/notre_histoire/DJI_0002.png');
+    background-position-x: -56%;
+}
+
+@media (min-width: 500px) {
+    .Wrapper {
+        background-image: url('../../assets/images/notre_histoire/DJI_0002@2x.png');
+        filter: blur(7px);
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import classes from './Layout.module.css'
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
@@ -15,7 +15,7 @@ const Layout = props => {
         <div>
             <Toolbar drawerToggleClicked={sideDrawerToggleHandler} />
             <SideDrawer
-                open={state.showSideDrawer}
+                open={showSideDrawer}
                 closed={sideDrawerClosedHandler} />
             <main className={classes.Content}>
                 {props.children}

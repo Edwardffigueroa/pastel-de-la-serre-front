@@ -1,0 +1,26 @@
+.Beside {
+    display: flex;
+    width: 20%;
+    justify-content: space-around;
+}
+
+.Beside label{
+    display: flex;
+}
+
+
+.Beside input:focus {
+    position: absolute;
+    transform: translateX(-110%);
+    width: 30%;
+    background-color: white;
+    border: 2px solid white;
+}
+
+.Beside input{
+    transition: all ease-in-out 250ms;
+    width: 0;
+    border-radius: 25px;
+    background: transparent;
+    border: none;
+}
