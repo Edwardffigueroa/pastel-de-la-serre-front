@@ -8,8 +8,11 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-router-dom": "^5.2.0"
+    "react-spring": "9.0.0-rc.2",
+    "react-use-gesture": "latest",
+    "styled-components": "4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

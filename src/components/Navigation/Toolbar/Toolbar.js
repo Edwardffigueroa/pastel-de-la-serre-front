@@ -14,18 +14,20 @@ const toolbar = (props) => (
         <div className={classes.Logo}>
             <Logo />
         </div>
-        <section className={classes.Beside}>
-            <label htmlFor="search">
-                <input name="search" type="text" placeholder="search" />
-                <img src={lupa} alt="search" />
-            </label>
-            <span>
-                <img src={cart} alt="cart bag" />
-            </span>
+        <section className={classes.Wrapper}>
+            <section className={classes.Beside}>
+                <label htmlFor="search">
+                    <input name="search" type="text" placeholder="search" />
+                    <img src={lupa} alt="search" />
+                </label>
+                <span>
+                    <img src={cart} alt="cart bag" />
+                </span>
+            </section>
+            <nav className={classes.DesktopOnly}>
+                <NavigationItems />
+            </nav>
         </section>
-        <nav className={classes.DesktopOnly}>
-            <NavigationItems />
-        </nav>
     </header>
 )
 
