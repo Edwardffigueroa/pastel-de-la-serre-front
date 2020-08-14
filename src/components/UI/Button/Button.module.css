@@ -11,7 +11,9 @@
   justify-content: space-around;
   width: 100%;
   transition: all ease-in-out 350ms;
+  text-align: center;
 }
+
 
 .Button:hover {
   background-color: #303868;

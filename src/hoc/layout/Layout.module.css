@@ -1,8 +1,10 @@
 .Content {
     height: 100%;
-    overflow: hidden;
 }
 
-.NavigationSlide {
-    /* position: absolute; */
+
+@media screen and (min-with: 768px){
+    .Content{
+        overflow: hidden;
+    }
 }
