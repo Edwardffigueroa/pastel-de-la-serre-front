@@ -1,3 +1,88 @@
-.VisitezNous {
-    
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-button {
+  width: 1px;
+  height: 1px;
+}
+
+.Wrapper {
+  background-size: cover;
+  background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
+  background-position-x: -56%;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  padding-top: 100px;
+}
+
+.TitleWrapper {
+  padding: 20px;
+}
+
+.TitleWrapper h1 {
+  color: white;
+  font-size: 30px;
+}
+
+.SectionSliderWrapper {
+  overflow: hidden;
+  height: 100%;
+}
+
+.Content {
+  width: 50%;
+  height: 50%;
+  margin: 100px;
+}
+
+.Marker {
+  color: white;
+  position: absolute;
+  top: 0px;
+  left: 140px;
+  font-family: monospace;
+}
+
+.Image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+}
+
+@media (min-width: 500px) {
+  .Wrapper {
+    background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer@2x.png');
+    backdrop-filter: blur(7px);
+    background-position: center;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1px 1px;
+    grid-template-areas: '. .';
+  }
+
+  .TitleWrapper {
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .TitleWrapper h1 {
+    font-size: 6rem;
+    line-height: 5rem;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .TitleWrapper p {
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    color: white;
+  }
 }
