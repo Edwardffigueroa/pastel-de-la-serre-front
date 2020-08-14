@@ -27,6 +27,11 @@
   font-size: 30px;
 }
 
+.TitleWrapper p {
+  height: 92px;
+  overflow: scroll;
+}
+
 .SectionSliderWrapper {
   overflow: hidden;
   height: 100%;

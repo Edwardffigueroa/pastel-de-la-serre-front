@@ -13,7 +13,7 @@ const Boutique = () => {
         <div className={classes.Wrapper}>
             <section>
                 <div className={classes.TitleWrapper}>
-                    <h1>Plongez <br /> dans le pays<br /> de Cocagne</h1>
+                    <h1>Des produits <br /> Organiques & <br /> Recyclables</h1>
                     <p>Lorem ipsum dolor sit amet,
                     consectetur adipiscing elit.
                     Nunc pulvinar finibus erat.
@@ -23,7 +23,7 @@ const Boutique = () => {
                     Morbi laoreet a massa id fringilla. Nullam sagittis tellus nibh,
                     vestibulum ullamcorper mauris ultrices quis.
                           Nam malesuada congue ligula quis egestas. Cras mattis nunc porta</p>
-                    <Button type="First">Je le veux!</Button>
+                    <Button type="First">Visitez Notre Boutique!</Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
