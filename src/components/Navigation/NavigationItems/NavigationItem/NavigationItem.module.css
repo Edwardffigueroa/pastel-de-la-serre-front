@@ -3,7 +3,6 @@
     box-sizing: border-box;
     display: block;
     width: 100%;
-    font-family: serif;
 }
 
 .NavigationItem a {
@@ -12,12 +11,13 @@
     width: 100%;
     box-sizing: border-box;
     display: block;
+    transition: all ease-in-out 250ms;
 }
 
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-    font-weight: 600;
+    border-bottom: 2px solid #F8CFC9;
 }
 
 @media (min-width: 500px) {
@@ -36,10 +36,4 @@
         align-items: center;
     }
     
-    .NavigationItem a:hover,
-    .NavigationItem a:active,
-    .NavigationItem a.active {
-        font-weight: 600;
-        color: white;
-    }
 }
