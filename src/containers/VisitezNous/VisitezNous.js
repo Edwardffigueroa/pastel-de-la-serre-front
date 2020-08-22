@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './VisitezNous.module.css'
 
 import Button from '../../components/UI/Button/Button'
@@ -8,8 +8,29 @@ import InfiniteSlider from '../../components/Silder/Slider'
 import items from '../../components/Silder/items'
 
 const VisitezNous = props => {
+
+    // useEffect(() => {
+    //     const script = document.createElement('script');
+      
+    //     script.src = "https://booking.addock.co/widget.js";
+    //     // script.async = true;
+      
+    //     document.body.appendChild(script);
+      
+    //     return () => {
+    //       document.body.removeChild(script);
+    //     }
+    //   }, []);
+
     return (
-        <div className={classes.Wrapper}>
+        <>
+        
+        <div className="reserv">
+            <div class="easyloisirs_module" data-hash="44c0b316a69a286fb40cf81166f64328d4353cb0"></div>
+            </div>
+            
+        {/* <div className={classes.Wrapper}>
+            
             <section>
                 <div className={classes.TitleWrapper}>
                     <h1>Parcourez <br /> l’histoire<br /> du Pastel</h1>
@@ -36,8 +57,9 @@ const VisitezNous = props => {
                     )}
                 </InfiniteSlider>
 
-            </section>
-        </div>
+            </section> 
+        </div>*/}
+        </>
     );
 }
 

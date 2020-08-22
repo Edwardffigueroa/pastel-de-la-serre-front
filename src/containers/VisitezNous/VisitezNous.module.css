@@ -10,13 +10,15 @@
 
 .Wrapper {
   background-size: cover;
-  background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
+  /* background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png'); */
   background-position-x: -56%;
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
   padding-top: 100px;
 }
+
+
 
 .TitleWrapper {
   padding: 20px;
@@ -60,7 +62,7 @@
 
 @media (min-width: 500px) {
   .Wrapper {
-    background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer@2x.png');
+    /* background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer@2x.png'); */
     backdrop-filter: blur(7px);
     background-position: center;
     overflow: hidden;

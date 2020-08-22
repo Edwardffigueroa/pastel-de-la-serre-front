@@ -15,11 +15,12 @@ const DotNav = () => {
     }
 
     return (
-        <div className={classes.DotNav}>
-            <div onClick={dotClickHandler} id="notre-histoire" className={classes.Dot}></div>
-            <div onClick={dotClickHandler} id="visitez-nous" className={classes.Dot}></div>
-            <div onClick={dotClickHandler} id="boutique" className={classes.Dot}></div>
-        </div>
+        // <div className={classes.DotNav}>
+        //     <div onClick={dotClickHandler} id="notre-histoire" className={classes.Dot}></div>
+        //     <div onClick={dotClickHandler} id="visitez-nous" className={classes.Dot}></div>
+        //     <div onClick={dotClickHandler} id="boutique" className={classes.Dot}></div>
+        // </div>
+        <></>
     );
 }
 

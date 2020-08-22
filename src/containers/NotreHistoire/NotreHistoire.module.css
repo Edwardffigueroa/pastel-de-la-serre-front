@@ -10,12 +10,27 @@
 
 .Wrapper {
   background-size: cover;
-  background-image: url('../../assets/images/notre_histoire/DJI_0002.png');
-  background-position-x: -56%;
+  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.281), rgba(0, 0, 0, 0.281)), url('../../assets/images/notre_histoire/DJI_0002.png'); 
+  background-color: rgba(0, 0, 0, 0.425);
+  background-position-x: -56%;  
   display: flex;
   flex-direction: column-reverse;
-  height: 100%;
+  min-height: 90vh;
   padding-top: 100px;
+}
+
+.Wrapper a {
+  text-decoration: none;
+  color: #f8cfc9 ;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
 }
 
 .TitleWrapper {
@@ -28,8 +43,8 @@
 }
 
 .TitleWrapper p {
-  height: 92px;
-  overflow: scroll;
+  height: auto;
+  overflow: none;
 }
 
 .SectionSliderWrapper {
@@ -58,7 +73,35 @@
   background-position: center center;
 }
 
+.copyInfo{
+  /* position: absolute; */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  /* bottom: 0;
+  right: 0; */
+  padding: 20px;
+  order: 0;
+}
+
+
 @media (min-width: 500px) {
+
+  .copyInfo{
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    bottom: 20px;
+    right: 0;
+    padding: 20px;
+    height: 15%;
+  }
+  .copyInfo img{
+
+    align-self: flex-end;
+  }
   .Wrapper {
     backdrop-filter: blur(7px);
     background-position: center;
@@ -68,6 +111,7 @@
     grid-template-rows: 1fr;
     gap: 1px 1px;
     grid-template-areas: '. .';
+    height: auto;
   }
 
   .TitleWrapper {

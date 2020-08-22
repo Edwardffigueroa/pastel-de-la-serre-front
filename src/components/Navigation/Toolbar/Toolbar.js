@@ -18,10 +18,10 @@ const toolbar = (props) => (
             <section className={classes.Beside}>
                 <label htmlFor="search">
                     <input name="search" type="text" placeholder="search" />
-                    <img src={lupa} alt="search" />
+                    {/* <img src={lupa} alt="search" /> */}
                 </label>
                 <span>
-                    <img src={cart} alt="cart bag" />
+                    {/* <img src={cart} alt="cart bag" /> */}
                 </span>
             </section>
             <nav className={classes.DesktopOnly}>

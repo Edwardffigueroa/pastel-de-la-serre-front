@@ -12,26 +12,29 @@
   width: 100%;
   transition: all ease-in-out 350ms;
   text-align: center;
+  cursor: pointer;
+  
 }
 
 
 .Button:hover {
   background-color: #303868;
-  color: #f8cfc9;
+  color: #f8cfc9 ;
   border-color: #f8cfc9;
 }
 
 @media screen and (min-width: 500px) {
   .Button {
     background-color: #303868;
-    color: #f8cfc9;
+    color: #f8cfc9 ; 
     min-width: 30%;
     max-width: 50%;
   }
 
   .Button:hover {
-    color: #303868;
-    background-color: #f8cfc9;
+    /* color: #303868 ; */
+    color: #f8cfc9 ;
+    background-color: #22284e;
     border-color: #303868;
   }
 }
