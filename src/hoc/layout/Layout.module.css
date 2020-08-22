@@ -1,11 +1,20 @@
 .Content {
     /* height: 100vh; */
-    
+    height: auto;
 }
 
+/* .background{
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    float: left;
+    top: 0;
+    padding: none;
+  } */
 
 @media screen and (min-width: 768px){
     .Content{
         overflow: hidden;
+        
     }
 }

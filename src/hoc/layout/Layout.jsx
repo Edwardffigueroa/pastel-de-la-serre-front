@@ -5,6 +5,7 @@ import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 import DotNav from "../../components/Navigation/DotNav/DotNav";
 
+
 const Layout = (props) => {
   const [showSideDrawer, setShowSideDrawer] = useState(false);
 
@@ -13,9 +14,12 @@ const Layout = (props) => {
 
   return (
     <div>
+      
       <Toolbar drawerToggleClicked={sideDrawerToggleHandler} /> <DotNav />{" "}
       <SideDrawer open={showSideDrawer} closed={sideDrawerClosedHandler} />{" "}
-      <main className={classes.Content}> {props.children} </main>{" "}
+      <main className={classes.Content}>
+        
+         {props.children} </main>{" "}
     </div>
   );
 };

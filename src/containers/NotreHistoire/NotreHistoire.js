@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import classes from './NotreHistoire.module.css'
 
 import Button from '../../components/UI/Button/Button'
@@ -7,16 +7,33 @@ import Button from '../../components/UI/Button/Button'
 import { a } from 'react-spring'
 import InfiniteSlider from '../../components/Silder/Slider'
 import items from '../../components/Silder/items'
-import sample from '../../assets/Pastel_09.mp4'
 import { NavLink } from 'react-router-dom'
 import sponsor from '../../assets/logo_sponsors.svg'
+import sample from '../../assets/Pastel.mp4'
+import poster from '../../assets/images/notre_histoire/DJI_0002.png'
 
 
 const NotreHistoire = props => {
+    
+
+    useEffect(() => {        
+        
+        // var videod = document.getElementsByClassName("background");
+        // videod.muted =true;
+
+
+    }, []);
+
 
     return (
         
         <div className={classes.Wrapper}>
+            <video className={classes.background} loop autoPlay playsInline muted={true} poster={poster}>
+            <source src={sample} type="video/mp4"/>
+            <source src={sample} type="video/ogg"/>
+            Your browser does not support the video tag.
+            </video>
+
             <div className={classes.copyInfo} >
             
             <img src={sponsor} placeholder="sponsors"/>
@@ -26,8 +43,8 @@ const NotreHistoire = props => {
             <section>    
                            
                 <div className={classes.TitleWrapper}>
-                    <h1>We’re <br /> renewing<br /> our website</h1>
-                    <p>During this hard times we’ve been working on renewing our website exploring new and different ways communicate to the world the history and cultural richness of our region and our commitment with the environment trough all our products and dyeing techniques. In the meantime we still welcoming all our visitors to walk them through the marvelous universe of Pastel. Just click on the link below to book your visit… we will be so happy to share this experience with you.</p>
+                    <h1>Nous <br /> renouvelons<br /> notre site web</h1>
+                    <p>Pendant cette période difficile, nous avons travaillé sur le renouvellement de notre site Web en explorant de nouvelles et différentes façons de communiquer au monde l’histoire et la richesse culturelle de notre région et notre engagement envers l’environnement à travers tous nos produits et techniques de teinture. En attendant, nous accueillons toujours tous nos visiteurs pour leur faire découvrir le merveilleux univers de Pastel. Cliquez simplement sur le lien ci-dessous pour réserver votre visite … nous serons ravis de partager cette expérience avec vous.</p>
                     <a href="/visitez-nous">
                         <Button type="First">                        
                             Réservez votre visite                            

@@ -1,3 +1,16 @@
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      margin-top: 20px;
+  }
+
+  to {
+      opacity: 1;
+      margin-top: 0px;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 1px;
   height: 1px;
@@ -8,16 +21,30 @@
   height: 1px;
 }
 
+.background{
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  float: left;
+  top: 0;
+  padding: none;
+  z-index: -1;
+}
+
 .Wrapper {
   background-size: cover;
   
-  background-image: linear-gradient(rgba(0, 0, 0, 0.281), rgba(0, 0, 0, 0.281)), url('../../assets/images/notre_histoire/DJI_0002.png'); 
+  /* background-image: linear-gradient(rgba(0, 0, 0, 0.281), rgba(0, 0, 0, 0.281)), url('../../assets/images/notre_histoire/DJI_0002.png');  */
   background-color: rgba(0, 0, 0, 0.425);
   background-position-x: -56%;  
   display: flex;
   flex-direction: column-reverse;
   min-height: 90vh;
-  padding-top: 100px;
+  max-height: 100vh;
+  padding-top: 100px;  
+  /* position: absolute;
+  top: 0; */
+  
 }
 
 .Wrapper a {
@@ -35,6 +62,8 @@
 
 .TitleWrapper {
   padding: 20px;
+  animation-name: fadeIn;
+  animation-duration: 4s;
 }
 
 .TitleWrapper h1 {
@@ -83,6 +112,7 @@
   right: 0; */
   padding: 20px;
   order: 0;
+  
 }
 
 
@@ -97,13 +127,15 @@
     right: 0;
     padding: 20px;
     height: 15%;
+    animation-name: fadeIn;
+    animation-duration: 4s;
   }
   .copyInfo img{
 
     align-self: flex-end;
   }
   .Wrapper {
-    backdrop-filter: blur(7px);
+    /* backdrop-filter: blur(2px); */
     background-position: center;
     overflow: hidden;
     display: grid;
@@ -111,7 +143,7 @@
     grid-template-rows: 1fr;
     gap: 1px 1px;
     grid-template-areas: '. .';
-    height: auto;
+    height: 100%;
   }
 
   .TitleWrapper {
@@ -134,3 +166,4 @@
     color: white;
   }
 }
+

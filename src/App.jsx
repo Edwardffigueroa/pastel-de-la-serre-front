@@ -8,9 +8,11 @@ import VisitezNous from "./containers/VisitezNous/VisitezNous";
 import Boutique from "./containers/Boutique/Boutique";
 import NotreHistoire from "./containers/NotreHistoire/NotreHistoire";
 
+
 function App() {
   return (
     <div className={classes.App}>
+      
       <Layout>
         <Switch>
           <Route path="/visitez-nous" component={VisitezNous} />{" "}
