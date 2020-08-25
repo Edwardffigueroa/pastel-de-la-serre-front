@@ -1,11 +1,26 @@
+@keyframes fadeIn {
+  from {      
+      opacity: 0;
+      margin-top: 50px;
+  }
+
+  to {
+      opacity: 1;      
+      margin-top: 0;
+  }
+}
+
+
 .Button {
   border: 2px solid transparent;
-  background: #f8cfc9;
+  background: #303868;
   border-radius: 30px;
-  padding: 10px;
-  color: #303868;
+  padding: 10px 45px;
+  color: #f8cfc9;
   font-weight: bold;
-  text-transform: uppercase;
+  font-size: 16px;
+  font-style: normal;
+  /* text-transform: uppercase; */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -16,25 +31,34 @@
   
 }
 
+.invert{
+  filter: invert(100%);
+}
+
 
 .Button:hover {
-  background-color: #303868;
-  color: #f8cfc9 ;
-  border-color: #f8cfc9;
+  background-color: #f8cfc9;
+  color: #303868 ;      
+  /* border-color: #f8cfc9; */
 }
 
 @media screen and (min-width: 500px) {
   .Button {
     background-color: #303868;
     color: #f8cfc9 ; 
-    min-width: 30%;
-    max-width: 50%;
+    font-size: 22px;
+    padding: 10px 10px;
+    /* min-width: 30%;
+    max-width: 341px; */
+    width: 341px;
+    animation-name: fadeIn;
+    animation-duration: 4s;
   }
 
   .Button:hover {
     /* color: #303868 ; */
-    color: #f8cfc9 ;
-    background-color: #22284e;
-    border-color: #303868;
+    color: #303868 ;
+    background-color: #f8cfc9;
+    /* border-color: #303868; */
   }
 }

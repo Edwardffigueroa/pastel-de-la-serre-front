@@ -1,13 +1,13 @@
 
 @keyframes fadeIn {
-  from {
+  from {      
       opacity: 0;
-      margin-top: 20px;
+      -ms-transform-origin-x: 10px;
   }
 
   to {
       opacity: 1;
-      margin-top: 0px;
+      -ms-transform-origin-x: 0px;
   }
 }
 
@@ -21,6 +21,16 @@
   height: 1px;
 }
 
+.textPpal{
+  margin-top: 100px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  
+  }
+
 .background{
   position: fixed;
   min-width: 100%;
@@ -31,21 +41,28 @@
   z-index: -1;
 }
 
+
+
 .Wrapper {
   background-size: cover;
-  
-  /* background-image: linear-gradient(rgba(0, 0, 0, 0.281), rgba(0, 0, 0, 0.281)), url('../../assets/images/notre_histoire/DJI_0002.png');  */
+  /* background: linear-gradient(180deg, rgb(24, 60, 119) 0%, rgba(24, 60, 119, 0) 30.46%), linear-gradient(180deg, rgba(12, 30, 60, 0) 69.17%, #000000 100%), url('../../assets/images/notre_histoire/DJI_0002.png'), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%); */
+  background-image: linear-gradient(rgba(26, 60, 119, 0.938) 0%,rgba(0, 0, 0, 0.411) 30%, rgba(0, 0, 0, 0.829) 90%), url('../../assets/images/notre_histoire/DJI_0002.png'); 
   background-color: rgba(0, 0, 0, 0.425);
-  background-position-x: -56%;  
+  background-position-x: -81%;  
+  /* z-index: ; */
   display: flex;
-  flex-direction: column-reverse;
-  min-height: 90vh;
-  max-height: 100vh;
-  padding-top: 100px;  
+  flex-direction: column;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  /* max-height: 100vh; */
+  height: auto;
+  /* padding-top: 100px;   */
   /* position: absolute;
   top: 0; */
   
 }
+
+
 
 .Wrapper a {
   text-decoration: none;
@@ -57,23 +74,30 @@
   right: 0;
   bottom: 0;
   min-width: 100%; 
+  
   min-height: 100%;
 }
 
 .TitleWrapper {
   padding: 20px;
-  animation-name: fadeIn;
-  animation-duration: 4s;
 }
 
 .TitleWrapper h1 {
   color: white;
-  font-size: 30px;
+  font-size: 44px;
+  line-height: 93.5%;
+  animation-name: fadeIn;
+  animation-duration: 2s;
 }
 
 .TitleWrapper p {
   height: auto;
   overflow: none;
+  line-height: 25px;
+  /* font-size: 12px; */
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  
 }
 
 .SectionSliderWrapper {
@@ -111,31 +135,41 @@
   /* bottom: 0;
   right: 0; */
   padding: 20px;
-  order: 0;
-  
+  order: 0;  
 }
 
 
 @media (min-width: 500px) {
+
+  .textPpal{
+    margin-top: 0px;
+  }
 
   .copyInfo{
     position: absolute;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
-    bottom: 20px;
-    right: 0;
-    padding: 20px;
-    height: 15%;
+    align-items: flex-end;
+    right: 4%; 
+    bottom: 5vh;
     animation-name: fadeIn;
     animation-duration: 4s;
+    /* height: 10vh; */
+    
+    /* width: 100vw; */
+    /* top: 90%;  */
+    /* padding: 20px; */
+    /* height: 10%;         */    
+    
   }
   .copyInfo img{
-
-    align-self: flex-end;
+    /* align-self: flex-end; */
+    margin-bottom: 5vh;
   }
   .Wrapper {
     /* backdrop-filter: blur(2px); */
+    background-image: none;
     background-position: center;
     overflow: hidden;
     display: grid;
@@ -147,23 +181,34 @@
   }
 
   .TitleWrapper {
-    padding: 100px;
+    padding: 100px 5vw;
     display: flex;
     flex-direction: column;
   }
 
   .TitleWrapper h1 {
+    font-family: operetta-18, serif;
     font-size: 6rem;
-    line-height: 5rem;
-    color: white;
-    font-weight: bold;
+    line-height: 85.5%;
+    color: white;    
+    font-weight: 700;
+    font-style: normal;
     margin: 0;
   }
 
   .TitleWrapper p {
     font-size: 1.3rem;
     letter-spacing: 1px;
+    font-weight: 300;
     color: white;
+    line-height: 25px;
   }
+}
+
+@media (min-width: 800px) {
+  .copyInfo{
+    position: fixed;
+  }
+
 }
 

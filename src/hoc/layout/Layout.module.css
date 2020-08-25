@@ -14,7 +14,7 @@
 
 @media screen and (min-width: 768px){
     .Content{
-        overflow: hidden;
+        overflow: scroll;
         
     }
 }

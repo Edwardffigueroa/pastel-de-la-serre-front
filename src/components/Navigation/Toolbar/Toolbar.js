@@ -7,23 +7,17 @@ import cart from '../../../assets/images/nav/cart_bag.svg'
 
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
+import Button from '../../UI/Button/Button'
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
-        <DrawerToggle clicked={props.drawerToggleClicked} />
+        {/* <DrawerToggle clicked={props.drawerToggleClicked} /> */}
         <div className={classes.Logo}>
             <Logo />
         </div>
         <section className={classes.Wrapper}>
-            <section className={classes.Beside}>
-                <label htmlFor="search">
-                    <input name="search" type="text" placeholder="search" />
-                    {/* <img src={lupa} alt="search" /> */}
-                </label>
-                <span>
-                    {/* <img src={cart} alt="cart bag" /> */}
-                </span>
-            </section>
+        <a href="/visitez-nous" className={classes.Btn}>Réservation</a>
+            
             <nav className={classes.DesktopOnly}>
                 <NavigationItems />
             </nav>

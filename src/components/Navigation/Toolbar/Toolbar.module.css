@@ -7,10 +7,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  box-sizing: border-box;
+  padding: 0 3%;  
+  box-sizing: border-box;  
   z-index: 1000;
-  background: linear-gradient(rgba(48, 56, 104, 1), rgba(12, 30, 60, 0));
+  /* background: linear-gradient(rgba(48, 56, 104, 1), rgba(12, 30, 60, 0)); */
 }
 
 .Toolbar::after {
@@ -20,9 +20,30 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(48, 56, 104, 0.3);
+  /* background: rgba(48, 56, 104, 0.3); */
   filter: blur(7px);
   z-index: -1;
+}
+
+.Btn{
+  border: 2px solid #f8cfc9;
+  color: #f8cfc9;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 20px;
+  padding: 5px 30px;
+  margin-right: 40px;      
+  transition: 0.8s;
+  cursor: pointer;
+  text-decoration: none;
+  animation-name: fadeIn;
+    animation-duration: 4s;
+}
+
+.Btn:hover {
+  color: #303868;
+  background-color: #f8cfc9 ;
+  transition: 0.8s;
 }
 
 .Toolbar nav {
@@ -35,7 +56,7 @@
 
 .Beside {
   display: flex;
-  width: 20%;
+  width: 30%;
   justify-content: space-around;
 }
 
@@ -71,6 +92,10 @@
 }
 
 @media (max-width: 499px) {
+
+  .Btn{
+    display: none;
+  }
   .Beside {
     width: 100%;
   }

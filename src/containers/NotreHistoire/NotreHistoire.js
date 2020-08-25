@@ -15,32 +15,25 @@ import poster from '../../assets/images/notre_histoire/DJI_0002.png'
 
 const NotreHistoire = props => {
     
-
-    useEffect(() => {        
-        
-        // var videod = document.getElementsByClassName("background");
-        // videod.muted =true;
-
-
-    }, []);
+    let video = window.innerWidth > 500 ? true : false;
 
 
     return (
         
-        <div className={classes.Wrapper}>
+        <div className={classes.Wrapper} >
+
+            {video? 
+
             <video className={classes.background} loop autoPlay playsInline muted={true} poster={poster}>
             <source src={sample} type="video/mp4"/>
             <source src={sample} type="video/ogg"/>
             Your browser does not support the video tag.
-            </video>
+            </video>    
+            : <>
 
-            <div className={classes.copyInfo} >
-            
-            <img src={sponsor} placeholder="sponsors"/>
-            <p className="copy">Made with love and kindness by LaTierra</p>
-            </div>            
+            </>}
 
-            <section>    
+            <section className={classes.textPpal}>    
                            
                 <div className={classes.TitleWrapper}>
                     <h1>Nous <br /> renouvelons<br /> notre site web</h1>
@@ -66,6 +59,12 @@ const NotreHistoire = props => {
                 </InfiniteSlider> */}
 
             </section>
+
+            <div className={classes.copyInfo} >
+            
+            <img src={sponsor} placeholder="sponsors"/>
+            <p className="copy">Made with love and kindness by LaTierra</p>
+            </div>  
             
 
         </div>
