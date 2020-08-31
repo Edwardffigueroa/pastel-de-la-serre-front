@@ -4,10 +4,10 @@ import { useSprings, a } from 'react-spring'
 
 const styles = {
   container: { position: 'relative', height: '100%', width: '100%' },
-  item: { position: 'absolute', height: '100%', willChange: 'transform' }
+  item: { position: 'absolute', height: '50%', willChange: 'transform' }
 }
 
-export default function Slider({ items, width = 600, visible = 4, style, children }) {
+export default function Slider({ items, width = 360, visible = 4, style, children }) {
   const idx = useCallback((x, l = items.length) => (x < 0 ? x + l : x) % l, [items])
   const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])
   const [springs, set] = useSprings(items.length, i => ({ x: (i < items.length - 1 ? i : -1) * width }))
