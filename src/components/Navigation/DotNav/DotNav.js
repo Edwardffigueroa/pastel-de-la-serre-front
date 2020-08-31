@@ -7,6 +7,12 @@ const DotNav = () => {
         <div className={classes.DotNav}>
             <NavLink
                 to="/notre-histoire"
+                isActive={(match, location) => {
+                    if (!match) {
+                        return location.pathname === "/" ? true : false;
+                    }
+                    return true
+                }}
                 className={classes.Dot}
                 activeClassName={classes.Active}>
             </NavLink>
