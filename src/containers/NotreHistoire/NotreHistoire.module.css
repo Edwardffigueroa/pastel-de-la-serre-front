@@ -16,6 +16,7 @@
   flex-direction: column-reverse;
   height: 100%;
   padding-top: 100px;
+  z-index: 999999999999999999;
 }
 
 .TitleWrapper {
@@ -25,6 +26,7 @@
 .TitleWrapper h1 {
   color: white;
   font-size: 30px;
+  font-family: 'operetta-18', serif;
 }
 
 .TitleWrapper p {
@@ -35,26 +37,6 @@
 .SectionSliderWrapper {
   overflow: hidden;
   height: 100%;
-}
-
-.Content {
-  width: 100%;
-  height: 100%;
-}
-
-.Marker {
-  color: white;
-  position: absolute;
-  top: 0px;
-  left: 140px;
-  font-family: monospace;
-}
-
-.Image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
 }
 
 @media (min-width: 500px) {
@@ -81,6 +63,7 @@
     color: white;
     font-weight: bold;
     margin: 0;
+    z-index: 1;
   }
 
   .TitleWrapper p {

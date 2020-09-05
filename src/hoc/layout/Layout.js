@@ -14,7 +14,6 @@ const Layout = props => {
 
     return (
         <div>
-            <Toolbar drawerToggleClicked={sideDrawerToggleHandler} />
             <DotNav />
             <SideDrawer
                 open={showSideDrawer}
@@ -22,6 +21,7 @@ const Layout = props => {
             <main className={classes.Content}>
                 {props.children}
             </main>
+            <Toolbar drawerToggleClicked={sideDrawerToggleHandler} />
         </div>
     )
 
