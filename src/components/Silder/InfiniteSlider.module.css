@@ -2,7 +2,7 @@
   width: 100%;
   height: 50%;
   transform: translate(0, 30%);
-  animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 }
 
 .Content {

@@ -12,7 +12,7 @@ function App() {
     return (
         <div className={classes.App} >
             <Layout >
-                <Switch>
+                <Switch >
                     <Route path="/visitez-nous" component={VisitezNous} />
                     <Route path="/boutique" component={Boutique} />
                     <Route path="/notre-histoire" component={NotreHistoire} />
