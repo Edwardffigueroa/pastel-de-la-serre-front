@@ -3,6 +3,7 @@ import classes from './InfiniteSlider.module.css'
 
 import Slider from './Slider.js'
 import Card from '../../components/UI/Card/Card'
+import Stars from '../../components/Stars/Stars'
 import { a } from 'react-spring'
 
 const InfiniteSlider = props => {
@@ -13,7 +14,10 @@ const InfiniteSlider = props => {
                     console.log(item.download_url)
                     return (
                         <div className={classes.Content}>
-                            <span className={classes.Marker}>{String(i).padStart(2, '0')}</span>
+                            <div className={classes.Marker}>
+                                <h3>Title</h3>
+                                <Stars />
+                            </div>
                             <a.div className={classes.Image}>
                                 <Card image={item.download_url} >
                                 </Card>

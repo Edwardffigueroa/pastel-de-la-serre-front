@@ -20,6 +20,14 @@
 
 .TitleWrapper {
   padding: 20px;
+  transform: translateY(20%);
+  z-index: 1;
+}
+
+.TitleWrapper h1,
+.TitleWrapper p {
+  animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  font-family: 'operetta-18', serif;
 }
 
 .TitleWrapper h1 {
@@ -89,5 +97,16 @@
     font-size: 1.3rem;
     letter-spacing: 1px;
     color: white;
+  }
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }

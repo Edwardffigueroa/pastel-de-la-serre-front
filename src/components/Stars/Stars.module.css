@@ -1,0 +1,15 @@
+.Stars {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  width: 80px;
+  list-style: none;
+}
+
+.Stars li {
+  background: rgba(255, 255, 255, 0.3);
+  width: 7px;
+  height: 7px;
+  border-radius: 3px;
+}

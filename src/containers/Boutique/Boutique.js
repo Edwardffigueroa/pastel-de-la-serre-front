@@ -4,6 +4,8 @@ import classes from './Boutique.module.css'
 import Button from '../../components/UI/Button/Button'
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 
+import Shadow from '../../components/UI/Shadow/Shadow'
+
 
 const Boutique = () => {
 
@@ -20,6 +22,7 @@ const Boutique = () => {
 
     return (
         <div className={classes.Wrapper}>
+            <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>
                     <h1>Des produits <br /> Organiques & <br /> Recyclables</h1>

@@ -7,21 +7,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 60px 0 20px;
   box-sizing: border-box;
 }
-/* 
-.Toolbar::after {
-  content: ' ';
-  width: 100%;
-  height: 334px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(48, 56, 104, 0.3);
-  filter: blur(7px);
-  z-index: -1;
-} */
 
 .Toolbar nav {
   height: 100%;
@@ -32,9 +20,10 @@
 }
 
 .Beside {
+  width: 77px;
+  margin: 0 70px 0 70px;
   display: flex;
-  width: 20%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .Beside label {
@@ -65,12 +54,18 @@
 }
 
 .DesktopOnly {
+  animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   width: 100%;
 }
 
 @media (max-width: 499px) {
+  .Toolbar {
+    padding: 0 20px;
+  }
+
   .Beside {
     width: 100%;
+    margin: 0;
   }
 
   .DesktopOnly {
@@ -79,5 +74,16 @@
 
   .Wrapper {
     flex: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

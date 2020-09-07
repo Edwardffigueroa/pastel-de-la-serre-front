@@ -4,7 +4,7 @@ import { useSprings, a } from 'react-spring'
 
 const styles = {
   container: { position: 'relative', height: '100%', width: '100%' },
-  item: { position: 'absolute', height: '50%', willChange: 'transform' }
+  item: { position: 'absolute', height: '100%', willChange: 'transform' }
 }
 
 export default function Slider({ items, width = 360, visible = 4, style, children }) {

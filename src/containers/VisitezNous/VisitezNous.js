@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import classes from './VisitezNous.module.css'
 
+import Shadow from '../../components/UI/Shadow/Shadow'
 import Button from '../../components/UI/Button/Button'
 
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
@@ -21,6 +22,7 @@ const VisitezNous = props => {
 
     return (
         <div className={classes.Wrapper}>
+            <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>
                     <h1>Parcourez <br /> l’histoire<br /> du Pastel</h1>

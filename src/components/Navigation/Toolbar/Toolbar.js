@@ -7,6 +7,7 @@ import cart from '../../../assets/images/nav/cart_bag.svg'
 
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
+import Languages from '../../Languages/Languages'
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
@@ -15,6 +16,7 @@ const toolbar = (props) => (
             <Logo />
         </div>
         <section className={classes.Wrapper}>
+            <Languages capitalize lang={['fr', 'en']} />
             <section className={classes.Beside}>
                 <label htmlFor="search">
                     <input name="search" type="text" placeholder="search" />
