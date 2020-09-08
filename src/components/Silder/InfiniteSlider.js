@@ -3,7 +3,6 @@ import classes from './InfiniteSlider.module.css'
 
 import Slider from './Slider.js'
 import Card from '../../components/UI/Card/Card'
-import Stars from '../../components/Stars/Stars'
 import { a } from 'react-spring'
 import DeviceType from '../../utils/DeviceType'
 
@@ -15,44 +14,37 @@ const InfiniteSlider = props => {
 
     switch (device.type) {
         case 'smallest':
-            _width = 168
+            _width = 168 + 40
             _height = 215
             break;
         case 'small':
-            _width = 187
+            _width = 187 + 40
             _height = 215
             break;
         case 'tablet':
-            _width = 224
+            _width = 224 + 40
             _height = 373
             break;
         case 'desktop':
-            _width = 202
+            _width = 202 + 40
             _height = 226
             break;
         case 'large':
-            _width = 360
+            _width = 360 + 40
             _height = 484
             break;
         default:
-            _width = 202
+            _width = 202 + 40
             _height = 226
             break;
     }
-
-    console.log(_width)
 
     return (
         <div className={classes.InfiniteSlider}>
             <Slider width={_width} itemHeight={_height} items={props.items} visible={10}>
                 {(item, i) => {
-                    console.log(item.download_url)
                     return (
                         <div key={i} className={classes.Content}>
-                            <div className={classes.Marker}>
-                                <h3>Title</h3>
-                                <Stars />
-                            </div>
                             <a.div className={classes.Image}>
                                 <Card image={item.download_url} >
                                 </Card>

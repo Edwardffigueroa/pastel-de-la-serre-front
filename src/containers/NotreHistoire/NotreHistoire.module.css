@@ -41,7 +41,7 @@
 
 .SectionSliderWrapper {
   overflow: hidden;
-  height: 30%;
+  height: 50%;
 }
 
 @media (min-width: 500px) {
