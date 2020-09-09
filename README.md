@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### You can find a testable version of the site in the next link:
+
+https://pastel-b33bc.firebaseapp.com/
 
 ## Available Scripts
 
