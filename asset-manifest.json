@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2042c31e.chunk.css",
+    "main.js": "/static/js/main.0cd99bd0.chunk.js",
+    "main.js.map": "/static/js/main.0cd99bd0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2f2b7b41.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2f2b7b41.js.map",
+    "static/js/2.72b15781.chunk.js": "/static/js/2.72b15781.chunk.js",
+    "static/js/2.72b15781.chunk.js.map": "/static/js/2.72b15781.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e8786920a68ef83317eeef44c2f7334a.js": "/precache-manifest.e8786920a68ef83317eeef44c2f7334a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.2042c31e.chunk.css.map": "/static/css/main.2042c31e.chunk.css.map",
+    "static/js/2.72b15781.chunk.js.LICENSE.txt": "/static/js/2.72b15781.chunk.js.LICENSE.txt",
+    "static/media/Boutique.module.css": "/static/media/Aerial view of Bojnice medieval castle, UNESCO heritage in Slovakia. Romantic castle with Gothic and Renaissance elements built in 12th century.11637d2f.png",
+    "static/media/NotreHistoire.module.css": "/static/media/DJI_0002.8f94f235.png",
+    "static/media/cart_bag.svg": "/static/media/cart_bag.6f3d8649.svg",
+    "static/media/close.svg": "/static/media/close.05096ed3.svg",
+    "static/media/logo.svg": "/static/media/logo.a2f1c670.svg",
+    "static/media/lupa.svg": "/static/media/lupa.5ba3a8ca.svg",
+    "static/media/row.svg": "/static/media/row.9efe1bb4.svg",
+    "static/media/row2.svg": "/static/media/row2.300e1872.svg",
+    "static/media/VisitezNous.module.css": "/static/media/sunset time photon image mid-summer.e33e818b.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2f2b7b41.js",
+    "static/js/2.72b15781.chunk.js",
+    "static/css/main.2042c31e.chunk.css",
+    "static/js/main.0cd99bd0.chunk.js"
+  ]
+}
