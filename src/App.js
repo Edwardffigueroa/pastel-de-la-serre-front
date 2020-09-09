@@ -1,6 +1,5 @@
 import React from "react"
 import { Switch, Route } from 'react-router-dom'
-
 import Layout from './hoc/layout/Layout'
 import classes from "./App.module.css"
 

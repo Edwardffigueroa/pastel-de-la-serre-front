@@ -7,8 +7,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 60px 0 20px;
   box-sizing: border-box;
+  padding: 0px 20px;
 }
 
 .Toolbar nav {
@@ -17,11 +17,15 @@
 
 .Logo {
   height: 80%;
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 
 .Beside {
   width: 77px;
-  margin: 0 70px 0 70px;
+  margin: 0;
   display: flex;
   justify-content: space-between;
 }
@@ -65,7 +69,8 @@
 
   .Beside {
     width: 100%;
-    margin: 0;
+
+    justify-content: space-evenly;
   }
 
   .DesktopOnly {
@@ -74,6 +79,26 @@
 
   .Wrapper {
     flex: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .Logo {
+    width: auto;
+  }
+
+  .Beside {
+    width: 100px;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 1080px) {
+  .Toolbar {
+    padding: 0 60px 0 20px;
+  }
+  .Beside {
+    margin: 0 70px 0 70px;
   }
 }
 

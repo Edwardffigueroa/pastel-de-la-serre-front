@@ -26,6 +26,7 @@ const DeviceType = () => {
             device.type = 'desktop'
             break;
     }
+
     return device
 }
 

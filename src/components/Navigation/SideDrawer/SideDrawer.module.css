@@ -1,87 +1,83 @@
 .SideDrawer {
-    position: fixed;
-    width: 100%;
-    height: calc(100% - 100px);
-    left: 0;
-    bottom: 0;
-    z-index: 200;
-    box-sizing: border-box;
-    transition: transform 0.3s ease-out;  
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 100px);
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
 }
 .Logo {
-    height: 130px;
-    display: flex;
-    padding: 20px;
-    justify-content: space-between;
-    align-items: center;
-    background: linear-gradient(rgba(48,56,104,1) 50%,rgba(12,30,60,0));
+  height: 130px;
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(rgba(48, 56, 104, 1) 50%, rgba(12, 30, 60, 0));
 }
 
 .NavigationItems {
-    height: 100%;
-    position: relative;
-    text-align: center;
-    font-size: 1.2rem;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  font-size: 1.2rem;
+  padding-top: 20px;
 }
 
 .Open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .Close {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }
 
 .closeX {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
-.Close
-.closeX {
-    transform: rotateZ(45deg);
-    transition: all ease-in-out 250ms;
+.Close .closeX {
+  transform: rotateZ(45deg);
+  transition: all ease-in-out 250ms;
 }
 
-.Open
-.closeX {
-    transform: rotateZ(0deg);
+.Open .closeX {
+  transform: rotateZ(0deg);
 }
 
 .Loguito {
-    height: 50%;
+  height: 50%;
 }
 
 .Beside {
-    display: flex;
-    width: 20%;
-    justify-content: space-around;
+  display: flex;
+  width: 20%;
+  justify-content: space-around;
 }
 
-.Beside label{
-    display: flex;
+.Beside label {
+  display: flex;
 }
-
 
 .Beside input:focus {
-    position: absolute;
-    transform: translateX(-110%);
-    width: 30%;
-    background-color: white;
-    border: 2px solid white;
+  position: absolute;
+  transform: translateX(-110%);
+  width: 30%;
+  background-color: white;
+  border: 2px solid white;
 }
 
-.Beside input{
-    transition: all ease-in-out 250ms;
-    width: 0;
-    border-radius: 25px;
-    background: transparent;
-    border: none;
+.Beside input {
+  transition: all ease-in-out 250ms;
+  width: 0;
+  border-radius: 25px;
+  background: transparent;
+  border: none;
 }
-
 
 @media (min-width: 500px) {
-    .SideDrawer {
-        display: none;
-    }
+  .SideDrawer {
+    display: none;
+  }
 }
-

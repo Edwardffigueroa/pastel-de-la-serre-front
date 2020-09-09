@@ -9,19 +9,29 @@
 }
 
 .Wrapper {
-  background-size: cover;
-  background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
-  background-position-x: -56%;
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
   padding-top: 100px;
 }
 
+.Wrapper::after {
+  position: fixed;
+  content: ' ';
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
+  background-attachment: fixed;
+  background-position-x: -56%;
+  animation: fade-in 300ms ease-in-out;
+  z-index: -1;
+}
+
 .TitleWrapper {
   padding: 20px;
-  transform: translateY(20%);
-  z-index: 1;
 }
 
 .TitleWrapper h1,
@@ -43,34 +53,24 @@
 .SectionSliderWrapper {
   overflow: hidden;
   height: 100%;
+  margin-left: 30%;
 }
 
-.Content {
-  width: 50%;
-  height: 50%;
-  margin: 100px;
+@media (min-width: 768px) {
+  .TitleWrapper {
+    width: 60%;
+    margin-left: 50px;
+  }
+
+  .TitleWrapper h1 {
+    font-size: 3rem;
+    line-height: 40px;
+  }
 }
 
-.Marker {
-  color: white;
-  position: absolute;
-  top: 0px;
-  left: 140px;
-  font-family: monospace;
-}
-
-.Image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
-}
-
-@media (min-width: 500px) {
+@media (min-width: 1080px) {
   .Wrapper {
-    background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer@2x.png');
     backdrop-filter: blur(7px);
-    background-position: center;
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -79,10 +79,15 @@
     grid-template-areas: '. .';
   }
 
+  .Wrapper::after {
+    background-position: center;
+  }
+
   .TitleWrapper {
     padding: 100px;
     display: flex;
     flex-direction: column;
+    transform: translateY(20%);
   }
 
   .TitleWrapper h1 {
@@ -91,6 +96,7 @@
     color: white;
     font-weight: bold;
     margin: 0;
+    z-index: 1;
   }
 
   .TitleWrapper p {
@@ -107,6 +113,15 @@
   }
   100% {
     transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }

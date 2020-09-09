@@ -47,14 +47,35 @@
   background-position: center;
 }
 
+@media (max-width: 320px) {
+  .Card {
+    transform: translateY(-50px);
+  }
+}
+
 @media (min-width: 768px) {
   .Marker {
-    transform: translate(-20px, -115%);
+    transform: translate(-20px, -160%);
     font-size: 18px;
+  }
+
+  .Card {
+    border-radius: 30px;
+  }
+
+  .Flag {
+    border-radius: 30px;
+    width: 42px;
+    height: 42px;
+    background-size: 12px 15px;
   }
 }
 
 @media (min-width: 1080px) {
+  .Marker {
+    transform: translate(-20px, -115%);
+  }
+
   .Card {
     border-radius: 40px;
   }

@@ -10,7 +10,7 @@ const Languages = (props) => {
 		? [classes.Option, classes.Capitalize]
 		: [classes.Option, classes.Uppercase]
 
-	const options = props.lang.map(lang => <span onClick={changeLanguage} className={style.join(' ')}>{lang}</span>)
+	const options = props.lang.map(lang => <span key={lang} onClick={changeLanguage} className={style.join(' ')}>{lang}</span>)
 
 	return (
 		<div className={classes.Languages}>{options}</div>

@@ -1,5 +1,5 @@
 .Languages {
-  display: flex;
+  display: none;
 }
 
 .Capitalize {
@@ -20,8 +20,8 @@
   border-right: 0px;
 }
 
-@media (max-width: 499px) {
+@media (min-width: 1080px) {
   .Languages {
-    display: none;
+    display: flex;
   }
 }
