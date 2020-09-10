@@ -5,6 +5,7 @@ import Shadow from '../../components/UI/Shadow/Shadow'
 import Button from '../../components/UI/Button/Button'
 
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
+import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
 
 
 const VisitezNous = props => {
@@ -40,6 +41,7 @@ const VisitezNous = props => {
             </section>
             <section className={classes.SectionSliderWrapper}>
                 <InfiniteSlider items={items} />
+                <RowsNavigation />
             </section>
         </div>
     );

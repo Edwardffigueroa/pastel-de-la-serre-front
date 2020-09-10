@@ -5,6 +5,7 @@ import Button from '../../components/UI/Button/Button'
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 
 import Shadow from '../../components/UI/Shadow/Shadow'
+import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
 
 
 const Boutique = () => {
@@ -41,6 +42,7 @@ const Boutique = () => {
             <section className={classes.SectionSliderWrapper}>
 
                 <InfiniteSlider items={items} />
+                <RowsNavigation />
             </section>
         </div>
     );
