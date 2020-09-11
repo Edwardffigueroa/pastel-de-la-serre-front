@@ -7,8 +7,12 @@ import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 import Shadow from '../../components/UI/Shadow/Shadow'
 import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
 
+import DetailView from '../../components/DetailView/DetailView'
+import GoToDetails from '../../utils/GoToDetails'
+import { Route } from 'react-router-dom'
 
-const Boutique = () => {
+
+const Boutique = ({ match }) => {
 
     const [items, setItems] = useState([])
 
@@ -41,9 +45,19 @@ const Boutique = () => {
             </section>
             <section className={classes.SectionSliderWrapper}>
 
-                <InfiniteSlider items={items} />
+                <InfiniteSlider
+                    items={items}
+                    goToDetail={GoToDetails} />
                 <RowsNavigation />
             </section>
+            <Route
+                path={`${match.path}/detail/:id`}
+                render={() => (
+                    <DetailView
+                        Title="hola"
+                        description="jhkasdad"
+                        url="hsajdhad"
+                        analizar="jdgad" />)} />
         </div>
     );
 }

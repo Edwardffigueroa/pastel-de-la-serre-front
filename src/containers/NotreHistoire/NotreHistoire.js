@@ -5,23 +5,40 @@ import Button from '../../components/UI/Button/Button'
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 import Shadow from '../../components/UI/Shadow/Shadow'
 import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
+import DetailView from '../../components/DetailView/DetailView'
+import { Route } from 'react-router-dom'
+import GoToDetails from '../../utils/GoToDetails'
 
-const NotreHistoire = props => {
+const NotreHistoire = ({ match }) => {
 
     const [items, setItems] = useState([])
+    const [itemSelected, setItemSelected] = useState(false);
+
+    const myClasses = itemSelected
+        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+        : classes.Wrapper
 
     useEffect(() => {
-        fetch('https://picsum.photos/v2/list?page=1&limit=10')
+        fetch('../../data/home.json')
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 setItems(data)
             })
-    }, [])
+    }, [match])
+
+
+    const goToDetail = (e, history, id) => {
+        const selected = items.find(item => item.index === id)
+        setItemSelected(selected)
+        GoToDetails(e, history, id)
+    }
+
+
 
     return (
-        
-        <div className={classes.Wrapper}>
+
+        <div className={myClasses}>
             <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>
@@ -40,9 +57,24 @@ const NotreHistoire = props => {
             </section>
             <section className={classes.SectionSliderWrapper}>
 
-                <InfiniteSlider items={items} />
+                <InfiniteSlider
+                    items={items}
+                    goToDetail={goToDetail} />
                 <RowsNavigation />
             </section>
+            <Route
+                path={`${match.path}/detail/:id`}
+                render={() => (
+                    <DetailView
+                        items={items}
+                        img={itemSelected.picture}
+                        title={itemSelected.title}
+                        time={itemSelected.time}
+                        people={itemSelected.people}
+                        level={itemSelected.level}
+                        description={itemSelected.description} />
+                )} />
+
         </div>
     );
 }

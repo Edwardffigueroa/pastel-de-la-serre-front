@@ -13,7 +13,6 @@ const RowsNavigation = (props) => {
 		const currentLocation = history.location.pathname
 		switch (currentLocation) {
 			case '/notre-histoire':
-				console.log('entrooo')
 				if (direction === 'foward') {
 					history.push('/visitez-nous')
 				}

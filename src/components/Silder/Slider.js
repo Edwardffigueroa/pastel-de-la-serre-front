@@ -43,6 +43,7 @@ export default function Slider({ items, width, visible = 4, style, children, ite
     onWheel: ({ offset: [, y], vxvy: [, vy] }) => vy && ((wheelOffset.current = y), runSprings(dragOffset.current + y, vy))
   })
 
+
   return (
     <div {...bind()} style={{ ...style, ...styles.container }}>
       {springs.map(({ x, vel }, i) => (

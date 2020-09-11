@@ -47,6 +47,15 @@
   background-position: center;
 }
 
+.Selected {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: white;
+}
+
 @media (max-width: 320px) {
   .Card {
     transform: translateY(-50px);

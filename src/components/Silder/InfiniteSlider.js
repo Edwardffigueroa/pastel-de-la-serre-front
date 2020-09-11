@@ -13,6 +13,7 @@ const InfiniteSlider = props => {
     let _width, _height
 
     switch (device.type) {
+        // Expected plus 20 padding each side. 
         case 'smallest':
             _width = 168 + 40
             _height = 215
@@ -46,7 +47,8 @@ const InfiniteSlider = props => {
                     return (
                         <div key={i} className={classes.Content}>
                             <a.div className={classes.Image}>
-                                <Card image={item.download_url} >
+                                <Card clicked={props.goToDetail} id={i} image={item.download_url} >
+                                    {i}
                                 </Card>
                             </a.div>
                         </div>

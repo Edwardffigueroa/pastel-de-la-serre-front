@@ -16,6 +16,10 @@
   justify-content: flex-end;
 }
 
+.Wrapper.WrapperOnTop > section {
+  display: none;
+}
+
 .Wrapper::after {
   position: fixed;
   content: ' ';
