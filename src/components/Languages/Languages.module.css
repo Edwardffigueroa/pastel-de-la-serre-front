@@ -1,0 +1,27 @@
+.Languages {
+  display: none;
+}
+
+.Capitalize {
+  text-transform: capitalize;
+}
+
+.Uppercase {
+  text-transform: uppercase;
+}
+
+.Option {
+  padding: 5px 10px;
+  border-right: 1px solid #ffffff;
+  color: #f8cfc9;
+}
+
+.Option:last-of-type {
+  border-right: 0px;
+}
+
+@media (min-width: 1080px) {
+  .Languages {
+    display: flex;
+  }
+}

@@ -11,43 +11,53 @@ import { NavLink } from 'react-router-dom'
 import sponsor from '../../assets/logo_sponsors.svg'
 import sample from '../../assets/Pastel.mp4'
 import poster from '../../assets/images/notre_histoire/DJI_0002.png'
+import { Trans, useTranslation } from 'react-i18next'
 
 
 const NotreHistoire = props => {
-    
+
+    const { t, i18n } = useTranslation();
+
+    const changeLang = (language) => {
+        console.log("asdasd")
+        i18n.changeLanguage(language);
+    }
+
     let video = window.innerWidth > 500 ? true : false;
 
 
     return (
-        
+
         <div className={classes.Wrapper} >
+            {/* <button onClick={() => changeLang('en')}>EN</button>
+            <button onClick={() => changeLang('fr')}>FR</button> */}
 
-            {video? 
+            {video ?
 
-            <video className={classes.background} loop autoPlay playsInline muted={true} poster={poster}>
-            <source src={sample} type="video/mp4"/>
-            <source src={sample} type="video/ogg"/>
+                <video className={classes.background} loop autoPlay playsInline muted={true} poster={poster}>
+                    <source src={sample} type="video/mp4" />
+                    <source src={sample} type="video/ogg" />
             Your browser does not support the video tag.
-            </video>    
-            : <>
+            </video>
+                : <>
 
-            </>}
+                </>}
 
-            <section className={classes.textPpal}>    
-                           
+            <section className={classes.textPpal}>
+
                 <div className={classes.TitleWrapper}>
                     <h1>Nous <br /> renouvelons<br /> notre site web</h1>
-                    <p>Pendant cette période difficile, nous avons travaillé sur le renouvellement de notre site Web en explorant de nouvelles et différentes façons de communiquer au monde l’histoire et la richesse culturelle de notre région et notre engagement envers l’environnement à travers tous nos produits et techniques de teinture. En attendant, nous accueillons toujours tous nos visiteurs pour leur faire découvrir le merveilleux univers de Pastel. Cliquez simplement sur le lien ci-dessous pour réserver votre visite … nous serons ravis de partager cette expérience avec vous.</p>
+                    <p>{t("description")}</p>
                     <a href="/visitez-nous">
-                        <Button type="First">                        
-                            Réservez votre visite                            
+                        <Button type="First">
+                            Réservez votre visite
                         </Button>
                     </a>
                 </div>
-                
+
             </section>
             <section className={classes.SectionSliderWrapper}>
-                
+
 
                 {/* <InfiniteSlider  items={items} visible={3}>
                     {({ css }, i) => (
@@ -61,11 +71,11 @@ const NotreHistoire = props => {
             </section>
 
             <div className={classes.copyInfo} >
-            
-            <img src={sponsor} placeholder="sponsors"/>
-            <p className="copy">Made with love and kindness by LaTierra</p>
-            </div>  
-            
+
+                <img src={sponsor} placeholder="sponsors" />
+                <p className="copy">Made with love and kindness by LaTierra</p>
+            </div>
+
 
         </div>
     );

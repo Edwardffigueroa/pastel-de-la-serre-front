@@ -8,6 +8,7 @@ import cart from '../../../assets/images/nav/cart_bag.svg'
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Button from '../../UI/Button/Button'
+import Languages from '../../Languages/Languages'
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
@@ -16,8 +17,9 @@ const toolbar = (props) => (
             <Logo />
         </div>
         <section className={classes.Wrapper}>
-        <a href="/visitez-nous" className={classes.Btn}>Réservation</a>
-            
+            <Languages capitalize lang={['fr', 'en']} />
+            <a href="/visitez-nous" className={classes.Btn}>Réservation</a>
+
             <nav className={classes.DesktopOnly}>
                 <NavigationItems />
             </nav>
