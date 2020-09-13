@@ -2,8 +2,8 @@ const DeviceType = () => {
 
     const device = {
         type: '',
-        width: window.screen.availWidth,
-        height: window.screen.availHeight
+        width: window.innerWidth,
+        height: window.innerHeight
     }
 
     switch (true) {

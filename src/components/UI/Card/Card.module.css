@@ -1,7 +1,7 @@
 .Card {
   position: relative;
   height: 100%;
-  margin: 20px;
+  margin: 0 20px;
   background-size: cover;
   background-color: lightgray;
   background-position: center;
@@ -53,7 +53,7 @@
   left: 25%;
   width: 50%;
   height: 50%;
-  background: white;
+  background: transparent;
 }
 
 @media (max-width: 320px) {

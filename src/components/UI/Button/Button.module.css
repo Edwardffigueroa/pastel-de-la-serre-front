@@ -8,16 +8,20 @@
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 100%;
+  justify-content: center;
+  width: 285px;
   transition: all ease-in-out 350ms;
-  text-align: center;
+  margin: auto;
 }
 
 .Button:hover {
   background-color: #303868;
   color: #f8cfc9;
   border-color: #f8cfc9;
+}
+
+.Row {
+  margin-left: 10px;
 }
 
 @media screen and (min-width: 500px) {

@@ -13,10 +13,7 @@ const NotreHistoire = ({ match }) => {
 
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false);
-
-    const myClasses = itemSelected
-        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
-        : classes.Wrapper
+    const [cssStyles, setCssStyles] = useState(classes.Wrapper)
 
     useEffect(() => {
         fetch('../../data/home.json')
@@ -25,7 +22,14 @@ const NotreHistoire = ({ match }) => {
                 console.log(data)
                 setItems(data)
             })
-    }, [match])
+    }, [])
+
+    useEffect(() => {
+        const myClasses = itemSelected && !match.isExact
+            ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+            : [classes.Wrapper]
+        setCssStyles(myClasses)
+    }, [match, itemSelected])
 
 
     const goToDetail = (e, history, id) => {
@@ -35,10 +39,9 @@ const NotreHistoire = ({ match }) => {
     }
 
 
-
     return (
 
-        <div className={myClasses}>
+        <div className={cssStyles}>
             <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>

@@ -7,15 +7,19 @@ const Card = props => {
 
     const history = useHistory()
     const colorOption = { background: 'lightgray' }
-
+    const responsiveWidth = props.noFlag ? { flexBasis: '100%' } : { flexBasis: '80%' }
     return (
         <div onClick={e => props.clicked(e, history, props.id)} className={classes.Card} style={colorOption}>
             <section className={classes.Header}>
-                <div className={classes.Marker}>
-                    <h3 className={classes.Title}>Ballades dans Nos Champs</h3>
+                <div className={classes.Marker} style={responsiveWidth}>
+                    <h3 className={classes.Title}>{props.title}</h3>
                     <Stars />
                 </div>
-                <div className={classes.Flag}></div>
+                {
+                    !props.noFlag
+                        ? <div className={classes.Flag}></div>
+                        : null
+                }
             </section>
             <div className={classes.Selected}></div>
             {props.children}

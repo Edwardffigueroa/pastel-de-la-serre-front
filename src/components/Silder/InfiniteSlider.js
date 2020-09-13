@@ -47,8 +47,12 @@ const InfiniteSlider = props => {
                     return (
                         <div key={i} className={classes.Content}>
                             <a.div className={classes.Image}>
-                                <Card clicked={props.goToDetail} id={i} image={item.download_url} >
-                                    {i}
+                                <Card
+                                    id={i}
+                                    title={item.title}
+                                    clicked={props.goToDetail}
+                                    image={item.download_url} >
+                                    {/* Nested content possible */}
                                 </Card>
                             </a.div>
                         </div>
