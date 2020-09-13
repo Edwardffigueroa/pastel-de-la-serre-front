@@ -19,7 +19,6 @@ const NotreHistoire = props => {
     const { t, i18n } = useTranslation();
 
     const changeLang = (language) => {
-        console.log("asdasd")
         i18n.changeLanguage(language);
     }
 
@@ -29,8 +28,7 @@ const NotreHistoire = props => {
     return (
 
         <div className={classes.Wrapper} >
-            {/* <button onClick={() => changeLang('en')}>EN</button>
-            <button onClick={() => changeLang('fr')}>FR</button> */}
+
 
             {video ?
 
@@ -42,15 +40,17 @@ const NotreHistoire = props => {
                 : <>
 
                 </>}
+            {/* <button onClick={() => changeLang('en')}>EN</button>
+            <button onClick={() => changeLang('fr')}>FR</button> */}
 
             <section className={classes.textPpal}>
 
                 <div className={classes.TitleWrapper}>
-                    <h1>Nous <br /> renouvelons<br /> notre site web</h1>
+                    <h1>{t("title.part1")} <br /> {t("title.part2")} <br /> {t("title.part3")}</h1>
                     <p>{t("description")}</p>
                     <a href="/visitez-nous">
                         <Button type="First">
-                            Réservez votre visite
+                            {t("main_button")}
                         </Button>
                     </a>
                 </div>
@@ -73,7 +73,7 @@ const NotreHistoire = props => {
             <div className={classes.copyInfo} >
 
                 <img src={sponsor} placeholder="sponsors" />
-                <p className="copy">Made with love and kindness by LaTierra</p>
+                <p className="copy">{t("text_footer")}</p>
             </div>
 
 

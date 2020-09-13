@@ -9,22 +9,29 @@ import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Button from '../../UI/Button/Button'
 import Languages from '../../Languages/Languages'
+import { useTranslation } from 'react-i18next'
 
-const toolbar = (props) => (
-    <header className={classes.Toolbar}>
-        {/* <DrawerToggle clicked={props.drawerToggleClicked} /> */}
-        <div className={classes.Logo}>
-            <Logo />
-        </div>
-        <section className={classes.Wrapper}>
-            <Languages capitalize lang={['fr', 'en']} />
-            <a href="/visitez-nous" className={classes.Btn}>Réservation</a>
+const Toolbar = props => {
 
-            <nav className={classes.DesktopOnly}>
-                <NavigationItems />
-            </nav>
-        </section>
-    </header>
-)
+    const { t, i18n } = useTranslation();
 
-export default toolbar
+    return (
+
+        <header className={classes.Toolbar}>
+            {/* <DrawerToggle clicked={props.drawerToggleClicked} /> */}
+            <div className={classes.Logo}>
+                <Logo />
+            </div>
+            <section className={classes.Wrapper}>
+                <Languages capitalize lang={['fr', 'en']} />
+                <a href="/visitez-nous" className={classes.Btn}>  {t("head_button")}</a>
+
+                <nav className={classes.DesktopOnly}>
+                    <NavigationItems />
+                </nav>
+            </section>
+        </header>
+    );
+}
+
+export default Toolbar
