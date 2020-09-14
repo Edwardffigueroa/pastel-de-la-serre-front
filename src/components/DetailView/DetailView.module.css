@@ -57,6 +57,17 @@
   display: none;
 }
 
+@media (min-width: 768px) {
+  .SimilarItems > div:first-of-type {
+    display: none;
+  }
+
+  .SimilarItems > div:last-of-type {
+    display: flex;
+    height: 147px;
+  }
+}
+
 @keyframes entrance {
   0% {
     width: 0%;

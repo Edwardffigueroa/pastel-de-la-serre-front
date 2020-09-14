@@ -16,10 +16,10 @@ const DeviceType = () => {
         case device.width < 1080:
             device.type = 'tablet'
             break;
-        case device.width < 1280:
+        case device.width < 1920:
             device.type = 'desktop'
             break;
-        case device.width >= 1280:
+        case device.width >= 1920:
             device.type = 'large'
             break;
         default:

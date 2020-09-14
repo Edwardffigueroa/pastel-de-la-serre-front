@@ -96,8 +96,13 @@
   }
 
   .TitleWrapper h1 {
-    font-size: 3rem;
-    line-height: 40px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .SectionSliderWrapper {
+    min-height: 390px;
+    margin-top: 50px;
   }
 }
 
@@ -118,14 +123,11 @@
 
   .TitleWrapper {
     padding: 100px;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(20%);
   }
 
   .TitleWrapper h1 {
-    font-size: 6rem;
-    line-height: 5rem;
+    font-size: 66px;
+    line-height: 66px;
     color: white;
     font-weight: bold;
     margin: 0;
@@ -140,6 +142,8 @@
 
   .SectionSliderWrapper {
     height: 100%;
+    margin-left: 0;
+    margin-top: 114px;
   }
 }
 

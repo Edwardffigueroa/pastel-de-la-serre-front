@@ -5,11 +5,11 @@
   padding: 10px;
   color: #303868;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 285px;
+  min-width: 285px;
   transition: all ease-in-out 350ms;
   margin: auto;
 }
@@ -21,20 +21,30 @@
 }
 
 .Row {
+  width: 26px;
+  height: 26px;
   margin-left: 10px;
 }
 
-@media screen and (min-width: 500px) {
+@media (min-width: 768px) {
   .Button {
     background-color: #303868;
     color: #f8cfc9;
-    min-width: 30%;
-    max-width: 50%;
+    min-width: 192px;
+    margin: 0;
   }
 
   .Button:hover {
     color: #303868;
     background-color: #f8cfc9;
     border-color: #303868;
+  }
+}
+
+@media (min-width: 1080px) {
+  .Button {
+    font-size: 22px;
+    min-width: 214px;
+    margin: 0;
   }
 }

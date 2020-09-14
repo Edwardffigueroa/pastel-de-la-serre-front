@@ -24,19 +24,19 @@ const InfiniteSlider = props => {
             break;
         case 'tablet':
             _width = 224 + 40
-            _height = 373
+            _height = 339
             break;
         case 'desktop':
             _width = 202 + 40
-            _height = 226
+            _height = 305
             break;
         case 'large':
-            _width = 360 + 40
-            _height = 484
+            _width = 363 + 40
+            _height = 550
             break;
         default:
             _width = 202 + 40
-            _height = 226
+            _height = 305
             break;
     }
 

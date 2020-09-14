@@ -44,6 +44,7 @@ const DetailView = (props) => {
 						<CardList
 							items={props.items} />
 						<InfiniteSlider
+							detailView
 							items={props.items} />
 					</div>
 					<Button type="First">Réservez</Button>
