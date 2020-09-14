@@ -51,10 +51,7 @@ const NotreHistoire = ({ match }) => {
                     Nunc pulvinar finibus erat.
                     Vestibulum in nulla et quam gravida blandit.
                     Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
-                    Nulla at rhoncus turpis. Aliquam molestie ex quam.
-                    Morbi laoreet a massa id fringilla. Nullam sagittis tellus nibh,
-                    vestibulum ullamcorper mauris ultrices quis.
-                          Nam malesuada congue ligula quis egestas. Cras mattis nunc porta</p>
+                    Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
                     <Button type="First">Réservez </Button>
                 </div>
             </section>

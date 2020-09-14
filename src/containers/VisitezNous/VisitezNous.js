@@ -14,18 +14,35 @@ import { Route } from "react-router-dom";
 const VisitezNous = ({ match }) => {
 
     const [items, setItems] = useState([])
+    const [itemSelected, setItemSelected] = useState(false);
+    const [cssStyles, setCssStyles] = useState(classes.Wrapper)
+
 
     useEffect(() => {
-        fetch('https://picsum.photos/v2/list?page=1&limit=10')
+        fetch('../../data/home.json')
             .then(res => res.json())
             .then(data => {
-                // console.log(data)
+                console.log(data)
                 setItems(data)
             })
     }, [])
 
+    useEffect(() => {
+        const myClasses = itemSelected && !match.isExact
+            ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+            : [classes.Wrapper]
+        setCssStyles(myClasses)
+    }, [match, itemSelected])
+
+
+    const goToDetail = (e, history, id) => {
+        const selected = items.find(item => item.index === id)
+        setItemSelected(selected)
+        GoToDetails(e, history, id)
+    }
+
     return (
-        <div className={classes.Wrapper}>
+        <div className={cssStyles}>
             <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>
@@ -35,27 +52,27 @@ const VisitezNous = ({ match }) => {
                     Nunc pulvinar finibus erat.
                     Vestibulum in nulla et quam gravida blandit.
                     Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
-                    Nulla at rhoncus turpis. Aliquam molestie ex quam.
-                    Morbi laoreet a massa id fringilla. Nullam sagittis tellus nibh,
-                    vestibulum ullamcorper mauris ultrices quis.
-                      Nam malesuada congue ligula quis egestas. Cras mattis nunc porta</p>
-                    <Button type="First">Découvrez Notre Domaine!</Button>
+                    Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
+                    <Button type="First">Découvrez Notre Domaine</Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
                 <InfiniteSlider
                     items={items}
-                    goToDetail={GoToDetails} />
+                    goToDetail={goToDetail} />
                 <RowsNavigation />
             </section>
             <Route
                 path={`${match.path}/detail/:id`}
                 render={() => (
                     <DetailView
-                        Title="hola"
-                        description="jhkasdad"
-                        url="hsajdhad"
-                        analizar="jdgad" />)} />
+                        items={items}
+                        img={itemSelected.picture}
+                        title={itemSelected.title}
+                        time={itemSelected.time}
+                        people={itemSelected.people}
+                        level={itemSelected.level}
+                        description={itemSelected.description} />)} />
         </div>
     );
 }

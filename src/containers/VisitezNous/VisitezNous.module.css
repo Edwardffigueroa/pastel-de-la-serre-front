@@ -12,6 +12,17 @@
   display: flex;
   flex-direction: column-reverse;
   padding-top: 100px;
+  justify-content: flex-end;
+}
+
+.Wrapper > section {
+  opacity: 1;
+  transition: all ease-in 400ms;
+}
+
+.Wrapper.WrapperOnTop > section {
+  opacity: 0;
+  display: none;
 }
 
 .Wrapper::after {
@@ -22,11 +33,27 @@
   top: 0;
   left: 0;
   background-size: cover;
+  background-position: center;
   background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
   background-attachment: fixed;
-  background-position-x: -56%;
   animation: fade-in 300ms ease-in-out;
+  z-index: -2;
+}
+
+.Wrapper::before {
+  position: fixed;
+  content: ' ';
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  left: 0;
   z-index: -1;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(12, 30, 48, 0) 100%
+  );
 }
 
 .TitleWrapper {
@@ -69,8 +96,13 @@
   }
 
   .TitleWrapper h1 {
-    font-size: 3rem;
-    line-height: 40px;
+    font-size: 60px;
+    line-height: 60px;
+  }
+
+  .SectionSliderWrapper {
+    min-height: 390px;
+    margin-top: 50px;
   }
 }
 
@@ -91,14 +123,12 @@
 
   .TitleWrapper {
     padding: 100px;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(20%);
+    margin-top: 100px;
   }
 
   .TitleWrapper h1 {
-    font-size: 6rem;
-    line-height: 5rem;
+    font-size: 66px;
+    line-height: 66px;
     color: white;
     font-weight: bold;
     margin: 0;
@@ -108,7 +138,14 @@
   .TitleWrapper p {
     font-size: 1.3rem;
     letter-spacing: 1px;
+    height: 100px;
     color: white;
+  }
+
+  .SectionSliderWrapper {
+    height: 100%;
+    margin-left: 0;
+    margin-top: 114px;
   }
 }
 

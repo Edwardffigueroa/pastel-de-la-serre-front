@@ -9,9 +9,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 285px;
   transition: all ease-in-out 350ms;
   margin: auto;
+  width: 100%;
 }
 
 .Button:hover {
@@ -32,6 +32,7 @@
     color: #f8cfc9;
     min-width: 192px;
     margin: 0;
+    width: auto;
   }
 
   .Button:hover {
@@ -43,8 +44,12 @@
 
 @media (min-width: 1080px) {
   .Button {
+    border-radius: 80px;
     font-size: 22px;
     min-width: 214px;
     margin: 0;
+    padding: 18px;
+    box-sizing: border-box;
+    height: 69px;
   }
 }

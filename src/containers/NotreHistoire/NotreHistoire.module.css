@@ -123,6 +123,7 @@
 
   .TitleWrapper {
     padding: 100px;
+    margin-top: 100px;
   }
 
   .TitleWrapper h1 {
@@ -137,6 +138,7 @@
   .TitleWrapper p {
     font-size: 1.3rem;
     letter-spacing: 1px;
+    height: 100px;
     color: white;
   }
 
