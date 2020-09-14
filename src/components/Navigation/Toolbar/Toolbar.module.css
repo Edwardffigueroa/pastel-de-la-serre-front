@@ -51,16 +51,8 @@
   border: none;
 }
 
-.Wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  width: 50%;
-}
-
 .DesktopOnly {
-  animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  width: 100%;
+  display: none;
 }
 
 @media (max-width: 499px) {
@@ -84,6 +76,10 @@
 }
 
 @media (min-width: 768px) {
+  .Toolbar {
+    justify-content: space-between;
+  }
+
   .Logo {
     width: auto;
   }
@@ -98,6 +94,20 @@
   .Toolbar {
     padding: 0 60px 0 20px;
   }
+
+  .Wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    width: 50%;
+  }
+
+  .DesktopOnly {
+    display: flex;
+    animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    width: 100%;
+  }
+
   .Beside {
     margin: 0 70px 0 70px;
   }

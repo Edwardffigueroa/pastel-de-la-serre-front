@@ -9,6 +9,7 @@ import DetailView from '../../components/DetailView/DetailView'
 import { Route } from 'react-router-dom'
 import GoToDetails from '../../utils/GoToDetails'
 
+
 const NotreHistoire = ({ match }) => {
 
     const [items, setItems] = useState([])
@@ -65,7 +66,7 @@ const NotreHistoire = ({ match }) => {
             <Route
                 path={`${match.path}/detail/:id`}
                 render={() => (
-                    <DetailView
+                    < DetailView
                         items={items}
                         img={itemSelected.picture}
                         title={itemSelected.title}

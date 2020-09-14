@@ -8,9 +8,10 @@ import InfiniteSlider from '../Silder/InfiniteSlider';
 import CardList from '../CardList/CardList';
 
 import closeX from '../../assets/detailView/close.svg'
-import Button from '../UI/Button/Button';
+import Button from '../UI/Button/Button'
 
 const DetailView = (props) => {
+
 	return (
 		<div className={classes.DetailView}>
 			<div className={classes.DetailWrapper}>

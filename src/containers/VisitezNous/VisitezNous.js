@@ -22,7 +22,6 @@ const VisitezNous = ({ match }) => {
         fetch('../../data/home.json')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setItems(data)
             })
     }, [])

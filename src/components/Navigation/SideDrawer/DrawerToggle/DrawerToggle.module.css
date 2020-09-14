@@ -1,24 +1,33 @@
 .DrawerToggle {
-    width: 20%;
-    height: 44px;
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    cursor: pointer;
+  width: 20%;
+  height: 44px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .DrawerToggle div {
-    width: 90%;
-    border: 1px solid #F8CFC9;
-    border-radius: 1px;
-    background-color: #F8CFC9;
+  width: 90%;
+  border: 1px solid #f8cfc9;
+  border-radius: 1px;
+  background-color: #f8cfc9;
 }
 
-@media (min-width: 500px) {
-    .DrawerToggle {
-        display: none;
-    }
+@media (min-width: 768px) {
+  .DrawerToggle {
+    width: auto;
+  }
+  .DrawerToggle div {
+    width: 27px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .DrawerToggle {
+    display: none;
+  }
 }

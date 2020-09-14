@@ -9,7 +9,9 @@
   left: 0;
   padding: 100px 10px 10px 10px;
   transform: translateY(0%);
-  animation: entrance ease-in-out 300ms alternate;
+  opacity: 1;
+  animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
+
   z-index: 1;
 }
 
@@ -70,11 +72,9 @@
 
 @keyframes entrance {
   0% {
-    width: 0%;
     opacity: 0;
   }
   100% {
-    width: 100%;
     opacity: 1;
   }
 }
