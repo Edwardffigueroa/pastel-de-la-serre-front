@@ -47,7 +47,7 @@
 
 @keyframes slide-in-right-big {
   0% {
-    transform: translate(1000px, 50px);
+    transform: translate(300px, 50px);
     opacity: 0;
   }
   100% {
@@ -58,7 +58,7 @@
 
 @keyframes slide-in-right-top {
   0% {
-    transform: translate(1000px, 0);
+    transform: translate(300px, 0);
     opacity: 0;
   }
   100% {

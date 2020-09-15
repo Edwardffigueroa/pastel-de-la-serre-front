@@ -35,7 +35,7 @@
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  background-image: url('../../assets/images/notre_histoire/DJI_0002.png');
+  background-image: url('../../assets/images/boutique/bg_x1.png');
   animation: fade-in 300ms ease-in-out;
   z-index: -2;
 }
@@ -62,7 +62,7 @@
 
 .TitleWrapper h1,
 .TitleWrapper p {
-  animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) 1.3s both;
   font-family: 'operetta-18', serif;
 }
 
@@ -88,6 +88,10 @@
 @media (min-width: 768px) {
   .Wrapper {
     height: calc(100% - 100px);
+  }
+
+  .Wrapper::after {
+    background-image: url('../../assets/images/boutique/bg_x2.png');
   }
 
   .TitleWrapper {

@@ -12,30 +12,27 @@ import Button from '../UI/Button/Button'
 import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation';
 
 import { useHistory } from 'react-router-dom'
-import { a, config, useSpring } from 'react-spring';
+import { a, useSpring } from 'react-spring';
 
 const DetailView = (props) => {
 
-	const history = useHistory()
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
+
+	const history = useHistory()
+	const currentPath = history.location.pathname
+	const container = currentPath.split('/detail')[0]
 
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
-			history.push('/')
+			stop()
+			history.push(container)
 		}, 1200)
 	}
 
-
-	// Update spring with new props
-
-
-	// if (exit)
-	// 	setTimeout(() => history.push('/'), 1200)
-
 	return (
 		<a.div style={exitSpring}>
-			<div className={classes.DetailView}>
+			<div className={classes.DetailView} data-type={container}>
 				<div className={classes.DetailWrapper}>
 					<section className={classes.ImageWrapper}>
 						<img src={props.img} alt={props.description} />

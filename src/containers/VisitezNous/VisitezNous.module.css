@@ -34,7 +34,7 @@
   left: 0;
   background-size: cover;
   background-position: center;
-  background-image: url('../../assets/images/visitez_nous/sunset\ time\ photon\ image\ mid-summer.png');
+  background-image: url('../../assets/images/visitez_nous/bg_x1.png');
   background-attachment: fixed;
   animation: fade-in 300ms ease-in-out;
   z-index: -2;
@@ -62,7 +62,7 @@
 
 .TitleWrapper h1,
 .TitleWrapper p {
-  animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) 1.3s both;
   font-family: 'operetta-18', serif;
 }
 
@@ -88,6 +88,10 @@
 @media (min-width: 768px) {
   .Wrapper {
     height: calc(100% - 100px);
+  }
+
+  .Wrapper::after {
+    background-image: url('../../assets/images/visitez_nous/bg_x2.png');
   }
 
   .TitleWrapper {

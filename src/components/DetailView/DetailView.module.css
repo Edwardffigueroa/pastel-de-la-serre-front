@@ -24,6 +24,15 @@
   animation: entrance 1.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1.3s both;
   transition: all ease-in-out 1s;
   cursor: pointer;
+  z-index: 109;
+}
+div[data-type='/notre-histoire'],
+div[data-type='/visitez-nous'] {
+  background-image: url('../../assets/images/visitez_nous/bg_x1.png');
+}
+
+div[data-type='/boutique'] {
+  background-image: url('../../assets/images/boutique/bg_datail_boutique.png');
 }
 
 .DetailWrapper {

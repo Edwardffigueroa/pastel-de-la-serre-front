@@ -57,7 +57,7 @@ const Boutique = ({ match }) => {
                     Morbi laoreet a massa id fringilla. Nullam sagittis tellus nibh,
                     vestibulum ullamcorper mauris ultrices quis.
                           Nam malesuada congue ligula quis egestas. Cras mattis nunc porta</p>
-                    <Button type="First">Visitez Notre Boutique!</Button>
+                    <Button >Visitez Notre Boutique!</Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
@@ -70,11 +70,15 @@ const Boutique = ({ match }) => {
             <Route
                 path={`${match.path}/detail/:id`}
                 render={() => (
-                    <DetailView
-                        Title="hola"
-                        description="jhkasdad"
-                        url="hsajdhad"
-                        analizar="jdgad" />)} />
+                    < DetailView
+                        items={items}
+                        img={itemSelected.picture}
+                        title={itemSelected.title}
+                        time={itemSelected.time}
+                        people={itemSelected.people}
+                        level={itemSelected.level}
+                        description={itemSelected.description} />
+                )} />
         </div>
     );
 }

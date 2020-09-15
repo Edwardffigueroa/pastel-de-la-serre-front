@@ -53,7 +53,7 @@ const NotreHistoire = ({ match }) => {
                     Vestibulum in nulla et quam gravida blandit.
                     Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
                     Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
-                    <Button type="First">Réservez </Button>
+                    <Button>Réservez </Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>

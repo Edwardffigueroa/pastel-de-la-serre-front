@@ -52,7 +52,7 @@ const VisitezNous = ({ match }) => {
                     Vestibulum in nulla et quam gravida blandit.
                     Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
                     Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
-                    <Button type="First">Découvrez Notre Domaine</Button>
+                    <Button >Découvrez Notre Domaine</Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
