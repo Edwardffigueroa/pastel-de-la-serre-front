@@ -8,6 +8,7 @@ import foward from '../../../assets/foward.svg'
 const RowsNavigation = (props) => {
 
 	const history = useHistory()
+	const myclasses = props.isDetailView ? [classes.RowsNavigation, classes.Detail].join(' ') : classes.RowsNavigation
 
 	const goHandler = direction => {
 		const currentLocation = history.location.pathname
@@ -48,7 +49,7 @@ const RowsNavigation = (props) => {
 	}
 
 	return (
-		<div className={classes.RowsNavigation}>
+		<div className={myclasses}>
 			<div onClick={e => goHandler('back')}>
 				<img src={backwards} alt="go back" />
 			</div>

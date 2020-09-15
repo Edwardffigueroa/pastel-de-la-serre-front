@@ -12,6 +12,7 @@
   transition: all ease-in-out 350ms;
   margin: auto;
   width: 100%;
+  cursor: pointer;
 }
 
 .invert {
@@ -28,6 +29,7 @@
   width: 252px;
   background-color: #f8cfc9;
   color: #303868;
+  z-index: 999;
 }
 
 .ButtonOverImage:hover,

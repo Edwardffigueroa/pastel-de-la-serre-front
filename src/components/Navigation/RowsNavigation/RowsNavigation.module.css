@@ -9,6 +9,7 @@
   border-radius: 50%;
   display: flex;
   align-items: center;
+  cursor: pointer;
   justify-content: center;
 }
 
@@ -23,5 +24,12 @@
 @media (min-width: 1080px) {
   .RowsNavigation {
     display: flex;
+    position: absolute;
+    bottom: 82px;
+  }
+
+  .Detail {
+    position: relative;
+    bottom: -10px;
   }
 }
