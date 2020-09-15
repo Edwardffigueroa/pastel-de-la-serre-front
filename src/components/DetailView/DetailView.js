@@ -9,14 +9,22 @@ import CardList from '../CardList/CardList';
 
 import closeX from '../../assets/detailView/close.svg'
 import Button from '../UI/Button/Button'
+import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation';
+
+import { useHistory } from 'react-router-dom'
 
 const DetailView = (props) => {
+
+	const history = useHistory()
 
 	return (
 		<div className={classes.DetailView}>
 			<div className={classes.DetailWrapper}>
 				<section className={classes.ImageWrapper}>
 					<img src={props.img} alt={props.description} />
+					<div className={classes.ImageCTA}>
+						<Button isOverImage>Réservez</Button>
+					</div>
 				</section>
 				<section className={classes.Content}>
 					<div className={classes.TitleWrapper}>
@@ -48,10 +56,15 @@ const DetailView = (props) => {
 							detailView
 							items={props.items} />
 					</div>
-					<Button type="First">Réservez</Button>
+					<div className={classes.CTA}>
+						<Button>Réservez</Button>
+					</div>
+					<div className={classes.Navigations}>
+						<RowsNavigation />
+					</div>
 				</section>
 				<span className={classes.Close}>
-					<img src={closeX} alt="close" />
+					<img src={closeX} alt="close" onClick={e => history.push('/')} />
 				</span>
 			</div>
 		</div>

@@ -25,6 +25,7 @@
   background-color: rgba(24, 60, 119, 0.5);
   border-radius: 15px;
   margin: 0;
+  overflow: hidden;
 }
 
 .Content {
@@ -41,9 +42,13 @@
 
 .ImageWrapper {
   height: 230px;
+  background-color: darkgray;
   overflow: hidden;
 }
 
+.ImageCTA {
+  display: none;
+}
 .TitleWrapper h1 {
   font-size: 35px;
   margin: 0;
@@ -60,6 +65,29 @@
 }
 
 @media (min-width: 768px) {
+  .DetailView {
+    height: 100%;
+  }
+
+  .DetailWrapper {
+    margin-top: 70px;
+    height: 803px;
+  }
+
+  .Details {
+    justify-content: space-between;
+    width: 47%;
+  }
+
+  .TitleWrapper h1 {
+    font-size: 32px;
+  }
+
+  .SimilarItems {
+    overflow: hidden;
+    margin: 50px 0;
+  }
+
   .SimilarItems > div:first-of-type {
     display: none;
   }
@@ -67,6 +95,60 @@
   .SimilarItems > div:last-of-type {
     display: flex;
     height: 147px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .DetailWrapper {
+    position: relative;
+    height: 505px;
+    background-color: rgba(24, 60, 119, 0.6);
+    display: flex;
+    flex-direction: row;
+    border-radius: 40px;
+  }
+
+  .ImageWrapper {
+    position: relative;
+    flex-basis: 50%;
+    height: 100%;
+    border-radius: 40px 0 0 40px;
+  }
+
+  .ImageCTA {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+  }
+
+  .Content {
+    flex-basis: 50%;
+    height: 100%;
+  }
+
+  .SimilarItems {
+    margin: 15px 0;
+    padding-top: 50px;
+  }
+
+  .CTA {
+    display: none;
+  }
+
+  .Close {
+    display: flex;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+
+  .Navigations {
+    display: flex;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
   }
 }
 

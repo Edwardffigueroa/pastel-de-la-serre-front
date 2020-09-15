@@ -38,11 +38,16 @@ const InfiniteSlider = props => {
             _width = 202 + 40
             _height = 305
             break;
+
     }
 
+
+    const isDetailView = props.detailView ? { h: 147, w: 250 + 40 } : null
+    const wrapperClasses = props.detailView ? [classes.InfiniteSliderDetail] : [classes.InfiniteSlider]
+
     return (
-        <div className={classes.InfiniteSlider}>
-            <Slider width={_width} itemHeight={_height} items={props.items} visible={10}>
+        <div className={wrapperClasses}>
+            <Slider width={isDetailView ? isDetailView.w : _width} itemHeight={isDetailView ? isDetailView.h : _height} items={props.items} visible={10}>
                 {(item, i) => {
                     return (
                         <div key={i} className={classes.Content}>
@@ -51,6 +56,7 @@ const InfiniteSlider = props => {
                                     id={i}
                                     title={item.title}
                                     clicked={props.goToDetail}
+                                    detailView={props.detailView}
                                     image={item.download_url} >
                                     {/* Nested content possible */}
                                 </Card>

@@ -14,16 +14,41 @@
   width: 100%;
 }
 
+.invert {
+  filter: invert(100%);
+}
+
+.ButtonOverImage {
+  width: 252px;
+  background-color: #f8cfc9;
+  color: #303868;
+}
+
+.ButtonOverImage {
+  width: 252px;
+  background-color: #f8cfc9;
+  color: #303868;
+}
+
+.ButtonOverImage:hover,
 .Button:hover {
   background-color: #303868;
   color: #f8cfc9;
-  border-color: #f8cfc9;
+  border-color: transparent;
 }
 
 .Row {
   width: 26px;
   height: 26px;
   margin-left: 10px;
+  background-size: contain;
+  background-image: url('../../../assets/images/nav/row2.svg');
+  transition: all ease-in-out 350ms;
+}
+
+.ButtonOverImage:hover > .Row,
+.Button:hover > .Row {
+  background-image: url('../../../assets/images/nav/row.svg');
 }
 
 @media (min-width: 768px) {
@@ -35,10 +60,18 @@
     width: auto;
   }
 
+  .Row {
+    background-image: url('../../../assets/images/nav/row.svg');
+  }
+
+  .ButtonOverImage:hover > .Row,
+  .Button:hover > .Row {
+    background-image: url('../../../assets/images/nav/row2.svg');
+  }
+
   .Button:hover {
     color: #303868;
     background-color: #f8cfc9;
-    border-color: #303868;
   }
 }
 
@@ -51,5 +84,33 @@
     padding: 18px;
     box-sizing: border-box;
     height: 69px;
+  }
+
+  .ButtonOverImage {
+    width: 252px;
+  }
+
+  .ButtonDetail {
+    position: absolute;
+    width: 50%;
+    transform: translateX(-100%);
+  }
+
+  .Row {
+    width: 33px;
+    height: 33px;
+  }
+
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    margin-top: 50px;
+  }
+
+  to {
+    opacity: 1;
+    margin-top: 0;
   }
 }

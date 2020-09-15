@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './DotNav.module.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 const DotNav = () => {
+
+    const location = useLocation()
+    const [isVisible, setIsVisible] = useState([classes.DotNav])
+
+    useEffect(() => {
+
+        if (location.pathname.split('/').length > 2) {
+            const newClasses = [classes.DotNav, classes.Hidden].join(' ')
+            setIsVisible(newClasses)
+        } else {
+            setIsVisible([classes.DotNav])
+        }
+
+    }, [location])
+
     return (
-        <div className={classes.DotNav}>
+        <div className={isVisible}>
             <NavLink
                 to="/notre-histoire"
                 isActive={(match, location) => {
