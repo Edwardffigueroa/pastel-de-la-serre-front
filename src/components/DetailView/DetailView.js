@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import timeIcon from '../../assets/detailView/time.svg'
 import peopleIcon from '../../assets/detailView/people.svg'
 import levelIcon from '../../assets/detailView/mountain.svg'
+import recycleIcon from '../../assets/recycle.svg'
+import organicIcon from "../../assets/organic.svg"
+import handICon from "../../assets/hand.svg"
+
 import classes from './DetailView.module.css'
 import InfiniteSlider from '../Silder/InfiniteSlider';
 import CardList from '../CardList/CardList';
@@ -21,6 +25,7 @@ const DetailView = (props) => {
 	const history = useHistory()
 	const currentPath = history.location.pathname
 	const container = currentPath.split('/detail')[0]
+	const isShop = container.includes('boutique')
 
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
@@ -36,24 +41,46 @@ const DetailView = (props) => {
 				<div className={classes.DetailWrapper}>
 					<section className={classes.ImageWrapper}>
 						<img src={props.img} alt={props.description} />
-						<div className={classes.ImageCTA}>
-							<Button isOverImage>Réservez</Button>
-						</div>
+						{
+							isShop === false ? (
+								<div className={classes.ImageCTA}>
+									<Button isOverImage>Réservez</Button>
+								</div>
+							) : null
+						}
 					</section>
 					<section className={classes.Content}>
 						<div className={classes.TitleWrapper}>
 							<h1 className={classes.Title}>Les Ateliers de Pastel</h1>
 							<ul className={classes.Details}>
 								<li>
-									<img src={timeIcon} alt="Time" />
+									{
+										isShop ?
+											<img src={recycleIcon} alt="Time" />
+											: <img src={timeIcon} alt="Time" />
+
+									}
 								</li>
 								<li>
-									<img src={peopleIcon} alt="People" />
+									{
+										isShop ?
+											<img src={organicIcon} alt="Time" />
+											: <img src={peopleIcon} alt="Time" />
+
+									}
 								</li>
 								<li>
-									<img src={levelIcon} alt="Difficulty Level" />
+									{
+										isShop ?
+											<img src={handICon} alt="Time" />
+											: <img src={levelIcon} alt="Time" />
+
+									}
 								</li>
 							</ul>
+							<div>
+								{isShop ? <h2 className={classes.Price}>Price {props.price}</h2> : null}
+							</div>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Nunc pulvinar finibus erat. Vestibulum in nulla et quam gravida blandit.
@@ -63,13 +90,18 @@ const DetailView = (props) => {
 								Nam malesuada congue ligula quis egestas. Cras mattis nunc porta
 					</p>
 						</div>
-						<div className={classes.SimilarItems}>
-							<CardList
-								items={props.items} />
-							<InfiniteSlider
-								detailView
-								items={props.items} />
-						</div>
+						{
+							!isShop ?
+								(
+									<div className={classes.SimilarItems}>
+										<CardList
+											items={props.items} />
+										<InfiniteSlider
+											detailView
+											items={props.items} />
+									</div>
+								) : null
+						}
 						<div className={classes.CTA}>
 							<Button>Réservez</Button>
 						</div>
@@ -78,8 +110,8 @@ const DetailView = (props) => {
 								isDetailView />
 						</div>
 					</section>
-					<span className={classes.Close}>
-						<img src={closeX} alt="close" onClick={exitHandler} />
+					<span className={classes.Close} onClick={exitHandler} >
+						<img src={closeX} alt="close" />
 					</span>
 				</div>
 			</div>

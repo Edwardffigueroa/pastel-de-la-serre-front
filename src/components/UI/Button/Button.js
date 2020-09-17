@@ -1,35 +1,24 @@
 import React, { useState } from 'react';
 import classes from './Button.module.css'
 
-import row from '../../../assets/images/nav/row.svg'
-import row2 from '../../../assets/images/nav/row2.svg'
-
-
-
 const Button = props => {
     let myClasses = [classes.Button]
 
     if (props.detailed) {
-        myClasses = [classes.Button, classes.ButtonDetail].join(' ')
+        myClasses.push(classes.ButtonDetail)
     }
 
     if (props.isOverImage) {
-        myClasses = [classes.Button, classes.ButtonOverImage].join(' ')
+        myClasses.push(classes.ButtonOverImage)
     }
 
-    const [arrow, setArrow] = useState(false);
-
-    const mouseover = () => {
-        setArrow(true);
-
+    if (props.isShop) {
+        myClasses.push(classes.ShopButton)
     }
-    const mouseout = () => {
-        setArrow(false);
-    }
+
+    myClasses = myClasses.join(' ')
 
     return <button
-        onMouseOver={mouseover}
-        onMouseOut={mouseout}
         className={myClasses}
         onClick={props.clicked}>
         {props.children}

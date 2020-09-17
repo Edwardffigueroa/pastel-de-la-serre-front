@@ -57,7 +57,7 @@ const Boutique = ({ match }) => {
                     Morbi laoreet a massa id fringilla. Nullam sagittis tellus nibh,
                     vestibulum ullamcorper mauris ultrices quis.
                           Nam malesuada congue ligula quis egestas. Cras mattis nunc porta</p>
-                    <Button >Visitez Notre Boutique!</Button>
+                    <Button isShop >Visitez Notre Boutique!</Button>
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>

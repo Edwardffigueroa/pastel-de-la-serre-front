@@ -25,14 +25,33 @@
   color: #303868;
 }
 
-.ButtonOverImage {
+.Button.ButtonOverImage {
   width: 252px;
   background-color: #f8cfc9;
   color: #303868;
   z-index: 999;
 }
 
-.ButtonOverImage:hover,
+.Button.ButtonOverImage .Row {
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  border: 2px solid #303868;
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../../assets/flag_detail.svg');
+}
+
+.Button.ShopButton {
+  color: #303868;
+  background-color: #f8cfc9;
+}
+
+.Button.ShopButton:hover,
+.Button.ButtonOverImage:hover,
 .Button:hover {
   background-color: #303868;
   color: #f8cfc9;
@@ -44,6 +63,7 @@
   height: 26px;
   margin-left: 10px;
   background-size: contain;
+  background-repeat: no-repeat;
   background-image: url('../../../assets/images/nav/row2.svg');
   transition: all ease-in-out 350ms;
 }
@@ -51,6 +71,19 @@
 .ButtonOverImage:hover > .Row,
 .Button:hover > .Row {
   background-image: url('../../../assets/images/nav/row.svg');
+}
+
+.Button.ShopButton .Row {
+  background-image: url('../../../assets/shop.svg');
+}
+
+.Button.ButtonOverImage:hover .Row {
+  border-color: #f8cfc9;
+  background-image: url('../../../assets/flag_detailInvert.svg');
+}
+
+.Button.ShopButton:hover > .Row {
+  background-image: url('../../../assets/shopInvert.svg');
 }
 
 @media (min-width: 768px) {
@@ -102,7 +135,6 @@
     width: 33px;
     height: 33px;
   }
-
 }
 
 @keyframes fadeIn {
