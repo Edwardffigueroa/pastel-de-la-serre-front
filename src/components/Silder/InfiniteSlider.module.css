@@ -1,31 +1,19 @@
 .InfiniteSlider {
-  width: 100%;
+  height: 100%;
   animation: slide-in-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 }
 
-.InfiniteSliderDetail {
-  animation: slide-in-right-top 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
-}
-
-.Content {
-  width: 100%;
-  height: 100%;
-}
-
-.Image {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center center;
+.CardWrapper {
+  padding-top: 50px;
+  --display: flex;
 }
 
 @media (min-width: 768px) {
   .InfiniteSlider {
-    animation: slide-in-right-big 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s
-      both;
+    padding-top: 50px;
   }
 }
-
+/* 
 @media (min-width: 1080px) {
   .InfiniteSlider {
     height: 605px;
@@ -63,6 +51,18 @@
   }
   100% {
     transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+*/
+
+@keyframes slide-in-right {
+  0% {
+    transform: translate(1000px, 0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0%);
     opacity: 1;
   }
 }

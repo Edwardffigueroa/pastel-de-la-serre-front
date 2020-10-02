@@ -1,0 +1,59 @@
+.SelectedWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  font-size: 14px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.Label {
+  margin-right: 10px;
+  color: white;
+}
+
+.Selected > div {
+  /* Select container*/
+  width: 77px;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+}
+
+.Selected > div > div > div {
+  color: white;
+  font-size: 14px;
+  text-transform: lowercase;
+  padding: 0 8px;
+}
+
+.Selected > div:first-of-type > div {
+  /* Aligning value */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.Selected > div[class*='menu'] {
+  /* akiging inner list items  */
+  text-align: center;
+}
+
+.Selected > div[class*='menu'] > div > div {
+  /* making items border and hover effect */
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+  transition: all ease-in-out 400ms;
+}
+.Selected > div[class*='menu'] > div > div:last-of-type:hover,
+.Selected > div[class*='menu'] > div > div:last-of-type {
+  border: none;
+}
+
+.Selected > div[class*='menu'] > div > div:hover {
+  border-bottom: 2px solid white;
+}
+
+.Selected > div > div > span {
+  /* Remove separator */
+  display: none;
+}

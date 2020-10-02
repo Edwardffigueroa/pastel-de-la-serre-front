@@ -9,7 +9,7 @@ const DotNav = () => {
 
     useEffect(() => {
 
-        if (location.pathname.split('/').length > 2) {
+        if (location.pathname.split('/').length > 2 || location.pathname.includes('checkout')) {
             const newClasses = [classes.DotNav, classes.Hidden].join(' ')
             setIsVisible(newClasses)
         } else {

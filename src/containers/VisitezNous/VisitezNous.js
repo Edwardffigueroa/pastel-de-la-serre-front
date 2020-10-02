@@ -35,7 +35,7 @@ const VisitezNous = ({ match }) => {
 
 
     const goToDetail = (e, history, id) => {
-        const selected = items.find(item => item.index === id)
+        const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         GoToDetails(e, history, id)
     }

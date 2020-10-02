@@ -1,72 +1,65 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './InfiniteSlider.module.css'
+// import Slider from "@farbenmeer/react-spring-slider";
 
 import Slider from './Slider.js'
 import Card from '../../components/UI/Card/Card'
-import { a } from 'react-spring'
 import DeviceType from '../../utils/DeviceType'
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+// import Slider from "react-slick";
 
 const InfiniteSlider = props => {
 
-    const device = DeviceType()
-    let _width, _height
+    const { width, height } = DeviceType()
+    const [_w, setWidth] = useState(width)
+    const settings = {
+        className: classes.Wrapper,
+        centerMode: false,
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1
+    };
 
-    switch (device.type) {
-        // Expected plus 20 padding each side. 
-        case 'smallest':
-            _width = 168 + 40
-            _height = 215
-            break;
-        case 'small':
-            _width = 187 + 40
-            _height = 215
-            break;
-        case 'tablet':
-            _width = 224 + 40
-            _height = 339
-            break;
-        case 'desktop':
-            _width = 202 + 40
-            _height = 305
-            break;
-        case 'large':
-            _width = 363 + 40
-            _height = 550
-            break;
-        default:
-            _width = 202 + 40
-            _height = 305
-            break;
-
-    }
-
-
+    const nosotros = props.items.map((item, index) => (
+        <div className={classes.CardWrapper}>
+            <Card
+                key={index}
+                index={index}
+                id={item._id}
+                title={item.title}
+                clicked={props.goToDetail}
+                detailView={props.detailView}
+                image={item.download_url} >
+            </Card>
+        </div>
+    ))
     const isDetailView = props.detailView ? { h: 147, w: 250 + 40 } : null
-    const wrapperClasses = props.detailView ? [classes.InfiniteSliderDetail] : [classes.InfiniteSlider]
+
+    useEffect(() => {
+        setWidth(width)
+    }, [width])
 
     return (
-        <div className={wrapperClasses}>
-            <Slider width={isDetailView ? isDetailView.w : _width} itemHeight={isDetailView ? isDetailView.h : _height} items={props.items} visible={10}>
-                {(item, i) => {
-                    return (
-                        <div key={i} className={classes.Content}>
-                            <a.div className={classes.Image}>
-                                <Card
-                                    id={i}
-                                    title={item.title}
-                                    clicked={props.goToDetail}
-                                    detailView={props.detailView}
-                                    image={item.download_url} >
-                                    {/* Nested content possible */}
-                                </Card>
-                            </a.div>
-                        </div>
-                    )
-                }}
+        <div className={classes.InfiniteSlider}>
+            <Slider items={props.items} width={_w + 20}>
+                {({ _id, title, download_url }, index) => (
+                    <Card
+                        key={index}
+                        index={index}
+                        id={_id}
+                        title={title}
+                        clicked={props.goToDetail}
+                        detailView={props.detailView}
+                        image={download_url}>
+                    </Card>
+                )}
             </Slider>
         </div>
-    );
+    )
 }
 
 export default InfiniteSlider;

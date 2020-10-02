@@ -8,6 +8,29 @@
         "time": "30 min",
         "people": "5 pers",
         "level": "Debutant",
+        "stock": 10,
+        "sizes": [
+            {
+                "value": "XS",
+                "label": "XS"
+            },
+            {
+                "value": "S",
+                "label": "S"
+            },
+            {
+                "value": "M",
+                "label": "M"
+            },
+            {
+                "value": "L",
+                "label": "L"
+            },
+            {
+                "value": "XL",
+                "label": "XL"
+            }
+        ],
         "description": "Nulla nostrud nisi aliqua excepteur nostrud minim. Ut non nisi ad dolor anim magna laboris consequat do enim. Dolore labore proident ullamco veniam quis velit mollit reprehenderit eiusmod laboris nulla Lorem. Anim labore anim aliqua ex ullamco do ipsum minim labore laboris. Ipsum dolor adipisicing sunt excepteur enim officia duis aliqua aliquip veniam esse dolor qui. Est et magna veniam exercitation incididunt velit sint elit est. Dolore occaecat eiusmod laborum consectetur enim.",
         "tags": [
             7,
@@ -23,6 +46,29 @@
         "time": "30 min",
         "people": "5 pers",
         "level": "Debutant",
+        "stock": 10,
+        "sizes": [
+            {
+                "value": "XS",
+                "label": "XS"
+            },
+            {
+                "value": "S",
+                "label": "S"
+            },
+            {
+                "value": "M",
+                "label": "M"
+            },
+            {
+                "value": "L",
+                "label": "L"
+            },
+            {
+                "value": "XL",
+                "label": "XL"
+            }
+        ],
         "description": "Qui laborum est sint est ea officia anim amet magna cupidatat non et. Sunt reprehenderit consequat cupidatat voluptate ut cillum commodo est. Cupidatat ullamco cillum non mollit adipisicing magna amet in occaecat aliquip consectetur. Cillum cupidatat amet in sint fugiat Lorem reprehenderit quis id magna. Id proident aliquip veniam elit enim aute Lorem ullamco. Aliqua voluptate laboris magna duis laboris reprehenderit laboris adipisicing magna. Proident sint nisi ut deserunt nostrud.",
         "tags": [
             7,
@@ -38,6 +84,68 @@
         "time": "30 min",
         "people": "5 pers",
         "level": "Debutant",
+        "stock": 10,
+        "sizes": [
+            {
+                "value": "XS",
+                "label": "XS"
+            },
+            {
+                "value": "S",
+                "label": "S"
+            },
+            {
+                "value": "M",
+                "label": "M"
+            },
+            {
+                "value": "L",
+                "label": "L"
+            },
+            {
+                "value": "XL",
+                "label": "XL"
+            }
+        ],
+        "description": "Cillum culpa magna proident eiusmod nostrud irure id aute adipisicing consectetur exercitation incididunt. Mollit consectetur aliqua aliqua sint pariatur duis nulla. Dolor commodo eiusmod sit labore dolore dolor aute magna. Deserunt ea ad tempor sit aliqua.",
+        "tags": [
+            7,
+            "minim"
+        ]
+    }
+    ,
+    {
+        "_id": "ksghihjp`ksopioyuiy68709iyoifjg",
+        "index": 2,
+        "isActive": true,
+        "title": "Spears Buckner",
+        "picture": "https://firebasestorage.googleapis.com/v0/b/pastel-b33bc.appspot.com/o/Photo-%20Button.png?alt=media&token=b7e74491-0e82-45a6-81cb-1102b532c361",
+        "time": "30 min",
+        "people": "5 pers",
+        "level": "Debutant",
+        "stock": 10,
+        "sizes": [
+            {
+                "value": "XS",
+                "label": "XS"
+            },
+            {
+                "value": "S",
+                "label": "S"
+            },
+            {
+                "value": "M",
+                "label": "M"
+            },
+            {
+                "value": "L",
+                "label": "L"
+            },
+            {
+                "value": "XL",
+                "label": "XL"
+            }
+        ],
         "description": "Cillum culpa magna proident eiusmod nostrud irure id aute adipisicing consectetur exercitation incididunt. Mollit consectetur aliqua aliqua sint pariatur duis nulla. Dolor commodo eiusmod sit labore dolore dolor aute magna. Deserunt ea ad tempor sit aliqua.",
         "tags": [
             7,

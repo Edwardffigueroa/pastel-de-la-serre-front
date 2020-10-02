@@ -7,7 +7,7 @@
   max-width: 100%;
   top: 0;
   left: 0;
-  padding: 100px 10px 10px 10px;
+  margin: 100px 10px 10px 10px;
   transform: translateY(0%);
   opacity: 1;
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
@@ -26,13 +26,14 @@
   cursor: pointer;
   z-index: 109;
 }
+
 div[data-type='/notre-histoire'],
 div[data-type='/visitez-nous'] {
-  background-image: url('../../assets/images/visitez_nous/bg_x1.png');
+  --background-image: url('../../assets/images/visitez_nous/bg_x1.png');
 }
 
 div[data-type='/boutique'] {
-  background-image: url('../../assets/images/boutique/bg_datail_boutique.png');
+  --background-image: url('../../assets/images/boutique/bg_datail_boutique.png');
 }
 
 .DetailWrapper {
@@ -41,7 +42,6 @@ div[data-type='/boutique'] {
   background-color: rgba(24, 60, 119, 0.5);
   border-radius: 15px;
   margin: 0;
-  overflow: hidden;
 }
 
 .Content {
@@ -78,6 +78,17 @@ div[data-type='/boutique'] {
 
 .SimilarItems > div:last-of-type {
   display: none;
+}
+
+.ProductOptions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ProductOptions > div {
+  display: flex;
+  flex-direction: row;
 }
 
 @media (min-width: 768px) {

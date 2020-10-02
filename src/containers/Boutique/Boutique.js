@@ -19,7 +19,7 @@ const Boutique = ({ match }) => {
     const [cssStyles, setCssStyles] = useState(classes.Wrapper)
 
     useEffect(() => {
-        fetch('../../data/home.json')
+        fetch('../../data/shop.json')
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -36,7 +36,7 @@ const Boutique = ({ match }) => {
 
 
     const goToDetail = (e, history, id) => {
-        const selected = items.find(item => item.index === id)
+        const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         GoToDetails(e, history, id)
     }
@@ -61,7 +61,6 @@ const Boutique = ({ match }) => {
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
-
                 <InfiniteSlider
                     items={items}
                     goToDetail={goToDetail} />
@@ -70,13 +69,15 @@ const Boutique = ({ match }) => {
             <Route
                 path={`${match.path}/detail/:id`}
                 render={() => (
-                    < DetailView
+                    <DetailView
                         items={items}
                         img={itemSelected.picture}
                         title={itemSelected.title}
                         time={itemSelected.time}
                         people={itemSelected.people}
                         level={itemSelected.level}
+                        productSizes={itemSelected.sizes}
+                        productStock={itemSelected.stock}
                         description={itemSelected.description} />
                 )} />
         </div>

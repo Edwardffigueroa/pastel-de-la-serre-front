@@ -9,7 +9,6 @@ import DetailView from '../../components/DetailView/DetailView'
 import { Route } from 'react-router-dom'
 import GoToDetails from '../../utils/GoToDetails'
 
-
 const NotreHistoire = ({ match }) => {
 
     const [items, setItems] = useState([])
@@ -34,10 +33,11 @@ const NotreHistoire = ({ match }) => {
 
 
     const goToDetail = (e, history, id) => {
-        const selected = items.find(item => item.index === id)
+        const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         GoToDetails(e, history, id)
     }
+
 
 
     return (
@@ -57,7 +57,6 @@ const NotreHistoire = ({ match }) => {
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
-
                 <InfiniteSlider
                     items={items}
                     goToDetail={goToDetail} />

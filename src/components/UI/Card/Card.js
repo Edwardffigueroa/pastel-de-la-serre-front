@@ -5,11 +5,12 @@ import Stars from '../../Stars/Stars'
 import { useHistory } from 'react-router-dom'
 const Card = props => {
 
+    const { index } = props
     const history = useHistory()
     const colorOption = { background: 'lightgray' }
     const responsiveWidth = props.noFlag ? { flexBasis: '100%' } : { flexBasis: '80%' }
     const isDetailView = props.detailView ? [classes.Marker, classes.DetailView].join(' ') : [classes.Marker]
-    
+
     return (
         <div onClick={e => props.clicked(e, history, props.id)} className={classes.Card} style={colorOption}>
             <section className={classes.Header}>

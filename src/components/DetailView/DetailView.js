@@ -17,6 +17,7 @@ import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation';
 
 import { useHistory } from 'react-router-dom'
 import { a, useSpring } from 'react-spring';
+import Selected from '../Selected/Selected'
 
 const DetailView = (props) => {
 
@@ -26,6 +27,12 @@ const DetailView = (props) => {
 	const currentPath = history.location.pathname
 	const container = currentPath.split('/detail')[0]
 	const isShop = container.includes('boutique')
+
+	const buyHanlder = e => {
+		console.log('aqui pasa algo')
+		// exitHandler()
+		history.push('/checkout')
+	}
 
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
@@ -56,30 +63,33 @@ const DetailView = (props) => {
 								<li>
 									{
 										isShop ?
-											<img src={recycleIcon} alt="Time" />
+											<img src={recycleIcon} alt="Recycle" />
 											: <img src={timeIcon} alt="Time" />
 
 									}
-								</li>
-								<li>
 									{
-										isShop ?
-											<img src={organicIcon} alt="Time" />
-											: <img src={peopleIcon} alt="Time" />
 
 									}
 								</li>
 								<li>
 									{
 										isShop ?
-											<img src={handICon} alt="Time" />
-											: <img src={levelIcon} alt="Time" />
+											<img src={organicIcon} alt="Organic %" />
+											: <img src={peopleIcon} alt="People" />
+
+									}
+								</li>
+								<li>
+									{
+										isShop ?
+											<img src={handICon} alt="Hand Made" />
+											: <img src={levelIcon} alt="Level" />
 
 									}
 								</li>
 							</ul>
 							<div>
-								{isShop ? <h2 className={classes.Price}>Price {props.price}</h2> : null}
+								{isShop ? <h2 className={classes.Price}>Price {props.productPrice}</h2> : null}
 							</div>
 							<p>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -100,7 +110,23 @@ const DetailView = (props) => {
 											detailView
 											items={props.items} />
 									</div>
-								) : null
+								) : (
+									<div className={classes.ProductOptions}>
+										<div>
+											<Selected
+												label="Taille"
+												options={props.productSizes} />
+											<Selected
+												label="Quantite"
+												options={props.productStock} />
+										</div>
+										<div>
+											<Button isShop clicked={buyHanlder}>Achater </Button>
+											<Button isShop>Continuez a la mes Achats</Button>
+										</div>
+
+									</div>
+								)
 						}
 						<div className={classes.CTA}>
 							<Button>Réservez</Button>

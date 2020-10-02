@@ -6,12 +6,14 @@ import classes from "./App.module.css"
 import VisitezNous from './containers/VisitezNous/VisitezNous'
 import Boutique from './containers/Boutique/Boutique'
 import NotreHistoire from './containers/NotreHistoire/NotreHistoire'
+import Checkout from "./containers/Checkout/Checkout"
 
 function App() {
     return (
         <div className={classes.App} >
             <Layout >
                 <Switch >
+                    <Route path="/checkout" component={Checkout} />
                     <Route path="/visitez-nous" component={VisitezNous} />
                     <Route path="/boutique" component={Boutique} />
                     <Route path="/notre-histoire" component={NotreHistoire} />

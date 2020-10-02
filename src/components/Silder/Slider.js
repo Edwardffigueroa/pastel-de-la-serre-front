@@ -2,15 +2,20 @@ import React, { useRef, useCallback } from 'react'
 import { useGesture } from 'react-use-gesture'
 import { useSprings, a } from 'react-spring'
 
+const styles = {
+  container: { position: 'relative', height: '100%', width: '100%' },
+  item: { position: 'absolute', height: '100%', willChange: 'transform' }
+}
 
-export default function Slider({ items, width, visible = 4, style, children, itemHeight }) {
-
-  const styles = {
-    container: { position: 'relative', height: '100%', width: '100%' },
-    item: { position: 'absolute', height: `${itemHeight}px`, willChange: 'transform' }
-  }
-
-
+/**
+ * Calculates a spring-physics driven infinite slider
+ *
+ * @param {Array} items - display items
+ * @param {Function} children - render child
+ * @param {number} width - fixed item with
+ * @param {number} visible - number of items that muste be visible on screen
+ */
+export default function Slider({ items, width = 600, visible = 4, style, children }) {
   const idx = useCallback((x, l = items.length) => (x < 0 ? x + l : x) % l, [items])
   const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])
   const [springs, set] = useSprings(items.length, i => ({ x: (i < items.length - 1 ? i : -1) * width }))
@@ -42,7 +47,6 @@ export default function Slider({ items, width, visible = 4, style, children, ite
     onDrag: ({ offset: [x], vxvy: [vx] }) => vx && ((dragOffset.current = -x), runSprings(wheelOffset.current + -x, -vx)),
     onWheel: ({ offset: [, y], vxvy: [, vy] }) => vy && ((wheelOffset.current = y), runSprings(dragOffset.current + y, vy))
   })
-
 
   return (
     <div {...bind()} style={{ ...style, ...styles.container }}>
