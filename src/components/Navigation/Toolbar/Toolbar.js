@@ -3,11 +3,11 @@ import React from 'react'
 import classes from './Toolbar.module.css'
 import Logo from '../../Logo/Logo'
 import lupa from '../../../assets/images/nav/lupa.svg'
-import cart from '../../../assets/images/nav/cart_bag.svg'
 
 import NavigationItems from '../NavigationItems/NavigationItems'
 import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Languages from '../../Languages/Languages'
+import Cart from '../../Cart/Cart'
 
 const toolbar = (props) => (
     <header className={classes.Toolbar}>
@@ -23,7 +23,7 @@ const toolbar = (props) => (
                     <img src={lupa} alt="search" />
                 </label>
                 <span>
-                    <img src={cart} alt="cart bag" />
+                    <Cart />
                 </span>
             </section>
             <nav className={classes.DesktopOnly}>

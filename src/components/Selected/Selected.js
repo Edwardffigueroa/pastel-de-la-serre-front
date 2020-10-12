@@ -4,25 +4,41 @@ import Select from "react-select"
 import classes from './Selected.module.css'
 
 const Selected = (props) => {
-	
+
 	let options
+
 	if (props.options.length > 1) {
 		options = props.options.map(op => ({ value: op, label: op }))
 	} else {
 		const maxOptions = props.options
 		options = new Array(maxOptions).fill().map((op, i) => ({ value: i, label: i }))
-		console.log('pero que tambien pichea : ', options)
 	}
 
 	const [selected, setSelected] = useState(options[0])
 
+	const selectedHandler = e => {
+
+		if (props.label === 'Quantite') {
+			console.log(e)
+			props.onQuantity(e.value)
+		}
+
+		if (props.label === 'Taille') {
+			props.onSize(e.value)
+		}
+
+		setSelected(e)
+	}
+
+	const myclasses = props.payment ? [classes.Selected, classes.Payment].join(' ') : classes.Selected
+
 	return (
-		<div className={classes.SelectedWrapper}>
+		<div className={props.payment ? classes.SelectedWrapperPay : classes.SelectedWrapper}>
 			<div className={classes.Label}>{props.label}</div>
 			<Select
-				className={classes.Selected}
+				className={myclasses}
 				classNamePrefix={classes.InnerSelected}
-				onChange={setSelected}
+				onChange={selectedHandler}
 				defaultValue={selected}
 				options={options} />
 		</div>

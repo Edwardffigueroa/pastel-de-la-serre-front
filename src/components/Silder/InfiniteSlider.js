@@ -45,7 +45,7 @@ const InfiniteSlider = props => {
 
     return (
         <div className={classes.InfiniteSlider}>
-            <Slider items={props.items} width={_w + 20}>
+            <Slider items={props.items} width={!props.detailView ? _w + 20 : isDetailView.w} height={props.isDetailView ? isDetailView.h : null}>
                 {({ _id, title, download_url }, index) => (
                     <Card
                         key={index}

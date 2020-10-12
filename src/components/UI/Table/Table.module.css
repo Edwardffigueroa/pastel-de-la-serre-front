@@ -1,1 +1,37 @@
-.Table{ display: flex; }
+.Table {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 80%;
+}
+
+.List {
+  padding: 0;
+  margin: 0;
+}
+.TotalPrice {
+  font-family: 'Helvetica neue', Helvetica, sans-serif;
+  padding-right: 20px;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.TotalPrice span {
+  color: #959595;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.TotalPrice h3 {
+  font-size: 30px;
+  color: #4a4848;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+@media (min-width: 1080px) {
+  .List {
+    padding: 20px;
+  }
+}

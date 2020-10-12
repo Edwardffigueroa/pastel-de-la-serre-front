@@ -1,0 +1,21 @@
+.Counter {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.NumberWrapper {
+  border: 2px solid #b2b2b2;
+  border-radius: 30px;
+  width: 67px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NumberWrapper p {
+  font-family: 'Helvetica neue', Helvetica, sans-serif;
+  color: #b2b2b2;
+  font-size: 18px;
+}

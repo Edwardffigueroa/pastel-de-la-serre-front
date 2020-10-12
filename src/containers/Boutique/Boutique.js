@@ -15,7 +15,7 @@ import { Route } from 'react-router-dom'
 const Boutique = ({ match }) => {
 
     const [items, setItems] = useState([])
-    const [itemSelected, setItemSelected] = useState(false);
+    const [itemSelected, setItemSelected] = useState(false)
     const [cssStyles, setCssStyles] = useState(classes.Wrapper)
 
     useEffect(() => {
@@ -76,6 +76,7 @@ const Boutique = ({ match }) => {
                         time={itemSelected.time}
                         people={itemSelected.people}
                         level={itemSelected.level}
+                        price={itemSelected.price}
                         productSizes={itemSelected.sizes}
                         productStock={itemSelected.stock}
                         description={itemSelected.description} />

@@ -7,11 +7,13 @@ import VisitezNous from './containers/VisitezNous/VisitezNous'
 import Boutique from './containers/Boutique/Boutique'
 import NotreHistoire from './containers/NotreHistoire/NotreHistoire'
 import Checkout from "./containers/Checkout/Checkout"
+import Cart from './utils/Cart'
 
 function App() {
+
     return (
         <div className={classes.App} >
-            <Layout >
+            <Layout products={Cart.products} >
                 <Switch >
                     <Route path="/checkout" component={Checkout} />
                     <Route path="/visitez-nous" component={VisitezNous} />

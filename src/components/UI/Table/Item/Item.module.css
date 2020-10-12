@@ -1,0 +1,54 @@
+.ItemWrapper {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-end;
+  border-bottom: 2px solid #bebebe;
+}
+
+.Item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Item p {
+  font-family: 'Helvetica neue', Helvetica, sans-serif;
+  font-weight: bold;
+  color: #4a4848;
+}
+
+.NameWrapper {
+  width: 40%;
+}
+
+.MobilePrice {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Helvetica neue', Helvetica, sans-serif;
+}
+
+.DesktopPrice {
+  display: none;
+}
+
+.Delete {
+  width: 15px;
+  height: 15px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../../../assets/checkout/deleteItem.svg');
+}
+
+@media (min-width: 1080px) {
+  .ItemWrapper {
+    padding: 20px 30px 20px 0;
+  }
+  .Item {
+    width: 80%;
+  }
+  .Item > * {
+    margin-left: 50px;
+  }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from './Checkout.module.css'
 
 
@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom'
 import { a, useSpring } from 'react-spring';
 import closeX from '../../assets/checkout/closeBlue.svg'
 import Table from '../../components/UI/Table/Table';
+import Payment from '../../components/Payment/Payment';
 
 const Checkout = (props) => {
 
@@ -14,11 +15,12 @@ const Checkout = (props) => {
 	const currentPath = history.location.pathname
 	const container = currentPath.split('/detail')[0]
 
+
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
 			stop()
-			history.push(container)
+			history.push('/boutique')
 		}, 1200)
 	}
 
@@ -27,11 +29,11 @@ const Checkout = (props) => {
 			<div className={classes.Checkout}>
 				<div className={classes.CheckoutWrapper}>
 					<h1 className={classes.Title}>Checkout</h1>
-					<section>
+					<section className={classes.Content}>
 						<Table />
-					</section>
-					<section>
-						PAYMENT
+						<section className={classes.Payment}>
+							<Payment />
+						</section>
 					</section>
 					<span className={classes.Close} onClick={exitHandler} >
 						<img src={closeX} alt="close" />

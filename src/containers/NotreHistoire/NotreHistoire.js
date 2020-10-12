@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import classes from './NotreHistoire.module.css'
 
-import Button from '../../components/UI/Button/Button'
-import InfiniteSlider from '../../components/Silder/InfiniteSlider'
+import classes from './NotreHistoire.module.css'
 import Shadow from '../../components/UI/Shadow/Shadow'
+import Button from '../../components/UI/Button/Button'
 import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
-import DetailView from '../../components/DetailView/DetailView'
+import InfiniteSlider from '../../components/Silder/InfiniteSlider'
+
 import { Route } from 'react-router-dom'
+import DetailView from '../../components/DetailView/DetailView'
+
 import GoToDetails from '../../utils/GoToDetails'
 
 const NotreHistoire = ({ match }) => {

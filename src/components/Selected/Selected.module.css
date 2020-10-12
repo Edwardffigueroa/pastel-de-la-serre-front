@@ -1,15 +1,35 @@
+.SelectedWrapperPay,
 .SelectedWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
   font-size: 14px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.SelectedWrapper {
+  padding: 5px;
 }
 
 .Label {
   margin-right: 10px;
   color: white;
+}
+
+.Selected.Payment .Label {
+  margin-right: 0;
+}
+
+.Selected.Payment > div {
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #626262;
+}
+
+.Selected.Payment > div[class*='menu'] > div > div {
+  background: #626262;
+  color: white;
+  font-size: 14px;
 }
 
 .Selected > div {
