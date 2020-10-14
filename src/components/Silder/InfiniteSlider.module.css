@@ -12,6 +12,10 @@
   .InfiniteSlider {
     padding-top: 50px;
   }
+
+  .InfiniteSlider.DetailView {
+    padding: 0;
+  }
 }
 /* 
 @media (min-width: 1080px) {

@@ -9,7 +9,7 @@ const Card = props => {
     const history = useHistory()
     const colorOption = { background: 'lightgray' }
     const responsiveWidth = props.noFlag ? { flexBasis: '100%' } : { flexBasis: '80%' }
-    const isDetailView = props.detailView ? [classes.Card, classes.DetailView].join(' ') : [classes.Card]
+    const isDetailView = props.detailView ? [classes.Card, classes.DetailView].join(' ') : [classes.Card].join(' ')
 
     return (
         <div onClick={e => props.clicked(e, history, props.id)} className={isDetailView} style={colorOption}>

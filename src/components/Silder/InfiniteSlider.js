@@ -38,13 +38,14 @@ const InfiniteSlider = props => {
         </div>
     ))
     const isDetailView = props.detailView ? { h: 147, w: 250 + 40 } : null
-
+    const myClasses = props.detailView ? [classes.DetailView, classes.InfiniteSlider].join(' ') : classes.InfiniteSlider
+    
     useEffect(() => {
         setWidth(width)
     }, [width])
 
     return (
-        <div className={classes.InfiniteSlider}>
+        <div className={myClasses}>
             <Slider items={props.items} width={!props.detailView ? _w + 20 : isDetailView.w} height={props.isDetailView ? isDetailView.h : null}>
                 {({ _id, title, download_url }, index) => (
                     <Card
