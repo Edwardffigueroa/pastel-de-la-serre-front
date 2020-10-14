@@ -5,7 +5,7 @@ import classes from './PaymentMethod.module.css'
 const addZero = number => number < 10 ? '0' + number : number
 
 
-const PaymentMethod = ({ paymentMethod }) => {
+const PaymentMethod = ({ next }) => {
 
 	const [month, setMonth] = useState(0)
 	const [year, setYear] = useState(0)
@@ -21,11 +21,22 @@ const PaymentMethod = ({ paymentMethod }) => {
 		const _y = i + 20
 		return _y
 	})
+
+	const onPayHandler = e => {
+		const _cardDetails = {
+			month: month,
+			year: year,
+			name: name,
+			card: card
+		}
+		next(_cardDetails)
+	}
+
 	return (
 		<div className={classes.Payment}>
 			<h3>Moyent de paiement</h3>
 			<section></section>
-			<form onSubmit={e => paymentMethod(e)}>
+			<div className={classes.Form}>
 				<label htmlFor="name">Titulaire de la cart</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
 				<label htmlFor="number">N° Carte</label>
@@ -45,8 +56,8 @@ const PaymentMethod = ({ paymentMethod }) => {
 						<input className={classes.Input} type="number" htmlFor="cvv" name="cvv" />
 					</div>
 				</fieldset>
-				<button className={classes.Pay}>Suivant</button>
-			</form>
+				<button onClick={onPayHandler} className={classes.Pay}>Suivant</button>
+			</div>
 		</div>)
 }
 

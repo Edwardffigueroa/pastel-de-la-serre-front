@@ -108,14 +108,14 @@ const DetailView = (props) => {
 								) : (
 									<div className={classes.ProductOptions}>
 										<div>
-											<Selected
+											{/* <Selected
 												label="Taille"
 												onSize={setSize}
 												options={props.productSizes} />
 											<Selected
 												label="Quantite"
 												onQuantity={setQuantity}
-												options={props.productStock} />
+												options={props.productStock} /> */}
 										</div>
 										<div>
 											<Button isShop clicked={buyHanlder}>Achater </Button>

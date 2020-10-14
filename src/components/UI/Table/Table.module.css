@@ -30,6 +30,16 @@
   margin-left: 20px;
 }
 
+@media (min-width: 768px) {
+  .Table {
+    justify-content: space-between;
+  }
+
+  .List {
+    margin: 30px;
+  }
+}
+
 @media (min-width: 1080px) {
   .List {
     padding: 20px;

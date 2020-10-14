@@ -20,6 +20,7 @@ const TicketDetails = ({ next }) => {
 
 	return (
 		<div className={classes.TicketDetails}>
+			<h3>Détails de facturation</h3>
 			<label>Nom</label>
 			<input value={name} onChange={e => setName(e.target.value)} type="text" />
 			<label>E-mail</label>

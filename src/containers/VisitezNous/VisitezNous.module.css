@@ -20,7 +20,7 @@
   transition: all ease-in 400ms;
 }
 
-.Wrapper.WrapperOnTop > section {
+.WrapperOnTop > section {
   opacity: 0;
   display: none;
 }
@@ -36,7 +36,6 @@
   background-position: center;
   background-image: url('../../assets/images/visitez_nous/bg_x1.png');
   background-attachment: fixed;
-  animation: fade-in 300ms ease-in-out;
   z-index: -2;
 }
 

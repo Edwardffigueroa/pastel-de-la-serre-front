@@ -2,3 +2,16 @@
   display: flex;
   cursor: pointer;
 }
+
+.Feedback {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: none;
+  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+}
+
+.Feedback.HasItems {
+  display: flex;
+  background-color: red;
+}

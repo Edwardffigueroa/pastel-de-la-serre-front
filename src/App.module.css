@@ -10,3 +10,36 @@
 .App > * {
   width: 100%;
 }
+
+.App > div > div {
+  height: 100%;
+}
+
+.App div[class*='Page'] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.App div[class='Page-appear'],
+.App div[class='Page-enter'] {
+  opacity: 0;
+  z-index: 1;
+}
+
+.App div[class='Page-appear-active'],
+.App div[class='Page-enter-active'] {
+  opacity: 1;
+  transition: all 300ms linear 150ms;
+}
+
+.App div[class='Page-exit'] {
+  opacity: 1;
+}
+
+.App div[class='Page-exit Page-exit-active'] {
+  opacity: 0;
+  transition: all 150ms linear;
+}

@@ -3,10 +3,11 @@ import classes from './Checkout.module.css'
 
 
 import { useHistory } from 'react-router-dom'
-import { a, useSpring } from 'react-spring';
+import { a, useSpring } from 'react-spring'
 import closeX from '../../assets/checkout/closeBlue.svg'
-import Table from '../../components/UI/Table/Table';
-import Payment from '../../components/Payment/Payment';
+import Table from '../../components/UI/Table/Table'
+import Payment from '../../components/Payment/Payment'
+import Shadow from '../../components/UI/Shadow/Shadow'
 
 const Checkout = (props) => {
 
@@ -27,6 +28,7 @@ const Checkout = (props) => {
 	return (
 		<a.div style={exitSpring}>
 			<div className={classes.Checkout}>
+				<Shadow />
 				<div className={classes.CheckoutWrapper}>
 					<h1 className={classes.Title}>Checkout</h1>
 					<section className={classes.Content}>

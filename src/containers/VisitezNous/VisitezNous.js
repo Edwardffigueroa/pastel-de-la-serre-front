@@ -9,14 +9,13 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 
 import DetailView from '../../components/DetailView/DetailView'
 import GoToDetails from '../../utils/GoToDetails'
-import { Route } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
 
 const VisitezNous = ({ match }) => {
 
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false);
-    const [cssStyles, setCssStyles] = useState(classes.Wrapper)
-
+    let innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
     useEffect(() => {
         fetch('../../data/home.json')
@@ -26,13 +25,10 @@ const VisitezNous = ({ match }) => {
             })
     }, [])
 
-    useEffect(() => {
-        const myClasses = itemSelected && !match.isExact
-            ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
-            : [classes.Wrapper]
-        setCssStyles(myClasses)
-    }, [match, itemSelected])
 
+    const myClasses = innerMatch
+        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+        : [classes.Wrapper].join('')
 
     const goToDetail = (e, history, id) => {
         const selected = items.find(item => item._id === id)
@@ -41,7 +37,7 @@ const VisitezNous = ({ match }) => {
     }
 
     return (
-        <div className={cssStyles}>
+        <div className={myClasses}>
             <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>

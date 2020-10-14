@@ -89,3 +89,9 @@
 .Input:last-of-type {
   margin: 0;
 }
+
+@media (min-width: 768px) {
+  .Payment {
+    height: 590px;
+  }
+}
