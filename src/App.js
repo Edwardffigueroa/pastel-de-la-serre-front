@@ -22,7 +22,7 @@ function App() {
                         timeout={450}
                         classNames="Page">
                         <Layout products={Cart.products} >
-                            <Switch location={location}>
+                            <Switch location={location} >
                                 <Route path="/checkout" component={Checkout} />
                                 <Route path="/visitez-nous" component={VisitezNous} />
                                 <Route path="/boutique" component={Boutique} />

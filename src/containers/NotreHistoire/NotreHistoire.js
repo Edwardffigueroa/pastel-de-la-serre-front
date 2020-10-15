@@ -6,16 +6,16 @@ import Button from '../../components/UI/Button/Button'
 import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
 import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 
-import { Route } from 'react-router-dom'
+import { Route, useRouteMatch } from 'react-router-dom'
 import DetailView from '../../components/DetailView/DetailView'
 
 import GoToDetails from '../../utils/GoToDetails'
 
-const NotreHistoire = ({ match }) => {
+const NotreHistoire = ({ match, history }) => {
 
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false);
-    const [cssStyles, setCssStyles] = useState(classes.Wrapper)
+    const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
     useEffect(() => {
         fetch('../../data/home.json')
@@ -26,25 +26,20 @@ const NotreHistoire = ({ match }) => {
             })
     }, [])
 
-    useEffect(() => {
-        const myClasses = itemSelected && !match.isExact
-            ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
-            : [classes.Wrapper]
-        setCssStyles(myClasses)
-    }, [match, itemSelected])
 
+    const myClasses = innerMatch
+        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+        : [classes.Wrapper].join('')
 
-    const goToDetail = (e, history, id) => {
+    const goToDetail = (e, x, id) => {
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         GoToDetails(e, history, id)
     }
 
-
-
     return (
 
-        <div className={cssStyles}>
+        <div className={myClasses}>
             <Shadow />
             <section>
                 <div className={classes.TitleWrapper}>
@@ -67,7 +62,7 @@ const NotreHistoire = ({ match }) => {
             <Route
                 path={`${match.path}/detail/:id`}
                 render={() => (
-                    < DetailView
+                    <DetailView
                         items={items}
                         img={itemSelected.picture}
                         title={itemSelected.title}

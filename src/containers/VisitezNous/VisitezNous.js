@@ -14,8 +14,8 @@ import { Route, useRouteMatch } from "react-router-dom";
 const VisitezNous = ({ match }) => {
 
     const [items, setItems] = useState([])
-    const [itemSelected, setItemSelected] = useState(false);
-    let innerMatch = useRouteMatch(`${match.path}/detail/:id`)
+    const [itemSelected, setItemSelected] = useState({});
+    const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
     useEffect(() => {
         fetch('../../data/home.json')
@@ -30,12 +30,16 @@ const VisitezNous = ({ match }) => {
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
 
+
     const goToDetail = (e, history, id) => {
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
+        console.log(selected)
         GoToDetails(e, history, id)
     }
 
+
+    console.log(itemSelected)
     return (
         <div className={myClasses}>
             <Shadow />

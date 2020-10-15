@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import classes from './DetailView.module.css'
 import InfiniteSlider from '../Silder/InfiniteSlider';
@@ -18,6 +18,11 @@ const DetailView = (props) => {
 
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
+	useEffect(() => {
+		console.log(props)
+		return () => {
+		};
+	}, [props]);
 
 	const [size, setSize] = useState(props.productSizes ? props.productSizes[0] : null)
 	const [quantity, setQuantity] = useState(0)

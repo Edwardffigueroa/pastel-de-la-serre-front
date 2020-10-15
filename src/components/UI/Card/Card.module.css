@@ -133,9 +133,9 @@
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1920px) {
   .Card {
-    --width: 363px;
-    --height: 550px;
+    width: 363px;
+    height: 550px;
   }
 }
