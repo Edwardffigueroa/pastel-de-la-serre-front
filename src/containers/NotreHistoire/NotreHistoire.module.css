@@ -110,6 +110,14 @@
 }
 
 @media (min-width: 1080px) {
+  .Wrapper.Wrapper.WrapperOnTop {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    padding: 0;
+  }
+  
   .Wrapper {
     height: calc(100vh - 100px);
     backdrop-filter: blur(7px);

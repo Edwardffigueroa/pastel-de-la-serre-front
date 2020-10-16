@@ -7,7 +7,7 @@
   max-width: 100%;
   top: 0;
   left: 0;
-  margin: 100px 10px 10px 10px;
+  margin: 10px 10px 10px 10px;
   transform: translateY(0%);
   opacity: 1;
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
@@ -87,7 +87,7 @@ div[data-type='/boutique'] {
 
 @media (min-width: 768px) {
   .DetailView {
-    height: calc(100% - 110px);
+    height: calc(100vh - 120px);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -160,7 +160,6 @@ div[data-type='/boutique'] {
 
   .Content {
     flex-basis: 50%;
-    height: 100%;
   }
 
   .SimilarItems {
