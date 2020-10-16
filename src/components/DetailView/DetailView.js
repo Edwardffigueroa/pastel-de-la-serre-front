@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import classes from './DetailView.module.css'
 import InfiniteSlider from '../Silder/InfiniteSlider';
@@ -17,12 +17,6 @@ import Cart from '../../utils/Cart'
 const DetailView = (props) => {
 
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
-
-	useEffect(() => {
-		console.log(props)
-		return () => {
-		};
-	}, [props]);
 
 	const [size, setSize] = useState(props.productSizes ? props.productSizes[0] : null)
 	const [quantity, setQuantity] = useState(0)
@@ -113,14 +107,14 @@ const DetailView = (props) => {
 								) : (
 									<div className={classes.ProductOptions}>
 										<div>
-											{/* <Selected
+											<Selected
 												label="Taille"
 												onSize={setSize}
 												options={props.productSizes} />
 											<Selected
 												label="Quantite"
 												onQuantity={setQuantity}
-												options={props.productStock} /> */}
+												options={props.productStock} />
 										</div>
 										<div>
 											<Button isShop clicked={buyHanlder}>Achater </Button>

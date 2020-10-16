@@ -36,7 +36,6 @@
   background-position: center;
   background-attachment: fixed;
   background-image: url('../../assets/images/notre_histoire/DJI_0002.png');
-  /* animation: fade-in 300ms ease-in-out; */
   z-index: -2;
 }
 
@@ -112,6 +111,7 @@
 
 @media (min-width: 1080px) {
   .Wrapper {
+    height: calc(100vh - 100px);
     backdrop-filter: blur(7px);
     overflow: hidden;
     display: grid;

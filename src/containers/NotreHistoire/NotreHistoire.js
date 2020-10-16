@@ -37,6 +37,7 @@ const NotreHistoire = ({ match, history }) => {
         GoToDetails(e, history, id)
     }
 
+    console.log('notre historire')
     return (
 
         <div className={myClasses}>

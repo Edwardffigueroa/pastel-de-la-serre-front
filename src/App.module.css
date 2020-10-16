@@ -1,4 +1,5 @@
 .App {
+  position: relative;
   display: flex;
   height: 100vh;
   width: 100%;
@@ -11,8 +12,15 @@
   width: 100%;
 }
 
-.App > div > div {
+.App > main > div {
   height: 100%;
+}
+
+.App .Wrapper {
+  position: relative;
+}
+.App .Wrapper > div {
+  position: absolute;
 }
 
 .App div[class*='Page'] {

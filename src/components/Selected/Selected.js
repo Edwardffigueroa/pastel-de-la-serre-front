@@ -5,13 +5,15 @@ import classes from './Selected.module.css'
 
 const Selected = (props) => {
 
-	let options
+	let options = []
+	if (props.options) {
+		if (props.options.length > 1) {
+			options = props.options.map(op => ({ value: op, label: op }))
+		} else {
+			const maxOptions = props.options
+			options = new Array(maxOptions).fill().map((op, i) => ({ value: i, label: i }))
+		}
 
-	if (props.options.length > 1) {
-		options = props.options.map(op => ({ value: op, label: op }))
-	} else {
-		const maxOptions = props.options
-		options = new Array(maxOptions).fill().map((op, i) => ({ value: i, label: i }))
 	}
 
 	const [selected, setSelected] = useState(options[0])

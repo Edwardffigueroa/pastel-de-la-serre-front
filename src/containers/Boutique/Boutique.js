@@ -18,6 +18,8 @@ const Boutique = ({ match }) => {
     const [itemSelected, setItemSelected] = useState(false)
     const [cssStyles, setCssStyles] = useState(classes.Wrapper)
 
+
+
     useEffect(() => {
         fetch('../../data/shop.json')
             .then(res => res.json())
@@ -41,7 +43,7 @@ const Boutique = ({ match }) => {
         GoToDetails(e, history, id)
     }
 
-
+    console.log('boutique')
     return (
         <div className={cssStyles}>
             <Shadow />

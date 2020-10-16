@@ -111,6 +111,7 @@
 
 @media (min-width: 1080px) {
   .Wrapper {
+    height: calc(100vh - 100px);
     backdrop-filter: blur(7px);
     overflow: hidden;
     display: grid;

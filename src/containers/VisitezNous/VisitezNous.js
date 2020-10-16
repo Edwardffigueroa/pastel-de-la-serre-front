@@ -10,10 +10,12 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 import DetailView from '../../components/DetailView/DetailView'
 import GoToDetails from '../../utils/GoToDetails'
 import { Route, useRouteMatch } from "react-router-dom";
+import { useTransition, a } from 'react-spring'
 
 const VisitezNous = ({ match }) => {
 
     const [items, setItems] = useState([])
+
     const [itemSelected, setItemSelected] = useState({});
     const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
@@ -39,41 +41,40 @@ const VisitezNous = ({ match }) => {
     }
 
 
-    console.log(itemSelected)
-    return (
-        <div className={myClasses}>
-            <Shadow />
-            <section>
-                <div className={classes.TitleWrapper}>
-                    <h1>Parcourez <br /> l’histoire<br /> du Pastel</h1>
-                    <p>Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit.
-                    Nunc pulvinar finibus erat.
-                    Vestibulum in nulla et quam gravida blandit.
-                    Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
+    return (<div className={myClasses}>
+        <Shadow />
+        <section>
+            <div className={classes.TitleWrapper}>
+                <h1>Parcourez <br /> l’histoire<br /> du Pastel</h1>
+                <p>Lorem ipsum dolor sit amet,
+                consectetur adipiscing elit.
+                Nunc pulvinar finibus erat.
+                Vestibulum in nulla et quam gravida blandit.
+                Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
                     Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
-                    <Button >Découvrez Notre Domaine</Button>
-                </div>
-            </section>
-            <section className={classes.SectionSliderWrapper}>
-                <InfiniteSlider
+                <Button >Découvrez Notre Domaine</Button>
+            </div>
+        </section>
+        <section className={classes.SectionSliderWrapper}>
+            <InfiniteSlider
+                items={items}
+                goToDetail={goToDetail} />
+            <RowsNavigation />
+        </section>
+        <Route
+            path={`${match.path}/detail/:id`}
+            render={() => (
+                <DetailView
                     items={items}
-                    goToDetail={goToDetail} />
-                <RowsNavigation />
-            </section>
-            <Route
-                path={`${match.path}/detail/:id`}
-                render={() => (
-                    <DetailView
-                        items={items}
-                        img={itemSelected.picture}
-                        title={itemSelected.title}
-                        time={itemSelected.time}
-                        people={itemSelected.people}
-                        level={itemSelected.level}
-                        description={itemSelected.description} />)} />
-        </div>
-    );
+                    img={itemSelected.picture}
+                    title={itemSelected.title}
+                    time={itemSelected.time}
+                    people={itemSelected.people}
+                    level={itemSelected.level}
+                    description={itemSelected.description} />)} />
+    </div>)
+
+
 }
 
 export default VisitezNous
