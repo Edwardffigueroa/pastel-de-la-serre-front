@@ -1,13 +1,26 @@
 import React from 'react'
-
+import closeX from '../../assets/detailView/close.svg'
+import logo from '../../assets/images/logo.svg'
 import classes from './Modal.module.css'
 
-const Modal = (props) => {
-	return (
-		<div className={classes.Modal}>
-			{}
+const Modal = ({ confirmed, close }) => {
+	return confirmed ? (
+		<div className={classes.ModalWrapper}>
+			<div className={classes.Modal}>
+				<span onClick={close} className={classes.Close}><img src={closeX} alt="close" /></span>
+				<div className={classes.ImageWrapper}>
+					<img src={logo} alt="Pastel de la serre" />
+				</div>
+				<div className={classes.Message}>
+					<h1>Merci d'avoir acheté <br /> revenez bientôt!</h1>
+					<p>votre colis arrivera à l'adresse indiquée <br />  dans les 10 prochains jours</p>
+				</div>
+				<div className={classes.ButtonWrapper}>
+					<button> Revenir </button>
+				</div>
+			</div>
 		</div>
-	)
+	) : null
 }
 
 export default Modal

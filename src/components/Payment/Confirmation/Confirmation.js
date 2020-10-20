@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Confirmation.module.css'
 
-const Confirmation = ({ name, email, phone, address }) => {
+const Confirmation = ({ name, email, phone, address, confirm }) => {
 	return (
 		<div className={classes.Confirmation}>
 			<h1 className={classes.Title}>Détails de facturation</h1>
@@ -16,7 +16,7 @@ const Confirmation = ({ name, email, phone, address }) => {
 				<p className={classes.InnerTitle}>Adresse de livraison</p>
 				<p className={classes.Text}>{address}</p>
 			</section>
-			<button className={classes.Button}>Finaliser</button>
+			<button onClick={confirm} className={classes.Button}>Finaliser</button>
 		</div>
 	)
 }

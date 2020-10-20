@@ -6,20 +6,13 @@ import classes from './Payment.module.css'
 import TicketDetails from './TicketDetails/TicketDetails';
 import Confirmation from './Confirmation/Confirmation';
 
-// import Modal from '../UI/Modal'
+import Modal from '../Modal/Modal'
 
-
-const Payment = (props) => {
+const Payment = ({ confirmed, confirmHandler }) => {
 
 	const [view, setView] = useState(0)
 	const [card, setCard] = useState({})
 	const [details, setDetails] = useState({})
-
-
-	const confirmHandler = e => {
-		setView(3)
-		console.log('holi')
-	}
 
 	const paymentHandler = card => {
 		setCard(card)
@@ -42,13 +35,11 @@ const Payment = (props) => {
 			break;
 		case 2:
 			container = <Confirmation
+				confirm={confirmHandler}
 				name={details.name}
 				email={details.email}
 				phone={details.phone}
 				address={details.address} />
-			break;
-		case 3:
-			// container = <Modal />
 			break;
 		default:
 			container = <TicketDetails next={ticketDetailHandler} />
@@ -56,7 +47,9 @@ const Payment = (props) => {
 	}
 
 	return (
-		<div className={classes.Payment}>{container}</div>
+		<div className={classes.Payment}>
+			{container}
+		</div>
 	)
 }
 

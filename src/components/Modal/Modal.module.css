@@ -1,1 +1,86 @@
-.Modal{ display: flex; }
+.ModalWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(-5px);
+  z-index: 99;
+}
+
+.Modal {
+  position: relative;
+  display: flex;
+  width: 80%;
+  height: 60%;
+  border-radius: 20px;
+  background-color: #303868;
+  box-shadow: 0px 3px 3px 15px #303868;
+  margin: auto;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.Close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.ImageWrapper {
+  transform: scale(1.5);
+}
+
+.Message {
+  color: #f8cfc9;
+}
+
+.Message h1 {
+  font-family: 'Monserrat';
+  font-weight: bold;
+}
+
+.Message p {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.ButtonWrapper {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  width: 100%; 
+}
+
+.ButtonWrapper button {
+    color: white;
+    border-radius: 40px;
+    border: none; 
+    flex-basis: 100%;
+    background-color: #1f86fc;
+}
+
+@media (min-width: 768px) {
+  .Modal {
+    width: 80%;
+    height: 50%;
+    justify-content: space-evenly;
+  }
+}
+
+@media (min-width: 1080px){
+  .Modal {
+    width: 50%;
+    height: 50%;
+  }
+
+  .ButtonWrapper button {
+    flex-basis: 200px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
