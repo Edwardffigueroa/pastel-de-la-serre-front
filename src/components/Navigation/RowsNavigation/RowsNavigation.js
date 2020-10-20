@@ -12,6 +12,11 @@ const RowsNavigation = (props) => {
 
 	const goHandler = direction => {
 		const currentLocation = history.location.pathname
+		if (!currentLocation.includes('detail/')) {
+			routingContainers(direction, currentLocation)
+		} 
+	}
+	const routingContainers = (direction, currentLocation) => {
 		switch (currentLocation) {
 			case '/notre-histoire':
 				if (direction === 'foward') {
@@ -50,10 +55,10 @@ const RowsNavigation = (props) => {
 
 	return (
 		<div className={myclasses}>
-			<div onClick={e => goHandler('back')}>
+			<div onClick={props.isDetailView ? e => props.changeItem('back') : e => goHandler('back')}>
 				<img src={backwards} alt="go back" />
 			</div>
-			<div onClick={e => goHandler('foward')}>
+			<div onClick={props.isDetailView ? e => props.changeItem('foward') : e => goHandler('foward')}>
 				<img src={foward} alt="gp forward" />
 			</div>
 		</div>

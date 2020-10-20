@@ -6,10 +6,27 @@
   padding: 0;
 }
 
+.Icon {
+  display: flex;
+  font-size: 10px;
+  font-weight: bold;
+  align-items: center;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.Icon span {
+  margin-left: 5px;
+}
+
 @media (min-width: 768px) {
   .Details {
     justify-content: space-between;
-    width: 47%;
+    width: 60%;
+  }
+
+  .Icon {
+    font-size: 14px;
   }
 }
 

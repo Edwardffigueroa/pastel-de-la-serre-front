@@ -1,6 +1,6 @@
 .Checkout {
   overflow-x: hidden;
-  width: 100%;
+  width: 100vw;
   opacity: 1;
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
   z-index: 1;
@@ -24,7 +24,6 @@
 .Close {
   display: none;
   opacity: 0;
-  animation: entrance 1.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1.3s both;
   transition: all ease-in-out 1s;
   cursor: pointer;
   z-index: 109;
@@ -70,6 +69,7 @@
 
   .Content {
     flex-direction: row;
+    height: calc(100% - 100px);
   }
 
   .Content > div,
@@ -94,6 +94,7 @@
     width: 85%;
     padding: 40px;
     border-radius: 40px;
+
     background-color: rgba(255, 255, 255, 0.8);
   }
 
@@ -102,20 +103,20 @@
     margin: 0px;
   }
 
+  .Content {
+    transform: translateY(-40px);
+    height: auto;
+  }
+
   .Content > div {
     flex-basis: 80%;
   }
-
-  .Content > section {
-    flex-basis: 30%;
-  }
+  
 }
 
-@keyframes entrance {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+@media (min-width: 1900px) {
+  .Content {
+    transform: none;
+    height: calc(100% - 100px);
   }
 }

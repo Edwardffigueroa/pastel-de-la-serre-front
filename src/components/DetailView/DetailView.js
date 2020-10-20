@@ -14,14 +14,13 @@ import Selected from '../Selected/Selected'
 import IconList from './IconList/IconList';
 
 import Cart from '../../utils/Cart'
+import Slider from 'react-slick';
 const DetailView = (props) => {
 
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
 	const [size, setSize] = useState(props.productSizes ? props.productSizes[0] : null)
 	const [quantity, setQuantity] = useState(0)
-	const [reserve, setReserve] = useState()
-
 
 	const history = useHistory()
 	const currentPath = history.location.pathname
@@ -30,7 +29,7 @@ const DetailView = (props) => {
 	const isShop = container.includes('boutique')
 
 	const buyHanlder = e => {
-		console.log('price', props.price)
+
 		if (isShop) {
 
 			const _product = {
@@ -64,28 +63,51 @@ const DetailView = (props) => {
 		}, 1200)
 	}
 
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 1,
+		slidesToScroll: 1
+	};
+
+	const imgOrSlide = isShop ? (
+		<Slider {...settings}>{
+			props.img
+				? (props.img.map(im => <div><img src={im} alt={props.title} /> </div>))
+				: (<img src={props.img} alt={props.description} />)
+		}</Slider>
+	) : <img src={props.img} alt={props.description} />
+
+	const buttonOverImage = isShop === false ? (
+		<div className={classes.ImageCTA}>
+			<Button isOverImage>Réservez</Button>
+		</div>
+	) : null
+
 	return (
 		<a.div style={exitSpring}>
 			<div className={classes.DetailView} data-type={container}>
 				<div className={classes.DetailWrapper}>
 					<section className={classes.ImageWrapper}>
-						<img src={props.img} alt={props.description} />
-						{
-							isShop === false ? (
-								<div className={classes.ImageCTA}>
-									<Button isOverImage>Réservez</Button>
-								</div>
-							) : null
-						}
+						{imgOrSlide}
+						{buttonOverImage}
 					</section>
 					<section className={classes.Content}>
 						<div className={classes.TitleWrapper}>
-							<h1 className={classes.Title}>{props.title}</h1>
-							<IconList isShop={isShop} />
+							<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{props.title}</h1>
+							<IconList
+								isShop={isShop}
+								time={props.time}
+								level={props.level}
+								madeof={props.madeOf}
+								people={props.people}
+								organic={props.organic}
+								recycle={props.recycle} />
 							<div>
-								{isShop ? <h2 className={classes.Price}>Price {props.productPrice}</h2> : null}
+								{isShop ? <h2 className={classes.Price}>Prix Unité {props.price + '€'}</h2> : null}
 							</div>
-							<p>
+							<p className={classes.Description}>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Nunc pulvinar finibus erat. Vestibulum in nulla et quam gravida blandit.
 								Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
@@ -116,7 +138,7 @@ const DetailView = (props) => {
 												onQuantity={setQuantity}
 												options={props.productStock} />
 										</div>
-										<div>
+										<div className={classes.DesktopControllers}>
 											<Button isShop clicked={buyHanlder}>Achater </Button>
 											<Button isShop>Continuez a la mes Achats</Button>
 										</div>
@@ -129,6 +151,7 @@ const DetailView = (props) => {
 						</div>
 						<div className={classes.Navigations}>
 							<RowsNavigation
+								changeItem={props.changeItem}
 								isDetailView />
 						</div>
 					</section>

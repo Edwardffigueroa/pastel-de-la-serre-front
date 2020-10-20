@@ -1,14 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import classes from './Table.module.css'
 import Item from './Item/Item'
 import Cart from '../../../utils/Cart'
+import backRow from '../../../assets/checkout/back.svg'
+import { useHistory } from 'react-router-dom'
 
 const Table = props => {
 
 	const [products, setProducts] = useState(Cart.products)
 	const [tours, setTours] = useState([])
 	const [totalPrice, setTotalPrice] = useState(0)
+	const history = useHistory()
+
+
+	const goBackHandler = e => {
+		history.goBack()
+	}
 
 	const increaseItemHandler = (id, size) => {
 		Cart.increaseItem(id, size)
@@ -51,6 +59,7 @@ const Table = props => {
 		<div className={classes.Table}>
 			<ul className={classes.List}>{_products}</ul>
 			<div className={classes.TotalPrice}><span>Subtotal:</span><h3> {totalPrice} €</h3></div>
+			<div className={classes.BackButton} onClick={goBackHandler}><span><img src={backRow} alt="Back" /> </span> Continuer mes Achats</div>
 		</div>
 	)
 }

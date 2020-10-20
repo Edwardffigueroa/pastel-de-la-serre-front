@@ -8,7 +8,8 @@
 .TicketDetails label {
   margin-top: 10px;
   font-family: 'Helvetica neue', 'Helvetica', 'san-serif';
-  font-size: 14px;
+  font-size: 10px;
+  font-weight: 600;
   color: #a0a0a0;
   width: 100%;
 }

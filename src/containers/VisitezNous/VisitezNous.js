@@ -10,7 +10,6 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 import DetailView from '../../components/DetailView/DetailView'
 import GoToDetails from '../../utils/GoToDetails'
 import { Route, useRouteMatch } from "react-router-dom";
-import { useTransition, a } from 'react-spring'
 
 const VisitezNous = ({ match }) => {
 

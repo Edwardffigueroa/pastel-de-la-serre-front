@@ -37,7 +37,7 @@ div[data-type='/boutique'] {
 }
 
 .DetailWrapper {
-  width: 100%;
+  width: calc(100vw - 20px);
   height: 100%;
   background-color: rgba(24, 60, 119, 0.5);
   border-radius: 15px;
@@ -59,10 +59,36 @@ div[data-type='/boutique'] {
 .ImageCTA {
   display: none;
 }
-.TitleWrapper h1 {
+
+.TitleWrapper .Title {
   font-size: 35px;
   margin: 0;
   color: white;
+}
+
+.Price {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-family: 'Helvetica', Helvetica, sans-serif;
+}
+
+.Description {
+  font-size: 12px;
+}
+
+.DesktopControllers {
+  display: none;
+}
+
+.Price,
+.Title.TitleShop {
+  color: #f8cfc9;
+}
+
+.ImageWrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .ImageWrapper img {
@@ -80,9 +106,14 @@ div[data-type='/boutique'] {
   flex-direction: column;
 }
 
-.ProductOptions > div {
+.ProductOptions > div:first-of-type {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+
+.CTA {
+  margin-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -106,8 +137,12 @@ div[data-type='/boutique'] {
     width: 47%;
   }
 
-  .TitleWrapper h1 {
-    font-size: 32px;
+  .TitleWrapper .Title {
+    font-size: 60px;
+  }
+
+  .ProductOptions > div:first-of-type {
+    justify-content: flex-start;
   }
 
   .SimilarItems {
@@ -127,6 +162,7 @@ div[data-type='/boutique'] {
 
 @media (min-width: 1080px) {
   .DetailView {
+    position: absolute;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -136,7 +172,7 @@ div[data-type='/boutique'] {
   .DetailWrapper {
     position: relative;
     width: 1029px;
-    height: 505px;
+    height: auto;
     background-color: rgba(24, 60, 119, 0.6);
     display: flex;
     flex-direction: row;
@@ -148,6 +184,10 @@ div[data-type='/boutique'] {
     flex-basis: 50%;
     height: 100%;
     border-radius: 40px 0 0 40px;
+  }
+
+  .ImageWrapper > div > div {
+    height: 100%;
   }
 
   .ImageCTA {
@@ -164,7 +204,7 @@ div[data-type='/boutique'] {
 
   .SimilarItems {
     margin: 15px 0;
-    padding-top: 50px;
+    --padding-top: 50px;
   }
 
   .CTA {

@@ -49,3 +49,9 @@
   font-family: 'Helvetica neue', Helvetica, sans-serif;
   background-color: #1f86fc;
 }
+
+@media (min-width: 1080px) {
+  .Confirmation section:last-of-type {
+    height: auto;
+  }
+}

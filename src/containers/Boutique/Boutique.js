@@ -16,15 +16,13 @@ const Boutique = ({ match }) => {
 
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false)
+    const [indexSelected, setIndexSelected] = useState(0)
     const [cssStyles, setCssStyles] = useState(classes.Wrapper)
-
-
 
     useEffect(() => {
         fetch('../../data/shop.json')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setItems(data)
             })
     }, [])
@@ -38,12 +36,27 @@ const Boutique = ({ match }) => {
 
 
     const goToDetail = (e, history, id) => {
+        const _index = items.findIndex(item => item._id === id)
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
+        setIndexSelected(_index)
         GoToDetails(e, history, id)
     }
 
-    console.log('boutique')
+
+    const changeItemHandler = direction => {
+
+        let _i = indexSelected
+        if (direction === 'back') {
+            _i = _i === 1 ? (items.length - 1) : (indexSelected - 1)
+        } else {
+            _i = _i === (items.length - 1) ? 0 : indexSelected + 1
+        }
+        setItemSelected(items[_i])
+        setIndexSelected(_i)
+    }
+
+
     return (
         <div className={cssStyles}>
             <Shadow />
@@ -75,13 +88,14 @@ const Boutique = ({ match }) => {
                         items={items}
                         img={itemSelected.picture}
                         title={itemSelected.title}
-                        time={itemSelected.time}
-                        people={itemSelected.people}
-                        level={itemSelected.level}
+                        madeOf={itemSelected.madeof}
+                        recycle={itemSelected.recycleLevel}
+                        organic={itemSelected.organicLevel}
                         price={itemSelected.price}
                         productSizes={itemSelected.sizes}
                         productStock={itemSelected.stock}
-                        description={itemSelected.description} />
+                        description={itemSelected.description}
+                        changeItem={changeItemHandler} />
                 )} />
         </div>
     );

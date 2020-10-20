@@ -41,6 +41,10 @@ export default function Slider({ items, width = 600, visible = 4, style, childre
     [idx, getPos, width, visible, set, items.length]
   )
 
+
+
+  console.log(prev)
+
   const wheelOffset = useRef(0)
   const dragOffset = useRef(0)
   const bind = useGesture({

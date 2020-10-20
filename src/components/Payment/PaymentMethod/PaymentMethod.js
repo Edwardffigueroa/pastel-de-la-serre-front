@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 
+import master from '../../../assets/checkout/master.svg'
+import visa from '../../../assets/checkout/visa.svg'
 import Selected from '../../Selected/Selected'
 import classes from './PaymentMethod.module.css'
+
+
+
 const addZero = number => number < 10 ? '0' + number : number
 
 
@@ -34,9 +39,9 @@ const PaymentMethod = ({ next }) => {
 
 	return (
 		<div className={classes.Payment}>
-			<h3>Moyent de paiement</h3>
-			<section></section>
 			<div className={classes.Form}>
+				<h3>Moyent de paiement</h3>
+				<section className={classes.Logos}><img src={visa} alt="visa" /><img src={master} alt="master" /></section>
 				<label htmlFor="name">Titulaire de la cart</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
 				<label htmlFor="number">N° Carte</label>

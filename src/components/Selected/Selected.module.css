@@ -12,6 +12,7 @@
 }
 
 .Label {
+  display: none;
   margin-right: 10px;
   color: white;
 }
@@ -34,7 +35,7 @@
 
 .Selected > div {
   /* Select container*/
-  width: 77px;
+  --width: 77px;
   background: transparent;
   border: 1px solid white;
   border-radius: 30px;

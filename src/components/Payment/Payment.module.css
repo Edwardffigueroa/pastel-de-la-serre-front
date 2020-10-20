@@ -10,6 +10,7 @@
   color: #a0a0a0;
   text-transform: capitalize;
   font-size: 22px;
+  margin-top: 0;
   font-family: 'Helvetica neue', Helvetica, sans-serif;
 }
 
@@ -93,5 +94,11 @@
 @media (min-width: 768px) {
   .Payment {
     height: 590px;
+  }
+}
+
+@media (min-width: 1080px) {
+  .Payment {
+    height: calc(100% - 100px);
   }
 }

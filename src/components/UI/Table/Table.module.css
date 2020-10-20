@@ -1,4 +1,5 @@
 .Table {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-basis: 80%;
@@ -30,6 +31,19 @@
   margin-left: 20px;
 }
 
+.BackButton {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  align-items: center;
+  color: #1f86ff;
+}
+
+.BackButton span {
+  margin-right: 10px;
+}
+
 @media (min-width: 768px) {
   .Table {
     justify-content: space-between;
@@ -43,5 +57,9 @@
 @media (min-width: 1080px) {
   .List {
     padding: 20px;
+  }
+
+  .BackButton {
+    display: flex;
   }
 }
