@@ -44,8 +44,13 @@ div[data-type='/boutique'] {
   margin: 0;
 }
 
+.Shop.DetailView {
+  width: calc(100vw - 20px);
+}
+
 .Content {
   padding: 40px;
+  animation: entrance 1.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1.3s both;
 }
 
 .ImageWrapper {
@@ -79,6 +84,7 @@ div[data-type='/boutique'] {
 
 .DesktopControllers {
   display: none;
+  margin-top: 10px;
 }
 
 .Price,
@@ -124,8 +130,16 @@ div[data-type='/boutique'] {
     justify-content: center;
   }
 
+  .Shop.DetailWrapper {
+    width: calc(100vw - 100px);
+  }
+
   .ImageWrapper {
     height: 259px;
+  }
+
+  .Shop.ImageWrapper {
+    height: 400px;
   }
 
   .DetailWrapper {
@@ -158,6 +172,10 @@ div[data-type='/boutique'] {
     display: flex;
     height: 147px;
   }
+
+  .DesktopControllers {
+    display: flex;
+  }
 }
 
 @media (min-width: 1080px) {
@@ -179,11 +197,19 @@ div[data-type='/boutique'] {
     border-radius: 40px;
   }
 
+  .Shop.DetailWrapper {
+    width: 1029px;
+  }
+
   .ImageWrapper {
     position: relative;
     flex-basis: 50%;
     height: 100%;
     border-radius: 40px 0 0 40px;
+  }
+
+  .Shop.ImageWrapper {
+    height: 100%;
   }
 
   .ImageWrapper > div > div {
@@ -200,10 +226,12 @@ div[data-type='/boutique'] {
 
   .Content {
     flex-basis: 50%;
+    box-sizing: border-box;
   }
 
   .SimilarItems {
     margin: 15px 0;
+    margin-bottom: -10px;
     --padding-top: 50px;
   }
 

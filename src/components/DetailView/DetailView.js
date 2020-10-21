@@ -73,7 +73,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			props.img
+			props.img.length > 0
 				? (props.img.map(im => <div><img src={im} alt={props.title} /> </div>))
 				: (<img src={props.img} alt={props.description} />)
 		}</Slider>
@@ -87,9 +87,9 @@ const DetailView = (props) => {
 
 	return (
 		<a.div style={exitSpring}>
-			<div className={classes.DetailView} data-type={container}>
-				<div className={classes.DetailWrapper}>
-					<section className={classes.ImageWrapper}>
+			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView} data-type={container}>
+				<div className={isShop ? [classes.DetailWrapper, classes.Shop].join(' ') : classes.DetailWrapper}>
+					<section className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}>
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
@@ -138,14 +138,13 @@ const DetailView = (props) => {
 												onQuantity={setQuantity}
 												options={props.productStock} />
 										</div>
-										<div className={classes.DesktopControllers}>
-											<Button isShop clicked={buyHanlder}>Achater </Button>
-											<Button isShop>Continuez a la mes Achats</Button>
-										</div>
-
 									</div>
 								)
 						}
+						<div className={classes.DesktopControllers}>
+							<Button isShop clicked={buyHanlder}>Achater </Button>
+							<Button isShop>Continuez a la mes Achats</Button>
+						</div>
 						<div className={classes.CTA}>
 							<Button>Réservez</Button>
 						</div>

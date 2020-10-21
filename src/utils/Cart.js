@@ -57,6 +57,10 @@ class Cart {
 
     }
 
+    getProducts() {
+        return this.products
+    }
+
     increaseItem(prodId, size) {
         const found = this.products.find(p => p.id === prodId)
         found.amount[size]++
