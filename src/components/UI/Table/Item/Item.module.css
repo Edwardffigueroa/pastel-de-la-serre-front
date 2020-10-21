@@ -45,9 +45,7 @@
   .ItemWrapper {
     padding: 20px 30px 20px 0;
   }
-  .Item {
-    width: 80%;
-  }
+
   .Item > * {
     margin-left: 50px;
   }

@@ -141,12 +141,12 @@ const DetailView = (props) => {
 									</div>
 								)
 						}
-						<div className={classes.DesktopControllers}>
+						<div className={isShop ? [classes.DesktopControllers, classes.Shop].join(' ') : classes.DesktopControllers}>
 							<Button isShop clicked={buyHanlder}>Achater </Button>
-							<Button isShop>Continuez a la mes Achats</Button>
+							<Button isShop isSecond>Continuez a la mes Achats</Button>
 						</div>
-						<div className={classes.CTA}>
-							<Button>Réservez</Button>
+						<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
+							<Button> {isShop ? 'Achater' : 'Réservez'}</Button>
 						</div>
 						<div className={classes.Navigations}>
 							<RowsNavigation

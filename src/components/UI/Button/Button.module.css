@@ -86,6 +86,12 @@
   background-image: url('../../../assets/shopInvert.svg');
 }
 
+.Button.ShopButton:nth-child(2){
+  color: #f8cfc9;
+  border-color: #f8cfc9;
+  background-color: transparent;
+}
+
 @media (min-width: 768px) {
   .Button {
     background-color: #303868;

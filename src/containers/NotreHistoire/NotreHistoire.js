@@ -15,6 +15,7 @@ const NotreHistoire = ({ match, history }) => {
 
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false);
+    const [indexSelected, setIndexSelected] = useState(0)
     const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
     useEffect(() => {
@@ -31,13 +32,26 @@ const NotreHistoire = ({ match, history }) => {
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
 
-    const goToDetail = (e, x, id) => {
+    const goToDetail = (e, history, id) => {
+        const _index = items.findIndex(item => item._id === id)
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
+        setIndexSelected(_index)
         GoToDetails(e, history, id)
     }
 
-    console.log('notre historire')
+    const changeItemHandler = direction => {
+
+        let _i = indexSelected
+        if (direction === 'back') {
+            _i = _i === 1 ? (items.length - 1) : (indexSelected - 1)
+        } else {
+            _i = _i === (items.length - 1) ? 0 : indexSelected + 1
+        }
+        setItemSelected(items[_i])
+        setIndexSelected(_i)
+    }
+
     return (
 
         <div className={myClasses}>
@@ -70,7 +84,8 @@ const NotreHistoire = ({ match, history }) => {
                         time={itemSelected.time}
                         people={itemSelected.people}
                         level={itemSelected.level}
-                        description={itemSelected.description} />
+                        description={itemSelected.description}
+                        changeItem={changeItemHandler} />
                 )} />
 
         </div>

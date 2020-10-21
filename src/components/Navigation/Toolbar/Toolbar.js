@@ -23,7 +23,7 @@ const toolbar = (props) => (
                     <img src={lupa} alt="search" />
                 </label>
                 <span>
-                    <Cart />
+                    <Cart products={props.products} />
                 </span>
             </section>
             <nav className={classes.DesktopOnly}>
