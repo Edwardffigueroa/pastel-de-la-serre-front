@@ -19,8 +19,8 @@ function App() {
 
     return (
         <div className={classes.App}>
-            <Suspense fallback={<Spinner />}>
-                <Layout products={products}>
+            <Layout products={products}>
+                <Suspense fallback={<Spinner />}>
                     <AnimatedSwitch
                         atEnter={{ opacity: 0 }}
                         atLeave={{ opacity: 0 }}
@@ -33,8 +33,8 @@ function App() {
                         <Route path="/notre-histoire" component={NotreHistoire} />
                         <Route path="/" exact component={NotreHistoire} />
                     </AnimatedSwitch>
-                </Layout>
-            </Suspense>
+                </Suspense>
+            </Layout>
         </div >
     );
 }
