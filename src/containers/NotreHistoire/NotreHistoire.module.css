@@ -11,6 +11,8 @@
 .Wrapper {
   display: flex;
   flex-direction: column-reverse;
+  overflow: hidden;
+  max-width: 100vw;
   padding-top: 100px;
   justify-content: flex-end;
 }
@@ -75,14 +77,45 @@
   overflow: scroll;
 }
 
+/* ========================================= */
+
+.SliderItem {
+  height: 100%;
+  max-width: 100vw;
+}
+
+.SliderItem div[class^='slick-track'] {
+  display: flex;
+}
+
+.SliderItem div[class^='slick-current'] {
+  --scale: 1.1;
+  transform: scale(1.1);
+}
+
+.SliderItem div[class^='slick-slide'] {
+  width: auto !important;
+  --scale: 1;
+  transform: scale(1);
+}
+
 .SectionSliderWrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   height: 222px;
-  margin-left: 30%;
+  margin-left: 20%;
+  animation: slide-in-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 }
+
+@media (min-width: 1080px) {
+  .SliderItem div[class^='slick-track'] {
+    padding-top: 50px;
+  }
+}
+
+/* ========================================= */
 
 @media (min-width: 768px) {
   .Wrapper {
@@ -117,7 +150,7 @@
     justify-content: center;
     padding: 0;
   }
-  
+
   .Wrapper {
     height: calc(100vh - 100px);
     backdrop-filter: blur(7px);
@@ -160,6 +193,12 @@
   }
 }
 
+@media (min-width: 1080px) {
+  .TitleWrapper {
+    padding: 100px;
+  }
+}
+
 @keyframes slide-in-bottom {
   0% {
     transform: translateY(100px);
@@ -176,6 +215,18 @@
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes slide-in-right {
+  0% {
+    transform: translate(1000px, 0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0%);
     opacity: 1;
   }
 }

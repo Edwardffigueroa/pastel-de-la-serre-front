@@ -10,6 +10,12 @@ import { Route, useRouteMatch } from 'react-router-dom'
 import DetailView from '../../components/DetailView/DetailView'
 
 import GoToDetails from '../../utils/GoToDetails'
+import Slider from 'react-slick';
+import Card from '../../components/UI/Card/Card'
+
+// import { Swiper, SwiperSlide } from 'swiper/react'
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 
 const NotreHistoire = ({ match, history }) => {
 
@@ -52,6 +58,37 @@ const NotreHistoire = ({ match, history }) => {
         setIndexSelected(_i)
     }
 
+
+    // let mySwiper = new Swiper(classes.MySlider, {
+    //     initialSlide: slide,
+    //     slidesPerView: 3,
+    //     spaceBetween: 20,
+    //     centeredSlides: false,
+    //     slideActiveClass: classes.MyActiveSlide,
+    //     breakpoints: {
+    //         "@1.5": {
+    //             slidesPerView: 3
+    //         },
+    //         "@1.0": {
+    //             slidesPerView: 2
+    //         },
+    //         "@0.25": {
+    //             slidesPerView: 2
+    //         }
+    //     }
+    // })
+
+    const settings = {
+        dots: false,
+        className: classes.SliderItem,
+        infinite: false,
+        speed: 500,
+        centerMode: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0
+    };
+
     return (
 
         <div className={myClasses}>
@@ -69,9 +106,14 @@ const NotreHistoire = ({ match, history }) => {
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
-                <InfiniteSlider
+                <Slider {...settings}>{
+
+                    items.map(im => <Card title={im.title}></Card>)
+
+                }</Slider>
+                {/* <InfiniteSlider
                     items={items}
-                    goToDetail={goToDetail} />
+                    goToDetail={goToDetail} /> */}
                 <RowsNavigation />
             </section>
             <Route

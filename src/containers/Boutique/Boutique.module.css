@@ -159,6 +159,12 @@
   }
 }
 
+@media (min-width: 1080px) {
+  .TitleWrapper {
+    padding: 100px;
+  }
+}
+
 @keyframes slide-in-bottom {
   0% {
     transform: translateY(100px);
