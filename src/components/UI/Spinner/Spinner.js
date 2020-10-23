@@ -8,7 +8,7 @@ const Spinner = (props) => {
 	return (
 		<div className={classes.Spinner}>
 			<img src={logo} alt="Pastel de la serre" />
-			<div class={classes.ldsEllipsis}>
+			<div className={classes.ldsEllipsis}>
 				<div></div>
 				<div></div>
 				<div></div>

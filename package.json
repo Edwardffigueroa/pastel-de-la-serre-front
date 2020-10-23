@@ -21,7 +21,8 @@
     "react-transition-group": "^4.4.1",
     "react-use-gesture": "latest",
     "slick-carousel": "^1.8.1",
-    "styled-components": "4.3.2"
+    "styled-components": "4.3.2",
+    "swiper": "^6.3.4"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -17,20 +17,51 @@ import Card from '../../components/UI/Card/Card'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+
+import Swiper from 'swiper';
+import 'swiper/swiper-bundle.css';
+
+
 const NotreHistoire = ({ match, history }) => {
 
+    const [slide, setSlide] = useState(0)
     const [items, setItems] = useState([])
     const [itemSelected, setItemSelected] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0)
     const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
+    const mySwiper = new Swiper(".swiper-container", {
+        initialSlide: slide,
+        longSwipes: false,
+        slidesPerView: 3,
+        spaceBetween: 50,
+        loop: false,
+        centeredSlides: true,
+        slideActiveClass: 'swiper-slide-active',
+        slidePrevClass: 'swiper-slide-prev',
+        breakpoints: {
+            "@1.5": {
+                slidesPerView: 3,
+            },
+            "@1.0": {
+                slidesPerView: 3,
+            },
+            "@0.25": {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+
     useEffect(() => {
         fetch('../../data/home.json')
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setItems(data)
+                setSlide(0)
             })
+
+
     }, [])
 
 
@@ -59,35 +90,33 @@ const NotreHistoire = ({ match, history }) => {
     }
 
 
-    // let mySwiper = new Swiper(classes.MySlider, {
-    //     initialSlide: slide,
-    //     slidesPerView: 3,
-    //     spaceBetween: 20,
-    //     centeredSlides: false,
-    //     slideActiveClass: classes.MyActiveSlide,
-    //     breakpoints: {
-    //         "@1.5": {
-    //             slidesPerView: 3
-    //         },
-    //         "@1.0": {
-    //             slidesPerView: 2
-    //         },
-    //         "@0.25": {
-    //             slidesPerView: 2
-    //         }
-    //     }
-    // })
-
-    const settings = {
-        dots: false,
-        className: classes.SliderItem,
-        infinite: false,
-        speed: 500,
-        centerMode: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0
+    const changeSlide = (value) => {
+        setSlide(value)
+        mySwiper.update()
     };
+
+
+    mySwiper.on('slideChangeTransitionStart', swiper => {
+        if (swiper.activeIndex !== 2) {
+            changeSlide(swiper.activeIndex)
+        }
+    });
+
+    mySwiper.on('slidePrevTransitionStart', swiper => {
+        if (swiper.activeIndex === 2) {
+            mySwiper.slideTo(1)
+            changeSlide(1)
+        }
+    })
+
+
+
+    useEffect(() => {
+        if (mySwiper.activeIndex === 2) {
+            console.log(mySwiper)
+            mySwiper.allowSlideNext = false
+        }
+    })
 
     return (
 
@@ -106,11 +135,31 @@ const NotreHistoire = ({ match, history }) => {
                 </div>
             </section>
             <section className={classes.SectionSliderWrapper}>
-                <Slider {...settings}>{
+                {/* <Slider {...settings}>{
 
                     items.map(im => <Card title={im.title}></Card>)
 
-                }</Slider>
+                }</Slider> */}
+                <div className="swiper-container" style={{ width: '100%' }}>
+                    <div className="swiper-wrapper">
+                        {items.map((item, i) => {
+                            return (
+                                <div key={i} className="swiper-slide">
+                                    <Card
+                                        key={i}
+                                        index={i}
+                                        active={slide}
+                                        id={item._id}
+                                        title={item.title}
+                                        image={item.picture}
+                                        clicked={goToDetail}
+                                        hide={i === items.length - 1 ? true : false}>
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
                 {/* <InfiniteSlider
                     items={items}
                     goToDetail={goToDetail} /> */}

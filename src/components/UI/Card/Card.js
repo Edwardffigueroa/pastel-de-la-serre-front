@@ -12,7 +12,7 @@ const Card = props => {
     const isDetailView = props.detailView ? [classes.Card, classes.DetailView].join(' ') : [classes.Card].join(' ')
 
     return (
-        <div onClick={e => props.clicked(e, history, props.id)} className={isDetailView} style={colorOption}>
+        <div onClick={e => props.clicked(e, history, props.id)} className={isDetailView} style={props.hide ? { display: 'none' } : { display: 'flex' }}>
             <section className={classes.Header}>
                 <div className={classes.Marker} style={responsiveWidth}>
                     <h3 className={classes.Title}>{props.title}</h3>

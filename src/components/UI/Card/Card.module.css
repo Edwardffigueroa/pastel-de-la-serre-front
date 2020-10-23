@@ -2,12 +2,16 @@
   position: relative;
   width: 168px;
   height: 215px;
-  margin: 0 20px;
+  --margin: 0 20px;
   background-size: cover;
   background-color: lightgray;
   background-position: center;
   border-radius: 15px;
   box-sizing: border-box;
+}
+
+.Card {
+  --transform: translateX(-50%);
 }
 
 .Header {
