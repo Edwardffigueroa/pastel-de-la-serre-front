@@ -30,10 +30,12 @@
 .App .Wrapper {
   position: relative;
   width: 100vw;
+  height: 100%;
 }
 
 .App .Wrapper > div {
   position: absolute;
+  height: 100%;
 }
 
 .App div[class*='Page'] {

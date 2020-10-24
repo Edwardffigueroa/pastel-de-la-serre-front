@@ -4,19 +4,16 @@ import classes from './NotreHistoire.module.css'
 import Shadow from '../../components/UI/Shadow/Shadow'
 import Button from '../../components/UI/Button/Button'
 import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavigation'
-import InfiniteSlider from '../../components/Silder/InfiniteSlider'
 
+
+import DotNav from '../../components/Navigation/DotNav/DotNav'
+
+import Layout from '../../hoc/layout/Layout'
 import { Route, useRouteMatch } from 'react-router-dom'
 import DetailView from '../../components/DetailView/DetailView'
 
 import GoToDetails from '../../utils/GoToDetails'
-import Slider from 'react-slick';
 import Card from '../../components/UI/Card/Card'
-
-// import { Swiper, SwiperSlide } from 'swiper/react'
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-
 
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -26,13 +23,15 @@ const NotreHistoire = ({ match, history }) => {
 
     const [slide, setSlide] = useState(0)
     const [items, setItems] = useState([])
+
     const [itemSelected, setItemSelected] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0)
-    const innerMatch = useRouteMatch(`${match.path}/detail/:id`)
 
-    const mySwiper = new Swiper(".swiper-container", {
+    const [products, setProducts] = useState([])
+
+    let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
-        longSwipes: false,
+        speed: 700,
         slidesPerView: 3,
         spaceBetween: 50,
         loop: false,
@@ -46,12 +45,14 @@ const NotreHistoire = ({ match, history }) => {
             "@1.0": {
                 slidesPerView: 3,
             },
-            "@0.25": {
+            760: {
                 slidesPerView: 3,
             },
+            320: {
+                slidesPerView: 2,
+            }
         },
-    });
-
+    })
 
     useEffect(() => {
         fetch('../../data/home.json')
@@ -61,13 +62,45 @@ const NotreHistoire = ({ match, history }) => {
                 setSlide(0)
             })
 
-
+        const _prods = localStorage.getItem('PRODUCTS')
+        const _amnt = JSON.parse(_prods)
+        if (_amnt.length > 0) {
+            setProducts(_amnt)
+        }
     }, [])
 
+    const changeSlide = (value) => {
+        setSlide(value)
+        mySwiper.update()
+    };
 
-    const myClasses = innerMatch
-        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
-        : [classes.Wrapper].join('')
+
+    const goSectionHandler = number => {
+        setSlide(number)
+        mySwiper.slideTo(number)
+        mySwiper.update()
+    }
+
+    const setInitialSlider = () => {
+        if (match.path === '/notre-histoire' || match.path === '/') {
+            setSlide(0)
+        }
+
+        if (match.path === '/visitez-nous') {
+            setSlide(1)
+        }
+
+        if (match.path === '/boutique') {
+            setSlide(2)
+        }
+    }
+
+
+    if (mySwiper) {
+        mySwiper.on('slideChangeTransitionStart', swiper => {
+            changeSlide(swiper.activeIndex)
+        });
+    }
 
     const goToDetail = (e, history, id) => {
         const _index = items.findIndex(item => item._id === id)
@@ -78,7 +111,6 @@ const NotreHistoire = ({ match, history }) => {
     }
 
     const changeItemHandler = direction => {
-
         let _i = indexSelected
         if (direction === 'back') {
             _i = _i === 1 ? (items.length - 1) : (indexSelected - 1)
@@ -89,97 +121,77 @@ const NotreHistoire = ({ match, history }) => {
         setIndexSelected(_i)
     }
 
+    const rowsHandler = direction => {
 
-    const changeSlide = (value) => {
-        setSlide(value)
+        if (direction === 'foward') {
+            mySwiper.slideNext()
+        }
+
+        if (direction === 'back') {
+            mySwiper.slidePrev()
+        }
+
         mySwiper.update()
-    };
+    }
 
-
-    mySwiper.on('slideChangeTransitionStart', swiper => {
-        if (swiper.activeIndex !== 2) {
-            changeSlide(swiper.activeIndex)
-        }
-    });
-
-    mySwiper.on('slidePrevTransitionStart', swiper => {
-        if (swiper.activeIndex === 2) {
-            mySwiper.slideTo(1)
-            changeSlide(1)
-        }
-    })
-
-
-
-    useEffect(() => {
-        if (mySwiper.activeIndex === 2) {
-            console.log(mySwiper)
-            mySwiper.allowSlideNext = false
-        }
-    })
+    const myClasses = itemSelected
+        ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
+        : [classes.Wrapper].join('')
 
     return (
-
-        <div className={myClasses}>
-            <Shadow />
-            <section>
-                <div className={classes.TitleWrapper}>
-                    <h1>Plongez <br /> dans le pays<br /> de Cocagne</h1>
-                    <p>Lorem ipsum dolor sit amet,
-                    consectetur adipiscing elit.
-                    Nunc pulvinar finibus erat.
-                    Vestibulum in nulla et quam gravida blandit.
-                    Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
-                    Nulla at rhoncus turpis. Aliquam molestie ex quam.</p>
-                    <Button>Réservez </Button>
-                </div>
-            </section>
-            <section className={classes.SectionSliderWrapper}>
-                {/* <Slider {...settings}>{
-
-                    items.map(im => <Card title={im.title}></Card>)
-
-                }</Slider> */}
-                <div className="swiper-container" style={{ width: '100%' }}>
-                    <div className="swiper-wrapper">
-                        {items.map((item, i) => {
-                            return (
-                                <div key={i} className="swiper-slide">
-                                    <Card
-                                        key={i}
-                                        index={i}
-                                        active={slide}
-                                        id={item._id}
-                                        title={item.title}
-                                        image={item.picture}
-                                        clicked={goToDetail}
-                                        hide={i === items.length - 1 ? true : false}>
-                                    </Card>
-                                </div>
-                            );
-                        })}
+        <Layout
+            products={products}
+            currentActive={slide}
+            goSectionHandler={goSectionHandler}>
+            <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: items.length > 0 ? `url(${items[slide].background})` : ' ' }}>
+                <DotNav
+                    hide={itemSelected}
+                    current={slide}
+                    goSectionHandler={goSectionHandler} />
+                <Shadow />
+                <section>
+                    <div className={classes.TitleWrapper}>
+                        <h1>{items.length > 0 ? items[slide].title : 'Plongez <br /> dans le pays<br /> de Cocagne'}</h1>
+                        <p>{items.length > 0 ? items[slide].description : 'Plongez <br /> dans le pays<br /> de Cocagne'}</p>
+                        <Button>Réservez </Button>
                     </div>
-                </div>
-                {/* <InfiniteSlider
+                </section>
+                <section className={classes.SectionSliderWrapper}>
+                    <div className="swiper-container" style={{ width: '130%' }}>
+                        <div className="swiper-wrapper">
+                            {items.map((item, i) => {
+                                return (
+                                    <div key={i} className="swiper-slide">
+                                        <Card
+                                            key={i}
+                                            index={i}
+                                            active={slide}
+                                            id={item._id}
+                                            title={item.title}
+                                            image={item.picture}
+                                            clicked={goToDetail}
+                                            hide={i === items.length - 1 ? true : false}>
+                                        </Card>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <RowsNavigation goHandler={rowsHandler} />
+                </section>
+                {itemSelected ? (<DetailView
                     items={items}
-                    goToDetail={goToDetail} /> */}
-                <RowsNavigation />
-            </section>
-            <Route
-                path={`${match.path}/detail/:id`}
-                render={() => (
-                    <DetailView
-                        items={items}
-                        img={itemSelected.picture}
-                        title={itemSelected.title}
-                        time={itemSelected.time}
-                        people={itemSelected.people}
-                        level={itemSelected.level}
-                        description={itemSelected.description}
-                        changeItem={changeItemHandler} />
-                )} />
-
-        </div>
+                    index={indexSelected}
+                    img={itemSelected.picture}
+                    title={itemSelected.title}
+                    time={itemSelected.time}
+                    people={itemSelected.people}
+                    level={itemSelected.level}
+                    description={itemSelected.description}
+                    closed={e => setItemSelected(false)}
+                    changeItem={changeItemHandler} />) : null}
+            </div>
+        </Layout >
     );
 }
 

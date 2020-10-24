@@ -25,11 +25,17 @@
   .RowsNavigation {
     display: flex;
     position: absolute;
-    bottom: 82px;
+    bottom: 0;
   }
 
   .Detail {
     position: relative;
     bottom: -10px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .RowsNavigation {
+    bottom: 82px;
   }
 }

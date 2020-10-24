@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import classes from './DetailView.module.css'
 import InfiniteSlider from '../Silder/InfiniteSlider';
@@ -17,6 +17,7 @@ import Cart from '../../utils/Cart'
 import Slider from 'react-slick';
 const DetailView = (props) => {
 
+	const [items, setItems] = useState([])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
 	const [size, setSize] = useState(props.productSizes ? props.productSizes[0] : null)
@@ -27,6 +28,14 @@ const DetailView = (props) => {
 	const container = currentPath.split('/detail')[0]
 	const id = currentPath.split('detail/')[1]
 	const isShop = container.includes('boutique')
+
+	useEffect(() => {
+		fetch('../../data/shop.json')
+			.then(res => res.json())
+			.then(data => {
+				setItems(data)
+			})
+	}, [])
 
 	const buyHanlder = e => {
 
@@ -59,7 +68,7 @@ const DetailView = (props) => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
 			stop()
-			history.push(container)
+			props.closed()
 		}, 1200)
 	}
 
@@ -70,10 +79,10 @@ const DetailView = (props) => {
 		slidesToShow: 1,
 		slidesToScroll: 1
 	};
-
+	console.log(props.img)
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			props.img.length > 0
+			typeof props.img === Object
 				? (props.img.map(im => <div><img src={im} alt={props.title} /> </div>))
 				: (<img src={props.img} alt={props.description} />)
 		}</Slider>
@@ -121,10 +130,10 @@ const DetailView = (props) => {
 								(
 									<div className={classes.SimilarItems}>
 										<CardList
-											items={props.items} />
+											items={items} />
 										<InfiniteSlider
 											detailView
-											items={props.items} />
+											items={items} />
 									</div>
 								) : (
 									<div className={classes.ProductOptions}>

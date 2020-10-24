@@ -2,45 +2,22 @@ import React, { useEffect, useState } from 'react';
 import classes from './DotNav.module.css'
 import { NavLink, useLocation } from 'react-router-dom'
 
-const DotNav = () => {
-
-    const location = useLocation()
-    const [isVisible, setIsVisible] = useState([classes.DotNav])
-
-    useEffect(() => {
-
-        if (location.pathname.split('/').length > 2 || location.pathname.includes('checkout')) {
-            const newClasses = [classes.DotNav, classes.Hidden].join(' ')
-            setIsVisible(newClasses)
-        } else {
-            setIsVisible([classes.DotNav])
-        }
-
-    }, [location])
-
+const DotNav = ({ hide, current, goSectionHandler }) => {
+    const isVisible = hide ? [classes.DotNav, classes.Hidden].join(' ') : classes.DotNav
     return (
         <div className={isVisible}>
-            <NavLink
-                to="/notre-histoire"
-                isActive={(match, location) => {
-                    if (!match) {
-                        return location.pathname === "/" ? true : false;
-                    }
-                    return true
-                }}
-                className={classes.Dot}
-                activeClassName={classes.Active}>
-            </NavLink>
-            <NavLink
-                to="/visitez-nous"
-                className={classes.Dot}
-                activeClassName={classes.Active}>
-            </NavLink>
-            <NavLink
-                to="/boutique"
-                className={classes.Dot}
-                activeClassName={classes.Active}>
-            </NavLink>
+            <span
+                onClick={e => goSectionHandler(0)}
+                className={current === 0 ? [classes.Dot, classes.Active].join(' ') : classes.Dot}>
+            </span>
+            <span
+                onClick={e => goSectionHandler(1)}
+                className={current === 1 ? [classes.Dot, classes.Active].join(' ') : classes.Dot}>
+            </span>
+            <span
+                onClick={e => goSectionHandler(2)}
+                className={current === 2 ? [classes.Dot, classes.Active].join(' ') : classes.Dot}>
+            </span>
         </div>
     );
 }

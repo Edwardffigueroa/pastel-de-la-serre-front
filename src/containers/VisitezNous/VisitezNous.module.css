@@ -34,7 +34,7 @@
   left: 0;
   background-size: cover;
   background-position: center;
-  background-image: url('../../assets/images/visitez_nous/bg_x1.png');
+  background-image: url('../../assets/images/visitez_nous/bg_x1_1.png');
   background-attachment: fixed;
   z-index: -2;
 }
@@ -87,10 +87,6 @@
 @media (min-width: 768px) {
   .Wrapper {
     height: calc(100% - 100px);
-  }
-
-  .Wrapper::after {
-    background-image: url('../../assets/images/visitez_nous/bg_x2.png');
   }
 
   .TitleWrapper {

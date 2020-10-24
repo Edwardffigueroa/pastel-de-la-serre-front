@@ -14,15 +14,20 @@ const Layout = props => {
 
     return (
         <div>
-            <DotNav />
             <SideDrawer
                 products={props.products}
                 open={showSideDrawer}
-                closed={sideDrawerClosedHandler} />
+                closed={sideDrawerClosedHandler}
+                currentActive={props.currentActive}
+                goSectionHandler={props.goSectionHandler} />
             <main className={classes.Content}>
                 {props.children}
             </main>
-            <Toolbar products={props.products} drawerToggleClicked={sideDrawerToggleHandler} />
+            <Toolbar
+                currentActive={props.currentActive}
+                products={props.products}
+                drawerToggleClicked={sideDrawerToggleHandler}
+                goSectionHandler={props.goSectionHandler} />
         </div>
     )
 

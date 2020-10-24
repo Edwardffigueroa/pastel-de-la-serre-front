@@ -89,10 +89,6 @@
     height: calc(100% - 100px);
   }
 
-  .Wrapper::after {
-    background-image: url('../../assets/images/boutique/bg_x2.png');
-  }
-
   .TitleWrapper {
     width: 60%;
     margin-left: 50px;
