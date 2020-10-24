@@ -6,6 +6,7 @@
   height: 50%;
   z-index: 1;
   display: flex;
+  cursor: pointer;
   border-radius: 5px;
   flex-direction: column;
   justify-content: space-around;

@@ -17,23 +17,26 @@ import Cart from '../../utils/Cart'
 import Slider from 'react-slick';
 const DetailView = (props) => {
 
+	const [article, setArticle] = useState(null)
+
 	const [items, setItems] = useState([])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
-	const [size, setSize] = useState(props.productSizes ? props.productSizes[0] : null)
+	const [size, setSize] = useState(0)
 	const [quantity, setQuantity] = useState(0)
 
 	const history = useHistory()
 	const currentPath = history.location.pathname
 	const container = currentPath.split('/detail')[0]
 	const id = currentPath.split('detail/')[1]
-	const isShop = container.includes('boutique')
+	const isShop = props.currentActive === 2
 
 	useEffect(() => {
 		fetch('../../data/shop.json')
 			.then(res => res.json())
 			.then(data => {
 				setItems(data)
+				setArticle(data[0])
 			})
 	}, [])
 
@@ -64,6 +67,24 @@ const DetailView = (props) => {
 		}
 	}
 
+	const navigationHandler = direction => {
+		const _index = items.findIndex(item => item._id === article._id)
+		if (direction === "foward") {
+			const _next = items[_index + 1]
+			if (_next) {
+				setArticle(_next)
+			}
+		}
+
+		if (direction === "back") {
+			const _prev = items[_index - 1]
+			if (_prev) {
+				setArticle(_prev)
+			}
+		}
+
+	}
+
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
@@ -78,13 +99,11 @@ const DetailView = (props) => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1
-	};
-	console.log(props.img)
+	}
+
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			typeof props.img === Object
-				? (props.img.map(im => <div><img src={im} alt={props.title} /> </div>))
-				: (<img src={props.img} alt={props.description} />)
+			article ? article.picture.map(im => <div><img src={im} alt={props.title} /> </div>) : null
 		}</Slider>
 	) : <img src={props.img} alt={props.description} />
 
@@ -104,7 +123,7 @@ const DetailView = (props) => {
 					</section>
 					<section className={classes.Content}>
 						<div className={classes.TitleWrapper}>
-							<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{props.title}</h1>
+							<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{article ? article.title : 'Title'}</h1>
 							<IconList
 								isShop={isShop}
 								time={props.time}
@@ -114,16 +133,9 @@ const DetailView = (props) => {
 								organic={props.organic}
 								recycle={props.recycle} />
 							<div>
-								{isShop ? <h2 className={classes.Price}>Prix Unité {props.price + '€'}</h2> : null}
+								{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
 							</div>
-							<p className={classes.Description}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Nunc pulvinar finibus erat. Vestibulum in nulla et quam gravida blandit.
-								Donec iaculis metus ullamcorper nisl consequat, in vulputate ante congue.
-								Nulla at rhoncus turpis. Aliquam molestie ex quam. Morbi laoreet a massa id fringilla.
-								Nullam sagittis tellus nibh, vestibulum ullamcorper mauris ultrices quis.
-								Nam malesuada congue ligula quis egestas. Cras mattis nunc porta
-					</p>
+							<p className={classes.Description}>{article ? article.description : ' Description'}</p>
 						</div>
 						{
 							!isShop ?
@@ -141,11 +153,11 @@ const DetailView = (props) => {
 											<Selected
 												label="Taille"
 												onSize={setSize}
-												options={props.productSizes} />
+												options={article ? article.sizes : null} />
 											<Selected
 												label="Quantite"
 												onQuantity={setQuantity}
-												options={props.productStock} />
+												options={article ? article.stock : null} />
 										</div>
 									</div>
 								)
@@ -159,7 +171,7 @@ const DetailView = (props) => {
 						</div>
 						<div className={classes.Navigations}>
 							<RowsNavigation
-								changeItem={props.changeItem}
+								changeItem={navigationHandler}
 								isDetailView />
 						</div>
 					</section>

@@ -86,7 +86,7 @@
   background-image: url('../../../assets/shopInvert.svg');
 }
 
-.Button.ShopButton:nth-child(2){
+.Button.ShopButton:nth-child(2) {
   color: #f8cfc9;
   border-color: #f8cfc9;
   background-color: transparent;
@@ -122,9 +122,9 @@
     font-size: 22px;
     min-width: 214px;
     margin: 0;
-    padding: 18px;
+    padding: 5px;
     box-sizing: border-box;
-    height: 69px;
+    --height: 69px;
   }
 
   .ButtonOverImage {
@@ -138,8 +138,8 @@
   }
 
   .Row {
-    width: 33px;
-    height: 33px;
+    width: 20px;
+    height: 20px;
   }
 }
 

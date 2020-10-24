@@ -76,6 +76,7 @@ const NotreHistoire = ({ match, history }) => {
 
 
     const goSectionHandler = number => {
+        setItemSelected(false)
         setSlide(number)
         mySwiper.slideTo(number)
         mySwiper.update()
@@ -179,17 +180,19 @@ const NotreHistoire = ({ match, history }) => {
                     </div>
                     <RowsNavigation goHandler={rowsHandler} />
                 </section>
-                {itemSelected ? (<DetailView
-                    items={items}
-                    index={indexSelected}
-                    img={itemSelected.picture}
-                    title={itemSelected.title}
-                    time={itemSelected.time}
-                    people={itemSelected.people}
-                    level={itemSelected.level}
-                    description={itemSelected.description}
-                    closed={e => setItemSelected(false)}
-                    changeItem={changeItemHandler} />) : null}
+                {itemSelected ? (
+                    <DetailView
+                        items={items}
+                        currentActive={slide}
+                        index={indexSelected}
+                        img={itemSelected.picture}
+                        title={itemSelected.title}
+                        time={itemSelected.time}
+                        people={itemSelected.people}
+                        level={itemSelected.level}
+                        description={itemSelected.description}
+                        closed={e => setItemSelected(false)}
+                        changeItem={changeItemHandler} />) : null}
             </div>
         </Layout >
     );

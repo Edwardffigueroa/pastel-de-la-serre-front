@@ -16,8 +16,8 @@
   box-sizing: border-box;
   display: block;
   transition: all ease-in-out 250ms;
-  font-family: 'operetta-18', s
-  erif;
+  font-family: 'operetta-18', serif;
+  cursor: pointer;
   --border-bottom: 2px solid transparent;
 }
 
