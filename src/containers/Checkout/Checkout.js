@@ -30,7 +30,7 @@ const Checkout = (props) => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
 			stop()
-			history.push('/boutique')
+			history.push('/')
 		}, 1200)
 	}
 

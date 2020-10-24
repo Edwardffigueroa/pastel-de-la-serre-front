@@ -28,12 +28,15 @@
 
 .Close {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 8px;
+  right: 8px;
+  border: 2px solid #f8cfc9;
+  border-radius: 100px;
+  padding: 10px 13px;
 }
 
 .ImageWrapper {
-  transform: scale(1.5);
+  --transform: scale(1.5);
 }
 
 .Message {
@@ -53,15 +56,15 @@
   display: flex;
   justify-content: center;
   height: 70px;
-  width: 100%; 
+  width: 100%;
 }
 
 .ButtonWrapper button {
-    color: white;
-    border-radius: 40px;
-    border: none; 
-    flex-basis: 100%;
-    background-color: #1f86fc;
+  color: white;
+  border-radius: 40px;
+  border: none;
+  flex-basis: 100%;
+  background-color: #1f86fc;
 }
 
 @media (min-width: 768px) {
@@ -70,9 +73,14 @@
     height: 50%;
     justify-content: space-evenly;
   }
+
+  .ButtonWrapper button {
+    flex-basis: 200px;
+    font-size: 22px;
+  }
 }
 
-@media (min-width: 1080px){
+@media (min-width: 1080px) {
   .Modal {
     width: 50%;
     height: 50%;

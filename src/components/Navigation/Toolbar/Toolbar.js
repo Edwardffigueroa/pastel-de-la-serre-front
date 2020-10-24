@@ -9,7 +9,7 @@ import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Languages from '../../Languages/Languages'
 import Cart from '../../Cart/Cart'
 
-const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandler }) => (
+const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandler, goCartHandler }) => (
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={drawerToggleClicked} />
         <div className={classes.Logo}>
@@ -23,7 +23,7 @@ const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandle
                     <img src={lupa} alt="search" />
                 </label>
                 <span>
-                    <Cart products={products} />
+                    <Cart goCart={goCartHandler} products={products} />
                 </span>
             </section>
             <nav className={classes.DesktopOnly}>

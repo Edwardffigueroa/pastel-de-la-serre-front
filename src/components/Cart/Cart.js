@@ -1,16 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 import classes from './Cart.module.css'
 import cartImage from '../../assets/images/nav/cart_bag.svg'
-import { useHistory } from 'react-router-dom'
 
-const Cart = ({ products }) => {
+const Cart = ({ products, goCart }) => {
 
 	let stylo
-	const history = useHistory()
-	const checkoutHandler = e => {
-		history.push('/cart/checkout')
-	}
 
 	if (products.length > 0) {
 		stylo = [classes.Feedback, classes.HasItems].join(' ')
@@ -19,7 +14,7 @@ const Cart = ({ products }) => {
 	}
 
 	return (
-		<div className={classes.Cart} onClick={checkoutHandler} >
+		<div className={classes.Cart} onClick={goCart} >
 			<span className={stylo}></span>
 			<img src={cartImage} alt="cart bag" />
 		</div>

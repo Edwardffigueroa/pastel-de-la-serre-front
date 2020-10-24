@@ -9,7 +9,6 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 import DotNav from '../../components/Navigation/DotNav/DotNav'
 
 import Layout from '../../hoc/layout/Layout'
-import { Route } from 'react-router-dom'
 import DetailView from '../../components/DetailView/DetailView'
 
 import Card from '../../components/UI/Card/Card'
@@ -69,6 +68,8 @@ const NotreHistoire = ({ match, history }) => {
         }
     }, [])
 
+
+
     const changeSlide = (value) => {
         setSlide(value)
         mySwiper.update()
@@ -80,24 +81,8 @@ const NotreHistoire = ({ match, history }) => {
         mySwiper.slideTo(number)
         mySwiper.update()
 
-        console.log(match)
         if (!match.isExact) {
-            console.log('hola')
             history.push('/')
-        }
-    }
-
-    const setInitialSlider = () => {
-        if (match.path === '/notre-histoire' || match.path === '/') {
-            setSlide(0)
-        }
-
-        if (match.path === '/visitez-nous') {
-            setSlide(1)
-        }
-
-        if (match.path === '/boutique') {
-            setSlide(2)
         }
     }
 
@@ -113,6 +98,12 @@ const NotreHistoire = ({ match, history }) => {
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         setIndexSelected(_index)
+    }
+
+
+    const goCartHandler = () => {
+        setItemSelected(false)
+        history.push('/cart/checkout')
     }
 
     const changeItemHandler = direction => {
@@ -147,7 +138,8 @@ const NotreHistoire = ({ match, history }) => {
         <Layout
             products={products}
             currentActive={slide}
-            goSectionHandler={goSectionHandler}>
+            goSectionHandler={goSectionHandler}
+            goCartHandler={goCartHandler}>
             <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: items.length > 0 ? `url(${items[slide].background})` : ' ' }}>
                 <DotNav
                     hide={itemSelected}

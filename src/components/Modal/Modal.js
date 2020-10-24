@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import closeX from '../../assets/detailView/close.svg'
 import logo from '../../assets/images/logo.svg'
 import classes from './Modal.module.css'
 
 const Modal = ({ confirmed, close }) => {
+
+	window.scrollTo(0, 0)
+
 	return confirmed ? (
 		<div className={classes.ModalWrapper}>
 			<div className={classes.Modal}>

@@ -26,7 +26,8 @@ const Layout = props => {
                 currentActive={props.currentActive}
                 products={props.products}
                 drawerToggleClicked={sideDrawerToggleHandler}
-                goSectionHandler={props.goSectionHandler} />
+                goSectionHandler={props.goSectionHandler}
+                goCartHandler={props.goCartHandler} />
         </div>
     )
 

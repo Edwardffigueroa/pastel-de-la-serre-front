@@ -1,5 +1,6 @@
 .Toolbar {
   height: 100px;
+  z-index: 1;
   width: 100%;
   position: absolute;
   top: 0;

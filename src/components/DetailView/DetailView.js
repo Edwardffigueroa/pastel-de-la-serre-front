@@ -12,6 +12,7 @@ import { useHistory } from 'react-router-dom'
 import { a, useSpring } from 'react-spring';
 import Selected from '../Selected/Selected'
 import IconList from './IconList/IconList';
+import Histoire from '../Histoire/Histoire'
 
 import Cart from '../../utils/Cart'
 import Slider from 'react-slick';
@@ -30,6 +31,7 @@ const DetailView = (props) => {
 	const container = currentPath.split('/detail')[0]
 	const id = currentPath.split('detail/')[1]
 	const isShop = props.currentActive === 2
+	const isHistoire = props.currentActive === 0
 
 	useEffect(() => {
 		fetch('../../data/shop.json')
@@ -41,9 +43,7 @@ const DetailView = (props) => {
 	}, [])
 
 	const buyHanlder = e => {
-
 		if (isShop) {
-
 			const _product = {
 				id: id,
 				name: props.title,
@@ -107,7 +107,7 @@ const DetailView = (props) => {
 		}</Slider>
 	) : <img src={props.img} alt={props.description} />
 
-	const buttonOverImage = isShop === false ? (
+	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
 			<Button isOverImage>Réservez</Button>
 		</div>
@@ -121,66 +121,76 @@ const DetailView = (props) => {
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
-					<section className={classes.Content}>
-						<div className={classes.TitleWrapper}>
-							<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{article ? article.title : 'Title'}</h1>
-							<IconList
-								isShop={isShop}
-								time={props.time}
-								level={props.level}
-								madeof={props.madeOf}
-								people={props.people}
-								organic={props.organic}
-								recycle={props.recycle} />
-							<div>
-								{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
-							</div>
-							<p className={classes.Description}>{article ? article.description : ' Description'}</p>
-						</div>
-						{
-							!isShop ?
-								(
-									<div className={classes.SimilarItems}>
-										<CardList
-											items={items} />
-										<InfiniteSlider
-											detailView
-											items={items} />
-									</div>
-								) : (
-									<div className={classes.ProductOptions}>
+					{
+						isHistoire ?
+							(
+								<section className={classes.Content}>
+									<h1 className={[classes.Title, classes.TitleShop].join(' ')}>{props.title}</h1>
+									<Histoire text={props.description} />
+								</section>
+							) : (
+								<section className={classes.Content}>
+									<div className={classes.TitleWrapper}>
+										<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{article ? article.title : 'Title'}</h1>
+										<IconList
+											isShop={isShop}
+											time={props.time}
+											level={props.level}
+											madeof={props.madeOf}
+											people={props.people}
+											organic={props.organic}
+											recycle={props.recycle} />
 										<div>
-											<Selected
-												label="Taille"
-												onSize={setSize}
-												options={article ? article.sizes : null} />
-											<Selected
-												label="Quantite"
-												onQuantity={setQuantity}
-												options={article ? article.stock : null} />
+											{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
 										</div>
+										<p className={classes.Description}>{article ? article.description : ' Description'}</p>
 									</div>
-								)
-						}
-						<div className={isShop ? [classes.DesktopControllers, classes.Shop].join(' ') : classes.DesktopControllers}>
-							<Button isShop clicked={buyHanlder}>Achater </Button>
-							<Button isShop isSecond>Continuez a la mes Achats</Button>
-						</div>
-						<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
-							<Button> {isShop ? 'Achater' : 'Réservez'}</Button>
-						</div>
-						<div className={classes.Navigations}>
-							<RowsNavigation
-								changeItem={navigationHandler}
-								isDetailView />
-						</div>
-					</section>
+									{
+										!isShop ?
+											(
+												<div className={classes.SimilarItems}>
+													<CardList
+														items={items} />
+													<InfiniteSlider
+														detailView
+														items={items} />
+												</div>
+											) : (
+												<div className={classes.ProductOptions}>
+													<div>
+														<Selected
+															label="Taille"
+															onSize={setSize}
+															options={article ? article.sizes : null} />
+														<Selected
+															label="Quantite"
+															onQuantity={setQuantity}
+															options={article ? article.stock : null} />
+													</div>
+												</div>
+											)
+									}
+									<div className={isShop ? [classes.DesktopControllers, classes.Shop].join(' ') : classes.DesktopControllers}>
+										<Button isShop clicked={buyHanlder}>Achater </Button>
+										<Button isShop isSecond>Continuez a la mes Achats</Button>
+									</div>
+									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
+										<Button> {isShop ? 'Achater' : 'Réservez'}</Button>
+									</div>
+									<div className={classes.Navigations}>
+										<RowsNavigation
+											changeItem={navigationHandler}
+											isDetailView />
+									</div>
+								</section>
+							)}
+
 					<span className={classes.Close} onClick={exitHandler} >
 						<img src={closeX} alt="close" />
 					</span>
 				</div>
 			</div>
-		</a.div>
+		</a.div >
 	)
 }
 
