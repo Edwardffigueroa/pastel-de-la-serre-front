@@ -21,7 +21,6 @@ function App() {
                     atActive={{ opacity: 1 }}
                     className={classes.Wrapper}>
                     <Route path="/booking" exact component={Booking} />
-                    <Route path="/checkout" component={Checkout} />
                     <Route path="/" component={NotreHistoire} />
                 </AnimatedSwitch>
             </Suspense>

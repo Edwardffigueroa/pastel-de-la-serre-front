@@ -131,6 +131,7 @@
 @media (min-width: 768px) {
   .Wrapper {
     height: calc(100% - 100px);
+    box-sizing: border-box;
   }
 
   .TitleWrapper {

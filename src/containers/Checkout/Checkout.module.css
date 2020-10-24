@@ -1,9 +1,11 @@
 .Checkout {
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow-x: hidden;
   width: 100vw;
   opacity: 1;
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
-  z-index: 1;
   background-color: lightgray;
   background-size: cover;
   background-repeat: no-repeat;
@@ -111,7 +113,6 @@
   .Content > div {
     flex-basis: 80%;
   }
-  
 }
 
 @media (min-width: 1900px) {

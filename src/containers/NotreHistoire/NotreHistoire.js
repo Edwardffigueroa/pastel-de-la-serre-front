@@ -9,14 +9,14 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 import DotNav from '../../components/Navigation/DotNav/DotNav'
 
 import Layout from '../../hoc/layout/Layout'
-import { Route, useRouteMatch } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import DetailView from '../../components/DetailView/DetailView'
 
-import GoToDetails from '../../utils/GoToDetails'
 import Card from '../../components/UI/Card/Card'
 
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
+import Checkout from '../Checkout/Checkout'
 
 
 const NotreHistoire = ({ match, history }) => {
@@ -72,14 +72,19 @@ const NotreHistoire = ({ match, history }) => {
     const changeSlide = (value) => {
         setSlide(value)
         mySwiper.update()
-    };
-
+    }
 
     const goSectionHandler = number => {
         setItemSelected(false)
         setSlide(number)
         mySwiper.slideTo(number)
         mySwiper.update()
+
+        console.log(match)
+        if (!match.isExact) {
+            console.log('hola')
+            history.push('/')
+        }
     }
 
     const setInitialSlider = () => {
@@ -108,7 +113,6 @@ const NotreHistoire = ({ match, history }) => {
         const selected = items.find(item => item._id === id)
         setItemSelected(selected)
         setIndexSelected(_index)
-        GoToDetails(e, history, id)
     }
 
     const changeItemHandler = direction => {
@@ -194,6 +198,7 @@ const NotreHistoire = ({ match, history }) => {
                         closed={e => setItemSelected(false)}
                         changeItem={changeItemHandler} />) : null}
             </div>
+            {!match.isExact ? <Checkout /> : null}
         </Layout >
     );
 }

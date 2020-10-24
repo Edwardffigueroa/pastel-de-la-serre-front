@@ -9,7 +9,7 @@ const Cart = ({ products }) => {
 	let stylo
 	const history = useHistory()
 	const checkoutHandler = e => {
-		history.push('/checkout')
+		history.push('/cart/checkout')
 	}
 
 	if (products.length > 0) {
