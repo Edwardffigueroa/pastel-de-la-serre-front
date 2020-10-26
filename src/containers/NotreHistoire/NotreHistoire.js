@@ -142,6 +142,7 @@ const NotreHistoire = ({ match, history }) => {
         switch (slide) {
             case 0:
                 /// TODO -> Go to reservation 
+                history.push('/booking')
                 break;
             case 1:
                 // TODO, Connect to the fetch data from the global tours 
