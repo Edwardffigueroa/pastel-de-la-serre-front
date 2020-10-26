@@ -77,17 +77,6 @@
   z-index: 1;
 }
 
-/* .DetailView{
-  width: 250px; 
-  ma + 40
-}
-
-@media (min-width: 375px) {
-  .Card {
-    width: 187px;
-    height: 215px;
-  }
-} */
 
 @media (min-width: 768px) {
   .Marker {
