@@ -139,11 +139,11 @@
   .Wrapper {
     height: calc(100% - 100px);
     box-sizing: border-box;
-  } 
-  
-  
+  }
+
   .Wrapper > section:first-of-type {
     justify-content: flex-start;
+    height: 478px;
   }
 
   .TitleWrapper {
@@ -179,6 +179,10 @@
     grid-template-rows: 1fr;
     gap: 1px 1px;
     grid-template-areas: '. .';
+  }
+
+  .Wrapper > section:first-of-type {
+    height: 100%;
   }
 
   .Wrapper::after {

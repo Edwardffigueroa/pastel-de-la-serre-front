@@ -32,7 +32,7 @@ const NotreHistoire = ({ match, history }) => {
         initialSlide: slide,
         speed: 700,
         slidesPerView: 3,
-        spaceBetween: 50,
+        spaceBetween: 0,
         loop: false,
         centeredSlides: true,
         slideActiveClass: 'swiper-slide-active',
