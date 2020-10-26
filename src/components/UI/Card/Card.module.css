@@ -91,7 +91,7 @@
 
 @media (min-width: 768px) {
   .Marker {
-    transform: translate(-20px, -55px);
+    transform: translate(-20px, -115%);
   }
 
   .Marker.DetailView {
