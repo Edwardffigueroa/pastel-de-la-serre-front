@@ -43,28 +43,34 @@ const DetailView = (props) => {
 	}, [])
 
 	const buyHanlder = e => {
-		if (isShop) {
-			const _product = {
-				id: id,
-				name: props.title,
-				amount: {
-					[size]: quantity
-				},
-				price: props.price * quantity
-			}
 
-			Cart.addItem(_product)
+		if (size !== 0 && quantity !== 0) {
+			if (isShop) {
+				const _product = {
+					id: id,
+					name: props.title,
+					amount: {
+						[size]: quantity
+					},
+					price: props.price * quantity
+				}
+
+				props.addItem(_product)
+			} else {
+				// TODO : enviar a la reserva iframe 
+				const _tour = {
+					id: id,
+					name: props.title,
+					people: 3,
+					price: props.price * quantity
+				}
+				// Cart.addJourney(_tour)
+			}
 		} else {
-
-			const _tour = {
-				id: id,
-				name: props.title,
-				people: 3,
-				price: props.price * quantity
-			}
-
-			Cart.addJourney(_tour)
+			// No se agrega el item 
 		}
+
+
 	}
 
 	const navigationHandler = direction => {
@@ -109,7 +115,7 @@ const DetailView = (props) => {
 
 	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
-			<Button isOverImage>Réservez</Button>
+			<Button isOverImage >Réservez</Button>
 		</div>
 	) : null
 
@@ -174,8 +180,14 @@ const DetailView = (props) => {
 											)
 									}
 									<div className={isShop ? [classes.DesktopControllers, classes.Shop].join(' ') : classes.DesktopControllers}>
-										<Button isShop clicked={buyHanlder}>Achater </Button>
-										<Button isShop isSecond>Continuez a la mes Achats</Button>
+										<Button
+											isShop
+											invert
+											clicked={buyHanlder}>Achater </Button>
+										<Button
+											isShop
+											isSecond
+											clicked={exitHandler}>Continuez a la mes Achats</Button>
 									</div>
 									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
 										<Button> {isShop ? 'Achater' : 'Réservez'}</Button>

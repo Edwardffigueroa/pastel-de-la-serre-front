@@ -139,6 +139,7 @@
   }
   .Wrapper>section:first-of-type {
     justify-content: flex-start;
+    height: 478px;
   }
   .TitleWrapper {
     width: 60%;
@@ -171,11 +172,15 @@
     gap: 1px 1px;
     grid-template-areas: '. .';
   }
+  .Wrapper>section:first-of-type {
+    height: 100%;
+  }
   .Wrapper::after {
     background-position: center;
   }
   .TitleWrapper {
     padding: 50px;
+    width: 100%;
   }
   .TitleWrapper h1 {
     font-size: 66px;

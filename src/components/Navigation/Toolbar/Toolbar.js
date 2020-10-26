@@ -9,10 +9,10 @@ import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Languages from '../../Languages/Languages'
 import Cart from '../../Cart/Cart'
 
-const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandler, goCartHandler }) => (
+const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandler, goCartHandler, goHomeHandler }) => (
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={drawerToggleClicked} />
-        <div className={classes.Logo}>
+        <div className={classes.Logo} onClick={goHomeHandler}>
             <Logo />
         </div>
         <section className={classes.Wrapper}>

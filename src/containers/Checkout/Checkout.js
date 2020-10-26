@@ -34,6 +34,11 @@ const Checkout = (props) => {
 		}, 1200)
 	}
 
+	const backHandler = e => {
+		setExitSpring({ opacity: 1 })
+		setConfirmed(false)
+	}
+
 	return (
 		<div>
 			<div className={classes.Checkout}>
@@ -53,7 +58,7 @@ const Checkout = (props) => {
 					</div>
 				</a.div>
 			</div>
-			<Modal confirmed={confirmed} close={exitHandler} />
+			<Modal confirmed={confirmed} close={exitHandler} back={backHandler} />
 		</div>
 	)
 }

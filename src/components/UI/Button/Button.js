@@ -16,6 +16,10 @@ const Button = props => {
         myClasses.push(classes.ShopButton)
     }
 
+    if (props.invert) {
+        myClasses.push(classes.Invert)
+    }
+
     myClasses = myClasses.join(' ')
 
     return <button

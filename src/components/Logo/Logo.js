@@ -1,5 +1,4 @@
 import React from 'react'
-
 import pastelLogo from '../../assets/images/logo.svg'
 import classes from './Logo.module.css'
 

@@ -5,6 +5,12 @@
   bottom: 30px;
 }
 
+.RowsNavigation.Detail {
+  position: relative;
+  left: 0;
+  bottom: 0;
+}
+
 .RowsNavigation div {
   width: 30px;
   height: 30px;
@@ -27,11 +33,6 @@
 @media (min-width: 1080px) {
   .RowsNavigation {
     display: flex;
-  }
-
-  .Detail {
-    position: relative;
-    bottom: -10px;
   }
 }
 

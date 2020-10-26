@@ -10,6 +10,7 @@
         "level": "Debutant",
         "stock": 10,
         "background": "https://firebasestorage.googleapis.com/v0/b/pastel-b33bc.appspot.com/o/DJI_0002.png?alt=media&token=e1b16911-50b3-4088-85c9-2a726a5d4437",
+        "button": "Réservez",
         "sizes": [
             {
                 "value": "XS",
@@ -48,6 +49,7 @@
         "people": "5 pers",
         "level": "Debutant",
         "stock": 10,
+        "button": "Découvrez Notre Domaine",
         "sizes": [
             {
                 "value": "XS",
@@ -87,6 +89,7 @@
         "people": "5 pers",
         "level": "Debutant",
         "stock": 10,
+        "button": "Visitez Notre Boutique",
         "sizes": [
             {
                 "value": "XS",

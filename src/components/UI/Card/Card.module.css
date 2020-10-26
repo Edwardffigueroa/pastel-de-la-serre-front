@@ -79,17 +79,6 @@
   z-index: 1;
 }
 
-/* .DetailView{
-  width: 250px; 
-  ma + 40
-}
-
-@media (min-width: 375px) {
-  .Card {
-    width: 187px;
-    height: 215px;
-  }
-} */
 
 @media (min-width: 768px) {
   .Marker {
@@ -118,8 +107,10 @@
   }
   .Card {
     border-radius: 40px;
-    width: 202px;
-    height: 305px;
+    --width: 202px;
+    --height: 305px;
+    width: 250px;
+    height: 355px;
   }
   .Card.Card.DetailView {
     width: 250px;
