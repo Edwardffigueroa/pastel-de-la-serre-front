@@ -115,7 +115,7 @@ const DetailView = (props) => {
 
 	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
-			<Button isOverImage>Réservez</Button>
+			<Button isOverImage >Réservez</Button>
 		</div>
 	) : null
 
