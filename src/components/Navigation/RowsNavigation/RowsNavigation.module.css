@@ -1,5 +1,8 @@
 .RowsNavigation {
   display: none;
+  position: absolute;
+  left: 100px;
+  bottom: 30px;
 }
 
 .RowsNavigation div {
@@ -24,8 +27,6 @@
 @media (min-width: 1080px) {
   .RowsNavigation {
     display: flex;
-    position: absolute;
-    bottom: 0;
   }
 
   .Detail {
