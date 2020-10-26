@@ -105,7 +105,7 @@ const DetailView = (props) => {
 		<Slider {...settings}>{
 			article ? article.picture.map(im => <div><img src={im} alt={props.title} /> </div>) : null
 		}</Slider>
-	) : <img src={props.img} alt={props.description} />
+	) : null
 
 	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
@@ -117,7 +117,10 @@ const DetailView = (props) => {
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView} data-type={container}>
 				<div className={isShop ? [classes.DetailWrapper, classes.Shop].join(' ') : classes.DetailWrapper}>
-					<section className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}>
+					<section
+						className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}
+						style={!isShop ? { backgroundImage: `url(${props.img})` } : null}>
+
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
