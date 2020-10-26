@@ -130,6 +130,38 @@ const NotreHistoire = ({ match, history }) => {
         mySwiper.update()
     }
 
+    const goHomeHandler = e => {
+        console.log('hola')
+        setItemSelected(false)
+        setIndexSelected(0)
+        history.push('/')
+    }
+
+
+    const CTAHandler = e => {
+        switch (slide) {
+            case 0:
+                /// TODO -> Go to reservation 
+                break;
+            case 1:
+                // TODO, Connect to the fetch data from the global tours 
+                // const _index = items.findIndex(item => item._id === id)
+                // const selected = items.find(item => item._id === id)  
+                const selected = items[1]
+                setItemSelected(selected)
+                setIndexSelected(1)
+                break;
+            case 2:
+                setItemSelected(items[2])
+                setIndexSelected(2)
+                break;
+            default:
+                setItemSelected(items[1])
+                setIndexSelected(1)
+                break;
+        }
+    }
+
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
@@ -139,7 +171,8 @@ const NotreHistoire = ({ match, history }) => {
             products={products}
             currentActive={slide}
             goSectionHandler={goSectionHandler}
-            goCartHandler={goCartHandler}>
+            goCartHandler={goCartHandler}
+            goHomeHandler={goHomeHandler}>
             <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: items.length > 0 ? `url(${items[slide].background})` : ' ' }}>
                 <DotNav
                     hide={itemSelected}
@@ -150,7 +183,9 @@ const NotreHistoire = ({ match, history }) => {
                     <div className={classes.TitleWrapper}>
                         <h1>{items.length > 0 ? items[slide].title : 'Plongez <br /> dans le pays<br /> de Cocagne'}</h1>
                         <p>{items.length > 0 ? items[slide].description : 'Plongez <br /> dans le pays<br /> de Cocagne'}</p>
-                        <Button>Réservez </Button>
+                        <Button
+                            clicked={CTAHandler}
+                            invert={slide === 2 ? true : false}>{items.length > 0 ? items[slide].button : 'Réservez'} </Button>
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
@@ -188,6 +223,7 @@ const NotreHistoire = ({ match, history }) => {
                         level={itemSelected.level}
                         description={itemSelected.description}
                         closed={e => setItemSelected(false)}
+                        addItem={e => console.log('agregando: ', e)}
                         changeItem={changeItemHandler} />) : null}
             </div>
             {!match.isExact ? <Checkout /> : null}
