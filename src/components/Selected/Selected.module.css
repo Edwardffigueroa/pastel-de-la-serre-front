@@ -11,10 +11,14 @@
   padding: 5px;
 }
 
+.SelectedWrapperPay.Label,
 .Label {
-  display: none;
   margin-right: 10px;
   color: white;
+}
+
+.SelectedWrapperPay.Label {
+  display: none;
 }
 
 .Selected.Payment .Label {
@@ -56,6 +60,7 @@
 
 .Selected > div[class*='menu'] {
   /* akiging inner list items  */
+  background-color: rgba(24, 60, 119, 0.8);
   text-align: center;
 }
 

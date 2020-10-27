@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'
 
 import classes from './DetailView.module.css'
-import InfiniteSlider from '../Silder/InfiniteSlider';
-import CardList from '../CardList/CardList';
+import InfiniteSlider from '../Silder/InfiniteSlider'
+import CardList from '../CardList/CardList'
 
 import closeX from '../../assets/detailView/close.svg'
 import Button from '../UI/Button/Button'
-import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation';
+import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation'
 
 import { useHistory } from 'react-router-dom'
-import { a, useSpring } from 'react-spring';
+import { a, useSpring } from 'react-spring'
 import Selected from '../Selected/Selected'
-import IconList from './IconList/IconList';
+import IconList from './IconList/IconList'
 import Histoire from '../Histoire/Histoire'
+import Slider from 'react-slick'
 
-import Cart from '../../utils/Cart'
-import Slider from 'react-slick';
 const DetailView = (props) => {
 
 	const [article, setArticle] = useState(null)
@@ -100,7 +99,8 @@ const DetailView = (props) => {
 	}
 
 	const settings = {
-		dots: false,
+		className: classes.SliderShop,
+		dots: true,
 		infinite: true,
 		speed: 500,
 		slidesToShow: 1,

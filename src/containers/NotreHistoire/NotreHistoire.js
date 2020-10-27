@@ -16,7 +16,7 @@ import Card from '../../components/UI/Card/Card'
 import Swiper from 'swiper';
 import 'swiper/swiper-bundle.css';
 import Checkout from '../Checkout/Checkout'
-
+import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
 
 const NotreHistoire = ({ match, history }) => {
 
@@ -177,6 +177,17 @@ const NotreHistoire = ({ match, history }) => {
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
 
+
+    let background = ' '
+    if (items.length > 0) {
+        if (itemSelected && slide === 2) {
+            console.log('sisaaaa', detailProdBg)
+            background = `url(${detailProdBg})`
+        } else {
+            background = `url(${items[slide].background})`
+        }
+    }
+
     return (
         <Layout
             products={products}
@@ -184,7 +195,7 @@ const NotreHistoire = ({ match, history }) => {
             goSectionHandler={goSectionHandler}
             goCartHandler={goCartHandler}
             goHomeHandler={goHomeHandler}>
-            <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: items.length > 0 ? `url(${items[slide].background})` : ' ' }}>
+            <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: background }}>
                 <DotNav
                     hide={itemSelected}
                     current={slide}
