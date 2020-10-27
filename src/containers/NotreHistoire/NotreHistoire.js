@@ -101,11 +101,15 @@ const NotreHistoire = ({ match, history }) => {
         });
     }
 
-    const goToDetail = (e, history, id) => {
+    const goToDetail = (e, index, id) => {
         const _index = items.findIndex(item => item._id === id)
         const selected = items.find(item => item._id === id)
-        setItemSelected(selected)
-        setIndexSelected(_index)
+        if (index === slide) {
+            setItemSelected(selected)
+            setIndexSelected(_index)
+        } else {
+            mySwiper.slideTo(index)
+        }
     }
 
     const goCartHandler = () => {
@@ -138,7 +142,6 @@ const NotreHistoire = ({ match, history }) => {
     }
 
     const goHomeHandler = e => {
-        console.log('hola')
         setItemSelected(false)
         setIndexSelected(0)
         history.push('/')
