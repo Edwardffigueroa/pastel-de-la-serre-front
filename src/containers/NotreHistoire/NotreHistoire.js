@@ -173,6 +173,10 @@ const NotreHistoire = ({ match, history }) => {
         }
     }
 
+
+    const goBooking = e => history.push('/booking')
+
+
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
@@ -238,15 +242,17 @@ const NotreHistoire = ({ match, history }) => {
                         items={items}
                         currentActive={slide}
                         index={indexSelected}
-                        img={itemSelected.picture}
-                        title={itemSelected.title}
+                        goBooking={goBooking}
                         time={itemSelected.time}
-                        people={itemSelected.people}
+                        title={itemSelected.title}
                         level={itemSelected.level}
-                        description={itemSelected.description}
+                        img={itemSelected.picture}
+                        people={itemSelected.people}
+                        changeItem={changeItemHandler}
                         closed={e => setItemSelected(false)}
+                        description={itemSelected.description}
                         addItem={e => console.log('agregando: ', e)}
-                        changeItem={changeItemHandler} />) : null}
+                    />) : null}
             </div>
             {!match.isExact ? <Checkout /> : null}
         </Layout >
