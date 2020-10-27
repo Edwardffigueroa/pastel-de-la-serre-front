@@ -8,9 +8,8 @@ const CardList = (props) => {
 
 	const history = useHistory()
 	const list = props.items.map((item, i) => (
-		<div className={classes.CardWrapper}>
+		<div key={i} className={classes.CardWrapper}>
 			<Card
-				key={i}
 				noFlag
 				title={item.title}
 				description={item.description}

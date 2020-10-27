@@ -71,6 +71,7 @@ const NotreHistoire = ({ match, history }) => {
 
 
     const changeSlide = (value) => {
+        console.log('ahora me lliaman ')
         setSlide(value)
         mySwiper.update()
     }
@@ -89,6 +90,13 @@ const NotreHistoire = ({ match, history }) => {
 
     if (mySwiper) {
         mySwiper.on('slideChangeTransitionStart', swiper => {
+
+            if (swiper.realIndex === 2) {
+                swiper.allowSlideNext = false
+            } else {
+                swiper.allowSlideNext = true
+            }
+
             changeSlide(swiper.activeIndex)
         });
     }
@@ -99,7 +107,6 @@ const NotreHistoire = ({ match, history }) => {
         setItemSelected(selected)
         setIndexSelected(_index)
     }
-
 
     const goCartHandler = () => {
         setItemSelected(false)
@@ -119,7 +126,7 @@ const NotreHistoire = ({ match, history }) => {
 
     const rowsHandler = direction => {
 
-        if (direction === 'foward') {
+        if (direction === 'foward' && mySwiper.realIndex !== 2) {
             mySwiper.slideNext()
         }
 
