@@ -108,6 +108,19 @@
   background-image: url('../../../assets/shopInvert.svg');
 }
 
+.Button.Checkout .Row {
+  background-image: url('../../../assets/checkout/forward.svg');
+}
+
+.Button.Checkout:hover {
+  --background-color: white;
+  color: #1f86fc;
+}
+
+.Button.Checkout:hover .Row {
+  background-image: url('../../../assets/checkout/backwards.svg');
+}
+
 @media (min-width: 768px) {
   .Button {
     background-color: #303868;

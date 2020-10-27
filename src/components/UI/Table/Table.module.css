@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
 }
+
 .TotalPrice {
   font-family: 'Helvetica neue', Helvetica, sans-serif;
   padding-right: 20px;
@@ -33,6 +34,7 @@
 
 .BackButton {
   display: none;
+  font-family: 'Helvetica Neue';
   position: absolute;
   bottom: 10px;
   left: 0;
@@ -61,5 +63,7 @@
 
   .BackButton {
     display: flex;
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    align-items: center;
   }
 }

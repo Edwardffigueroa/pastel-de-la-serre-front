@@ -27,8 +27,6 @@ const DetailView = (props) => {
 
 	const history = useHistory()
 	const currentPath = history.location.pathname
-	const container = currentPath.split('/detail')[0]
-	const id = currentPath.split('detail/')[1]
 	const isShop = props.currentActive === 2
 	const isHistoire = props.currentActive === 0
 
@@ -44,31 +42,19 @@ const DetailView = (props) => {
 	const buyHanlder = e => {
 
 		if (size !== 0 && quantity !== 0) {
-			if (isShop) {
-				const _product = {
-					id: id,
-					name: props.title,
-					amount: {
-						[size]: quantity
-					},
-					price: props.price * quantity
-				}
 
-				props.addItem(_product)
-			} else {
-				// TODO : enviar a la reserva iframe 
-				const _tour = {
-					id: id,
-					name: props.title,
-					people: 3,
-					price: props.price * quantity
-				}
-				// Cart.addJourney(_tour)
+			const _product = {
+				id: article._id,
+				name: props.title,
+				amount: {
+					[size]: quantity
+				},
+				price: +article.price * quantity
 			}
-		} else {
-			// No se agrega el item 
-		}
 
+			props.addItem(_product)
+
+		}
 
 	}
 
@@ -121,7 +107,7 @@ const DetailView = (props) => {
 
 	return (
 		<a.div style={exitSpring}>
-			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView} data-type={container}>
+			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
 				<div className={isShop ? [classes.DetailWrapper, classes.Shop].join(' ') : classes.DetailWrapper}>
 					<section
 						className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}

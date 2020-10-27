@@ -18,6 +18,9 @@ import 'swiper/swiper-bundle.css';
 import Checkout from '../Checkout/Checkout'
 import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
 
+
+import Cart from '../../utils/Cart'
+
 const NotreHistoire = ({ match, history }) => {
 
     const [slide, setSlide] = useState(0)
@@ -61,17 +64,14 @@ const NotreHistoire = ({ match, history }) => {
                 setSlide(0)
             })
 
-        const _prods = localStorage.getItem('PRODUCTS')
-        const _amnt = JSON.parse(_prods)
-        if (_amnt.length > 0) {
-            setProducts(_amnt)
-        }
+        const _prods = Cart.getProducts()
+        console.log(_prods)
+        setProducts(_prods)
+
     }, [])
 
 
-
     const changeSlide = (value) => {
-        console.log('ahora me lliaman ')
         setSlide(value)
         mySwiper.update()
     }
@@ -147,7 +147,6 @@ const NotreHistoire = ({ match, history }) => {
         history.push('/')
     }
 
-
     const CTAHandler = e => {
         switch (slide) {
             case 0:
@@ -176,16 +175,20 @@ const NotreHistoire = ({ match, history }) => {
 
     const goBooking = e => history.push('/booking')
 
+    const addItemHandler = product => {
+
+        setProducts(prev => ([...prev, product]))
+
+        Cart.addItem(product)
+    }
 
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
 
-
     let background = ' '
     if (items.length > 0) {
         if (itemSelected && slide === 2) {
-            console.log('sisaaaa', detailProdBg)
             background = `url(${detailProdBg})`
         } else {
             background = `url(${items[slide].background})`
@@ -251,7 +254,7 @@ const NotreHistoire = ({ match, history }) => {
                         changeItem={changeItemHandler}
                         closed={e => setItemSelected(false)}
                         description={itemSelected.description}
-                        addItem={e => console.log('agregando: ', e)}
+                        addItem={addItemHandler}
                     />) : null}
             </div>
             {!match.isExact ? <Checkout /> : null}

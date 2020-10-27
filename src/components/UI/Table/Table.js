@@ -8,7 +8,9 @@ import { useHistory } from 'react-router-dom'
 
 const Table = props => {
 
-	const [products, setProducts] = useState(Cart.products)
+	const _prods = Cart.getProducts()
+	console.log('Table', _prods)
+	const [products, setProducts] = useState(_prods)
 	const [tours, setTours] = useState([])
 	const [totalPrice, setTotalPrice] = useState(0)
 	const history = useHistory()

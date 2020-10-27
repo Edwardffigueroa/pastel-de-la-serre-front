@@ -20,6 +20,10 @@ const Button = props => {
         myClasses.push(classes.Invert)
     }
 
+    if (props.isCheckout) {
+        myClasses.push(classes.Checkout)
+    }
+
     myClasses = myClasses.join(' ')
 
     return <button

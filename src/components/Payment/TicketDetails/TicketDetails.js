@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import classes from './TicketDetails.module.css'
+import Button from '../../UI/Button/Button'
 
 const TicketDetails = ({ next }) => {
 
@@ -29,7 +30,7 @@ const TicketDetails = ({ next }) => {
 			<input value={phone} onChange={e => setPhone(e.target.value)} type="text" />
 			<label>Adresse de livraison</label>
 			<input value={address} onChange={e => setAdress(e.target.value)} type="text" />
-			<button onClick={saveTicketHandler}> Suivant </button>
+			<Button clicked={saveTicketHandler} isCheckout >Suivant</Button>
 		</div>
 	)
 }

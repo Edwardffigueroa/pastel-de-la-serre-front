@@ -58,7 +58,7 @@ class Cart {
     }
 
     getProducts() {
-        return this.products
+        return this.products || []
     }
 
     increaseItem(prodId, size) {
@@ -71,8 +71,11 @@ class Cart {
 
     decreaaseItem(prodId, size) {
         const found = this.products.find(p => p.id === prodId)
-        if (found.amount[size] < 1) {
+        if (found.amount[size] <= 1) {
             delete found.amount[size]
+            if (Object.keys(found.amount).length < 1) {
+                console.log('No quedan de estos ')
+            }
         } else {
             found.amount[size]--
         }

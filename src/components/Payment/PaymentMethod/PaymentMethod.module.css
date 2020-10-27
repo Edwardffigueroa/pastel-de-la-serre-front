@@ -88,6 +88,9 @@
   height: 69px;
   margin-top: 20px;
   font-size: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   font-weight: bold;
   color: white;
@@ -98,6 +101,7 @@
 
 .Input:last-of-type {
   margin: 0;
+  font-size: 16px;
 }
 
 .Logos {

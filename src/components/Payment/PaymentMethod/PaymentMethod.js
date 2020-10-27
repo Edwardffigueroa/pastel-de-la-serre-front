@@ -37,6 +37,12 @@ const PaymentMethod = ({ next }) => {
 		next(_cardDetails)
 	}
 
+	const cardHandler = e => {
+		const _txt = e.target.value
+		const cardNumber = _txt.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
+		setCard(cardNumber)
+	}
+
 	return (
 		<div className={classes.Payment}>
 			<div className={classes.Form}>
@@ -45,13 +51,13 @@ const PaymentMethod = ({ next }) => {
 				<label htmlFor="name">Titulaire de la cart</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
 				<label htmlFor="number">N° Carte</label>
-				<input className={classes.Input} htmlFor="number" type="text" name="card" value={card} onChange={e => setCard(e.target.value)} />
+				<input className={classes.Input} htmlFor="number" type="text" name="card" value={card} onChange={cardHandler} />
 				<fieldset>
 					<label htmlFor="exp">Exp.</label>
 					<div className={classes.Divider}></div>
 					<label htmlFor="cvv">CVV</label>
 					<br />
-					<div style={{ width: '100%', display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end' }}>
+					<div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
 						<Selected
 							payment
 							options={_months} />
@@ -61,7 +67,9 @@ const PaymentMethod = ({ next }) => {
 						<input className={classes.Input} type="number" htmlFor="cvv" name="cvv" />
 					</div>
 				</fieldset>
-				<button onClick={onPayHandler} className={classes.Pay}>Suivant</button>
+				<button onClick={onPayHandler} className={classes.Pay}>Suivant
+					<span className={classes.Row}></span>
+				</button>
 			</div>
 		</div>)
 }

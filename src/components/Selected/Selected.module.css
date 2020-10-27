@@ -17,7 +17,7 @@
   color: white;
 }
 
-.SelectedWrapperPay.Label {
+.SelectedWrapperPay .Label {
   display: none;
 }
 
@@ -32,7 +32,6 @@
 }
 
 .Selected.Payment > div[class*='menu'] > div > div {
-  background: #626262;
   color: white;
   font-size: 14px;
 }
@@ -50,6 +49,7 @@
   font-size: 14px;
   text-transform: lowercase;
   padding: 0 8px;
+  max-width: 100%;
 }
 
 .Selected > div:first-of-type > div {
