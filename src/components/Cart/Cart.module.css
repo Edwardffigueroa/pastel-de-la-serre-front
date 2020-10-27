@@ -13,5 +13,6 @@
 
 .Feedback.HasItems {
   display: flex;
-  background-color: red;
+  position: absolute;
+  background-color: #a7ff00;
 }

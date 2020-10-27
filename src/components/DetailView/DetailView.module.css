@@ -239,7 +239,7 @@
   .SimilarItems {
     margin: 15px 0;
     margin-bottom: -10px;
-    --padding-top: 50px;
+    width: calc(100% + 40px);
   }
 
   .CTA {
