@@ -14,12 +14,13 @@ code {
 
 p {
   color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 input {
   color: white;
 }
-
 
 input:active,
 input:focus,

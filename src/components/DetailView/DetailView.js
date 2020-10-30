@@ -120,7 +120,9 @@ const DetailView = (props) => {
 						isHistoire ?
 							(
 								<section className={classes.Content}>
-									<h1 className={[classes.Title, classes.TitleShop].join(' ')}>{props.title}</h1>
+									<div className={classes.TitleWrapper}>
+										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title}</h1>
+									</div>
 									<Histoire text={props.description} />
 								</section>
 							) : (

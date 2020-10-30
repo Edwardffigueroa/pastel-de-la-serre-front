@@ -1,8 +1,8 @@
 .RowsNavigation {
   display: none;
   position: absolute;
-  left: 100px;
-  bottom: 30px;
+  left: 78px;
+  bottom: 9%;
 }
 
 .RowsNavigation.Detail {
@@ -38,6 +38,7 @@
 
 @media (min-width: 1920px) {
   .RowsNavigation {
-    bottom: 82px;
+    bottom: 100px;
+    left: 92px;
   }
 }

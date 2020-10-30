@@ -34,23 +34,28 @@ const NotreHistoire = ({ match, history }) => {
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
         speed: 700,
-        slidesPerView: 3,
-        spaceBetween: 0,
+        slidesPerView: 4,
+        spaceBetween: 50,
         loop: false,
         centeredSlides: true,
         slideActiveClass: 'swiper-slide-active',
         slidePrevClass: 'swiper-slide-prev',
+        noSwipingClass: 'hidden-element',
         breakpoints: {
             "@1.5": {
-                slidesPerView: 3,
-            },
-            "@1.0": {
-                slidesPerView: 3,
+                slidesPerView: 4,
+                spaceBetween: 150
             },
             760: {
-                slidesPerView: 3,
+                slidesPerView: 4,
+                spaceBetween: 20,
             },
             320: {
+                spaceBetween: 20,
+                slidesPerView: 3,
+            },
+            120: {
+                spaceBetween: 10,
                 slidesPerView: 2,
             }
         },
@@ -91,7 +96,7 @@ const NotreHistoire = ({ match, history }) => {
     if (mySwiper) {
         mySwiper.on('slideChangeTransitionStart', swiper => {
 
-            if (swiper.realIndex === 2) {
+            if (swiper.realIndex === 2 || slide === 2) {
                 swiper.allowSlideNext = false
             } else {
                 swiper.allowSlideNext = true
@@ -218,11 +223,11 @@ const NotreHistoire = ({ match, history }) => {
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
-                    <div className="swiper-container" style={{ width: '130%' }}>
+                    <div className="swiper-container" style={{ width: '154%' }}>
                         <div className="swiper-wrapper">
                             {items.map((item, i) => {
                                 return (
-                                    <div key={i} className="swiper-slide">
+                                    <div key={i} className={i === items.length - 1 ? "swiper-slide" + "hidden-element" : "swiper-slide"}>
                                         <Card
                                             key={i}
                                             index={i}

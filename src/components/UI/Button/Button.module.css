@@ -13,6 +13,7 @@
   margin: auto;
   width: 100%;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .invert {
@@ -39,7 +40,7 @@
   padding: 10px;
   border-radius: 50%;
   border: 2px solid #303868;
-  background-size: 16px;
+  background-size: 10px;
   background-position: center;
   background-repeat: no-repeat;
   background-image: url('../../../assets/flag_detail.svg');
@@ -104,6 +105,12 @@
   background-image: url('../../../assets/shop.svg');
 }
 
+.Button.Invert:hover {
+  background-color: #303868;
+  border-color: #303868;
+  color: #f8cfc9;
+}
+
 .Button.Invert:hover > .Row {
   background-image: url('../../../assets/shopInvert.svg');
 }
@@ -125,7 +132,8 @@
   .Button {
     background-color: #303868;
     color: #f8cfc9;
-    min-width: 192px;
+    --min-width: 192px;
+    padding: 10px 30px;
     margin: 0;
     width: auto;
   }
@@ -149,14 +157,14 @@
   .Button {
     border-radius: 80px;
     font-size: 18px;
-    min-width: 214px;
+    --min-width: 214px;
     margin: 0;
     box-sizing: border-box;
-    height: 69px;
+    --height: 69px;
   }
 
   Button.Invert:not(.ShopButton) {
-    width: 366px;
+    --width: 366px;
   }
 
   .Button .Row,
