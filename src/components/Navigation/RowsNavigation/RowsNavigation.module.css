@@ -33,12 +33,13 @@
 @media (min-width: 1080px) {
   .RowsNavigation {
     display: flex;
+    left: 21px;
   }
 }
 
 @media (min-width: 1920px) {
   .RowsNavigation {
     bottom: 100px;
-    left: 92px;
+    left: 40px;
   }
 }

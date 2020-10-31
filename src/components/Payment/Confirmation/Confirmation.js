@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../UI/Button/Button';
 
 import classes from './Confirmation.module.css'
 
@@ -16,7 +17,7 @@ const Confirmation = ({ name, email, phone, address, confirm }) => {
 				<p className={classes.InnerTitle}>Adresse de livraison</p>
 				<p className={classes.Text}>{address}</p>
 			</section>
-			<button onClick={confirm} className={classes.Button}>Finaliser</button>
+			<Button clicked={confirm} isCheckout> Finaliser</Button>
 		</div>
 	)
 }

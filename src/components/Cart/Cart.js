@@ -11,13 +11,13 @@ const Cart = ({ products, goCart }) => {
 	let stylo
 	if (_prods.length > 0) {
 		stylo = [classes.Feedback, classes.HasItems].join(' ')
-		console.log('siii')
+		// console.log('siii')
 	} else {
 		stylo = classes.Feedback
-		console.log('noo')
+		// console.log('noo')
 	}
 
-	console.log('myprods', _prods)
+	// console.log('myprods', _prods)
 	return (
 		<div className={classes.Cart} onClick={goCart} >
 			<span className={stylo}></span>

@@ -106,10 +106,10 @@
   }
   .Card {
     border-radius: 40px;
-    --width: 202px;
-    --height: 305px;
-    width: 250px;
-    height: 355px;
+    width: 202px;
+    height: 305px;
+    --width: 250px;
+    --height: 355px;
   }
 
   .Card.Card.DetailView {

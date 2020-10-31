@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import master from '../../../assets/checkout/master.svg'
 import visa from '../../../assets/checkout/visa.svg'
 import Selected from '../../Selected/Selected'
+import Button from '../../UI/Button/Button';
 import classes from './PaymentMethod.module.css'
 
 
@@ -67,9 +68,7 @@ const PaymentMethod = ({ next }) => {
 						<input className={classes.Input} type="number" htmlFor="cvv" name="cvv" />
 					</div>
 				</fieldset>
-				<button onClick={onPayHandler} className={classes.Pay}>Suivant
-					<span className={classes.Row}></span>
-				</button>
+				<Button clicked={onPayHandler} isCheckout>Suivant</Button>
 			</div>
 		</div>)
 }

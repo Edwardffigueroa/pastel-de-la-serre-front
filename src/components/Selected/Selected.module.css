@@ -54,8 +54,8 @@
 
 .Selected > div:first-of-type > div {
   /* Aligning value */
-  display: flex;
-  justify-content: flex-end;
+  /* display: flex;
+  justify-content: flex-end; */
 }
 
 .Selected > div[class*='menu'] {

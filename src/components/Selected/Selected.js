@@ -6,6 +6,7 @@ import classes from './Selected.module.css'
 const Selected = (props) => {
 
 	let options = { label: ' ', value: ' ' }
+	
 	if (props.options) {
 		if (props.options.length > 1) {
 			options = props.options.map(op => ({ value: op, label: op }))

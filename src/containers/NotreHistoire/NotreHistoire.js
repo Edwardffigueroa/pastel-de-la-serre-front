@@ -43,19 +43,23 @@ const NotreHistoire = ({ match, history }) => {
         noSwipingClass: 'hidden-element',
         breakpoints: {
             "@1.5": {
-                slidesPerView: 4,
-                spaceBetween: 150
+                spaceBetween: 0,
+                slidesPerView: 4
+            },
+            1080: {
+                spaceBetween: 10,
+                slidesPerView: 4
             },
             760: {
-                slidesPerView: 4,
-                spaceBetween: 20,
+                spaceBetween: -150,
+                slidesPerView: 4
             },
             320: {
-                spaceBetween: 20,
+                spaceBetween: 0,
                 slidesPerView: 3,
             },
             120: {
-                spaceBetween: 10,
+                spaceBetween: 0,
                 slidesPerView: 2,
             }
         },
@@ -70,13 +74,12 @@ const NotreHistoire = ({ match, history }) => {
             })
 
         const _prods = Cart.getProducts()
-        console.log(_prods)
         setProducts(_prods)
 
     }, [])
 
-
     const changeSlide = (value) => {
+
         setSlide(value)
         mySwiper.update()
     }

@@ -42,11 +42,21 @@
 
 .Close {
   position: absolute;
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 8px;
   right: 8px;
   border: 2px solid #f8cfc9;
   border-radius: 100px;
-  padding: 10px 13px;
+  box-sizing: border-box;
+}
+
+.Close img {
+  width: 40%;
 }
 
 .ImageWrapper {

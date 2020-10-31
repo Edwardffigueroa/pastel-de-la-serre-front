@@ -20,16 +20,3 @@
   border: none;
   border-bottom: 1px solid #626262;
 }
-
-.TicketDetails button {
-  width: 100%;
-  height: 69px;
-  margin-top: 20px;
-  font-size: 22px;
-  border: none;
-  font-weight: bold;
-  color: white;
-  border-radius: 40px;
-  font-family: 'Helvetica neue', Helvetica, sans-serif;
-  background-color: #1f86fc;
-}

@@ -107,6 +107,7 @@
 
   .CheckoutWrapper {
     width: 85%;
+    height: 600px;
     max-width: 1110px;
     padding: 40px;
     border-radius: 40px;
@@ -120,7 +121,7 @@
 
   .Content {
     transform: translateY(-40px);
-    height: auto;
+    height: 100%;
   }
 
   .Content > div {
