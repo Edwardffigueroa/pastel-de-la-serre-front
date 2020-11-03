@@ -28,6 +28,9 @@
   color: white;
   line-height: 1.2rem;
   text-align: justify;
+  scrollbar-width: thin;
+  scrollbar-color: darkgray lightgray;
+  scrollbar-darkshadow-color: #bebebe;
 }
 
 @media (min-width: 1080px) {

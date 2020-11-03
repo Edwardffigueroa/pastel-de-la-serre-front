@@ -84,6 +84,8 @@
 .TitleWrapper p {
   height: 92px;
   overflow-y: scroll;
+  scrollbar-color: darkgray lightgray;
+  scrollbar-width: thin;
 }
 
 /* ================ Slider css for Active and Previous Card ========================= */
