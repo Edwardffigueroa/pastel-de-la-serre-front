@@ -177,6 +177,7 @@
   .TitleWrapper {
     width: 60%;
     margin-left: 50px;
+    margin-bottom: 50px;
   }
   .TitleWrapper h1 {
     font-size: 60px;
