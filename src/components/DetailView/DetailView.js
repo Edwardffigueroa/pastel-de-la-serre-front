@@ -175,7 +175,7 @@ const DetailView = (props) => {
 										<Button
 											isShop
 											isSecond
-											clicked={exitHandler}>Continuez a la mes Achats</Button>
+											clicked={exitHandler}>Continuer mes Achats</Button>
 									</div>
 									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
 										<Button> {isShop ? 'Achater' : 'Réservez'}</Button>

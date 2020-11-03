@@ -43,3 +43,15 @@
     align-items: center;
   }
 }
+
+@media (min-width: 1080px) {
+  .NavigationItem span {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .NavigationItem span {
+    font-size: 16px;
+  }
+}

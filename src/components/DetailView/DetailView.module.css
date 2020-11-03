@@ -224,10 +224,16 @@
     align-items: center;
   }
 
+  .Shop.DetailView {
+    display: flex;
+    width: 100%;
+    padding-top: 75px;
+  }
+
   .DetailWrapper {
     position: relative;
     width: 1029px;
-    height: 540px;
+    height: 504px;
     display: flex;
     flex-direction: row;
     border-radius: 40px;
@@ -265,13 +271,14 @@
   }
 
   .Content {
+    padding: 80px 40px 0px 40px;
     flex-basis: 50%;
     box-sizing: border-box;
   }
 
   .TitleWrapper .Title {
-    line-height: 66px;
-    font-size: 70px;
+    line-height: 45px;
+    font-size: 50px;
   }
 
   .Price {

@@ -79,7 +79,6 @@ const NotreHistoire = ({ match, history }) => {
     }, [])
 
     const changeSlide = (value) => {
-
         setSlide(value)
         mySwiper.update()
     }

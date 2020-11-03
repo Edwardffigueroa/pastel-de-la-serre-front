@@ -79,7 +79,7 @@
   background-image: url('../../../assets/flag_detailInvert.svg');
 }
 
-.Button.Button.ShopButton {
+.Button.ShopButton {
   min-width: auto;
 }
 
@@ -153,6 +153,10 @@
     width: auto;
   }
 
+  .Button.ShopButton {
+    padding: 10px 20px;
+  }
+
   .Row {
     background-image: url('../../../assets/images/nav/row.svg');
   }
@@ -184,8 +188,8 @@
 
   .Button .Row,
   .Button.Invert .Row {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 
   .ButtonOverImage {
