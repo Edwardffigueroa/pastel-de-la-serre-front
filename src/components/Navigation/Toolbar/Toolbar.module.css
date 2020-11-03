@@ -19,7 +19,7 @@
 
 .Logo {
   height: 80%;
-  width: 50%;
+  width: 55%;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
   width: 77px;
   margin: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .Beside label {
