@@ -39,7 +39,7 @@
 
 @media (min-width: 1920px) {
   .RowsNavigation {
-    bottom: 100px;
+    --bottom: 100px;
     left: 40px;
   }
 }

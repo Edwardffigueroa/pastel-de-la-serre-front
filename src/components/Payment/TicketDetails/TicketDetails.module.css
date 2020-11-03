@@ -1,8 +1,11 @@
 .TicketDetails {
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.TicketDetails h3 {
+  margin: 10px 0 ;
 }
 
 .TicketDetails label {
