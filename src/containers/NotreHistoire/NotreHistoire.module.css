@@ -84,7 +84,7 @@
 .TitleWrapper p {
   height: 92px;
   overflow-y: scroll;
-  scrollbar-color: darkgray lightgray;
+  scrollbar-color: darkgray transparent;
   scrollbar-width: thin;
 }
 
