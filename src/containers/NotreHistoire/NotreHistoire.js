@@ -13,8 +13,8 @@ import DetailView from '../../components/DetailView/DetailView'
 
 import Card from '../../components/UI/Card/Card'
 
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
+import Swiper from 'swiper'
+import 'swiper/swiper-bundle.css'
 import Checkout from '../Checkout/Checkout'
 import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
 
@@ -189,6 +189,11 @@ const NotreHistoire = ({ match, history }) => {
         Cart.addItem(product)
     }
 
+
+    const changeSelectedHandler = value => {
+        console.log(value)
+    }
+
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
@@ -261,6 +266,7 @@ const NotreHistoire = ({ match, history }) => {
                         changeItem={changeItemHandler}
                         closed={e => setItemSelected(false)}
                         description={itemSelected.description}
+                        changeSelected={changeSelectedHandler}
                         addItem={addItemHandler}
                     />) : null}
             </div>

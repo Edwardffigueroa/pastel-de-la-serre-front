@@ -15,6 +15,12 @@ import IconList from './IconList/IconList'
 import Histoire from '../Histoire/Histoire'
 import Slider from 'react-slick'
 
+import Card from '../UI/Card/Card'
+import Swiper from 'swiper'
+import 'swiper/swiper-bundle.css'
+
+
+
 const DetailView = (props) => {
 
 	const [article, setArticle] = useState(null)
@@ -29,6 +35,35 @@ const DetailView = (props) => {
 	const currentPath = history.location.pathname
 	const isShop = props.currentActive === 2
 	const isHistoire = props.currentActive === 0
+
+
+	const [slide, setSlide] = useState(0)
+	const similarSwiper = new Swiper(".swiper-container-similarItems", {
+		initialSlide: slide,
+		speed: 700,
+		slidesPerView: 2,
+		spaceBetween: -50,
+		loop: false,
+		centeredSlides: false,
+		slideActiveClass: 'swiper-slide-active',
+		slidePrevClass: 'swiper-slide-prev',
+		noSwipingClass: 'hidden-element',
+		breakpoints: {
+			1080: {
+				spaceBetween: 50,
+				slidesPerView: 2
+			},
+			760: {
+				slidesPerView: 2
+			},
+			320: {
+				slidesPerView: 2,
+			},
+			120: {
+				slidesPerView: 2,
+			}
+		},
+	})
 
 	useEffect(() => {
 		fetch('../../data/shop.json')
@@ -93,6 +128,32 @@ const DetailView = (props) => {
 		slidesToScroll: 1
 	}
 
+	const changeSlide = (value) => {
+		setSlide(value)
+		similarSwiper.update()
+	}
+
+	const goCardHandler = number => {
+		props.changeSelected(number)
+		setSlide(number)
+		similarSwiper.slideTo(number)
+		similarSwiper.update()
+	}
+
+
+	if (similarSwiper) {
+		similarSwiper.on('slideChangeTransitionStart', swiper => {
+
+			if (swiper.realIndex === 2 || slide === 2) {
+				swiper.allowSlideNext = false
+			} else {
+				swiper.allowSlideNext = true
+			}
+
+			changeSlide(swiper.activeIndex)
+		});
+	}
+
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
 			article ? article.picture.map(im => <div><img src={im} alt={props.title} /> </div>) : null
@@ -148,9 +209,27 @@ const DetailView = (props) => {
 												<div className={classes.SimilarItems}>
 													<CardList
 														items={items} />
-													<InfiniteSlider
-														detailView
-														items={items} />
+													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
+														<div className="swiper-wrapper">
+															{items.map((item, i) => {
+																return (
+																	<div key={i} className={i === items.length - 1 ? "swiper-slide" + "hidden-element" : "swiper-slide"}>
+																		<Card
+																			key={i}
+																			index={i}
+																			active={slide}
+																			id={item._id}
+																			title={item.title}
+																			image={item.picture}
+																			clicked={goCardHandler}
+																			detailView
+																			hide={i === items.length - 1 ? true : false}>
+																		</Card>
+																	</div>
+																);
+															})}
+														</div>
+													</div>
 												</div>
 											) : (
 												<div className={classes.ProductOptions}>
