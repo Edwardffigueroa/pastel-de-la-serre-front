@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px;
+
+  background-color: #3c3c3c;
+  border-radius: 40px;
 }
 
 .Payment h3 {
@@ -73,7 +76,6 @@
 .Payment fieldset select option {
   background-color: transparent;
 }
-
 
 .Input:last-of-type {
   margin: 0;

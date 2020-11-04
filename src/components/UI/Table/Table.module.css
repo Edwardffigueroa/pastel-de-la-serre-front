@@ -53,7 +53,11 @@
 
   .List {
     margin: 30px;
+    height: 547px;
+    overflow-y: auto;
   }
+
+
 }
 
 @media (min-width: 1080px) {
@@ -65,5 +69,6 @@
     display: flex;
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     align-items: center;
+    bottom: 30px;
   }
 }
