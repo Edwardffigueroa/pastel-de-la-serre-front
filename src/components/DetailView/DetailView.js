@@ -11,11 +11,14 @@ import { a, useSpring } from 'react-spring'
 import Selected from '../Selected/Selected'
 import IconList from './IconList/IconList'
 import Histoire from '../Histoire/Histoire'
-import Slider from 'react-slick'
 
 import Card from '../UI/Card/Card'
 import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
+
+import Slider from 'react-slick'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 
 
