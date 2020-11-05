@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import closeX from '../../assets/detailView/close.svg'
 import logo from '../../assets/images/logo.svg'
 import classes from './Modal.module.css'

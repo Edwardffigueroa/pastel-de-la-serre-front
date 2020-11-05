@@ -3,12 +3,12 @@ import React from 'react';
 import classes from './Item.module.css'
 import Counter from '../../../Counter/Counter'
 
-const Item = ({ id, name, price, amount, description, onAdded, onDeleted, onDeleteAll }) => {
+const Item = ({ id, name, price, amount, size, description, onAdded, onDeleted, onDeleteAll }) => {
 	return (
 		<div className={classes.ItemWrapper}>
 			<div className={classes.Item}>
 				<div className={classes.NameWrapper}>
-					<p>{name}</p>
+					<p>{name} - {size}</p>
 					<p className={classes.MobilePrice}>{price ? price + ' €' : '70 €'}</p>
 				</div>
 				<Counter id={id} quantity={amount} increase={onAdded} decrease={onDeleted} />

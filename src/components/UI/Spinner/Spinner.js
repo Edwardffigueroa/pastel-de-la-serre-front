@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSpring } from 'react-spring';
 
 import logo from '../../../assets/images/logo.svg'
 import classes from './Spinner.module.css'

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Booking.module.css'
+// import classes from './Booking.module.css'
 
 const Booking = (props) => {
 	return (

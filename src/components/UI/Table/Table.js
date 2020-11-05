@@ -6,15 +6,13 @@ import Cart from '../../../utils/Cart'
 import backRow from '../../../assets/checkout/back.svg'
 import { useHistory } from 'react-router-dom'
 
-const Table = props => {
+const Table = ({ refreshCartState }) => {
 
 	const _prods = Cart.getProducts()
-	console.log('Table', _prods)
+	const _price = Cart.getPrice()
 	const [products, setProducts] = useState(_prods)
-	const [tours, setTours] = useState([])
-	const [totalPrice, setTotalPrice] = useState(0)
+	const [totalPrice, setTotalPrice] = useState(_price)
 	const history = useHistory()
-
 
 	const goBackHandler = e => {
 		history.goBack()
@@ -24,18 +22,22 @@ const Table = props => {
 		Cart.increaseItem(id, size)
 		setProducts(Cart.products)
 		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
 	}
 
 	const decreaseItemHandler = (id, size) => {
 		Cart.decreaaseItem(id, size)
 		setProducts(Cart.products)
 		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
+
 	}
 
 	const deleteAllHandler = (id, size) => {
 		Cart.deleteAll(id, size)
 		setProducts(Cart.products)
 		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
 	}
 
 	const value = Object.values(products)
@@ -45,6 +47,7 @@ const Table = props => {
 		const _item = Object.keys(current.amount).map((size, index) =>
 			<Item
 				key={current.id + current.amount[size]}
+				size={size}
 				id={current.id}
 				name={current.name}
 				price={current.price}

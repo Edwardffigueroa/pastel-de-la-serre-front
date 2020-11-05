@@ -1,21 +1,19 @@
-import React, { useState } from 'react';
-import Selected from '../Selected/Selected';
+import React, { useState } from 'react'
 
 import PaymentMethod from './PaymentMethod/PaymentMethod'
 import classes from './Payment.module.css'
-import TicketDetails from './TicketDetails/TicketDetails';
-import Confirmation from './Confirmation/Confirmation';
+import TicketDetails from './TicketDetails/TicketDetails'
+import Confirmation from './Confirmation/Confirmation'
 
-import Modal from '../Modal/Modal'
 
 const Payment = ({ confirmed, confirmHandler }) => {
 
 	const [view, setView] = useState(0)
-	const [card, setCard] = useState({})
+	// const [card, setCard] = useState({})
 	const [details, setDetails] = useState({})
 
 	const paymentHandler = card => {
-		setCard(card)
+		// setCard(card)
 		setView(2)
 	}
 
