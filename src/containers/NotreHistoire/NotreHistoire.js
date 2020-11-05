@@ -185,10 +185,12 @@ const NotreHistoire = ({ match, history }) => {
     const addItemHandler = product => {
 
         setProducts(prev => ([...prev, product]))
-
         Cart.addItem(product)
     }
 
+    const refreshCartStateHandler = _prods => {
+        setProducts(_prods)
+    }
 
     const changeSelectedHandler = value => {
         console.log(value)
@@ -270,7 +272,8 @@ const NotreHistoire = ({ match, history }) => {
                         addItem={addItemHandler}
                     />) : null}
             </div>
-            {!match.isExact ? <Checkout /> : null}
+            {!match.isExact ? <Checkout
+                refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );
 }

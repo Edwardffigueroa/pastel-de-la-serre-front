@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
 import classes from './DetailView.module.css'
-import InfiniteSlider from '../Silder/InfiniteSlider'
 import CardList from '../CardList/CardList'
 
 import closeX from '../../assets/detailView/close.svg'
 import Button from '../UI/Button/Button'
 import RowsNavigation from '../Navigation/RowsNavigation/RowsNavigation'
 
-import { useHistory } from 'react-router-dom'
 import { a, useSpring } from 'react-spring'
 import Selected from '../Selected/Selected'
 import IconList from './IconList/IconList'
@@ -31,8 +29,6 @@ const DetailView = (props) => {
 	const [size, setSize] = useState(0)
 	const [quantity, setQuantity] = useState(0)
 
-	const history = useHistory()
-	const currentPath = history.location.pathname
 	const isShop = props.currentActive === 2
 	const isHistoire = props.currentActive === 0
 

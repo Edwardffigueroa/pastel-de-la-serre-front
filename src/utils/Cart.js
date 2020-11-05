@@ -55,10 +55,20 @@ class Cart {
             savePersistance(CONSTANTS.TOURS, this.tours)
         }
 
+        if (prevPrice) {
+            this.totalPrice = prevPrice
+        } else {
+            savePersistance(CONSTANTS.PRICE, this.totalPrice)
+        }
+
     }
 
     getProducts() {
         return this.products || []
+    }
+
+    getPrice() {
+        return this.totalPrice || 0
     }
 
     increaseItem(prodId, size) {
@@ -66,21 +76,31 @@ class Cart {
         found.amount[size]++
         const updatedProds = this.products.map(p => p.id === prodId ? found : p)
         this.products = updatedProds
+        this.totalPrice = this.totalPrice + found.price
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, updatedProds)
     }
 
     decreaaseItem(prodId, size) {
+
         const found = this.products.find(p => p.id === prodId)
+
         if (found.amount[size] <= 1) {
             delete found.amount[size]
-            if (Object.keys(found.amount).length < 1) {
-                console.log('No quedan de estos ')
-            }
         } else {
             found.amount[size]--
         }
-        const updatedProds = this.products.map(p => p.id === prodId ? found : p)
+
+        let updatedProds
+        if (Object.keys(found.amount).length > 0) {
+            updatedProds = this.products.map(p => p.id === prodId ? found : p)
+        } else {
+            updatedProds = this.products.filter(p => p.id !== prodId)
+        }
+
         this.products = updatedProds
+        this.totalPrice = this.totalPrice - found.price
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, updatedProds)
     }
 
@@ -104,9 +124,19 @@ class Cart {
 
     deleteAll(prodId, size) {
         const found = this.products.find(p => p.id === prodId)
+        const _price = found.amount[size] * found.price
+
         delete found.amount[size]
-        const updatedProds = this.products.map(p => p.id === prodId ? found : p)
+        let updatedProds
+        if (Object.keys(found.amount).length > 0) {
+            updatedProds = this.products.map(p => p.id === prodId ? found : p)
+        } else {
+            updatedProds = this.products.filter(p => p.id !== prodId)
+        }
+
         this.products = updatedProds
+        this.totalPrice = this.totalPrice - _price
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, updatedProds)
     }
 
@@ -115,6 +145,7 @@ class Cart {
         const prodSize = Object.keys(product.amount)[0]
         const quantity = Object.values(product.amount)[0]
         const found = this.products.find(p => p.id === product.id)
+        const _price = product.price * quantity
 
         if (!found) {
             this.products.push(product)
@@ -131,6 +162,8 @@ class Cart {
             this.products = updatedProds
         }
 
+        this.totalPrice = this.totalPrice + _price
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, this.products)
     }
 

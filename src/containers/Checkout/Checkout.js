@@ -11,13 +11,14 @@ import Shadow from '../../components/UI/Shadow/Shadow'
 import Modal from '../../components/Modal/Modal'
 
 
-const Checkout = (props) => {
+const Checkout = ({ refreshCartState }) => {
 
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
-	const [entrySpring, setEntrySpring] = useSpring(() => ({ opacity: 0 }))
 	const history = useHistory()
-	const currentPath = history.location.pathname
-	const container = currentPath.split('/detail')[0]
+	
+	// const [entrySpring, setEntrySpring] = useSpring(() => ({ opacity: 0 }))
+	// const currentPath = history.location.pathname
+	// const container = currentPath.split('/detail')[0]
 
 	const [confirmed, setConfirmed] = useState(false)
 
@@ -47,7 +48,8 @@ const Checkout = (props) => {
 					<div className={classes.CheckoutWrapper}>
 						<h1 className={classes.Title}>Checkout</h1>
 						<section className={classes.Content}>
-							<Table />
+							<Table
+								refreshCartState={refreshCartState} />
 							<section className={classes.Payment}>
 								<Payment confirmed={confirmed} confirmHandler={confirmHandler} />
 							</section>
