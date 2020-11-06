@@ -101,8 +101,7 @@
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
 }
 
-.Price,
-.Title.TitleShop {
+.Price, .Title.TitleShop {
   color: #f8cfc9;
 }
 
@@ -131,7 +130,7 @@
   width: 100%;
 }
 
-.SimilarItems > div:last-of-type {
+.SimilarItems>div:last-of-type {
   display: none;
 }
 
@@ -141,7 +140,7 @@
   flex-direction: column;
 }
 
-.ProductOptions > div:first-of-type {
+.ProductOptions>div:first-of-type {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -154,6 +153,7 @@
 /*
   Similar Items
 */
+
 .SimilarItems div[class^='swiper-slide'] {
   opacity: 1;
   transform: scale(0.9);
@@ -175,73 +175,49 @@
     flex-direction: row;
     justify-content: center;
   }
-
   .Shop.DetailWrapper {
     width: calc(100vw - 100px);
   }
-
   .ImageWrapper {
     height: 259px;
   }
-
   .Shop.ImageWrapper {
+    /* height: 400px; */
     height: 400px;
   }
-
   .DetailWrapper {
     height: 100%;
   }
-
   .Details {
     justify-content: space-between;
     width: 47%;
   }
-
   .TitleWrapper .Title {
     font-size: 60px;
   }
-
-  .ProductOptions > div:first-of-type {
+  .ProductOptions>div:first-of-type {
     justify-content: flex-start;
   }
-
   .SimilarItems {
     overflow: hidden;
     margin: 50px 0;
     width: calc(100% + 40px);
-    mask-image: linear-gradient(
-      to right,
-      transparent,
-      rgba(0, 0, 0, 1) 0.3%,
-      rgba(0, 0, 0, 1) 70%,
-      transparent
-    );
-    -webkit-mask-image: linear-gradient(
-      to right,
-      transparent,
-      rgba(0, 0, 0, 1) 1%,
-      rgba(0, 0, 0, 1) 90%,
-      transparent
-    );
+    mask-image: linear-gradient( to right, transparent, rgba(0, 0, 0, 1) 0.3%, rgba(0, 0, 0, 1) 70%, transparent);
+    -webkit-mask-image: linear-gradient( to right, transparent, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 90%, transparent);
   }
-
-  .SimilarItems > div:first-of-type {
+  .SimilarItems>div:first-of-type {
     display: none;
   }
-
-  .SimilarItems > div:last-of-type {
+  .SimilarItems>div:last-of-type {
     display: flex;
     height: 147px;
   }
-
   .Shop.DesktopControllers {
     display: flex;
   }
-
-  .Shop.DesktopControllers > button:last-of-type {
+  .Shop.DesktopControllers>button:last-of-type {
     margin-left: 10px;
   }
-
   .Shop.CTA {
     display: none;
   }
@@ -255,46 +231,47 @@
     margin: 0;
     align-items: center;
   }
-
   .Shop.DetailView {
     display: flex;
     width: 100%;
     padding-top: 75px;
   }
-
   .DetailWrapper {
     position: relative;
-    width: 1029px;
+    width: 70vw;
     height: 504px;
     display: flex;
     flex-direction: row;
     border-radius: 40px;
   }
-
   .DetailWrapper::before {
     border-radius: 40px;
   }
-
   .Shop.DetailWrapper {
-    width: 1029px;
+    /* width: 1029px; */
+    width: 85vw;
+    max-width: 1698px;
+    height: 80vh;
+    max-height: 831px;
   }
-
   .ImageWrapper {
     position: relative;
     flex-basis: 50%;
     height: 100%;
     border-radius: 40px 0 0 40px;
   }
-
   .Shop.ImageWrapper {
     height: 100%;
   }
-
-  .ImageWrapper > div > div {
-    --height: 100%;
-    height: 505px;
+  .Shop.ImageWrapper .SliderShop {
+    height: 100%;
   }
-
+  .slick-slide {}
+  .ImageWrapper>div>div {
+    --height: 100%;
+    height: 100%;
+    /* height: 505px; */
+  }
   .ImageCTA {
     display: flex;
     width: 100%;
@@ -302,33 +279,27 @@
     position: absolute;
     bottom: 20px;
   }
-
   .Content {
     padding: 80px 40px 0px 40px;
     flex-basis: 50%;
     width: 50%;
     box-sizing: border-box;
   }
-
   .TitleWrapper .Title {
     line-height: 45px;
     font-size: 50px;
   }
-
   .Price {
     margin: 10px 0;
   }
-
   .SimilarItems {
     margin: 15px 0;
     margin-bottom: -10px;
     width: calc(100% + 40px);
   }
-
   .CTA {
     display: none;
   }
-
   .Close {
     display: flex;
     position: absolute;
@@ -339,7 +310,6 @@
     padding: 10px;
     border-radius: 50%;
   }
-
   .Navigations {
     display: flex;
     position: absolute;

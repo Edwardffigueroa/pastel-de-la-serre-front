@@ -17,7 +17,7 @@ import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
 
 import Slider from 'react-slick'
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 
@@ -124,7 +124,9 @@ const DetailView = (props) => {
 		infinite: true,
 		speed: 500,
 		slidesToShow: 1,
-		slidesToScroll: 1
+		slidesToScroll: 1,
+		// centerMode: true,
+		variableWidth: true
 	}
 
 	const changeSlide = (value) => {
@@ -155,7 +157,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			article ? article.picture.map(im => <div><img src={im} alt={props.title} /> </div>) : null
+			article ? article.picture.map(im => <div style={{ width: '15%' }}><img src={im} alt={props.title} /> </div>) : null
 		}</Slider>
 	) : null
 
