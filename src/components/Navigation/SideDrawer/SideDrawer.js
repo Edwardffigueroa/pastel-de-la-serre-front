@@ -16,7 +16,7 @@ const sideDrawer = (props) => {
             <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}>
                 <nav className={classes.NavigationItems}>
-                    <NavigationItems goSection={props.goSectionHandler} clicked={props.closed} height="auto" />
+                    <NavigationItems options={props.options} goSection={props.goSectionHandler} clicked={props.closed} height="auto" />
                     <span onClick={props.closed}>
                         <img className={classes.closeX} src={closeX} alt="close" />
                     </span>

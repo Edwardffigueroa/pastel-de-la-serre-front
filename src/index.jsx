@@ -1,16 +1,21 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
+import React, { lazy, Suspense } from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+import './index.css'
+// import App from './App'
+import * as serviceWorker from './serviceWorker'
+import Spinner from './components/UI/Spinner/Spinner'
+
+const App = lazy(() => import('./App'))
 
 ReactDOM.render(
-    <BrowserRouter>
+  <BrowserRouter>
+    <Suspense fallback={<Spinner />}>
       <App />
-    </BrowserRouter>,
-  document.getElementById("root")
-);
+    </Suspense>
+  </BrowserRouter>,
+  document.getElementById('root')
+)
 
-serviceWorker.unregister();
+serviceWorker.unregister()

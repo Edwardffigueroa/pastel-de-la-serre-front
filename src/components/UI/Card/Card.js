@@ -8,8 +8,15 @@ const Card = props => {
     const responsiveWidth = props.noFlag ? { flexBasis: '100%' } : { flexBasis: '80%' }
     const isDetailView = props.detailView ? [classes.Card, classes.DetailView].join(' ') : [classes.Card].join(' ')
 
+
     return (
-        <div onClick={e => props.clicked ? props.clicked(e, index, props.id) : console.log('Other item')} className={isDetailView} style={props.hide ? { display: 'none' } : { display: 'flex' }}>
+        <div
+            className={isDetailView}
+            onClick={e => props.clicked
+                ? props.clicked(e, index, props.id)
+                : console.log('Other item')}
+            style={{ backgroundImage: `url('${props.image}')` }}>
+
             <section className={classes.Header}>
                 <div className={classes.Marker} style={responsiveWidth}>
                     <h3 className={classes.Title}>{props.title}</h3>

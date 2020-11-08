@@ -16,20 +16,29 @@ import Card from '../../components/UI/Card/Card'
 import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
 import Checkout from '../Checkout/Checkout'
+
 import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
 
 
 import Cart from '../../utils/Cart'
 
-const NotreHistoire = ({ match, history }) => {
+const NotreHistoire = ({ match, history, general, histoire }) => {
 
-    const [slide, setSlide] = useState(0)
-    const [items, setItems] = useState([])
+    const [lang, setLang] = useState('fr')
+    const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
+    const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
+    console.log(histoireTrans)
+
+    const [slide, setSlide] = useState(1)
+    const [items, setItems] = useState(generalTrans.hero)
+    const current = generalTrans.hero[slide]
 
     const [itemSelected, setItemSelected] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0)
 
     const [products, setProducts] = useState([])
+    // console.log(generalTrans)
+    useEffect(() => { setSlide(0) }, [])
 
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
@@ -40,7 +49,6 @@ const NotreHistoire = ({ match, history }) => {
         centeredSlides: true,
         slideActiveClass: 'swiper-slide-active',
         slidePrevClass: 'swiper-slide-prev',
-        noSwipingClass: 'hidden-element',
         breakpoints: {
             "@1.5": {
                 spaceBetween: 0,
@@ -65,19 +73,6 @@ const NotreHistoire = ({ match, history }) => {
         },
     })
 
-    useEffect(() => {
-        fetch('../../data/home.json')
-            .then(res => res.json())
-            .then(data => {
-                setItems(data)
-                setSlide(0)
-            })
-
-        const _prods = Cart.getProducts()
-        setProducts(_prods)
-
-    }, [])
-
     const changeSlide = (value) => {
         setSlide(value)
         mySwiper.update()
@@ -93,7 +88,6 @@ const NotreHistoire = ({ match, history }) => {
             history.push('/')
         }
     }
-
 
     if (mySwiper) {
         mySwiper.on('slideChangeTransitionStart', swiper => {
@@ -183,7 +177,6 @@ const NotreHistoire = ({ match, history }) => {
     const goBooking = e => history.push('/booking')
 
     const addItemHandler = product => {
-
         setProducts(prev => ([...prev, product]))
         Cart.addItem(product)
     }
@@ -196,16 +189,19 @@ const NotreHistoire = ({ match, history }) => {
         console.log(value)
     }
 
+    const languageHandler = lang => setLang(lang)
+
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
+
 
     let background = ' '
     if (items.length > 0) {
         if (itemSelected && slide === 2) {
             background = `url(${detailProdBg})`
         } else {
-            background = `url(${items[slide].background})`
+            background = `url(${current.background_hero.url})`
         }
     }
 
@@ -213,9 +209,12 @@ const NotreHistoire = ({ match, history }) => {
         <Layout
             products={products}
             currentActive={slide}
+            languageHandler={languageHandler}
             goSectionHandler={goSectionHandler}
             goCartHandler={goCartHandler}
-            goHomeHandler={goHomeHandler}>
+            goHomeHandler={goHomeHandler}
+            navOptions={generalTrans.Navigation}
+        >
             <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: background }}>
                 <DotNav
                     hide={itemSelected}
@@ -224,11 +223,11 @@ const NotreHistoire = ({ match, history }) => {
                 <Shadow />
                 <section>
                     <div className={classes.TitleWrapper}>
-                        <h1>{items.length > 0 ? items[slide].title : 'Plongez <br /> dans le pays<br /> de Cocagne'}</h1>
-                        <p>{items.length > 0 ? items[slide].description : 'Plongez <br /> dans le pays<br /> de Cocagne'}</p>
+                        <h1>{current.title_1}<br />{current.title_2}<br />{current.title_3}</h1>
+                        <p>{current.description}</p>
                         <Button
                             clicked={CTAHandler}
-                            invert={slide === 2 ? true : false}>{items.length > 0 ? items[slide].button : 'Réservez'} </Button>
+                            invert={slide === 2 ? true : false}>{current.button_name} </Button>
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
@@ -236,16 +235,16 @@ const NotreHistoire = ({ match, history }) => {
                         <div className="swiper-wrapper">
                             {items.map((item, i) => {
                                 return (
-                                    <div key={i} className={i === items.length - 1 ? "swiper-slide" + "hidden-element" : "swiper-slide"}>
+                                    <div key={i} className={"swiper-slide"}>
                                         <Card
                                             key={i}
                                             index={i}
                                             active={slide}
                                             id={item._id}
-                                            title={item.title}
-                                            image={item.picture}
+                                            title={generalTrans.slider_navigation[i].subtitle}
+                                            image={generalTrans.slider_navigation[i].image.formats.small.url}
                                             clicked={goToDetail}
-                                            hide={i === items.length - 1 ? true : false}>
+                                        >
                                         </Card>
                                     </div>
                                 );
@@ -256,14 +255,15 @@ const NotreHistoire = ({ match, history }) => {
                 </section>
                 {itemSelected ? (
                     <DetailView
+                        histoire={histoireTrans.body}
                         items={items}
                         currentActive={slide}
                         index={indexSelected}
                         goBooking={goBooking}
                         time={itemSelected.time}
-                        title={itemSelected.title}
+                        title={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         level={itemSelected.level}
-                        img={itemSelected.picture}
+                        img={histoireTrans.image.url}
                         people={itemSelected.people}
                         changeItem={changeItemHandler}
                         closed={e => setItemSelected(false)}

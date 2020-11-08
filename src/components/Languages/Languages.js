@@ -5,7 +5,10 @@ import classes from './Languages.module.css'
 const Languages = (props) => {
 
 	const [t, seti18n] = useState('fr');
-	const changeLanguage = e => seti18n(e.target.textContent)
+	const changeLanguage = e => {
+		seti18n(e.target.textContent)
+		props.changeLang(e.target.textContent)
+	}
 
 	// const changeLanguage = e => console.log(e.target)
 

@@ -167,6 +167,9 @@ const DetailView = (props) => {
 		</div>
 	) : null
 
+	const breaker = <br />
+
+	console.log(article)
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
@@ -174,7 +177,6 @@ const DetailView = (props) => {
 					<section
 						className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}
 						style={!isShop ? { backgroundImage: `url(${props.img})` } : null}>
-
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
@@ -183,9 +185,9 @@ const DetailView = (props) => {
 							(
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title}</h1>
+										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}</h1>
 									</div>
-									<Histoire text={props.description} />
+									<Histoire text={props.histoire} />
 								</section>
 							) : (
 								<section className={classes.Content}>

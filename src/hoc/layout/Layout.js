@@ -14,6 +14,7 @@ const Layout = props => {
     return (
         <div>
             <SideDrawer
+                options={props.navOptions}
                 products={props.products}
                 open={showSideDrawer}
                 closed={sideDrawerClosedHandler}
@@ -23,12 +24,14 @@ const Layout = props => {
                 {props.children}
             </main>
             <Toolbar
+                options={props.navOptions}
                 currentActive={props.currentActive}
                 products={props.products}
                 drawerToggleClicked={sideDrawerToggleHandler}
                 goHomeHandler={props.goHomeHandler}
                 goCartHandler={props.goCartHandler}
                 goSectionHandler={props.goSectionHandler}
+                languageHandler={props.languageHandler}
             />
         </div>
     )
