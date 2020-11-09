@@ -34,6 +34,9 @@
   border-radius: 15px;
   background-color: transparent;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* overflow: overlay; */
 }
 
 .DetailWrapper::before {
@@ -52,7 +55,9 @@
 }
 
 .Content {
-  padding: 40px;
+  padding: 25px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .ImageWrapper {
@@ -72,7 +77,7 @@
 
 .TitleWrapper .Title {
   font-size: 35px;
-  margin: 0;
+  margin-bottom: 25px;
   color: white;
   font-family: 'Operetta 18';
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
@@ -96,7 +101,9 @@
 }
 
 .DesktopControllers {
-  display: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 10px;
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
 }
@@ -147,6 +154,7 @@
 }
 
 .CTA {
+  display: none;
   margin-top: 20px;
 }
 
@@ -168,7 +176,30 @@
   opacity: 0;
 }
 
+.Navigations {
+  display: flex;
+  justify-content: center;
+  order: -2;
+  margin-bottom: 20px;
+}
+
+.Shop.ImageWrapper .SliderShop {
+  height: 100%;
+}
+
+.Shop.DesktopControllers>button:nth-child(1) {
+  margin: 30px;
+  width: 55%;
+}
+
+.Shop.DesktopControllers>button:nth-child(2) {
+  width: 75%;
+}
+
 @media (min-width: 768px) {
+  .ImageWrapper {
+    min-height: 600px;
+  }
   .DetailView {
     height: calc(100vh - 160px);
     display: flex;
@@ -176,7 +207,10 @@
     justify-content: center;
   }
   .Shop.DetailWrapper {
+    /* max-height: 140%; */
     width: calc(100vw - 100px);
+    min-height: 1224px;
+    /* overflow: auto; */
   }
   .ImageWrapper {
     height: 259px;
@@ -193,9 +227,11 @@
     width: 47%;
   }
   .TitleWrapper .Title {
-    font-size: 60px;
+    font-size: 32px;
+    margin: 25px 0px;
   }
   .ProductOptions>div:first-of-type {
+    margin: 25px 0px;
     justify-content: flex-start;
   }
   .SimilarItems {
@@ -214,12 +250,23 @@
   }
   .Shop.DesktopControllers {
     display: flex;
+    flex-direction: row;
+    width: 85%;
+    align-items: center;
+    justify-content: space-between;
   }
   .Shop.DesktopControllers>button:last-of-type {
     margin-left: 10px;
   }
   .Shop.CTA {
     display: none;
+  }
+  .Shop.DesktopControllers>button:nth-child(1) {
+    margin: 30px;
+    width: 35%;
+  }
+  .Shop.DesktopControllers>button:nth-child(2) {
+    width: 35%;
   }
 }
 

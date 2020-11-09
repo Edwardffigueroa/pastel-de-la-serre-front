@@ -2,8 +2,9 @@
   list-style: none;
   display: flex;
   justify-content: space-around;
-  width: 100%;
+  width: 45%;
   padding: 0;
+  margin-bottom: 30px;
 }
 
 .Icon {
@@ -15,20 +16,26 @@
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
+.Icon img {
+  height: 20px;
+}
+
 .Icon span {
+  display: none;
   margin-left: 5px;
 }
 
 @media (min-width: 768px) {
   .Details {
     justify-content: space-between;
-    width: 60%;
+    width: 45%;
   }
-
   .Icon {
     font-size: 14px;
   }
+  .Icon span {
+    display: block;
+  }
 }
 
-@media (min-width: 1080px) {
-}
+@media (min-width: 1080px) {}

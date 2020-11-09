@@ -6,10 +6,16 @@
 }
 
 .RowsNavigation.Detail {
+  display: flex;
+  flex-flow: row nowrap;
   position: relative;
+  justify-content: space-around;
   left: 0;
   bottom: 0;
+  width: 50%;
 }
+
+.RowsNavigation.Detail div {}
 
 .RowsNavigation div {
   width: 30px;
