@@ -41,6 +41,10 @@
     display: flex;
     left: 21px;
   }
+  .RowsNavigation.Detail {
+    /* width: 15%; */
+    width: 100%;
+  }
 }
 
 @media (min-width: 1920px) {
@@ -48,4 +52,7 @@
     --bottom: 100px;
     left: 40px;
   }
+  /* .RowsNavigation.Detail {
+    width: 15%;
+  } */
 }

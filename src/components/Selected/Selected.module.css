@@ -87,4 +87,9 @@
   .SelectedWrapper {
     margin-right: 35px;
   }
+  @media (min-width: 1080px) {
+    .Selected>div>div>div {
+      padding: 0px 11px;
+    }
+  }
 }

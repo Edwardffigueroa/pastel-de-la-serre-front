@@ -194,6 +194,9 @@
     width: 20px;
     height: 20px;
   }
+  .Button.ShopButton {
+    padding: 12px 41px;
+  }
 }
 
 @keyframes fadeIn {

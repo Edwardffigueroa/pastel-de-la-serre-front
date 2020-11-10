@@ -44,7 +44,7 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: rgba(24, 60, 119, 0.6);
+  background-color: rgba(3, 15, 36, 0.281);
   mix-blend-mode: multiply;
   border-radius: 15px;
   z-index: -1;
@@ -262,11 +262,11 @@
     display: none;
   }
   .Shop.DesktopControllers>button:nth-child(1) {
-    margin: 30px;
+    margin: 0px;
     width: 35%;
   }
   .Shop.DesktopControllers>button:nth-child(2) {
-    width: 35%;
+    width: 50%;
   }
 }
 
@@ -300,6 +300,17 @@
     max-width: 1698px;
     height: 80vh;
     max-height: 831px;
+    min-height: inherit;
+  }
+  .Shop.DetailWrapper .Content {
+    margin-top: 2%;
+    height: 88%;
+    /* justify-content: center; */
+    overflow: scroll;
+    scrollbar-width: none;
+  }
+  .Shop.DetailWrapper .Content::-webkit-scrollbar {
+    display: none;
   }
   .ImageWrapper {
     position: relative;
@@ -309,11 +320,11 @@
   }
   .Shop.ImageWrapper {
     height: 100%;
+    min-height: inherit;
   }
   .Shop.ImageWrapper .SliderShop {
     height: 100%;
   }
-  .slick-slide {}
   .ImageWrapper>div>div {
     --height: 100%;
     height: 100%;
@@ -327,14 +338,19 @@
     bottom: 20px;
   }
   .Content {
-    padding: 80px 40px 0px 40px;
+    padding: 80px 40px 111px 40px;
     flex-basis: 50%;
     width: 50%;
     box-sizing: border-box;
   }
   .TitleWrapper .Title {
     line-height: 45px;
-    font-size: 50px;
+    font-size: 60px;
+    line-height: 60px;
+    width: 90%;
+  }
+  .TitleWrapper .Description {
+    font-size: 16px;
   }
   .Price {
     margin: 10px 0;
@@ -358,10 +374,27 @@
     border-radius: 50%;
   }
   .Navigations {
+    order: inherit;
     display: flex;
+    /* justify-content: flex-end; */
+    /* margin-top: 10%; */
     position: absolute;
-    bottom: 25px;
-    right: 25px;
+    bottom: 15px;
+    right: 35px;
+  }
+  .Shop.DesktopControllers {
+    justify-content: initial;
+    align-items: center;
+  }
+  .Shop.DesktopControllers>button:nth-child(1) {
+    margin: inherit;
+    width: inherit;
+    margin-right: 5%;
+    width: 50%;
+  }
+  .Shop.DesktopControllers>button:nth-child(2) {
+    margin: inherit;
+    width: inherit;
   }
 }
 

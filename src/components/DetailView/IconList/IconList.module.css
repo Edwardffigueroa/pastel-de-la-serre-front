@@ -38,4 +38,8 @@
   }
 }
 
-@media (min-width: 1080px) {}
+@media (min-width: 1080px) {
+  .Details {
+    width: 55%;
+  }
+}
