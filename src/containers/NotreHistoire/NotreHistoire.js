@@ -30,7 +30,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
     const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
     const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
-
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
     const current = generalTrans.hero[slide]
@@ -111,7 +110,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
 
         const _index = items.findIndex(item => item.id === id)
         if (_index === slide) {
-            console.log(_index)
+
             if (_index === 0) {
                 setItemSelected(histoireTrans)
                 setIndexSelected(_index)
@@ -121,9 +120,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
                 const selected = tours.find(item => item.id === 1)
                 setItemSelected(selected)
                 setIndexSelected(0)
-                console.log(selected)
+                console.log(tours)
             }
-            console.log(_index)
+
         } else {
             mySwiper.slideTo(index)
         }
@@ -137,11 +136,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
     const changeItemHandler = direction => {
         let _i = indexSelected
         if (direction === 'back') {
-            _i = _i === 1 ? (items.length - 1) : (indexSelected - 1)
+            _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
         } else {
-            _i = _i === (items.length - 1) ? 0 : indexSelected + 1
+            _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
         }
-        setItemSelected(items[_i])
+        setItemSelected(tours[_i])
         setIndexSelected(_i)
     }
 
@@ -199,10 +198,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
 
     const refreshCartStateHandler = _prods => {
         setProducts(_prods)
-    }
-
-    const changeSelectedHandler = value => {
-        console.log(value)
     }
 
     const languageHandler = lang => setLang(lang)
@@ -271,22 +266,22 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
                 </section>
                 {itemSelected ? (
                     <DetailView
-                        tours={itemSelected.carousel}
+                        visits={visitTrans}
+                        tours={itemSelected}
                         histoire={histoireTrans.body}
                         items={tours}
-                        currentActive={slide}
                         index={indexSelected}
-                        goBooking={goBooking}
-                        time={itemSelected.time}
-                        title={[itemSelected.title1, itemSelected.title2, itemSelected.title3]}
-                        level={itemSelected.level}
+                        currentActive={slide}
                         img={histoireTrans.image.url}
+                        title={[itemSelected.title1, itemSelected.title2, itemSelected.title3]}
+                        time={itemSelected.time}
                         people={itemSelected.people}
+                        level={itemSelected.type}
+                        description={itemSelected.description}
+                        goBooking={goBooking}
+                        addItem={addItemHandler}
                         changeItem={changeItemHandler}
                         closed={e => setItemSelected(false)}
-                        description={itemSelected.description}
-                        changeSelected={changeSelectedHandler}
-                        addItem={addItemHandler}
                     />
                 ) : null}
             </div>

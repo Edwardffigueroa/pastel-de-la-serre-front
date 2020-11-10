@@ -11,10 +11,13 @@ const CardList = (props) => {
 		<div key={i} className={classes.CardWrapper}>
 			<Card
 				noFlag
-				title={item.title}
-				description={item.description}
-				// clicked={e => GoToDetail(e, history, i)}
-				>
+				index={i}
+				active={0}
+				id={item.id}
+				title={item.caption}
+				image={item.url}
+				clicked={props.goCardHandler}
+				detailView>
 			</Card>
 		</div>
 	))

@@ -4,7 +4,7 @@
 }
 
 .CardWrapper {
-  height: 128px;
+  --height: 128px;
   border-radius: 20px;
   margin-bottom: 14px;
 }

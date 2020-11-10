@@ -24,6 +24,8 @@ import "slick-carousel/slick/slick-theme.css"
 const DetailView = (props) => {
 
 
+	const [currentIndex, setCurrentIndex] = useState(1)
+
 
 	const [article, setArticle] = useState(null)
 	const [items, setItems] = useState(props.items ? props.items : [])
@@ -83,24 +85,6 @@ const DetailView = (props) => {
 
 	}
 
-	const navigationHandler = direction => {
-		const _index = items.findIndex(item => item._id === article._id)
-		if (direction === "foward") {
-			const _next = items[_index + 1]
-			if (_next) {
-				setArticle(_next)
-			}
-		}
-
-		if (direction === "back") {
-			const _prev = items[_index - 1]
-			if (_prev) {
-				setArticle(_prev)
-			}
-		}
-
-	}
-
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
 		setTimeout(() => {
@@ -116,7 +100,6 @@ const DetailView = (props) => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		// centerMode: true,
 		variableWidth: true
 	}
 
@@ -126,7 +109,6 @@ const DetailView = (props) => {
 	}
 
 	const goCardHandler = number => {
-		props.changeSelected(number)
 		setSlide(number)
 		similarSwiper.slideTo(number)
 		similarSwiper.update()
@@ -154,16 +136,9 @@ const DetailView = (props) => {
 
 	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
-			<Button isOverImage clicked={props.goBooking} >Réservez</Button>
+			<Button isOverImage clicked={props.goBooking} >{props.visits[props.index].button}</Button>
 		</div>
 	) : null
-
-
-	const _title = items.length > 0 ? (
-		<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {items[0].title_2} <br /> {items[0].title_3}</h1>
-	) : null
-
-	console.log(items)
 
 	return (
 		<a.div style={exitSpring}>
@@ -192,8 +167,8 @@ const DetailView = (props) => {
 											isShop={isShop}
 											time={props.time}
 											level={props.level}
-											madeof={props.madeOf}
 											people={props.people}
+											madeof={props.madeOf}
 											organic={props.organic}
 											recycle={props.recycle} />
 										<div>
@@ -206,22 +181,22 @@ const DetailView = (props) => {
 											(
 												<div className={classes.SimilarItems}>
 													<CardList
-														items={items} />
+														items={props.tours.carousel}
+														goCardHandler={goCardHandler} />
 													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
 														<div className="swiper-wrapper">
-															{props.tours.map((item, i) => {
+															{props.tours.carousel.map((item, i) => {
 																return (
 																	<div key={i} className="swiper-slide">
 																		<Card
 																			key={i}
 																			index={i}
 																			active={slide}
-																			id={item._id}
-																			title={item.title}
-																			image={item.picture}
+																			id={item.id}
+																			title={item.caption}
+																			image={item.url}
 																			clicked={goCardHandler}
-																			detailView
-																			hide={i === items.length - 1 ? true : false}>
+																			detailView>
 																		</Card>
 																	</div>
 																);
@@ -255,11 +230,11 @@ const DetailView = (props) => {
 											clicked={exitHandler}>Continuer mes Achats</Button>
 									</div>
 									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
-										<Button> {isShop ? 'Achater' : 'Réservez'}</Button>
+										<Button> {isShop ? 'Achater' : props.visits[props.index].button}</Button>
 									</div>
 									<div className={classes.Navigations}>
 										<RowsNavigation
-											changeItem={navigationHandler}
+											changeItem={props.changeItem}
 											isDetailView />
 									</div>
 								</section>

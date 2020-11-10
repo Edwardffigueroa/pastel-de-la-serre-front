@@ -21,13 +21,13 @@
 }
 
 .ButtonOverImage {
-  width: 252px;
+  --width: 252px;
   background-color: #f8cfc9;
   color: #303868;
 }
 
 .Button.ButtonOverImage {
-  width: 252px;
+  --width: 252px;
   background-color: #f8cfc9;
   color: #303868;
   z-index: 999;
@@ -193,7 +193,7 @@
   }
 
   .ButtonOverImage {
-    width: 252px;
+    --width: 252px;
   }
 
   .ButtonDetail {
