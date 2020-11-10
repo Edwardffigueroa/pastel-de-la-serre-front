@@ -21,12 +21,12 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 
-
 const DetailView = (props) => {
 
-	const [article, setArticle] = useState(null)
 
-	const [items, setItems] = useState([])
+
+	const [article, setArticle] = useState(null)
+	const [items, setItems] = useState(props.items ? props.items : [])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
 	const [size, setSize] = useState(0)
@@ -35,8 +35,7 @@ const DetailView = (props) => {
 	const isShop = props.currentActive === 2
 	const isHistoire = props.currentActive === 0
 
-
-	const [slide, setSlide] = useState(0)
+	const [slide, setSlide] = useState(1)
 	const similarSwiper = new Swiper(".swiper-container-similarItems", {
 		initialSlide: slide,
 		speed: 700,
@@ -46,7 +45,6 @@ const DetailView = (props) => {
 		centeredSlides: false,
 		slideActiveClass: 'swiper-slide-active',
 		slidePrevClass: 'swiper-slide-prev',
-		noSwipingClass: 'hidden-element',
 		breakpoints: {
 			1080: {
 				spaceBetween: 50,
@@ -64,14 +62,7 @@ const DetailView = (props) => {
 		},
 	})
 
-	useEffect(() => {
-		fetch('../../data/shop.json')
-			.then(res => res.json())
-			.then(data => {
-				setItems(data)
-				setArticle(data[0])
-			})
-	}, [])
+	useEffect(() => { setSlide(0) }, [])
 
 	const buyHanlder = e => {
 
@@ -167,9 +158,13 @@ const DetailView = (props) => {
 		</div>
 	) : null
 
-	const breaker = <br />
 
-	console.log(article)
+	const _title = items.length > 0 ? (
+		<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {items[0].title_2} <br /> {items[0].title_3}</h1>
+	) : null
+
+	console.log(items)
+
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
@@ -192,7 +187,7 @@ const DetailView = (props) => {
 							) : (
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{article ? article.title : 'Title'}</h1>
+										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}</h1>
 										<IconList
 											isShop={isShop}
 											time={props.time}
@@ -204,7 +199,7 @@ const DetailView = (props) => {
 										<div>
 											{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
 										</div>
-										<p className={classes.Description}>{article ? article.description : ' Description'}</p>
+										<p className={classes.Description}>{props.description ? props.description : ' Description'}</p>
 									</div>
 									{
 										!isShop ?
@@ -214,9 +209,9 @@ const DetailView = (props) => {
 														items={items} />
 													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
 														<div className="swiper-wrapper">
-															{items.map((item, i) => {
+															{props.tours.map((item, i) => {
 																return (
-																	<div key={i} className={i === items.length - 1 ? "swiper-slide" + "hidden-element" : "swiper-slide"}>
+																	<div key={i} className="swiper-slide">
 																		<Card
 																			key={i}
 																			index={i}

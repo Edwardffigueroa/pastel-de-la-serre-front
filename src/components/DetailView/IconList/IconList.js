@@ -12,14 +12,15 @@ import classes from './IconList.module.css'
 const IconList = ({ isShop, time, people, organic, recycle, madeof, level }) => {
 
 
-	const timeOrRecycle = (
+	const timeOrRecycle = !time && !recycle ? null : (
 		<div className={classes.Icon}>
-			{isShop ? <img src={recycleIcon} alt="Recycle" /> : <img src={timeIcon} alt="Time" />}
+			{ isShop ? <img src={recycleIcon} alt="Recycle" /> : <img src={timeIcon} alt="Time" />}
 			<span> {time ? time : recycle + ' %'}</span>
 		</div>
 	)
 
-	const peopleOrOrganic = (
+
+	const peopleOrOrganic = !organic && !people ? null : (
 		<div className={classes.Icon}>
 			{isShop ? <img src={organicIcon} alt="Organic %" /> : <img src={peopleIcon} alt="People" />}
 			<span>{organic ? organic + ' %' : people}</span>
@@ -27,7 +28,7 @@ const IconList = ({ isShop, time, people, organic, recycle, madeof, level }) => 
 	)
 
 
-	const madeOrLevel = (
+	const madeOrLevel = !madeof && !level ? null : (
 		<div className={classes.Icon}>
 			{isShop ? <img src={handICon} alt="Hand Made" /> : <img src={levelIcon} alt="Level" />}
 			<span>{madeof ? madeof + ' made' : ' ' + level}</span>

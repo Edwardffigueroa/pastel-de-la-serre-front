@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 
 import classes from './NotreHistoire.module.css'
 import Shadow from '../../components/UI/Shadow/Shadow'
@@ -9,7 +9,6 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 import DotNav from '../../components/Navigation/DotNav/DotNav'
 
 import Layout from '../../hoc/layout/Layout'
-import DetailView from '../../components/DetailView/DetailView'
 
 import Card from '../../components/UI/Card/Card'
 
@@ -19,19 +18,25 @@ import Checkout from '../Checkout/Checkout'
 
 import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
 
+import Spinner from '../../components/UI/Spinner/Spinner'
 
 import Cart from '../../utils/Cart'
+import DetailView from '../../components/DetailView/DetailView'
 
-const NotreHistoire = ({ match, history, general, histoire }) => {
+const NotreHistoire = ({ match, history, general, histoire, visit }) => {
 
     const [lang, setLang] = useState('fr')
+
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
     const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
-    console.log(histoireTrans)
+    const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
 
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
     const current = generalTrans.hero[slide]
+
+
+    const [tours, setTours] = useState(visitTrans)
 
     const [itemSelected, setItemSelected] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0)
@@ -103,11 +108,22 @@ const NotreHistoire = ({ match, history, general, histoire }) => {
     }
 
     const goToDetail = (e, index, id) => {
-        const _index = items.findIndex(item => item._id === id)
-        const selected = items.find(item => item._id === id)
-        if (index === slide) {
-            setItemSelected(selected)
-            setIndexSelected(_index)
+
+        const _index = items.findIndex(item => item.id === id)
+        if (_index === slide) {
+            console.log(_index)
+            if (_index === 0) {
+                setItemSelected(histoireTrans)
+                setIndexSelected(_index)
+            }
+
+            if (_index === 1) {
+                const selected = tours.find(item => item.id === 1)
+                setItemSelected(selected)
+                setIndexSelected(0)
+                console.log(selected)
+            }
+            console.log(_index)
         } else {
             mySwiper.slideTo(index)
         }
@@ -240,7 +256,7 @@ const NotreHistoire = ({ match, history, general, histoire }) => {
                                             key={i}
                                             index={i}
                                             active={slide}
-                                            id={item._id}
+                                            id={item.id}
                                             title={generalTrans.slider_navigation[i].subtitle}
                                             image={generalTrans.slider_navigation[i].image.formats.small.url}
                                             clicked={goToDetail}
@@ -255,13 +271,14 @@ const NotreHistoire = ({ match, history, general, histoire }) => {
                 </section>
                 {itemSelected ? (
                     <DetailView
+                        tours={itemSelected.carousel}
                         histoire={histoireTrans.body}
-                        items={items}
+                        items={tours}
                         currentActive={slide}
                         index={indexSelected}
                         goBooking={goBooking}
                         time={itemSelected.time}
-                        title={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
+                        title={[itemSelected.title1, itemSelected.title2, itemSelected.title3]}
                         level={itemSelected.level}
                         img={histoireTrans.image.url}
                         people={itemSelected.people}
@@ -270,7 +287,8 @@ const NotreHistoire = ({ match, history, general, histoire }) => {
                         description={itemSelected.description}
                         changeSelected={changeSelectedHandler}
                         addItem={addItemHandler}
-                    />) : null}
+                    />
+                ) : null}
             </div>
             {!match.isExact ? <Checkout
                 refreshCartState={refreshCartStateHandler} /> : null}

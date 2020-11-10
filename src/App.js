@@ -29,7 +29,7 @@ function App() {
                 <Route path="/booking" exact component={Booking} />
                 <Route path="/" render={({ match, _history }) => <NotreHistoire
                     match={match}
-                    history={history}
+                    history={_history}
                     general={general}
                     histoire={history}
                     visit={visit}

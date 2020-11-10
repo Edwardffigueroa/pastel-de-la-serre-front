@@ -12,9 +12,9 @@ const Card = props => {
     return (
         <div
             className={isDetailView}
-            onClick={e => props.clicked
+            onClick={e => props.detailView
                 ? props.clicked(e, index, props.id)
-                : console.log('Other item')}
+                : props.clicked(e, index, props.id)}
             style={{ backgroundImage: `url('${props.image}')` }}>
 
             <section className={classes.Header}>
