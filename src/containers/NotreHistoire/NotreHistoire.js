@@ -23,13 +23,16 @@ import Spinner from '../../components/UI/Spinner/Spinner'
 import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
-const NotreHistoire = ({ match, history, general, histoire, visit }) => {
+const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) => {
 
     const [lang, setLang] = useState('fr')
 
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
     const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
     const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
+    // const shopTrans = shop.Conte
+    console.log(boutique)
+
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
     const current = generalTrans.hero[slide]
@@ -123,6 +126,14 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
                 console.log(tours)
             }
 
+            if (_index === 2) {
+                // const selected =
+                const selected = tours.find(item => item.id === 1)
+                setItemSelected(selected)
+                setIndexSelected(0)
+
+            }
+
         } else {
             mySwiper.slideTo(index)
         }
@@ -137,8 +148,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit }) => {
         let _i = indexSelected
         if (direction === 'back') {
             _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
-        } else {
+        } else if ('foward') {
             _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
+        } else {
+            _i = direction
         }
         setItemSelected(tours[_i])
         setIndexSelected(_i)

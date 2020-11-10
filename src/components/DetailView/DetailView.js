@@ -108,22 +108,20 @@ const DetailView = (props) => {
 		similarSwiper.update()
 	}
 
-	const goCardHandler = number => {
-		setSlide(number)
-		similarSwiper.slideTo(number)
-		similarSwiper.update()
+	const goCardHandler = (e, index, id) => {
+		// console.log(number, dos, tres)
+		if (slide !== index) {
+			setSlide(index)
+			similarSwiper.slideTo(index)
+			similarSwiper.update()
+		} else {
+			props.changeItem(index)
+		}
 	}
 
 
 	if (similarSwiper) {
 		similarSwiper.on('slideChangeTransitionStart', swiper => {
-
-			if (swiper.realIndex === 2 || slide === 2) {
-				swiper.allowSlideNext = false
-			} else {
-				swiper.allowSlideNext = true
-			}
-
 			changeSlide(swiper.activeIndex)
 		});
 	}
