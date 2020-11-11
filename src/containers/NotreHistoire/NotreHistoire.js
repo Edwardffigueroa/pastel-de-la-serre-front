@@ -141,9 +141,19 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const changeItemHandler = direction => {
         let _i = indexSelected
         if (direction === 'back') {
-            _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
+            if (slide === 1) {
+                _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
+            }
+            if (slide === 2) {
+                _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
+            }
         } else if ('foward') {
-            _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
+            if (slide === 1) {
+                _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
+            }
+            if (slide === 2) {
+                _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
+            }
         } else {
             _i = direction
         }
@@ -191,8 +201,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 setIndexSelected(2)
                 break;
             default:
-                setItemSelected(items[1])
-                setIndexSelected(1)
+                setItemSelected(shopItems[0])
+                setIndexSelected(0)
                 break;
         }
     }
