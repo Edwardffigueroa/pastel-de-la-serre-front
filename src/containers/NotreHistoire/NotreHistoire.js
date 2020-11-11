@@ -232,6 +232,12 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             background = `url(${shopTrans.Background_image.url})`
         }
 
+        if (itemSelected && (slide === 1 || slide === 0)) {
+            console.log()
+            background = `url(${itemSelected.background_image.url})`
+            
+        }
+
         if (!itemSelected) {
             background = `url(${current.background_hero.url})`
         }
