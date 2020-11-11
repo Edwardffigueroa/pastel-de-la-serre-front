@@ -17,6 +17,7 @@ function App() {
     const history = resource.history.read()
     const visit = resource.visit.read()
     const boutique = resource.boutique.read()
+    const products = resource.products.read()
     const checkout = resource.checkout.read()
 
     return (
@@ -34,7 +35,8 @@ function App() {
                     histoire={history}
                     visit={visit}
                     boutique={boutique}
-                    checkout={checkout} />}
+                    checkout={checkout}
+                    shopItems={products} />}
                 />
             </AnimatedSwitch>
         </div >

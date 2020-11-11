@@ -24,9 +24,6 @@ import "slick-carousel/slick/slick-theme.css"
 const DetailView = (props) => {
 
 
-	const [currentIndex, setCurrentIndex] = useState(1)
-
-
 	const [article, setArticle] = useState(null)
 	const [items, setItems] = useState(props.items ? props.items : [])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
@@ -64,7 +61,10 @@ const DetailView = (props) => {
 		},
 	})
 
-	useEffect(() => { setSlide(0) }, [])
+	useEffect(() => {
+		setArticle(props.products[0])
+		setSlide(0)
+	}, [])
 
 	const buyHanlder = e => {
 
@@ -128,7 +128,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			article ? article.picture.map(im => <div style={{ width: '15%' }}><img src={im} alt={props.title} /> </div>) : null
+			article ? article.images.map((im, i) => <div key={i} style={{ width: '15%' }}><img src={im.url} alt={props.title} /> </div>) : null
 		}</Slider>
 	) : null
 
@@ -137,6 +137,44 @@ const DetailView = (props) => {
 			<Button isOverImage clicked={props.goBooking} >{props.visits[props.index].button}</Button>
 		</div>
 	) : null
+
+
+
+	const _productTitle = props.products[props.index]['name_' + props.lang].split(' ')
+		.reduce((acc, current, currentIndex, fullTitle) => {
+
+			if (currentIndex < 1) {
+				acc[0] = current
+				return acc
+			}
+
+			if (currentIndex > 0) {
+				if (acc[1]) {
+					acc[1] += ' ' + current
+				} else {
+					acc[1] = current
+				}
+				return acc
+			}
+
+		}, [])
+
+
+	const _title = props.title[0]
+		? (
+			<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>
+				{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}
+			</h1>
+		)
+		: (
+			<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>
+				{_productTitle[0]}
+				<br />
+				{_productTitle[1]}
+			</h1>
+		)
+
+
 
 	return (
 		<a.div style={exitSpring}>
@@ -160,7 +198,7 @@ const DetailView = (props) => {
 							) : (
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}</h1>
+										{_title}
 										<IconList
 											isShop={isShop}
 											time={props.time}
@@ -170,9 +208,9 @@ const DetailView = (props) => {
 											organic={props.organic}
 											recycle={props.recycle} />
 										<div>
-											{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
+											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {article ? article.price + ' ' + props.shop.currency_symbol : '0 €'}</h2> : null}
 										</div>
-										<p className={classes.Description}>{props.description ? props.description : ' Description'}</p>
+										<p className={classes.Description}>{props.description ? props.description : props.products[props.index]['description_' + props.lang]}</p>
 									</div>
 									{
 										!isShop ?
@@ -206,13 +244,13 @@ const DetailView = (props) => {
 												<div className={classes.ProductOptions}>
 													<div>
 														<Selected
-															label="Taille"
+															label={props.products[props.index].Product_variation[0]['variation_name_' + props.lang]}
 															onSize={setSize}
-															options={article ? article.sizes : null} />
+															options={props.products[props.index].Product_variation[0].Variation_item} />
 														<Selected
-															label="Quantite"
+															label={props.shop.quantity_text}
 															onQuantity={setQuantity}
-															options={article ? article.stock : null} />
+															options={props.products[props.index].stock} />
 													</div>
 												</div>
 											)
@@ -221,14 +259,14 @@ const DetailView = (props) => {
 										<Button
 											isShop
 											invert
-											clicked={buyHanlder}>Achater </Button>
+											clicked={buyHanlder}>{props.shop.add_to_cart_button}</Button>
 										<Button
 											isShop
 											isSecond
-											clicked={exitHandler}>Continuer mes Achats</Button>
+											clicked={exitHandler}>{props.shop.continue_button}</Button>
 									</div>
 									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
-										<Button> {isShop ? 'Achater' : props.visits[props.index].button}</Button>
+										<Button> {isShop ? props.shop.add_to_cart_button : props.visits[props.index].button}</Button>
 									</div>
 									<div className={classes.Navigations}>
 										<RowsNavigation

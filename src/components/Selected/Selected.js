@@ -6,10 +6,10 @@ import classes from './Selected.module.css'
 const Selected = (props) => {
 
 	let options = { label: ' ', value: ' ' }
-	
+
 	if (props.options) {
 		if (props.options.length > 1) {
-			options = props.options.map(op => ({ value: op, label: op }))
+			options = props.options.map(op => ({ value: op.Value, label: op.Value }))
 		} else {
 			const maxOptions = props.options
 			options = new Array(maxOptions).fill().map((op, i) => ({ value: i, label: i }))
@@ -21,12 +21,11 @@ const Selected = (props) => {
 
 	const selectedHandler = e => {
 
-		if (props.label === 'Quantite') {
-			console.log(e)
+		if (props.label === 'Quantite' || props.label === 'Quantity') {
 			props.onQuantity(e.value)
 		}
 
-		if (props.label === 'Taille') {
+		if (props.label === 'Taille' || props.label === 'Size') {
 			props.onSize(e.value)
 		}
 

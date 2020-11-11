@@ -16,22 +16,18 @@ import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
 import Checkout from '../Checkout/Checkout'
 
-import detailProdBg from '../../assets/images/boutique/bg_datail_boutique.png'
-
-import Spinner from '../../components/UI/Spinner/Spinner'
-
 import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
-const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) => {
+const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems }) => {
 
     const [lang, setLang] = useState('fr')
 
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
     const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
     const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
-    // const shopTrans = shop.Conte
-    console.log(boutique)
+    const shopTrans = boutique.Boutique_content.filter(content => content.abbreviation === lang)[0].Boutique_detail
+
 
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
@@ -127,11 +123,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
             }
 
             if (_index === 2) {
-                // const selected =
-                const selected = tours.find(item => item.id === 1)
-                setItemSelected(selected)
+                setItemSelected(shopTrans)
                 setIndexSelected(0)
-
+                console.log(shopItems)
             }
 
         } else {
@@ -153,7 +147,13 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
         } else {
             _i = direction
         }
-        setItemSelected(tours[_i])
+
+        if (slide === 1) {
+            setItemSelected(tours[_i])
+        } else {
+            setItemSelected(shopItems[_i])
+        }
+
         setIndexSelected(_i)
     }
 
@@ -179,13 +179,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
     const CTAHandler = e => {
         switch (slide) {
             case 0:
-                /// TODO -> Go to reservation 
                 history.push('/booking')
                 break;
             case 1:
-                // TODO, Connect to the fetch data from the global tours 
-                // const _index = items.findIndex(item => item._id === id)
-                // const selected = items.find(item => item._id === id)  
                 const selected = items[1]
                 setItemSelected(selected)
                 setIndexSelected(1)
@@ -223,8 +219,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
     let background = ' '
     if (items.length > 0) {
         if (itemSelected && slide === 2) {
-            background = `url(${detailProdBg})`
-        } else {
+            background = `url(${shopTrans.Background_image.url})`
+        }
+
+        if (!itemSelected) {
             background = `url(${current.background_hero.url})`
         }
     }
@@ -267,8 +265,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
                                             id={item.id}
                                             title={generalTrans.slider_navigation[i].subtitle}
                                             image={generalTrans.slider_navigation[i].image.formats.small.url}
-                                            clicked={goToDetail}
-                                        >
+                                            clicked={goToDetail}>
                                         </Card>
                                     </div>
                                 );
@@ -279,6 +276,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique }) =
                 </section>
                 {itemSelected ? (
                     <DetailView
+                        lang={lang}
+                        products={shopItems}
+                        shop={shopTrans}
                         visits={visitTrans}
                         tours={itemSelected}
                         histoire={histoireTrans.body}
