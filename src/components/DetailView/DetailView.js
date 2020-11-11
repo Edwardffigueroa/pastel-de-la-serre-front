@@ -48,9 +48,16 @@ const DetailView = (props) => {
 		slidePrevClass: 'swiper-slide-prev',
 		noSwipingClass: 'hidden-element',
 		breakpoints: {
+			2000: {
+				spaceBetween: 50,
+				slidesPerView: 3
+			},
 			1080: {
 				spaceBetween: 50,
 				slidesPerView: 2
+			},
+			1000: {
+				slidesPerView: 3
 			},
 			760: {
 				slidesPerView: 2
@@ -135,10 +142,10 @@ const DetailView = (props) => {
 	}
 
 	const goCardHandler = number => {
-		props.changeSelected(number)
-		setSlide(number)
-		similarSwiper.slideTo(number)
-		similarSwiper.update()
+		// props.changeSelected(number)
+		// setSlide(number)
+		// similarSwiper.slideTo(number)
+		// similarSwiper.update()
 	}
 
 

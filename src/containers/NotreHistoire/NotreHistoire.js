@@ -50,6 +50,9 @@ const NotreHistoire = ({ match, history }) => {
                 spaceBetween: 10,
                 slidesPerView: 4
             },
+            1000: {
+                slidesPerView: 4
+            },
             760: {
                 spaceBetween: -150,
                 slidesPerView: 4
