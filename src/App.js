@@ -14,7 +14,7 @@ const NotreHistoire = lazy(() => import('./containers/NotreHistoire/NotreHistoir
 function App() {
 
     const general = resource.general.read()
-    const history = resource.history.read()
+    const _history = resource.history.read()
     const visit = resource.visit.read()
     const boutique = resource.boutique.read()
     const products = resource.products.read()
@@ -28,11 +28,11 @@ function App() {
                 atActive={{ opacity: 1 }}
                 className={classes.Wrapper}>
                 <Route path="/booking" exact component={Booking} />
-                <Route path="/" render={({ match, _history }) => <NotreHistoire
+                <Route path="/" render={({ match, history }) => <NotreHistoire
                     match={match}
-                    history={_history}
+                    history={history}
                     general={general}
-                    histoire={history}
+                    histoire={_history}
                     visit={visit}
                     boutique={boutique}
                     checkout={checkout}

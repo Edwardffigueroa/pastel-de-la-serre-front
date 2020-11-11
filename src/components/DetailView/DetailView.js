@@ -23,7 +23,6 @@ import "slick-carousel/slick/slick-theme.css"
 
 const DetailView = (props) => {
 
-
 	const [article, setArticle] = useState(null)
 	const [items, setItems] = useState(props.items ? props.items : [])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
@@ -140,7 +139,7 @@ const DetailView = (props) => {
 
 
 
-	const _productTitle = props.products[props.index]['name_' + props.lang].split(' ')
+	const _productTitle = isShop ? props.products[props.index]['name_' + props.lang].split(' ')
 		.reduce((acc, current, currentIndex, fullTitle) => {
 
 			if (currentIndex < 1) {
@@ -157,7 +156,7 @@ const DetailView = (props) => {
 				return acc
 			}
 
-		}, [])
+		}, []) : []
 
 
 	const _title = props.title[0]

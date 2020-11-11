@@ -20,7 +20,7 @@ import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
 const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems }) => {
-
+    console.log(history)
     const [lang, setLang] = useState('fr')
 
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
