@@ -43,10 +43,17 @@
 
 @media (min-width: 1080px) {
   .ItemWrapper {
-    padding: 20px 30px 20px 0;
+    padding: 40px 30px 40px 0;
   }
-
-  .Item > * {
+  .Item>* {
     margin-left: 50px;
+    text-align: center;
+  }
+  .Item>* .MobilePrice {
+    display: none;
+  }
+  .DesktopPrice {
+    display: block;
+    white-space: nowrap;
   }
 }

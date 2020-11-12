@@ -15,7 +15,7 @@ const Checkout = ({ refreshCartState }) => {
 
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 	const history = useHistory()
-	
+
 	// const [entrySpring, setEntrySpring] = useSpring(() => ({ opacity: 0 }))
 	// const currentPath = history.location.pathname
 	// const container = currentPath.split('/detail')[0]

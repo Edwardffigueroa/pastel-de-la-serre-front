@@ -19,3 +19,16 @@
   color: #b2b2b2;
   font-size: 18px;
 }
+
+@media (min-width: 1080px) {
+  .Counter {
+    /* align-items: center; */
+    flex-direction: row-reverse;
+    /* width: 12%; */
+    justify-content: space-between;
+    align-items: center;
+  }
+  .Counter>span {
+    margin: 10px;
+  }
+}

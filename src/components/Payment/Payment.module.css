@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   padding: 40px;
-
   background-color: #3c3c3c;
   border-radius: 40px;
 }
@@ -55,8 +54,7 @@
   display: inline-block;
 }
 
-.Payment fieldset input,
-.Payment fieldset select {
+.Payment fieldset input, .Payment fieldset select {
   width: 30%;
   display: inline-block;
 }
@@ -83,12 +81,12 @@
 
 @media (min-width: 768px) {
   .Payment {
-    height: 590px;
+    /* height: 590px; */
   }
 }
 
 @media (min-width: 1080px) {
   .Payment {
-    height: calc(100% - 100px);
+    /* height: calc(100% - 100px); */
   }
 }
