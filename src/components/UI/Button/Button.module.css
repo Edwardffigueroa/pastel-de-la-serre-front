@@ -2,9 +2,10 @@
   border: 2px solid transparent;
   background: #f8cfc9;
   border-radius: 30px;
-  padding: 10px;
+  padding: 12px;
   color: #303868;
   font-weight: bold;
+  font-size: 14px;
   text-transform: capitalize;
   display: flex;
   align-items: center;
@@ -14,6 +15,7 @@
   width: 100%;
   cursor: pointer;
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
 .invert {
@@ -51,9 +53,7 @@
   background-color: #f8cfc9;
 }
 
-.Button.ShopButton:hover,
-.Button.ButtonOverImage:hover,
-.Button:hover {
+.Button.ShopButton:hover, .Button.ButtonOverImage:hover, .Button:hover {
   background-color: #303868;
   color: #f8cfc9;
   border-color: transparent;
@@ -69,8 +69,7 @@
   transition: all ease-in-out 350ms;
 }
 
-.ButtonOverImage:hover > .Row,
-.Button:hover > .Row {
+.ButtonOverImage:hover>.Row, .Button:hover>.Row {
   background-image: url('../../../assets/images/nav/row.svg');
 }
 
@@ -100,8 +99,8 @@
 }
 
 .Button.Invert .Row {
-  width: 25px;
-  height: 25px;
+  width: 18px;
+  height: 18px;
   background-image: url('../../../assets/shop.svg');
 }
 
@@ -111,7 +110,7 @@
   color: #f8cfc9;
 }
 
-.Button.Invert:hover > .Row {
+.Button.Invert:hover>.Row {
   background-image: url('../../../assets/shopInvert.svg');
 }
 
@@ -152,20 +151,15 @@
     margin: 0;
     width: auto;
   }
-
   .Button.ShopButton {
-    padding: 10px 20px;
+    padding: 12px 20px;
   }
-
   .Row {
     background-image: url('../../../assets/images/nav/row.svg');
   }
-
-  .ButtonOverImage:hover > .Row,
-  .Button:hover > .Row {
+  .ButtonOverImage:hover>.Row, .Button:hover>.Row {
     background-image: url('../../../assets/images/nav/row2.svg');
   }
-
   .Button:hover {
     color: #303868;
     background-color: #f8cfc9;
@@ -181,30 +175,27 @@
     box-sizing: border-box;
     --height: 69px;
   }
-
   Button.Invert:not(.ShopButton) {
     --width: 366px;
   }
-
-  .Button .Row,
-  .Button.Invert .Row {
+  .Button .Row, .Button.Invert .Row {
     width: 20px;
     height: 20px;
   }
-
   .ButtonOverImage {
     --width: 252px;
   }
-
   .ButtonDetail {
     position: absolute;
     width: 50%;
     transform: translateX(-100%);
   }
-
   .Row {
     width: 20px;
     height: 20px;
+  }
+  .Button.ShopButton {
+    padding: 12px 41px;
   }
 }
 
@@ -213,7 +204,6 @@
     opacity: 0;
     margin-top: 50px;
   }
-
   to {
     opacity: 1;
     margin-top: 0;

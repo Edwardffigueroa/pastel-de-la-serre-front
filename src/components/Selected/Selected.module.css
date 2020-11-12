@@ -1,5 +1,4 @@
-.SelectedWrapperPay,
-.SelectedWrapper {
+.SelectedWrapperPay, .SelectedWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +10,7 @@
   padding: 5px;
 }
 
-.SelectedWrapperPay.Label,
-.Label {
+.SelectedWrapperPay.Label, .Label {
   margin-right: 10px;
   color: white;
 }
@@ -25,18 +23,18 @@
   margin-right: 0;
 }
 
-.Selected.Payment > div {
+.Selected.Payment>div {
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #626262;
 }
 
-.Selected.Payment > div[class*='menu'] > div > div {
+.Selected.Payment>div[class*='menu']>div>div {
   color: white;
   font-size: 14px;
 }
 
-.Selected > div {
+.Selected>div {
   /* Select container*/
   --width: 77px;
   background: transparent;
@@ -44,42 +42,54 @@
   border-radius: 30px;
 }
 
-.Selected > div > div > div {
+.Selected>div>div>div {
   color: white;
-  font-size: 14px;
+  font-size: 18px;
   text-transform: lowercase;
-  padding: 0 8px;
+  padding: 8px 11px;
   max-width: 100%;
+  text-align: center;
 }
 
-.Selected > div:first-of-type > div {
+.Selected>div:first-of-type>div {
   /* Aligning value */
   /* display: flex;
   justify-content: flex-end; */
 }
 
-.Selected > div[class*='menu'] {
+.Selected>div[class*='menu'] {
   /* akiging inner list items  */
   background-color: rgba(24, 60, 119, 0.8);
   text-align: center;
 }
 
-.Selected > div[class*='menu'] > div > div {
+.Selected>div[class*='menu']>div>div {
   /* making items border and hover effect */
   background-color: transparent;
   border-bottom: 2px solid transparent;
   transition: all ease-in-out 400ms;
 }
-.Selected > div[class*='menu'] > div > div:last-of-type:hover,
-.Selected > div[class*='menu'] > div > div:last-of-type {
+
+.Selected>div[class*='menu']>div>div:last-of-type:hover, .Selected>div[class*='menu']>div>div:last-of-type {
   border: none;
 }
 
-.Selected > div[class*='menu'] > div > div:hover {
+.Selected>div[class*='menu']>div>div:hover {
   border-bottom: 2px solid white;
 }
 
-.Selected > div > div > span {
+.Selected>div>div>span {
   /* Remove separator */
   display: none;
+}
+
+@media (min-width: 768px) {
+  .SelectedWrapper {
+    margin-right: 35px;
+  }
+  @media (min-width: 1080px) {
+    .Selected>div>div>div {
+      padding: 0px 11px;
+    }
+  }
 }

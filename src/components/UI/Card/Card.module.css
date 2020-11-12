@@ -110,9 +110,15 @@
     --width: 250px;
     --height: 355px;
   }
+  .Card.Card.DetailView {
+    margin-top: 38px;
+  }
   .Card.DetailView {
     width: 250px;
     height: 130px;
+  }
+  .Card.DetailView .Marker {
+    transform: translate(0px, -60px);
   }
   .Flag {
     border-radius: 40px;

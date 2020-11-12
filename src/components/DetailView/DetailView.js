@@ -45,9 +45,16 @@ const DetailView = (props) => {
 		slideActiveClass: 'swiper-slide-active',
 		slidePrevClass: 'swiper-slide-prev',
 		breakpoints: {
+			2000: {
+				spaceBetween: 50,
+				slidesPerView: 3
+			},
 			1080: {
 				spaceBetween: 50,
 				slidesPerView: 2
+			},
+			1000: {
+				slidesPerView: 3
 			},
 			760: {
 				slidesPerView: 2
@@ -117,7 +124,6 @@ const DetailView = (props) => {
 		} else {
 			props.changeItem(index)
 		}
-	}
 
 
 	if (similarSwiper) {

@@ -62,6 +62,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 spaceBetween: 10,
                 slidesPerView: 4
             },
+            1000: {
+                slidesPerView: 4
+            },
             760: {
                 spaceBetween: -150,
                 slidesPerView: 4
