@@ -2,43 +2,9 @@ import React, { useState } from 'react';
 
 import classes from './Table.module.css'
 import Item from './Item/Item'
-import Cart from '../../../utils/Cart'
 import backRow from '../../../assets/checkout/back.svg'
-import { useHistory } from 'react-router-dom'
 
-const Table = ({ refreshCartState }) => {
-
-	const _prods = Cart.getProducts()
-	const _price = Cart.getPrice()
-	const [products, setProducts] = useState(_prods)
-	const [totalPrice, setTotalPrice] = useState(_price)
-	const history = useHistory()
-
-	const goBackHandler = e => {
-		history.goBack()
-	}
-
-	const increaseItemHandler = (id, size) => {
-		Cart.increaseItem(id, size)
-		setProducts(Cart.products)
-		setTotalPrice(Cart.totalPrice)
-		refreshCartState(Cart.products)
-	}
-
-	const decreaseItemHandler = (id, size) => {
-		Cart.decreaaseItem(id, size)
-		setProducts(Cart.products)
-		setTotalPrice(Cart.totalPrice)
-		refreshCartState(Cart.products)
-
-	}
-
-	const deleteAllHandler = (id, size) => {
-		Cart.deleteAll(id, size)
-		setProducts(Cart.products)
-		setTotalPrice(Cart.totalPrice)
-		refreshCartState(Cart.products)
-	}
+const Table = ({ products, totalPrice, goBackHandler, increaseItemHandler, decreaseItemHandler, deleteAllHandler }) => {
 
 	const value = Object.values(products)
 	const _products = !products ? (

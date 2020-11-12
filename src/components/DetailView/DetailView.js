@@ -21,22 +21,20 @@ import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
 
-
 const DetailView = (props) => {
-
-	const [article, setArticle] = useState(null)
-
-	const [items, setItems] = useState([])
-	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
-
-	const [size, setSize] = useState(0)
-	const [quantity, setQuantity] = useState(0)
 
 	const isShop = props.currentActive === 2
 	const isHistoire = props.currentActive === 0
 
+	const [article, setArticle] = useState(null)
+	const [items, setItems] = useState(props.items ? props.items : [])
+	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
-	const [slide, setSlide] = useState(0)
+	const [quantity, setQuantity] = useState(0)
+
+	const [size, setSize] = useState(isShop ? props.products[props.index].Product_variation[0].Variation_item[0].Value : 0)
+
+	const [slide, setSlide] = useState(1)
 	const similarSwiper = new Swiper(".swiper-container-similarItems", {
 		initialSlide: slide,
 		speed: 700,
@@ -46,7 +44,6 @@ const DetailView = (props) => {
 		centeredSlides: false,
 		slideActiveClass: 'swiper-slide-active',
 		slidePrevClass: 'swiper-slide-prev',
-		noSwipingClass: 'hidden-element',
 		breakpoints: {
 			2000: {
 				spaceBetween: 50,
@@ -72,47 +69,26 @@ const DetailView = (props) => {
 	})
 
 	useEffect(() => {
-		fetch('../../data/shop.json')
-			.then(res => res.json())
-			.then(data => {
-				setItems(data)
-				setArticle(data[0])
-			})
+		setArticle(props.products[props.index])
+		setSlide(0)
 	}, [])
 
 	const buyHanlder = e => {
 
 		if (size !== 0 && quantity !== 0) {
 
+			console.log('que pasa por aqui', article)
 			const _product = {
-				id: article._id,
-				name: props.title,
+				id: props.products[props.index].id,
+				name: props.products[props.index]['name_' + props.lang],
 				amount: {
 					[size]: quantity
 				},
-				price: +article.price * quantity
+				price: article.price
 			}
 
 			props.addItem(_product)
 
-		}
-
-	}
-
-	const navigationHandler = direction => {
-		const _index = items.findIndex(item => item._id === article._id)
-		if (direction === "foward") {
-			const _next = items[_index + 1]
-			if (_next) {
-				setArticle(_next)
-			}
-		}
-
-		if (direction === "back") {
-			const _prev = items[_index - 1]
-			if (_prev) {
-				setArticle(_prev)
-			}
 		}
 
 	}
@@ -132,7 +108,6 @@ const DetailView = (props) => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		// centerMode: true,
 		variableWidth: true
 	}
 
@@ -141,38 +116,70 @@ const DetailView = (props) => {
 		similarSwiper.update()
 	}
 
-	const goCardHandler = number => {
-		// props.changeSelected(number)
-		// setSlide(number)
-		// similarSwiper.slideTo(number)
-		// similarSwiper.update()
-	}
+	const goCardHandler = (e, index, id) => {
+		if (slide !== index) {
+			setSlide(index)
+			similarSwiper.slideTo(index)
+			similarSwiper.update()
+		} else {
+			props.changeItem(index)
+		}
 
 
 	if (similarSwiper) {
 		similarSwiper.on('slideChangeTransitionStart', swiper => {
-
-			if (swiper.realIndex === 2 || slide === 2) {
-				swiper.allowSlideNext = false
-			} else {
-				swiper.allowSlideNext = true
-			}
-
 			changeSlide(swiper.activeIndex)
 		});
 	}
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			article ? article.picture.map(im => <div style={{ width: '15%' }}><img src={im} alt={props.title} /> </div>) : null
+			article ? article.images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>) : null
 		}</Slider>
 	) : null
 
 	const buttonOverImage = isShop === false && !isHistoire ? (
 		<div className={classes.ImageCTA}>
-			<Button isOverImage clicked={props.goBooking} >Réservez</Button>
+			<Button isOverImage clicked={props.goBooking} >{props.visits[props.index].button}</Button>
 		</div>
 	) : null
+
+
+
+	const _productTitle = isShop ? props.products[props.index]['name_' + props.lang].split(' ')
+		.reduce((acc, current, currentIndex, fullTitle) => {
+
+			if (currentIndex < 1) {
+				acc[0] = current
+				return acc
+			}
+
+			if (currentIndex > 0) {
+				if (acc[1]) {
+					acc[1] += ' ' + current
+				} else {
+					acc[1] = current
+				}
+				return acc
+			}
+
+		}, []) : []
+
+
+	const _title = props.title[0]
+		? (
+			<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>
+				{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}
+			</h1>
+		)
+		: (
+			<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>
+				{_productTitle[0]}
+				<br />
+				{_productTitle[1]}
+			</h1>
+		)
+
 
 	return (
 		<a.div style={exitSpring}>
@@ -181,7 +188,6 @@ const DetailView = (props) => {
 					<section
 						className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}
 						style={!isShop ? { backgroundImage: `url(${props.img})` } : null}>
-
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
@@ -190,48 +196,48 @@ const DetailView = (props) => {
 							(
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title}</h1>
+										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}</h1>
 									</div>
-									<Histoire text={props.description} />
+									<Histoire text={props.histoire} />
 								</section>
 							) : (
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={!isShop ? classes.Title : [classes.Title, classes.TitleShop].join(' ')}>{article ? article.title : 'Title'}</h1>
+										{_title}
 										<IconList
 											isShop={isShop}
 											time={props.time}
 											level={props.level}
-											madeof={props.madeOf}
 											people={props.people}
-											organic={props.organic}
-											recycle={props.recycle} />
+											madeof={props.shop.handmade_text}
+											organic={props.shop.organic_text}
+											recycle={props.shop.recyclable_text} />
 										<div>
-											{isShop ? <h2 className={classes.Price}>Prix Unité {article ? article.price + '€' : '0 €'}</h2> : null}
+											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {article ? article.price + ' ' + props.shop.currency_symbol : '0 €'}</h2> : null}
 										</div>
-										<p className={classes.Description}>{article ? article.description : ' Description'}</p>
+										<p className={classes.Description}>{props.description ? props.description : props.products[props.index]['description_' + props.lang]}</p>
 									</div>
 									{
 										!isShop ?
 											(
 												<div className={classes.SimilarItems}>
 													<CardList
-														items={items} />
+														items={props.tours.carousel}
+														goCardHandler={goCardHandler} />
 													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
 														<div className="swiper-wrapper">
-															{items.map((item, i) => {
+															{props.tours.carousel.map((item, i) => {
 																return (
-																	<div key={i} className={i === items.length - 1 ? "swiper-slide" + "hidden-element" : "swiper-slide"}>
+																	<div key={i} className="swiper-slide">
 																		<Card
 																			key={i}
 																			index={i}
 																			active={slide}
-																			id={item._id}
-																			title={item.title}
-																			image={item.picture}
+																			id={item.id}
+																			title={item.caption}
+																			image={item.url}
 																			clicked={goCardHandler}
-																			detailView
-																			hide={i === items.length - 1 ? true : false}>
+																			detailView>
 																		</Card>
 																	</div>
 																);
@@ -243,13 +249,13 @@ const DetailView = (props) => {
 												<div className={classes.ProductOptions}>
 													<div>
 														<Selected
-															label="Taille"
+															label={props.products[props.index].Product_variation[0]['variation_name_' + props.lang]}
 															onSize={setSize}
-															options={article ? article.sizes : null} />
+															options={props.products[props.index].Product_variation[0].Variation_item} />
 														<Selected
-															label="Quantite"
+															label={props.shop.quantity_text}
 															onQuantity={setQuantity}
-															options={article ? article.stock : null} />
+															options={props.products[props.index].stock} />
 													</div>
 												</div>
 											)
@@ -258,18 +264,18 @@ const DetailView = (props) => {
 										<Button
 											isShop
 											invert
-											clicked={buyHanlder}>Achater </Button>
+											clicked={buyHanlder}>{props.shop.add_to_cart_button}</Button>
 										<Button
 											isShop
 											isSecond
-											clicked={exitHandler}>Continuer mes Achats</Button>
+											clicked={exitHandler}>{props.shop.continue_button}</Button>
 									</div>
 									<div className={isShop ? [classes.CTA, classes.Shop].join(' ') : classes.CTA}>
-										<Button> {isShop ? 'Achater' : 'Réservez'}</Button>
+										<Button> {isShop ? props.shop.add_to_cart_button : props.visits[props.index].button}</Button>
 									</div>
 									<div className={classes.Navigations}>
 										<RowsNavigation
-											changeItem={navigationHandler}
+											changeItem={props.changeItem}
 											isDetailView />
 									</div>
 								</section>
