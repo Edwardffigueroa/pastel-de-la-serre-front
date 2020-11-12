@@ -124,7 +124,7 @@ const DetailView = (props) => {
 		} else {
 			props.changeItem(index)
 		}
-
+	}
 
 		if (similarSwiper) {
 			similarSwiper.on('slideChangeTransitionStart', swiper => {
