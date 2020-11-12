@@ -9,19 +9,20 @@ import Table from '../../components/UI/Table/Table'
 import Payment from '../../components/Payment/Payment'
 import Shadow from '../../components/UI/Shadow/Shadow'
 import Modal from '../../components/Modal/Modal'
+import Cart from '../../utils/Cart'
 
 
 const Checkout = ({ refreshCartState }) => {
 
-	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
+	const _prods = Cart.getProducts()
+	const _price = Cart.getPrice()
 	const history = useHistory()
-	
-	// const [entrySpring, setEntrySpring] = useSpring(() => ({ opacity: 0 }))
-	// const currentPath = history.location.pathname
-	// const container = currentPath.split('/detail')[0]
 
 	const [confirmed, setConfirmed] = useState(false)
-
+	const [products, setProducts] = useState(_prods)
+	const [totalPrice, setTotalPrice] = useState(_price)
+	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
+	
 	const confirmHandler = () => {
 		setExitSpring({ opacity: 0 })
 		setConfirmed(true)
@@ -40,6 +41,33 @@ const Checkout = ({ refreshCartState }) => {
 		setConfirmed(false)
 	}
 
+	const goBackHandler = e => {
+		history.goBack()
+	}
+
+	const increaseItemHandler = (id, size) => {
+		Cart.increaseItem(id, size)
+		setProducts(Cart.products)
+		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
+	}
+
+	const decreaseItemHandler = (id, size) => {
+		Cart.decreaaseItem(id, size)
+		setProducts(Cart.products)
+		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
+
+	}
+
+	const deleteAllHandler = (id, size) => {
+		Cart.deleteAll(id, size)
+		setProducts(Cart.products)
+		setTotalPrice(Cart.totalPrice)
+		refreshCartState(Cart.products)
+	}
+
+
 	return (
 		<div>
 			<div className={classes.Checkout}>
@@ -49,9 +77,19 @@ const Checkout = ({ refreshCartState }) => {
 						<h1 className={classes.Title}>Checkout</h1>
 						<section className={classes.Content}>
 							<Table
-								refreshCartState={refreshCartState} />
+								products={products}
+								totalPrice={totalPrice}
+								goBackHandler={goBackHandler}
+								increaseItemHandler={increaseItemHandler}
+								decreaseItemHandler={decreaseItemHandler}
+								deleteAllHandler={deleteAllHandler}
+								refreshCartState={refreshCartState}
+							/>
 							<section className={classes.Payment}>
-								<Payment confirmed={confirmed} confirmHandler={confirmHandler} />
+								<Payment
+									confirmed={confirmed}
+									confirmHandler={confirmHandler}
+									products={products} />
 							</section>
 						</section>
 						<span className={classes.Close} onClick={exitHandler} >

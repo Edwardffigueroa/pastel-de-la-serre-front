@@ -20,7 +20,6 @@ import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
 const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems }) => {
-    console.log(history)
     const [lang, setLang] = useState('fr')
 
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
@@ -40,8 +39,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const [indexSelected, setIndexSelected] = useState(0)
 
     const [products, setProducts] = useState([])
-    // console.log(generalTrans)
-    useEffect(() => { setSlide(0) }, [])
+    useEffect(() => { 
+        const _prevProds = Cart.getProducts()
+        setProducts(_prevProds)
+        setSlide(0) }, [])
 
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
@@ -119,13 +120,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 const selected = tours.find(item => item.id === 1)
                 setItemSelected(selected)
                 setIndexSelected(0)
-                console.log(tours)
             }
 
             if (_index === 2) {
                 setItemSelected(shopTrans)
                 setIndexSelected(0)
-                console.log(shopItems)
             }
 
         } else {
@@ -233,9 +232,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         }
 
         if (itemSelected && (slide === 1 || slide === 0)) {
-            console.log()
             background = `url(${itemSelected.background_image.url})`
-            
+
         }
 
         if (!itemSelected) {

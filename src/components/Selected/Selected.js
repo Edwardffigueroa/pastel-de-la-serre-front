@@ -21,7 +21,7 @@ const Selected = (props) => {
 
 	const selectedHandler = e => {
 
-		if (props.label === 'Quantite' || props.label === 'Quantity') {
+		if (props.label === 'Quantité' || props.label === 'Quantity') {
 			props.onQuantity(e.value)
 		}
 

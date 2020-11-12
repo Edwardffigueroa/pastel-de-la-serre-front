@@ -23,15 +23,16 @@ import "slick-carousel/slick/slick-theme.css"
 
 const DetailView = (props) => {
 
+	const isShop = props.currentActive === 2
+	const isHistoire = props.currentActive === 0
+
 	const [article, setArticle] = useState(null)
 	const [items, setItems] = useState(props.items ? props.items : [])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
-	const [size, setSize] = useState(0)
 	const [quantity, setQuantity] = useState(0)
 
-	const isShop = props.currentActive === 2
-	const isHistoire = props.currentActive === 0
+	const [size, setSize] = useState(isShop ? props.products[props.index].Product_variation[0].Variation_item[0].Value : 0)
 
 	const [slide, setSlide] = useState(1)
 	const similarSwiper = new Swiper(".swiper-container-similarItems", {
@@ -61,7 +62,7 @@ const DetailView = (props) => {
 	})
 
 	useEffect(() => {
-		setArticle(props.products[0])
+		setArticle(props.products[props.index])
 		setSlide(0)
 	}, [])
 
@@ -69,13 +70,14 @@ const DetailView = (props) => {
 
 		if (size !== 0 && quantity !== 0) {
 
+			console.log('que pasa por aqui', article)
 			const _product = {
-				id: article._id,
-				name: props.title,
+				id: props.products[props.index].id,
+				name: props.products[props.index]['name_' + props.lang],
 				amount: {
 					[size]: quantity
 				},
-				price: +article.price * quantity
+				price: article.price
 			}
 
 			props.addItem(_product)
@@ -108,7 +110,6 @@ const DetailView = (props) => {
 	}
 
 	const goCardHandler = (e, index, id) => {
-		// console.log(number, dos, tres)
 		if (slide !== index) {
 			setSlide(index)
 			similarSwiper.slideTo(index)
@@ -127,7 +128,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			article ? article.images.map((im, i) => <div key={i} style={{ width: '15%' }}><img src={im.url} alt={props.title} /> </div>) : null
+			article ? article.images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>) : null
 		}</Slider>
 	) : null
 
@@ -174,7 +175,6 @@ const DetailView = (props) => {
 		)
 
 
-
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
@@ -203,9 +203,9 @@ const DetailView = (props) => {
 											time={props.time}
 											level={props.level}
 											people={props.people}
-											madeof={props.madeOf}
-											organic={props.organic}
-											recycle={props.recycle} />
+											madeof={props.shop.handmade_text}
+											organic={props.shop.organic_text}
+											recycle={props.shop.recyclable_text} />
 										<div>
 											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {article ? article.price + ' ' + props.shop.currency_symbol : '0 €'}</h2> : null}
 										</div>
