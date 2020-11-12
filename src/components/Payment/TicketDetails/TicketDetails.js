@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 
-const TicketDetails = ({ next }) => {
+const TicketDetails = ({ next, product }) => {
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -20,13 +20,13 @@ const TicketDetails = ({ next }) => {
 		const isValidEmail = regexEmail.test(email.toLocaleLowerCase())
 
 		if (isValidName && isValidEmail) {
-			const _details = {
+			const _customer = {
 				name: name,
 				email: email,
 				phone: phone,
 				address: address
 			}
-			next(_details)
+			next(_customer)
 		}
 	}
 

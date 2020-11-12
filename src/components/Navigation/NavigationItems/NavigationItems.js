@@ -5,9 +5,14 @@ import NavigationItem from './NavigationItem/NavigationItem'
 
 const navigationItems = props => (
     <ul onClick={props.clicked} style={props.height ? { height: 'auto' } : null} className={classes.NavigationItems}>
-        <NavigationItem goSection={props.goSection} active={props.currentActive === 0 ? true : false} link={0}>Notre Histoire</NavigationItem>
-        <NavigationItem goSection={props.goSection} active={props.currentActive === 1 ? true : false} link={1}>Visitez Nous</NavigationItem>
-        <NavigationItem goSection={props.goSection} active={props.currentActive === 0 ? true : false} link={2}>Boutique</NavigationItem>
+        {props.options ? props.options.map((option, index) => (
+            <NavigationItem
+                key={option.option}
+                label={option.option}
+                link={index}
+                goSection={props.goSection}
+                active={props.currentActive === index ? true : false}>{option.option}</NavigationItem>
+        )) : null}
     </ul>
 )
 

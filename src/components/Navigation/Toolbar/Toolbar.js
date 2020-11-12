@@ -9,14 +9,14 @@ import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle'
 import Languages from '../../Languages/Languages'
 import Cart from '../../Cart/Cart'
 
-const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandler, goCartHandler, goHomeHandler }) => (
+const toolbar = ({ products, options, currentActive, drawerToggleClicked, goSectionHandler, goCartHandler, goHomeHandler, languageHandler }) => (
     <header className={classes.Toolbar}>
         <DrawerToggle clicked={drawerToggleClicked} />
         <div className={classes.Logo} onClick={goHomeHandler}>
             <Logo />
         </div>
         <section className={classes.Wrapper}>
-            <Languages capitalize lang={['fr', 'en']} />
+            <Languages capitalize lang={['fr', 'en']} changeLang={languageHandler} />
             <section className={classes.Beside}>
                 {/* <label htmlFor="search">
                     <input name="search" type="text" placeholder="search" />
@@ -27,7 +27,10 @@ const toolbar = ({ products, currentActive, drawerToggleClicked, goSectionHandle
                 </span>
             </section>
             <nav className={classes.DesktopOnly}>
-                <NavigationItems goSection={goSectionHandler} current={currentActive} />
+                <NavigationItems
+                    goSection={goSectionHandler}
+                    current={currentActive}
+                    options={options} />
             </nav>
         </section>
     </header>

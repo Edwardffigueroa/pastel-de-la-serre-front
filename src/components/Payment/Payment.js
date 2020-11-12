@@ -6,20 +6,54 @@ import TicketDetails from './TicketDetails/TicketDetails'
 import Confirmation from './Confirmation/Confirmation'
 
 
-const Payment = ({ confirmed, confirmHandler }) => {
+const Payment = ({ confirmed, confirmHandler, products }) => {
 
 	const [view, setView] = useState(0)
 	// const [card, setCard] = useState({})
-	const [details, setDetails] = useState({})
+	const [customer, setCustomer] = useState({})
 
 	const paymentHandler = card => {
 		// setCard(card)
 		setView(2)
 	}
 
-	const ticketDetailHandler = details => {
-		setDetails(details)
-		setView(1)
+	const ticketDetailHandler = customer => {
+
+
+		const value = Object.values(products)
+		const _products = value.reduce((acc, current, index) => {
+			const _item = Object.keys(current.amount).map((size, index) => ({
+				product_id: current.id,
+				product_name: current.name,
+				quantity: current.amount[size],
+				attributes: size
+			}))
+			acc[index] = _item
+			return acc
+		}, []).flat()
+
+		console.log(_products)
+
+		fetch('https://jsonplaceholder.typicode.com/posts', {
+			method: 'POST',
+			body: JSON.stringify({
+				products: _products,
+				customer: customer
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		})
+			.then(response => response.json())
+			.then(data => {
+				console.log(data)
+				setCustomer(customer)
+				setView(1)
+			})
+			.catch((error) => {
+				console.error('Error:', error);
+			});
+
 	}
 
 
@@ -34,10 +68,10 @@ const Payment = ({ confirmed, confirmHandler }) => {
 		case 2:
 			container = <Confirmation
 				confirm={confirmHandler}
-				name={details.name}
-				email={details.email}
-				phone={details.phone}
-				address={details.address} />
+				name={customer.name}
+				email={customer.email}
+				phone={customer.phone}
+				address={customer.address} />
 			break;
 		default:
 			container = <TicketDetails next={ticketDetailHandler} />
