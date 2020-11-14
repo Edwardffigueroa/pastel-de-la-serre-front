@@ -1,4 +1,5 @@
 import ClientJS from 'clientjs'
+import { products } from './FetchAll'
 
 const CONSTANTS = {
     CLIENT: 'CLIENT',
@@ -27,10 +28,13 @@ class Cart {
         this.products = []
         this.totalPrice = 0
 
+        // console.log(_takeit)
         const prevClient = getPersistance(CONSTANTS.CLIENT) || null
         const prevProducts = getPersistance(CONSTANTS.PRODUCTS) || null
         const prevTours = getPersistance(CONSTANTS.TOURS) || null
         const prevPrice = getPersistance(CONSTANTS.PRICE) || null
+
+
 
 
         if (prevClient) {
@@ -60,6 +64,7 @@ class Cart {
         } else {
             savePersistance(CONSTANTS.PRICE, this.totalPrice)
         }
+
 
     }
 

@@ -40,8 +40,20 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const [products, setProducts] = useState([])
     useEffect(() => {
-        const _prevProds = Cart.getProducts()
+
+
+        const _prevProds = Cart.getProducts().map(prod => {
+            const _found = shopItems.find(pr => pr.id === prod.id)
+            if (_found) {
+                if (_found.price !== prod.price) {
+                    prod.price = _found.price
+                }
+            }
+            return prod
+        })
+
         setProducts(_prevProds)
+
         setSlide(0)
     }, [])
 
