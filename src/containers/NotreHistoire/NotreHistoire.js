@@ -39,10 +39,28 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const [indexSelected, setIndexSelected] = useState(0)
 
     const [products, setProducts] = useState([])
-    useEffect(() => { 
-        const _prevProds = Cart.getProducts()
+    useEffect(() => {
+
+
+        const _prevProds = Cart.getProducts().map(prod => {
+            const _found = shopItems.find(pr => pr.id === prod.id)
+            if (_found) {
+                if (_found.price !== prod.price) {
+                    prod.price = _found.price
+                }
+            }
+            return prod
+        })
+
+        const totalPrice = _prevProds.reduce((acc, prod, index) => {
+            acc += prod.price
+            return acc
+        }, 0)
+
         setProducts(_prevProds)
-        setSlide(0) }, [])
+        Cart.setProducts(_prevProds, totalPrice)
+        setSlide(0)
+    }, [])
 
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
@@ -298,6 +316,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         shop={shopTrans}
                         visits={visitTrans}
                         tours={itemSelected}
+                        histoireTitle={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         histoire={histoireTrans.body}
                         items={tours}
                         index={indexSelected}
@@ -316,6 +335,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                _products={products}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );

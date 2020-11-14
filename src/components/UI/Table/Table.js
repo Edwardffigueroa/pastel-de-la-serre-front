@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react'
 
 import classes from './Table.module.css'
 import Item from './Item/Item'

@@ -181,6 +181,8 @@ const DetailView = (props) => {
 		)
 
 
+	console.log(props.products)
+
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
@@ -196,7 +198,7 @@ const DetailView = (props) => {
 							(
 								<section className={classes.Content}>
 									<div className={classes.TitleWrapper}>
-										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}</h1>
+										<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>{props.histoireTitle[0]}<br /> {props.histoireTitle[1]} <br /> {props.histoireTitle[2]}</h1>
 									</div>
 									<Histoire text={props.histoire} />
 								</section>

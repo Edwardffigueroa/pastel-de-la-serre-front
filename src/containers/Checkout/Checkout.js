@@ -12,14 +12,13 @@ import Modal from '../../components/Modal/Modal'
 import Cart from '../../utils/Cart'
 
 
-const Checkout = ({ refreshCartState }) => {
+const Checkout = ({ refreshCartState, _products }) => {
 
-	const _prods = Cart.getProducts()
 	const _price = Cart.getPrice()
 	const history = useHistory()
 
 	const [confirmed, setConfirmed] = useState(false)
-	const [products, setProducts] = useState(_prods)
+	const [products, setProducts] = useState(_products)
 	const [totalPrice, setTotalPrice] = useState(_price)
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 	
