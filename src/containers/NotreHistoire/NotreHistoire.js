@@ -39,10 +39,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const [indexSelected, setIndexSelected] = useState(0)
 
     const [products, setProducts] = useState([])
-    useEffect(() => { 
+    useEffect(() => {
         const _prevProds = Cart.getProducts()
         setProducts(_prevProds)
-        setSlide(0) }, [])
+        setSlide(0)
+    }, [])
 
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
@@ -244,6 +245,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         }
     }
 
+    console.log(itemSelected)
     return (
         <Layout
             products={products}
@@ -298,6 +300,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         shop={shopTrans}
                         visits={visitTrans}
                         tours={itemSelected}
+                        histoireTitle={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         histoire={histoireTrans.body}
                         items={tours}
                         index={indexSelected}
