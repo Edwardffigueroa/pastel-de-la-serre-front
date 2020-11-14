@@ -52,8 +52,13 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             return prod
         })
 
-        setProducts(_prevProds)
+        const totalPrice = _prevProds.reduce((acc, prod, index) => {
+            acc += prod.price
+            return acc
+        }, 0)
 
+        setProducts(_prevProds)
+        Cart.setProducts(_prevProds, totalPrice)
         setSlide(0)
     }, [])
 
@@ -257,7 +262,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         }
     }
 
-    console.log(itemSelected)
     return (
         <Layout
             products={products}
@@ -331,6 +335,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                _products={products}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );

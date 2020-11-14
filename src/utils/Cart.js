@@ -68,6 +68,13 @@ class Cart {
 
     }
 
+    setProducts(products, totalPrice) {
+        this.products = products
+        this.totalPrice = totalPrice
+        savePersistance(CONSTANTS.PRODUCTS, this.products)
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
+    }
+
     getProducts() {
         return this.products || []
     }

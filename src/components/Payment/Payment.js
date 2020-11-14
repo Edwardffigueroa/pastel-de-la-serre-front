@@ -32,7 +32,6 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 			return acc
 		}, []).flat()
 
-		console.log(_products)
 
 		fetch('https://jsonplaceholder.typicode.com/posts', {
 			method: 'POST',
@@ -46,7 +45,7 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log(data)
+				// console.log(data)
 				setCustomer(customer)
 				setView(1)
 			})

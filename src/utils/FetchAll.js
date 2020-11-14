@@ -26,7 +26,7 @@ const boutique = async () => {
 }
 
 
-export const products = async () => {
+const products = async () => {
     const res = await fetch('https://pastel-de-la-serre-backend.uc.r.appspot.com/products/')
     const data = await res.json()
     return data
