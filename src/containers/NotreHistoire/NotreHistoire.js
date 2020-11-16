@@ -56,7 +56,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             acc += (_amount * prod.price)
             return acc
         }, 0)
-        console.log(totalPrice)
 
         setProducts(_prevProds)
         Cart.setProducts(_prevProds, totalPrice)
@@ -335,6 +334,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                background={`url('${shopTrans.Background_image.url}')`}
                 _products={products}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >

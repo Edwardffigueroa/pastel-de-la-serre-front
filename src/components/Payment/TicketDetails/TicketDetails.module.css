@@ -26,6 +26,8 @@
   border-bottom: 1px solid #626262;
 }
 
+/* Radical css implementation due to bad selectors on library */
+
 .PhoneInput {
   background-color: transparent !important;
   border: none !important;
@@ -38,4 +40,15 @@
 .PhoneDropdown {
   background-color: transparent !important;
   border: none !important;
+}
+
+@media (min-width: 1080px) {
+  .TicketDetails label {
+    margin-top: 8px;
+    margin-bottom: 0px;
+  }
+
+  .TicketDetails h3 {
+    margin: 0;
+  }
 }

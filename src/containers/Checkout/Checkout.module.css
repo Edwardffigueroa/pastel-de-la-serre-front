@@ -8,13 +8,13 @@
   height: 100vh;
   opacity: 1;
   animation: entrance 1s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
-  background-color: lightgray;
+  background-color: transparent;
   background-size: cover;
   background-repeat: no-repeat;
   transition: all ease-in-out 300ms;
-  background-image: url('../../assets/detailView/bg_datail_boutique.png');
   --overflow: hidden;
 }
+
 
 .Title {
   flex-basis: 100%;
@@ -73,7 +73,7 @@
   .Title {
     margin-left: 30px;
   }
-  .Checkout>div {
+  .Checkout > div {
     width: 100%;
   }
   .CheckoutWrapper {
@@ -89,7 +89,8 @@
     flex-direction: row;
     height: calc(100% - 100px);
   }
-  .Content>div, .Content>section {
+  .Content > div,
+  .Content > section {
     flex-basis: 50%;
   }
   .Payment {
@@ -129,9 +130,12 @@
     align-items: center;
     height: 83%;
   }
-  .Content>div {
+  .Content > div {
     flex-basis: 80%;
     height: 89%;
+  }
+  .Payment {
+    transform: translateY(35px);
   }
 }
 
