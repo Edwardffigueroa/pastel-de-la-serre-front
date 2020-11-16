@@ -335,6 +335,8 @@
     max-height: 831px;
     min-height: inherit;
   }
+  
+  .DetailWrapper:not(.Shop)::before,
   .DetailWrapper::before {
     height: 100%;
     border-radius: 40px;
