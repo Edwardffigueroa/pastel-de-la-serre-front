@@ -211,12 +211,12 @@
   height: 100%;
 }
 
-.Shop.DesktopControllers>button:nth-child(1) {
+.Shop.DesktopControllers > button:nth-child(1) {
   margin: 30px;
   width: 55%;
 }
 
-.Shop.DesktopControllers>button:nth-child(2) {
+.Shop.DesktopControllers > button:nth-child(2) {
   width: 75%;
 }
 
@@ -244,8 +244,8 @@
     /* height: 400px; */
     height: 400px;
   }
-  .DetailWrapper {
-    /* height: 106%; */
+  .DetailWrapper:not(.Shop)::before {
+    height: 112%;
   }
   .DetailView::-webkit-scrollbar {
     display: none;
@@ -259,7 +259,7 @@
     margin: 25px 0px;
   }
 
-  .ProductOptions>div:first-of-type {
+  .ProductOptions > div:first-of-type {
     margin: 25px 0px;
     justify-content: flex-start;
   }
@@ -302,11 +302,11 @@
   .Shop.CTA {
     display: none;
   }
-  .Shop.DesktopControllers>button:nth-child(1) {
+  .Shop.DesktopControllers > button:nth-child(1) {
     margin: 0px;
     width: 35%;
   }
-  .Shop.DesktopControllers>button:nth-child(2) {
+  .Shop.DesktopControllers > button:nth-child(2) {
     width: 50%;
   }
 }
@@ -336,6 +336,7 @@
     min-height: inherit;
   }
   .DetailWrapper::before {
+    height: 100%;
     border-radius: 40px;
   }
   .Shop.DetailWrapper {
@@ -382,7 +383,7 @@
     height: 100%;
   }
 
-  .ImageWrapper>div>div {
+  .ImageWrapper > div > div {
     --height: 100%;
     height: 100%;
     /* height: 505px; */
@@ -439,13 +440,13 @@
     justify-content: initial;
     align-items: center;
   }
-  .Shop.DesktopControllers>button:nth-child(1) {
+  .Shop.DesktopControllers > button:nth-child(1) {
     margin: inherit;
     width: inherit;
     margin-right: 5%;
     width: 50%;
   }
-  .Shop.DesktopControllers>button:nth-child(2) {
+  .Shop.DesktopControllers > button:nth-child(2) {
     margin: inherit;
     width: inherit;
   }

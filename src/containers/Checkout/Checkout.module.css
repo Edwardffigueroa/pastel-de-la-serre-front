@@ -13,7 +13,7 @@
   background-repeat: no-repeat;
   transition: all ease-in-out 300ms;
   background-image: url('../../assets/detailView/bg_datail_boutique.png');
-  overflow: hidden;
+  --overflow: hidden;
 }
 
 .Title {
@@ -37,7 +37,7 @@
 
 .CheckoutWrapper {
   width: 100%;
-  height: 90vh;
+  --height: 90vh;
   margin: 0;
   padding: 20px;
   box-sizing: border-box;
