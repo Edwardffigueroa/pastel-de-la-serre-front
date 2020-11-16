@@ -181,7 +181,7 @@ const DetailView = (props) => {
 		)
 
 
-	console.log(props.products)
+	console.log(props.visits)
 
 	return (
 		<a.div style={exitSpring}>

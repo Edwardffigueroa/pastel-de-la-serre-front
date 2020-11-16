@@ -162,14 +162,15 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         let _i = indexSelected
         if (direction === 'back') {
             if (slide === 1) {
-                _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
+                console.log('esto es lo que se mueve')
+                _i = _i === 0 ? (visitTrans.length - 1) : (indexSelected - 1)
             }
             if (slide === 2) {
                 _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
             }
         } else if ('foward') {
             if (slide === 1) {
-                _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
+                _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
             if (slide === 2) {
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
