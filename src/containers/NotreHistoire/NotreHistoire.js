@@ -27,7 +27,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
     const shopTrans = boutique.Boutique_content.filter(content => content.abbreviation === lang)[0].Boutique_detail
 
-
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
     const current = generalTrans.hero[slide]
@@ -53,7 +52,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         })
 
         const totalPrice = _prevProds.reduce((acc, prod, index) => {
-            acc += prod.price
+            const _amount = Object.values(prod.amount)
+            acc += (_amount * prod.price)
             return acc
         }, 0)
 
@@ -162,14 +162,14 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         let _i = indexSelected
         if (direction === 'back') {
             if (slide === 1) {
-                _i = _i === 0 ? (items.length - 1) : (indexSelected - 1)
+                _i = _i === 0 ? (visitTrans.length - 1) : (indexSelected - 1)
             }
             if (slide === 2) {
                 _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
             }
         } else if ('foward') {
             if (slide === 1) {
-                _i = _i === (items.length - 1) ? 0 : (indexSelected + 1)
+                _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
             if (slide === 2) {
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
@@ -179,7 +179,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         }
 
         if (slide === 1) {
-            setItemSelected(tours[_i])
+            setItemSelected(visitTrans[_i])
         } else {
             setItemSelected(shopItems[_i])
         }
@@ -212,13 +212,12 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 history.push('/booking')
                 break;
             case 1:
-                const selected = items[1]
-                setItemSelected(selected)
-                setIndexSelected(1)
+                setItemSelected(visitTrans[0])
+                setIndexSelected(0)
                 break;
             case 2:
-                setItemSelected(items[2])
-                setIndexSelected(2)
+                setItemSelected(shopItems[0])
+                setIndexSelected(0)
                 break;
             default:
                 setItemSelected(shopItems[0])
@@ -272,7 +271,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             goHomeHandler={goHomeHandler}
             navOptions={generalTrans.Navigation}
         >
-            <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: background }}>
+            <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: background, overflow: 'hidden' }}>
                 <DotNav
                     hide={itemSelected}
                     current={slide}
@@ -335,6 +334,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                background={`url('${shopTrans.Background_image.url}')`}
                 _products={products}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >

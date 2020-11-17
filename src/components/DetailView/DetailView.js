@@ -77,14 +77,13 @@ const DetailView = (props) => {
 
 		if (size !== 0 && quantity !== 0) {
 
-			console.log('que pasa por aqui', article)
 			const _product = {
 				id: props.products[props.index].id,
 				name: props.products[props.index]['name_' + props.lang],
 				amount: {
 					[size]: quantity
 				},
-				price: article.price
+				price: props.products[props.index].price
 			}
 
 			props.addItem(_product)
@@ -169,7 +168,7 @@ const DetailView = (props) => {
 	const _title = props.title[0]
 		? (
 			<h1 className={[classes.Title, classes.HistoireTitle].join(' ')}>
-				{props.title[0]}<br /> {props.title[1]} <br /> {props.title[2]}
+				{props.visits[props.index].title1}<br /> {props.visits[props.index].title2} <br /> {props.visits[props.index].title3}
 			</h1>
 		)
 		: (
@@ -180,8 +179,6 @@ const DetailView = (props) => {
 			</h1>
 		)
 
-
-	console.log(props.products)
 
 	return (
 		<a.div style={exitSpring}>
@@ -208,14 +205,14 @@ const DetailView = (props) => {
 										{_title}
 										<IconList
 											isShop={isShop}
-											time={props.time}
-											level={props.level}
-											people={props.people}
+											time={props.visits[props.index].time}
+											level={props.visits[props.index].type}
+											people={props.visits[props.index].people}
 											madeof={props.shop.handmade_text}
 											organic={props.shop.organic_text}
 											recycle={props.shop.recyclable_text} />
 										<div>
-											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {article ? article.price + ' ' + props.shop.currency_symbol : '0 €'}</h2> : null}
+											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {props.products[props.index].price + ' ' + props.shop.currency_symbol}</h2> : null}
 										</div>
 										<p className={classes.Description}>{props.description ? props.description : props.products[props.index]['description_' + props.lang]}</p>
 									</div>
