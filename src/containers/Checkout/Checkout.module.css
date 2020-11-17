@@ -15,7 +15,6 @@
   --overflow: hidden;
 }
 
-
 .Title {
   flex-basis: 100%;
   color: #183c77;
@@ -99,6 +98,15 @@
 }
 
 @media (min-width: 1080px) {
+  .Checkout > div {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
   .Close {
     display: flex;
     position: absolute;

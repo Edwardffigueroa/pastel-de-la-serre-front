@@ -34,7 +34,7 @@ const DetailView = (props) => {
 
 	const [size, setSize] = useState(isShop ? props.products[props.index].Product_variation[0].Variation_item[0].Value : 0)
 
-	const [slide, setSlide] = useState(1)
+	const [slide, setSlide] = useState(0)
 	const similarSwiper = new Swiper(".swiper-container-similarItems", {
 		initialSlide: slide,
 		speed: 700,
@@ -46,6 +46,10 @@ const DetailView = (props) => {
 		slidePrevClass: 'swiper-slide-prev',
 		breakpoints: {
 			2000: {
+				spaceBetween: 50,
+				slidesPerView: 3
+			},
+			1920: {
 				spaceBetween: 50,
 				slidesPerView: 3
 			},
@@ -70,7 +74,7 @@ const DetailView = (props) => {
 
 	useEffect(() => {
 		setArticle(props.products[props.index])
-		setSlide(0)
+		setTimeout(() => setSlide(0), 500)
 	}, [])
 
 	const buyHanlder = e => {
@@ -116,13 +120,10 @@ const DetailView = (props) => {
 	}
 
 	const goCardHandler = (e, index, id) => {
-		if (slide !== index) {
-			setSlide(index)
-			similarSwiper.slideTo(index)
-			similarSwiper.update()
-		} else {
-			props.changeItem(index)
-		}
+		setSlide(0)
+		similarSwiper.slideTo(0)
+		similarSwiper.update()
+		props.changeItem(id)
 	}
 
 	if (similarSwiper) {
@@ -179,14 +180,13 @@ const DetailView = (props) => {
 			</h1>
 		)
 
-
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
 				<div className={isShop ? [classes.DetailWrapper, classes.Shop].join(' ') : classes.DetailWrapper}>
 					<section
 						className={isShop ? [classes.ImageWrapper, classes.Shop].join(' ') : classes.ImageWrapper}
-						style={!isShop ? { backgroundImage: `url(${props.img})` } : null}>
+						style={isHistoire ? { backgroundImage: `url(${props.img.image.url})` } : { backgroundImage: `url(${props.img})` }}>
 						{imgOrSlide}
 						{buttonOverImage}
 					</section>
@@ -214,7 +214,7 @@ const DetailView = (props) => {
 										<div>
 											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {props.products[props.index].price + ' ' + props.shop.currency_symbol}</h2> : null}
 										</div>
-										<p className={classes.Description}>{props.description ? props.description : props.products[props.index]['description_' + props.lang]}</p>
+										<p className={classes.Description}>{isShop ? props.products[props.index]['description_' + props.lang] : props.visits[props.index].description}</p>
 									</div>
 									{
 										!isShop ?

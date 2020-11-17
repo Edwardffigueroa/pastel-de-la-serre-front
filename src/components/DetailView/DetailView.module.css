@@ -265,7 +265,7 @@
   }
   .SimilarItems {
     overflow: hidden;
-    margin: 50px 0;
+    margin-top: 50px;
     width: calc(100% + 40px);
     mask-image: linear-gradient(
       to right,

@@ -133,6 +133,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         if (_index === slide) {
 
             if (_index === 0) {
+                console.log(histoireTrans)
                 setItemSelected(histoireTrans)
                 setIndexSelected(_index)
             }
@@ -167,7 +168,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             if (slide === 2) {
                 _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
             }
-        } else if ('foward') {
+        } else if (direction === 'foward') {
             if (slide === 1) {
                 _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
@@ -175,10 +176,13 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
             }
         } else {
-            _i = direction
+            console.log(visitTrans)
+            _i = visitTrans.findIndex(visit => visit.id === direction)
         }
 
         if (slide === 1) {
+            console.log('un little te saludara')
+            console.log(direction, _i)
             setItemSelected(visitTrans[_i])
         } else {
             setItemSelected(shopItems[_i])
@@ -320,7 +324,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         items={tours}
                         index={indexSelected}
                         currentActive={slide}
-                        img={histoireTrans.image.url}
+                        img={itemSelected.cover_image ? itemSelected.cover_image.url : itemSelected}
                         title={[itemSelected.title1, itemSelected.title2, itemSelected.title3]}
                         time={itemSelected.time}
                         people={itemSelected.people}

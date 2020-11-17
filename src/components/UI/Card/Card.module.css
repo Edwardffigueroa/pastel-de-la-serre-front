@@ -8,6 +8,7 @@
   background-position: center;
   border-radius: 15px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .Card {
