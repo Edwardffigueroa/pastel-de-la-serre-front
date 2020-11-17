@@ -176,13 +176,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
             }
         } else {
-            console.log(visitTrans)
             _i = visitTrans.findIndex(visit => visit.id === direction)
         }
 
         if (slide === 1) {
-            console.log('un little te saludara')
-            console.log(direction, _i)
             setItemSelected(visitTrans[_i])
         } else {
             setItemSelected(shopItems[_i])
