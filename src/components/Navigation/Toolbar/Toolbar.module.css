@@ -23,6 +23,7 @@
   justify-content: center;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .Beside {
@@ -61,17 +62,13 @@
   .Toolbar {
     padding: 0 20px;
   }
-
   .Beside {
     width: 100%;
-
     justify-content: space-evenly;
   }
-
   .DesktopOnly {
     display: none;
   }
-
   .Wrapper {
     flex: 1;
   }
@@ -81,11 +78,16 @@
   .Toolbar {
     justify-content: space-between;
   }
-
+  .Wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    /* width: 600px; */
+  }
   .Logo {
     width: auto;
+    margin-left: 12%;
   }
-
   .Beside {
     width: 100px;
     justify-content: space-evenly;
@@ -96,29 +98,28 @@
   .Toolbar {
     padding: 0 60px 0 20px;
   }
-
+  .Logo {
+    width: auto;
+    margin-left: inherit;
+  }
   .Wrapper {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
     width: 600px;
   }
-
   .DesktopOnly {
     display: flex;
     animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     width: 100%;
   }
-
   .Beside {
     margin: 0 60px;
     justify-content: space-between;
   }
-
-  .Beside label img,
-  .Beside span img {
-    width: 12px;
-    height: 12px;
+  .Beside label img, .Beside span img {
+    width: 18px;
+    height: 18px;
   }
 }
 

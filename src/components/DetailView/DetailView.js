@@ -61,7 +61,8 @@ const DetailView = (props) => {
 				slidesPerView: 3
 			},
 			760: {
-				slidesPerView: 2
+				spaceBetween: 30,
+				slidesPerView: 2.5
 			},
 			320: {
 				slidesPerView: 2,
