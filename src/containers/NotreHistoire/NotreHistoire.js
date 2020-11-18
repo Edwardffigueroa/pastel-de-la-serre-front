@@ -30,9 +30,13 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
 
     const [slide, setSlide] = useState(1)
-    const [items, setItems] = useState(generalTrans.hero)
-    const current = generalTrans.hero[slide]
+    // const [items, setItems] = useState(generalTrans.hero)
+    const [items, setItems] = useState([...generalTrans.hero, ...generalTrans.hero])
+    const slidersCards = [...generalTrans.slider_navigation, ...generalTrans.slider_navigation];
 
+    const current = items[slide]
+    // console.log(current)
+    // console.log(slidersCards)
 
 
     const [tours, setTours] = useState(visitTrans)
@@ -101,12 +105,22 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         },
     })
 
+    const handlerNewItem = (item) => {
+        //     console.log(item);
+        //     const ref = items[item]
+        //     console.log(ref)
+        //     const arr = [...items, ...items];
+        //    setItems([...items, ref]);
+        //     console.log(arr)
+    }
+
     const changeSlide = (value) => {
         setSlide(value)
         mySwiper.update()
     }
 
     const goSectionHandler = number => {
+        console.log(number)
         setItemSelected(false)
         setSlide(number)
         mySwiper.slideTo(number)
@@ -120,8 +134,14 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     if (mySwiper) {
         mySwiper.on('slideChangeTransitionStart', swiper => {
 
-            if (swiper.realIndex === 2 || slide === 2) {
+            // if (swiper.activeIndex === 1) {
+            //     console.log("finish")
+            //     handlerNewItem(0)
+            // }
+
+            if (swiper.realIndex === 5 || slide === 5) {
                 swiper.allowSlideNext = false
+
             } else {
                 swiper.allowSlideNext = true
             }
@@ -131,23 +151,52 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goToDetail = (e, index, id) => {
+        console.log("index", index);
+        console.log("id", id);
+        console.log("current", current.id);
+
+        // const _index = items.findIndex(item => item.id === id)
+        // if (_index === slide) {
+
+        //     if (_index === 0) {
+        //         console.log(histoireTrans)
+        //         setItemSelected(histoireTrans)
+        //         setIndexSelected(_index)
+        //     }
+
+        //     if (_index === 1) {
+        //         const selected = tours.find(item => item.id === 1)
+        //         setItemSelected(selected)
+        //         setIndexSelected(0)
+        //     }
+
+        //     if (_index === 2) {
+        //         setItemSelected(shopTrans)
+        //         setIndexSelected(0)
+        //     }
+
+        // } else {
+        //     mySwiper.slideTo(index)
+        // }
 
         const _index = items.findIndex(item => item.id === id)
-        if (_index === slide) {
 
-            if (_index === 0) {
+        if (current.id === id) {
+
+            if (id === 1) {
                 console.log(histoireTrans)
                 setItemSelected(histoireTrans)
                 setIndexSelected(_index)
             }
 
-            if (_index === 1) {
+            if (id === 2) {
                 const selected = tours.find(item => item.id === 1)
+                console.log(selected)
                 setItemSelected(selected)
                 setIndexSelected(0)
             }
 
-            if (_index === 2) {
+            if (id === 3) {
                 setItemSelected(shopTrans)
                 setIndexSelected(0)
             }
@@ -165,24 +214,24 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const changeItemHandler = direction => {
         let _i = indexSelected
         if (direction === 'back') {
-            if (slide === 1) {
+            if (slide === 1 || slide === 4) {
                 _i = _i === 0 ? (visitTrans.length - 1) : (indexSelected - 1)
             }
-            if (slide === 2) {
+            if (slide === 2 || slide === 5) {
                 _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
             }
         } else if (direction === 'foward') {
-            if (slide === 1) {
+            if (slide === 1 || slide === 4) {
                 _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
-            if (slide === 2) {
+            if (slide === 2 || slide === 5) {
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
             }
         } else {
             _i = visitTrans.findIndex(visit => visit.id === direction)
         }
 
-        if (slide === 1) {
+        if (slide === 1 || slide === 4) {
             setItemSelected(visitTrans[_i])
         } else {
             setItemSelected(shopItems[_i])
@@ -193,7 +242,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const rowsHandler = direction => {
 
-        if (direction === 'foward' && mySwiper.realIndex !== 2) {
+        if (direction === 'foward' && mySwiper.realIndex !== 5) {
             mySwiper.slideNext()
         }
 
@@ -251,14 +300,16 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     let background = ' '
     if (items.length > 0) {
-        if (itemSelected && slide === 2) {
+        console.log("intem", itemSelected)
+        if (itemSelected && (slide === 5 || slide === 2)) {
             background = `url(${shopTrans.Background_image.url})`
         }
 
-        if (itemSelected && (slide === 1 || slide === 0)) {
+        if (itemSelected && (slide === 0 || slide === 1 || slide === 3 || slide === 4)) {
             background = `url(${itemSelected.background_image.url})`
 
         }
+        // console.log(current)
 
         if (!itemSelected) {
             background = `url(${current.background_hero.url})`
@@ -278,7 +329,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             <div className={myClasses} style={{ backgroundPosition: 'center', backgroundImage: background, overflow: 'hidden' }}>
                 <DotNav
                     hide={itemSelected}
-                    current={slide}
+                    current={current.id}
                     goSectionHandler={goSectionHandler} />
                 <Shadow />
                 <section>
@@ -287,7 +338,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         <p>{current.description}</p>
                         <Button
                             clicked={CTAHandler}
-                            invert={slide === 2 ? true : false}>{current.button_name} </Button>
+                            invert={slide === 2 || slide === 5 ? true : false}>{current.button_name} </Button>
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
@@ -301,8 +352,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                                             index={i}
                                             active={slide}
                                             id={item.id}
-                                            title={generalTrans.slider_navigation[i].subtitle}
-                                            image={generalTrans.slider_navigation[i].image.formats.small.url}
+                                            title={slidersCards[i].subtitle}
+                                            image={slidersCards[i].image.formats.small.url}
                                             clicked={goToDetail}>
                                         </Card>
                                     </div>
@@ -317,7 +368,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         lang={lang}
                         products={shopItems}
                         shop={shopTrans}
-                        visits={visitTrans}
+                        visits={[...visitTrans, ...visitTrans]}
                         tours={itemSelected}
                         histoireTitle={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         histoire={histoireTrans.body}
