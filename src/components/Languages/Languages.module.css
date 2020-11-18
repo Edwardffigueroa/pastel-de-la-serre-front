@@ -1,5 +1,8 @@
 .Languages {
   display: none;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 12px;
 }
 
 /* 
@@ -49,6 +52,12 @@
 .Separator {
   color: white;
   height: auto;
+}
+
+@media (min-width: 768px) {
+  .Languages {
+    display: flex;
+  }
 }
 
 @media (min-width: 1080px) {

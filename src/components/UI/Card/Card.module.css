@@ -120,7 +120,7 @@
     height: 130px;
   }
   .Card.DetailView .Marker {
-    transform: translate(0px, -76px);
+    transform: translate(-32px, -62px);
   }
   .Flag {
     border-radius: 40px;
