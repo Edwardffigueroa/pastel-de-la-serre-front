@@ -23,7 +23,7 @@ import "slick-carousel/slick/slick-theme.css"
 
 const DetailView = (props) => {
 
-	console.log("tours", props.tours)
+	console.log("visits", props.index)
 
 	const isShop = props.currentActive === 2 || props.currentActive === 5
 	const isHistoire = props.currentActive === 0 || props.currentActive === 3
@@ -74,6 +74,22 @@ const DetailView = (props) => {
 			}
 		},
 	})
+
+	let bool = false;
+	similarSwiper.on("init", function (Swiper) {
+		console.log("entró al on");
+		bool = true;
+	}
+
+
+
+	)
+
+	useEffect(() => {
+		console.log("eejecutó el effect");
+		setSlide(props.index)
+
+	}, [props.index])
 
 	useEffect(() => {
 		setArticle(props.products[props.index])
@@ -228,7 +244,7 @@ const DetailView = (props) => {
 														goCardHandler={goCardHandler} />
 													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
 														<div className="swiper-wrapper">
-															{props.tours.carousel.map((item, i) => {
+															{props.visits.map((item, i) => {
 																return (
 																	<div key={i} className="swiper-slide">
 																		<Card
@@ -236,8 +252,8 @@ const DetailView = (props) => {
 																			index={i}
 																			active={slide}
 																			id={item.id}
-																			title={item.caption}
-																			image={item.url}
+																			title={item.title1 + " " + item.title2}
+																			image={item.cover_image.url}
 																			clicked={goCardHandler}
 																			detailView>
 																		</Card>
@@ -287,7 +303,11 @@ const DetailView = (props) => {
 						<img src={closeX} alt="close" />
 					</span>
 				</div>
+
 			</div>
+			<span className={isShop ? [classes.CloseIpad, classes.ShopCloseIpad].join(' ') : classes.CloseIpad} onClick={exitHandler} >
+				<img src={closeX} alt="close" />
+			</span>
 		</a.div >
 	)
 }
