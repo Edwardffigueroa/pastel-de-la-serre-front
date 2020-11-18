@@ -240,7 +240,7 @@ const DetailView = (props) => {
 											(
 												<div className={classes.SimilarItems}>
 													<CardList
-														items={props.tours.carousel}
+														items={props.visits}
 														goCardHandler={goCardHandler} />
 													<div className="swiper-container-similarItems" style={{ width: '100%' }}>
 														<div className="swiper-wrapper">
