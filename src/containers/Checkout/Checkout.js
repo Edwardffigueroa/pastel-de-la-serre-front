@@ -12,7 +12,7 @@ import Modal from '../../components/Modal/Modal'
 import Cart from '../../utils/Cart'
 
 
-const Checkout = ({ refreshCartState, _products, background }) => {
+const Checkout = ({ refreshCartState, _products, background, translations }) => {
 
 	const _price = Cart.getPrice()
 	const history = useHistory()
@@ -21,6 +21,9 @@ const Checkout = ({ refreshCartState, _products, background }) => {
 	const [products, setProducts] = useState(_products)
 	const [totalPrice, setTotalPrice] = useState(_price)
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1, backgroundImage: background }))
+
+
+	console.log(translations)
 
 	const confirmHandler = () => {
 		setExitSpring({ opacity: 0 })
@@ -86,6 +89,7 @@ const Checkout = ({ refreshCartState, _products, background }) => {
 							/>
 							<section className={classes.Payment}>
 								<Payment
+									translations={translations}
 									confirmed={confirmed}
 									confirmHandler={confirmHandler}
 									products={products} />

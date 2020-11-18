@@ -19,17 +19,20 @@ import Checkout from '../Checkout/Checkout'
 import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
-const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems }) => {
+const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems, checkout }) => {
     const [lang, setLang] = useState('fr')
 
     const generalTrans = general.Contents.filter(content => content.abbreviation === lang)[0]
     const histoireTrans = histoire.Contents.filter(content => content.abbreviation === lang)[0].Content
     const visitTrans = visit.Content.filter(content => content.abbreviation === lang)[0].Travels
     const shopTrans = boutique.Boutique_content.filter(content => content.abbreviation === lang)[0].Boutique_detail
+    const checkoutTrans = checkout.Contents.filter(content => content.abbreviation === lang)[0].Checkout_detail
+
 
     const [slide, setSlide] = useState(1)
     const [items, setItems] = useState(generalTrans.hero)
     const current = generalTrans.hero[slide]
+
 
 
     const [tours, setTours] = useState(visitTrans)
@@ -337,6 +340,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             {!match.isExact ? <Checkout
                 background={`url('${shopTrans.Background_image.url}')`}
                 _products={products}
+                translations={checkoutTrans}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );
