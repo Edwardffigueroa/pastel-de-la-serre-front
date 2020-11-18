@@ -18,7 +18,7 @@
   animation: exit 1s ease-out both;
 }
 
-.Close {
+.Close, .CloseIpad {
   /* display: none; */
   opacity: 0;
   animation: entrance 1.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 1.3s both;
@@ -219,7 +219,21 @@
   width: 75%;
 }
 
+.CloseIpad {
+  display: none;
+}
+
 @media (min-width: 768px) {
+  .ShopCloseIpad {
+    right: 70px;
+  }
+  .CloseIpad {
+    display: flex;
+    top: 150px;
+  }
+  .Close {
+    display: none;
+  }
   .Shop.ImageWrapper {
     min-height: 600px;
   }
@@ -298,6 +312,9 @@
 }
 
 @media (min-width: 1080px) {
+  .CloseIpad {
+    display: none;
+  }
   .DetailView {
     position: absolute;
     width: 100%;
