@@ -23,8 +23,10 @@ import "slick-carousel/slick/slick-theme.css"
 
 const DetailView = (props) => {
 
-	const isShop = props.currentActive === 2
-	const isHistoire = props.currentActive === 0
+	console.log("tours", props.tours)
+
+	const isShop = props.currentActive === 2 || props.currentActive === 5
+	const isHistoire = props.currentActive === 0 || props.currentActive === 3
 
 	const [article, setArticle] = useState(null)
 	const [items, setItems] = useState(props.items ? props.items : [])
