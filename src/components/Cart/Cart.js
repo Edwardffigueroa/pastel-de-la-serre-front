@@ -6,14 +6,11 @@ import cartImage from '../../assets/images/nav/cart_bag.svg'
 
 const Cart = ({ products, goCart }) => {
 
-
 	let stylo
 	if (products.length > 0) {
 		stylo = [classes.Feedback, classes.HasItems].join(' ')
-		// console.log('siii')
 	} else {
 		stylo = classes.Feedback
-		// console.log('noo')
 	}
 
 	return (

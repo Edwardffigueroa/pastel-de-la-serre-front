@@ -23,7 +23,6 @@ import "slick-carousel/slick/slick-theme.css"
 
 const DetailView = (props) => {
 
-	console.log("visits", props.index)
 
 	const isShop = props.currentActive === 2 || props.currentActive === 5
 	const isHistoire = props.currentActive === 0 || props.currentActive === 3
@@ -75,21 +74,8 @@ const DetailView = (props) => {
 		},
 	})
 
-	let bool = false;
-	similarSwiper.on("init", function (Swiper) {
-		console.log("entró al on");
-		bool = true;
-	}
 
-
-
-	)
-
-	useEffect(() => {
-		console.log("eejecutó el effect");
-		setSlide(props.index)
-
-	}, [props.index])
+	useEffect(() => { setSlide(props.index) }, [props.index])
 
 	useEffect(() => {
 		setArticle(props.products[props.index])
@@ -199,7 +185,6 @@ const DetailView = (props) => {
 			</h1>
 		)
 
-	console.log(props.visits)
 
 	return (
 		<a.div style={exitSpring}>

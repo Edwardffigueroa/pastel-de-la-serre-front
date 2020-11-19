@@ -28,7 +28,6 @@ class Cart {
         this.products = []
         this.totalPrice = 0
 
-        // console.log(_takeit)
         const prevClient = getPersistance(CONSTANTS.CLIENT) || null
         const prevProducts = getPersistance(CONSTANTS.PRODUCTS) || null
         const prevTours = getPersistance(CONSTANTS.TOURS) || null

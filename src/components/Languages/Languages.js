@@ -10,13 +10,11 @@ const Languages = (props) => {
 		props.changeLang(e.target.textContent)
 	}
 
-	// const changeLanguage = e => console.log(e.target)
 
 	const style = props.capitalize
 		? [classes.Option, classes.Capitalize]
 		: [classes.Option, classes.Uppercase]
 
-	// const options = props.lang.map(lang => <span key={lang} onClick={changeLanguage} className={style.join(' ')}>{lang}</span>)
 	const options = props.lang.map(lang => <span key={lang} onClick={changeLanguage} className={`${style.join(' ')} ${lang === t ? classes.Selected : ""}`}>{lang}</span>)
 	options.splice(1, 0, <span key={'separator'} className={classes.Separator}>/</span>);
 

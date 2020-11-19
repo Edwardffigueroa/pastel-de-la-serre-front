@@ -30,13 +30,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
 
     const [slide, setSlide] = useState(1)
-    // const [items, setItems] = useState(generalTrans.hero)
     const [items, setItems] = useState([...generalTrans.hero, ...generalTrans.hero])
     const slidersCards = [...generalTrans.slider_navigation, ...generalTrans.slider_navigation];
 
     const current = items[slide]
-    // console.log(current)
-    // console.log(slidersCards)
 
 
     const [tours, setTours] = useState(visitTrans)
@@ -105,14 +102,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         },
     })
 
-    const handlerNewItem = (item) => {
-        //     console.log(item);
-        //     const ref = items[item]
-        //     console.log(ref)
-        //     const arr = [...items, ...items];
-        //    setItems([...items, ref]);
-        //     console.log(arr)
-    }
 
     const changeSlide = (value) => {
         setSlide(value)
@@ -120,7 +109,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goSectionHandler = number => {
-        console.log(number)
         setItemSelected(false)
         setSlide(number)
         mySwiper.slideTo(number)
@@ -134,10 +122,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     if (mySwiper) {
         mySwiper.on('slideChangeTransitionStart', swiper => {
 
-            // if (swiper.activeIndex === 1) {
-            //     console.log("finish")
-            //     handlerNewItem(0)
-            // }
 
             if (swiper.realIndex === 5 || slide === 5) {
                 swiper.allowSlideNext = false
@@ -151,47 +135,19 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goToDetail = (e, index, id) => {
-        console.log("index", index);
-        console.log("id", id);
-        console.log("current", current.id);
 
-        // const _index = items.findIndex(item => item.id === id)
-        // if (_index === slide) {
-
-        //     if (_index === 0) {
-        //         console.log(histoireTrans)
-        //         setItemSelected(histoireTrans)
-        //         setIndexSelected(_index)
-        //     }
-
-        //     if (_index === 1) {
-        //         const selected = tours.find(item => item.id === 1)
-        //         setItemSelected(selected)
-        //         setIndexSelected(0)
-        //     }
-
-        //     if (_index === 2) {
-        //         setItemSelected(shopTrans)
-        //         setIndexSelected(0)
-        //     }
-
-        // } else {
-        //     mySwiper.slideTo(index)
-        // }
 
         const _index = items.findIndex(item => item.id === id)
 
         if (current.id === id) {
 
             if (id === 1) {
-                console.log(histoireTrans)
                 setItemSelected(histoireTrans)
                 setIndexSelected(_index)
             }
 
             if (id === 2) {
                 const selected = tours.find(item => item.id === 1)
-                console.log(selected)
                 setItemSelected(selected)
                 setIndexSelected(0)
             }
@@ -300,7 +256,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     let background = ' '
     if (items.length > 0) {
-        console.log("intem", itemSelected)
         if (itemSelected && (slide === 5 || slide === 2)) {
             background = `url(${shopTrans.Background_image.url})`
         }
@@ -309,7 +264,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             background = `url(${itemSelected.background_image.url})`
 
         }
-        // console.log(current)
 
         if (!itemSelected) {
             background = `url(${current.background_hero.url})`
