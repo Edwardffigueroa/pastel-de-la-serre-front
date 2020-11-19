@@ -4,7 +4,7 @@ import classes from './Table.module.css'
 import Item from './Item/Item'
 import backRow from '../../../assets/checkout/back.svg'
 
-const Table = ({ products, totalPrice, goBackHandler, increaseItemHandler, decreaseItemHandler, deleteAllHandler }) => {
+const Table = ({ translations, products, totalPrice, goBackHandler, increaseItemHandler, decreaseItemHandler, deleteAllHandler }) => {
 
 	const value = Object.values(products)
 	const _products = !products ? (
@@ -29,8 +29,8 @@ const Table = ({ products, totalPrice, goBackHandler, increaseItemHandler, decre
 	return (
 		<div className={classes.Table}>
 			<ul className={classes.List}>{_products}</ul>
-			<div className={classes.TotalPrice}><span>Subtotal:</span><h3> {totalPrice} €</h3></div>
-			<div className={classes.BackButton} onClick={goBackHandler}><span><img src={backRow} alt="Back" /> </span> Continuer mes Achats</div>
+			<div className={classes.TotalPrice}><span>{translations.subtotal_text}</span><h3> {totalPrice} €</h3></div>
+			<div className={classes.BackButton} onClick={goBackHandler}><span><img src={backRow} alt="Back" /> </span> {translations.back_button}</div>
 		</div>
 	)
 }

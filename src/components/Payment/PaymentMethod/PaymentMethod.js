@@ -11,7 +11,7 @@ import classes from './PaymentMethod.module.css'
 const addZero = number => number < 10 ? '0' + number : number
 
 
-const PaymentMethod = ({ next }) => {
+const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel, buttonLabel, next }) => {
 
 	const [month, setMonth] = useState(0)
 	const [year, setYear] = useState(0)
@@ -35,6 +35,7 @@ const PaymentMethod = ({ next }) => {
 			name: name,
 			card: card
 		}
+		//  ==== TODO ====
 		next(_cardDetails)
 	}
 
@@ -47,16 +48,16 @@ const PaymentMethod = ({ next }) => {
 	return (
 		<div className={classes.Payment}>
 			<div className={classes.Form}>
-				<h3>Moyent de paiement</h3>
+				<h3>{titleLabel}</h3>
 				<section className={classes.Logos}><img src={visa} alt="visa" /><img src={master} alt="master" /></section>
-				<label htmlFor="name">Titulaire de la cart</label>
+				<label htmlFor="name">{nameLabel}</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
-				<label htmlFor="number">N° Carte</label>
+				<label htmlFor="number">{numberLabel}</label>
 				<input className={classes.Input} htmlFor="number" type="text" name="card" value={card} onChange={cardHandler} />
 				<fieldset>
-					<label htmlFor="exp">Exp.</label>
+					<label htmlFor="exp">{expLabel}</label>
 					<div className={classes.Divider}></div>
-					<label htmlFor="cvv">CVV</label>
+					<label htmlFor="cvv">{codeLabel}</label>
 					<br />
 					<div style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
 						<Selected
@@ -68,7 +69,7 @@ const PaymentMethod = ({ next }) => {
 						<input className={classes.Input} type="number" htmlFor="cvv" name="cvv" />
 					</div>
 				</fieldset>
-				<Button clicked={onPayHandler} isCheckout>Suivant</Button>
+				<Button clicked={onPayHandler} isCheckout>{buttonLabel}</Button>
 			</div>
 		</div>)
 }

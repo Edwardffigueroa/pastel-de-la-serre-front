@@ -17,13 +17,12 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 	const _price = Cart.getPrice()
 	const history = useHistory()
 
+	const [approved, setApproved] = useState(false)
 	const [confirmed, setConfirmed] = useState(false)
 	const [products, setProducts] = useState(_products)
 	const [totalPrice, setTotalPrice] = useState(_price)
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1, backgroundImage: background }))
 
-
-	console.log(translations)
 
 	const confirmHandler = () => {
 		setExitSpring({ opacity: 0 })
@@ -69,14 +68,13 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 		refreshCartState(Cart.products)
 	}
 
-
 	return (
 		<div>
 			<div className={classes.Checkout}>
 				<a.div style={exitSpring}>
 					<Shadow />
 					<div className={classes.CheckoutWrapper}>
-						<h1 className={classes.Title}>Checkout</h1>
+						<h1 className={classes.Title}>{translations.title}</h1>
 						<section className={classes.Content}>
 							<Table
 								products={products}
@@ -86,6 +84,7 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 								decreaseItemHandler={decreaseItemHandler}
 								deleteAllHandler={deleteAllHandler}
 								refreshCartState={refreshCartState}
+								translations={translations}
 							/>
 							<section className={classes.Payment}>
 								<Payment
@@ -101,7 +100,15 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 					</div>
 				</a.div>
 			</div>
-			<Modal confirmed={confirmed} close={exitHandler} back={backHandler} />
+			<Modal
+				approved={approved}
+				approvedTitle={translations.order_approved_title}
+				approvedDescription={translations.order_approved_description}
+				declineTitle={translations.order_declined_title}
+				declineDescription={translations.order_decline_description}
+				button={translations.order_back_button}
+				confirmed={confirmed}
+				close={exitHandler} back={backHandler} />
 		</div>
 	)
 }

@@ -6,7 +6,7 @@ import TicketDetails from './TicketDetails/TicketDetails'
 import Confirmation from './Confirmation/Confirmation'
 
 
-const Payment = ({ confirmed, confirmHandler, products }) => {
+const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 
 	const [view, setView] = useState(0)
 	// const [card, setCard] = useState({})
@@ -14,6 +14,7 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 
 	const paymentHandler = card => {
 		// setCard(card)
+		//  ==== TODO ====
 		setView(2)
 	}
 
@@ -45,7 +46,7 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 		})
 			.then(response => response.json())
 			.then(data => {
-				// console.log(data)
+				//  ==== TODO ====
 				setCustomer(customer)
 				setView(1)
 			})
@@ -55,14 +56,27 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 
 	}
 
-
 	let container
 	switch (view) {
 		case 0:
-			container = <TicketDetails next={ticketDetailHandler} />
+			container = <TicketDetails
+				titleLabel={translations.personal_information_title}
+				nameLabel={translations.personal_information_name}
+				emailLabel={translations.personal_information_mail}
+				phoneLabel={translations.personal_information_phone}
+				addressLabel={translations.personal_information_address}
+				buttonLabel={translations.personal_information_button}
+				next={ticketDetailHandler} />
 			break;
 		case 1:
-			container = <PaymentMethod next={paymentHandler} />
+			container = <PaymentMethod
+				titleLabel={translations.payment_title}
+				nameLabel={translations.payment_name}
+				numberLabel={translations.payment_number}
+				expLabel={translations.payment_expiration}
+				codeLabel={translations.payment_code}
+				buttonLabel={translations.payment_button}
+				next={paymentHandler} />
 			break;
 		case 2:
 			container = <Confirmation
@@ -70,7 +84,11 @@ const Payment = ({ confirmed, confirmHandler, products }) => {
 				name={customer.name}
 				email={customer.email}
 				phone={customer.phone}
-				address={customer.address} />
+				address={customer.address}
+				clientLabel={translations.order_details_customer}
+				titleLabel={translations.order_details_title}
+				addressLabel={translations.order_details_address}
+				buttonLabel={translations.order_details_button} />
 			break;
 		default:
 			container = <TicketDetails next={ticketDetailHandler} />

@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 
-const TicketDetails = ({ next, product }) => {
+const TicketDetails = ({ next, buttonLabel, titleLabel, nameLabel, emailLabel, phoneLabel, addressLabel }) => {
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -33,12 +33,12 @@ const TicketDetails = ({ next, product }) => {
 
 	return (
 		<div className={classes.TicketDetails}>
-			<h3>Détails de facturation</h3>
-			<label>Nom</label>
+			<h3>{titleLabel}</h3>
+			<label>{nameLabel}</label>
 			<input value={name} onChange={e => setName(e.target.value)} type="text" required />
-			<label>E-mail</label>
+			<label>{emailLabel}</label>
 			<input value={email} onChange={e => setEmail(e.target.value)} type="email" required />
-			<label>Téléphone</label>
+			<label>{phoneLabel}</label>
 			<PhoneInput
 				inputClass={classes.PhoneInput}
 				buttonClass={classes.PhoneDropdown}
@@ -46,9 +46,9 @@ const TicketDetails = ({ next, product }) => {
 				value={phone}
 				onChange={tel => setPhone(tel)} />
 			{/* <input value={phone} onChange={e => setPhone(e.target.value)} type="text" required /> */}
-			<label>Adresse de livraison</label>
+			<label>{addressLabel}</label>
 			<input value={address} onChange={e => setAdress(e.target.value)} type="text" required />
-			<Button clicked={saveTicketHandler} isCheckout >Suivant</Button>
+			<Button clicked={saveTicketHandler} isCheckout >{buttonLabel}</Button>
 		</div>
 	)
 }

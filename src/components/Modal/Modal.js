@@ -3,7 +3,15 @@ import closeX from '../../assets/detailView/close.svg'
 import logo from '../../assets/images/logo.svg'
 import classes from './Modal.module.css'
 
-const Modal = ({ confirmed, close, back }) => {
+const Modal = ({ confirmed,
+	close,
+	back,
+	approved,
+	approvedTitle,
+	approvedDescription,
+	declineTitle,
+	declineDescription,
+	button }) => {
 
 	window.scrollTo(0, 0)
 
@@ -15,11 +23,11 @@ const Modal = ({ confirmed, close, back }) => {
 					<img src={logo} alt="Pastel de la serre" />
 				</div>
 				<div className={classes.Message}>
-					<h1>Merci d'avoir acheté <br /> revenez bientôt!</h1>
-					<p>votre colis arrivera à l'adresse indiquée <br />  dans les 10 prochains jours</p>
+					<h1>{approved ? approvedTitle : declineTitle}</h1>
+					<p>{approved ? approvedDescription : declineDescription}</p>
 				</div>
 				<div className={classes.ButtonWrapper}>
-					<button onClick={close}> Revenir </button>
+					<button onClick={close}> {button}</button>
 				</div>
 			</div>
 		</div>
