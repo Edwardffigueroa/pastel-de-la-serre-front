@@ -8,13 +8,14 @@ import Confirmation from './Confirmation/Confirmation'
 
 const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 
-	const [view, setView] = useState(0)
+	const [view, setView] = useState(1)
 	// const [card, setCard] = useState({})
 	const [customer, setCustomer] = useState({})
 
-	const paymentHandler = card => {
+	const paymentHandler = cardNumber => {
 		// setCard(card)
 		//  ==== TODO ====
+		console.log("sasdas", cardNumber)
 		setView(2)
 	}
 
