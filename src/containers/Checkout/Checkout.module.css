@@ -127,10 +127,10 @@
     display: flex;
     position: absolute;
     opacity: 1;
-    top: 25px;
-    right: 25px;
+    top: 80px;
+    right: 80px;
     border: 2px solid #183c77;
-    background-color: rgba(255, 255, 255, 0.295);
+    background-color: transparent;
     padding: 10px;
     border-radius: 50%;
   }
@@ -140,15 +140,15 @@
     max-width: 1698px;
     max-height: 831px;
     /* max-width: 1110px; */
-    padding: 40px;
+    padding: 80px;
     border-radius: 40px;
     background-color: rgba(255, 255, 255, 0.8);
   }
   .Title {
     font-size: 70px;
     margin: 0px;
-    margin-left: 30px;
   }
+
   .Content {
     transform: translateY(-40px);
     align-items: center;

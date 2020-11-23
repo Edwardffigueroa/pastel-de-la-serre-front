@@ -135,7 +135,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goToDetail = (e, index, id) => {
-        console.log('Every moi del anné ')
         const _index = items.findIndex(item => item.id === id)
         if (current.id === id) {
 
@@ -196,7 +195,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const rowsHandler = direction => {
 
-        if (direction === 'foward' && mySwiper.realIndex !== 9) {
+        if (direction === 'foward' && mySwiper.realIndex !== 11) {
             mySwiper.slideNext()
         }
 
@@ -247,7 +246,6 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const languageHandler = _lang => {
         const _items = general.Contents.filter(content => content.abbreviation === _lang)[0]
-        console.log(_items)
         setItems([..._items.hero, ..._items.hero, ..._items.hero, ..._items.hero])
         setLang(_lang)
     }

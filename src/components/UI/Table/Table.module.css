@@ -83,7 +83,7 @@
   .BackButton {
     display: flex;
     position: absolute;
-    left: 30px;
+    left: 0px;
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     align-items: center;
     bottom: 30px;
