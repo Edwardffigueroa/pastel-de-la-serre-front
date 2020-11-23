@@ -5,7 +5,7 @@
   left: 0;
   overflow-x: hidden;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   opacity: 1;
   animation: entrance 1s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
   background-color: transparent;
@@ -13,6 +13,12 @@
   background-repeat: no-repeat;
   transition: all ease-in-out 300ms;
   --overflow: hidden;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .Checkout {
+    height: calc(100vh + 10px);
+  }
 }
 
 .Title {
@@ -36,13 +42,14 @@
 
 .CheckoutWrapper {
   width: 100%;
+  box-sizing: border-box;
   --height: 90vh;
   margin: 0;
   padding: 20px;
   box-sizing: border-box;
   position: relative;
   width: 100%;
-  margin: 100px 0 25px 0;
+  margin: 100px 0 0 0;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.8);
   overflow: overlay;
@@ -69,12 +76,21 @@
     height: 100vh;
     overflow: hidden;
   }
+
+  .Checkout > div {
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
   .Title {
     margin-left: 30px;
   }
-  .Checkout > div {
-    width: 100%;
-  }
+
   .CheckoutWrapper {
     max-height: 862px;
     max-width: 742px;

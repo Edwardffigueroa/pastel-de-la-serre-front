@@ -24,6 +24,11 @@ const Button = props => {
         myClasses.push(classes.Checkout)
     }
 
+    if (props.aligned) {
+        myClasses.push(classes.Aligned)
+    }
+
+    
     myClasses = myClasses.join(' ')
 
     return <button

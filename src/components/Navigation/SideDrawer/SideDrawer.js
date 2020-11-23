@@ -11,12 +11,62 @@ const sideDrawer = (props) => {
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open]
     }
+
+
+
+    const keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+
+    function preventDefaultForScrollKeys(e) {
+        if (keys[e.keyCode]) {
+            preventDefault(e);
+            return false;
+        }
+    }
+
+    // modern Chrome requires { passive: false } when adding event
+    const supportsPassive = false;
+    try {
+        window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+            get: function () { supportsPassive = true; }
+        }));
+    } catch (e) { }
+
+    const wheelOpt = supportsPassive ? { passive: false } : false;
+    const wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+    // call this to Disable
+    const disableScroll = () => {
+        window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+        window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+        window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+        window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+    }
+
+    // call this to Enable
+    const enableScroll = () => {
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+        window.removeEventListener('touchmove', preventDefault, wheelOpt);
+        window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+    }
+
+
+    if (props.open) {
+        disableScroll()
+    } else {
+        enableScroll()
+    }
+
     return (
-        <div>
+        <div >
             <Backdrop show={props.open} clicked={props.closed} />
             <div className={attachedClasses.join(' ')}>
                 <nav className={classes.NavigationItems}>
-                    <NavigationItems options={props.options} goSection={props.goSectionHandler} clicked={props.closed} height="auto" />
+                    <NavigationItems options={props.options} goSection={props.goSectionHandler} clicked={props.closed} height="70%" />
                     <span onClick={props.closed}>
                         <img className={classes.closeX} src={closeX} alt="close" />
                     </span>

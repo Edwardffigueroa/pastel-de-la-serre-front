@@ -4,7 +4,7 @@ import classes from './NavigationItems.module.css'
 import NavigationItem from './NavigationItem/NavigationItem'
 
 const navigationItems = props => (
-    <ul onClick={props.clicked} style={props.height ? { height: 'auto' } : null} className={classes.NavigationItems}>
+    <ul onClick={props.clicked} style={props.height ? { height: props.height, justifyContent: 'space-evenly' } : null} className={classes.NavigationItems}>
         {props.options ? props.options.map((option, index) => (
             <NavigationItem
                 key={option.option}

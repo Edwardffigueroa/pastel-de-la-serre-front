@@ -259,15 +259,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     let background = ' '
     if (items.length > 0) {
         if (itemSelected && (slide === 2 || slide === 5 || slide === 8 || slide === 11)) {
-            console.log(slide)
-            console.log('entro aquiii')
             background = `url(${shopTrans.Background_image.url})`
         }
 
         if (itemSelected && (slide === 0 || slide === 1 || slide === 3 || slide === 4 || slide === 6 || slide === 7 || slide === 9 || slide === 10)) {
-            console.log(slide)
-
-            console.log('entro acaa')
             background = `url(${itemSelected.background_image.url})`
         }
 

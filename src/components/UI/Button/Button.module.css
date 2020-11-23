@@ -22,6 +22,10 @@
   filter: invert(100%);
 }
 
+.Button.Aligned {
+  width: 100%;
+}
+
 .ButtonOverImage {
   --width: 252px;
   background-color: #f8cfc9;
@@ -53,7 +57,9 @@
   background-color: #f8cfc9;
 }
 
-.Button.ShopButton:hover, .Button.ButtonOverImage:hover, .Button:hover {
+.Button.ShopButton:hover,
+.Button.ButtonOverImage:hover,
+.Button:hover {
   background-color: #303868;
   color: #f8cfc9;
   border-color: transparent;
@@ -69,7 +75,8 @@
   transition: all ease-in-out 350ms;
 }
 
-.ButtonOverImage:hover>.Row, .Button:hover>.Row {
+.ButtonOverImage:hover > .Row,
+.Button:hover > .Row {
   background-image: url('../../../assets/images/nav/row.svg');
 }
 
@@ -110,7 +117,7 @@
   color: #f8cfc9;
 }
 
-.Button.Invert:hover>.Row {
+.Button.Invert:hover > .Row {
   background-image: url('../../../assets/shopInvert.svg');
 }
 
@@ -157,7 +164,8 @@
   .Row {
     background-image: url('../../../assets/images/nav/row.svg');
   }
-  .ButtonOverImage:hover>.Row, .Button:hover>.Row {
+  .ButtonOverImage:hover > .Row,
+  .Button:hover > .Row {
     background-image: url('../../../assets/images/nav/row2.svg');
   }
   .Button:hover {
@@ -178,7 +186,8 @@
   Button.Invert:not(.ShopButton) {
     --width: 366px;
   }
-  .Button .Row, .Button.Invert .Row {
+  .Button .Row,
+  .Button.Invert .Row {
     width: 20px;
     height: 20px;
   }

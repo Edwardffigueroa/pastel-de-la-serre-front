@@ -267,10 +267,12 @@ const DetailView = (props) => {
 									}
 									<div className={isShop ? [classes.DesktopControllers, classes.Shop].join(' ') : classes.DesktopControllers}>
 										<Button
+											aligned
 											isShop
 											invert
 											clicked={buyHanlder}>{props.shop.add_to_cart_button}</Button>
 										<Button
+											aligned
 											isShop
 											isSecond
 											clicked={exitHandler}>{props.shop.continue_button}</Button>
