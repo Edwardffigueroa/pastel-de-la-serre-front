@@ -247,7 +247,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         setProducts(_prods)
     }
 
-    const languageHandler = lang => setLang(lang)
+    const languageHandler = _lang => {
+        const _items = general.Contents.filter(content => content.abbreviation === _lang)[0]
+        setItems([..._items.hero, ..._items.hero])
+        setLang(_lang)
+    }
 
     const myClasses = itemSelected
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
