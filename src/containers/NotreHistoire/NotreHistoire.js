@@ -135,21 +135,22 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goToDetail = (e, index, id) => {
+        console.log('Every moi del anné ')
         const _index = items.findIndex(item => item.id === id)
         if (current.id === id) {
 
-            if (id === 1) {
+            if (id === 1 || id === 4) {
                 setItemSelected(histoireTrans)
                 setIndexSelected(_index)
             }
 
-            if (id === 2) {
+            if (id === 2 || id === 5) {
                 const selected = tours.find(item => item.id === 1)
                 setItemSelected(selected)
                 setIndexSelected(0)
             }
 
-            if (id === 3) {
+            if (id === 3 || id === 6) {
                 setItemSelected(shopTrans)
                 setIndexSelected(0)
             }
@@ -246,6 +247,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const languageHandler = _lang => {
         const _items = general.Contents.filter(content => content.abbreviation === _lang)[0]
+        console.log(_items)
         setItems([..._items.hero, ..._items.hero, ..._items.hero, ..._items.hero])
         setLang(_lang)
     }
