@@ -30,8 +30,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
 
     const [slide, setSlide] = useState(1)
-    const [items, setItems] = useState([...generalTrans.hero, ...generalTrans.hero])
-    const slidersCards = [...generalTrans.slider_navigation, ...generalTrans.slider_navigation];
+    const [items, setItems] = useState([...generalTrans.hero, ...generalTrans.hero, ...generalTrans.hero, ...generalTrans.hero])
+    const slidersCards = [...generalTrans.slider_navigation, ...generalTrans.slider_navigation, ...generalTrans.slider_navigation, ...generalTrans.slider_navigation];
 
     const current = items[slide]
 
@@ -123,7 +123,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         mySwiper.on('slideChangeTransitionStart', swiper => {
 
 
-            if (swiper.realIndex === 5 || slide === 5) {
+            if (swiper.realIndex === 11 || slide === 11) {
                 swiper.allowSlideNext = false
 
             } else {
@@ -135,10 +135,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     }
 
     const goToDetail = (e, index, id) => {
-
-
         const _index = items.findIndex(item => item.id === id)
-
         if (current.id === id) {
 
             if (id === 1) {
@@ -170,24 +167,24 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const changeItemHandler = direction => {
         let _i = indexSelected
         if (direction === 'back') {
-            if (slide === 1 || slide === 4) {
+            if (slide === 1 || slide === 4 || slide === 7 || slide === 10) {
                 _i = _i === 0 ? (visitTrans.length - 1) : (indexSelected - 1)
             }
-            if (slide === 2 || slide === 5) {
+            if (slide === 2 || slide === 5 || slide === 8 || slide === 11) {
                 _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
             }
         } else if (direction === 'foward') {
-            if (slide === 1 || slide === 4) {
+            if (slide === 1 || slide === 4 || slide === 7 || slide === 10) {
                 _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
-            if (slide === 2 || slide === 5) {
+            if (slide === 2 || slide === 5 || slide === 8 || slide === 11) {
                 _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
             }
         } else {
             _i = visitTrans.findIndex(visit => visit.id === direction)
         }
 
-        if (slide === 1 || slide === 4) {
+        if (slide === 1 || slide === 4 || slide === 7 || slide === 10) {
             setItemSelected(visitTrans[_i])
         } else {
             setItemSelected(shopItems[_i])
@@ -198,7 +195,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const rowsHandler = direction => {
 
-        if (direction === 'foward' && mySwiper.realIndex !== 5) {
+        if (direction === 'foward' && mySwiper.realIndex !== 9) {
             mySwiper.slideNext()
         }
 
@@ -249,7 +246,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const languageHandler = _lang => {
         const _items = general.Contents.filter(content => content.abbreviation === _lang)[0]
-        setItems([..._items.hero, ..._items.hero])
+        setItems([..._items.hero, ..._items.hero, ..._items.hero, ..._items.hero])
         setLang(_lang)
     }
 
@@ -258,21 +255,27 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         : [classes.Wrapper].join('')
 
 
+
     let background = ' '
     if (items.length > 0) {
-        if (itemSelected && (slide === 5 || slide === 2)) {
+        if (itemSelected && (slide === 2 || slide === 5 || slide === 8 || slide === 11)) {
+            console.log(slide)
+            console.log('entro aquiii')
             background = `url(${shopTrans.Background_image.url})`
         }
 
-        if (itemSelected && (slide === 0 || slide === 1 || slide === 3 || slide === 4)) {
-            background = `url(${itemSelected.background_image.url})`
+        if (itemSelected && (slide === 0 || slide === 1 || slide === 3 || slide === 4 || slide === 6 || slide === 7 || slide === 9 || slide === 10)) {
+            console.log(slide)
 
+            console.log('entro acaa')
+            background = `url(${itemSelected.background_image.url})`
         }
 
         if (!itemSelected) {
             background = `url(${current.background_hero.url})`
         }
     }
+
 
     return (
         <Layout
@@ -296,7 +299,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         <p>{current.description}</p>
                         <Button
                             clicked={CTAHandler}
-                            invert={slide === 2 || slide === 5 ? true : false}>{current.button_name} </Button>
+                            invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
@@ -326,7 +329,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         lang={lang}
                         products={shopItems}
                         shop={shopTrans}
-                        visits={[...visitTrans, ...visitTrans]}
+                        visits={[...visitTrans, ...visitTrans, ...visitTrans, ...visitTrans]}
                         tours={itemSelected}
                         histoireTitle={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         histoire={histoireTrans.body}
