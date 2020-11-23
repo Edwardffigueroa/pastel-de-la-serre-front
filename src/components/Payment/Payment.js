@@ -42,16 +42,12 @@ const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 		})
 			.then(response => response.json())
 			.then(data => {
-				//  ==== TODO ====
+				//  ==== TODO ======
 				setView(2)
 			})
 			.catch((error) => {
-				console.error('Error:', error);
+				// ====== TODO =====
 			});
-		console.log("sasdas", cardNumber)
-
-
-
 	}
 
 	const ticketDetailHandler = _customer => {

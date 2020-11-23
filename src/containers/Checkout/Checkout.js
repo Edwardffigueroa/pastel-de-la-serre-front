@@ -27,7 +27,6 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 	const confirmHandler = () => {
 		setExitSpring({ opacity: 0 })
 		setConfirmed(true)
-		console.log("CONFIRM")
 	}
 
 	const exitHandler = e => {

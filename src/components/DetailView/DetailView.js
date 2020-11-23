@@ -75,7 +75,19 @@ const DetailView = (props) => {
 	})
 
 
-	useEffect(() => { setSlide(props.index) }, [props.index])
+	useEffect(() => {
+
+		if (props.index === 0 && slide === 1) {
+			similarSwiper.slideTo(0)
+			setSlide(0)
+		}
+
+		if (similarSwiper.activeIndex !== undefined) {
+			similarSwiper.slideTo(props.index)
+		}
+		setSlide(props.index)
+
+	}, [props.index])
 
 	useEffect(() => {
 		setArticle(props.products[props.index])
