@@ -85,7 +85,8 @@ const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel
 						style: {
 							base: {
 								iconColor: '#c4f0ff',
-								color: '#fff',
+								color: '#fff'
+
 							}
 						}
 					}}
@@ -105,14 +106,14 @@ const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel
 				<section className={classes.Logos}><img src={visa} alt="visa" /><img src={master} alt="master" /></section>
 				{/* <label htmlFor="name">{nameLabel}</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} /> */}
-				<label htmlFor="number">{numberLabel}</label>
-				<Elements stripe={stripePromise}>
-					<MyCheckoutForm />
-
-				</Elements>
-				{/* <section className={classes.Logos}><img src={visa} alt="visa" /><img src={master} alt="master" /></section>
 				<label htmlFor="name">{nameLabel}</label>
 				<input className={classes.Input} htmlFor="name" type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
+				<div className={classes.SpecialDiviver}></div>
+				<label htmlFor="number">{numberLabel}</label>
+				<Elements className={classes.SpecialInput} stripe={stripePromise}>
+					<MyCheckoutForm />
+				</Elements>
+				{/* <section className={classes.Logos}><img src={visa} alt="visa" /><img src={master} alt="master" /></section>
 				<label htmlFor="number">{numberLabel}</label>
 				<input className={classes.Input} htmlFor="number" type="text" name="card" value={card} onChange={cardHandler} />
 				<fieldset>

@@ -15,13 +15,6 @@ const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 	const paymentHandler = cardNumber => {
 		// setCard(card)
 		//  ==== TODO ====
-		console.log("sasdas", cardNumber)
-		setView(2)
-	}
-
-	const ticketDetailHandler = customer => {
-
-
 		const value = Object.values(products)
 		const _products = value.reduce((acc, current, index) => {
 			const _item = Object.keys(current.amount).map((size, index) => ({
@@ -34,12 +27,14 @@ const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 			return acc
 		}, []).flat()
 
-
-		fetch('https://jsonplaceholder.typicode.com/posts', {
+		fetch('https://pastel-de-la-serre-backend.uc.r.appspot.com/orders/complete', {
 			method: 'POST',
 			body: JSON.stringify({
 				products: _products,
-				customer: customer
+				customer: customer,
+				payment: {
+					id_card: cardNumber
+				}
 			}),
 			headers: {
 				'Content-Type': 'application/json',
@@ -48,13 +43,20 @@ const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 			.then(response => response.json())
 			.then(data => {
 				//  ==== TODO ====
-				setCustomer(customer)
-				setView(1)
+				setView(2)
 			})
 			.catch((error) => {
 				console.error('Error:', error);
 			});
+		console.log("sasdas", cardNumber)
 
+
+
+	}
+
+	const ticketDetailHandler = _customer => {
+		setView(1)
+		setCustomer(_customer)
 	}
 
 	let container
