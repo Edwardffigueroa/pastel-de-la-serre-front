@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './Checkout.module.css'
 
 
@@ -25,7 +25,16 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 
 
 	const confirmHandler = () => {
+		refreshCartState([])
+		setProducts([])
 		setExitSpring({ opacity: 0 })
+		setApproved(true)
+		setConfirmed(true)
+	}
+
+	const declinedHandler = () => {
+
+		setApproved(false)
 		setConfirmed(true)
 	}
 
@@ -58,7 +67,6 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 		setProducts(Cart.products)
 		setTotalPrice(Cart.totalPrice)
 		refreshCartState(Cart.products)
-
 	}
 
 	const deleteAllHandler = (id, size) => {
@@ -67,6 +75,16 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 		setTotalPrice(Cart.totalPrice)
 		refreshCartState(Cart.products)
 	}
+
+	useEffect(() => {
+		if (_products.length < 1) {
+			const _prevProds = Cart.getProducts()
+			setProducts(_prevProds)
+		}
+
+		console.log(Cart.getPrice())
+
+	}, [])
 
 	return (
 		<div>
@@ -90,7 +108,8 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 								<Payment
 									translations={translations}
 									confirmed={confirmed}
-									confirmHandler={confirmHandler}
+									resumeAccepted={confirmHandler}
+									resumeDeclined={declinedHandler}
 									products={products} />
 							</section>
 						</section>

@@ -6,15 +6,13 @@ import TicketDetails from './TicketDetails/TicketDetails'
 import Confirmation from './Confirmation/Confirmation'
 
 
-const Payment = ({ confirmed, confirmHandler, products, translations }) => {
+const Payment = ({ confirmed, resumeDeclined, resumeAccepted, products, translations }) => {
 
-	const [view, setView] = useState(1)
-	// const [card, setCard] = useState({})
+	const [view, setView] = useState(0)
+	const [card, setCard] = useState('')
 	const [customer, setCustomer] = useState({})
 
-	const paymentHandler = cardNumber => {
-		// setCard(card)
-		//  ==== TODO ====
+	const confirmHandler = () => {
 		const value = Object.values(products)
 		const _products = value.reduce((acc, current, index) => {
 			const _item = Object.keys(current.amount).map((size, index) => ({
@@ -27,32 +25,49 @@ const Payment = ({ confirmed, confirmHandler, products, translations }) => {
 			return acc
 		}, []).flat()
 
-		fetch('https://pastel-de-la-serre-backend.uc.r.appspot.com/orders/complete', {
-			method: 'POST',
-			body: JSON.stringify({
-				products: _products,
-				customer: customer,
-				payment: {
-					id_card: cardNumber
-				}
-			}),
-			headers: {
-				'Content-Type': 'application/json',
+		const _data = {
+			products: _products,
+			customer: customer,
+			payment: {
+				id_card: card
 			}
-		})
-			.then(response => response.json())
-			.then(data => {
-				//  ==== TODO ======
-				setView(2)
+		}
+
+		if (products.length > 0) {
+			console.log('data to send', _data)
+			fetch('https://pastel-de-la-serre-backend.uc.r.appspot.com/orders/complete', {
+				method: 'POST',
+				body: JSON.stringify(_data),
+				headers: {
+					'Content-Type': 'application/json',
+				}
 			})
-			.catch((error) => {
-				// ====== TODO =====
-			});
+				.then(response => response.json())
+				.then(res => {
+
+					if (res.order_status === "REJECTED") {
+						setView(0)
+						setCard('')
+						setCustomer({})
+						resumeDeclined()
+					}
+
+					if (res.order_status === "APPROVED") {
+						setView(0)
+						resumeAccepted()
+					}
+				})
+		}
+	}
+
+	const paymentHandler = cardNumber => {
+		setCard(cardNumber)
+		setView(2)
 	}
 
 	const ticketDetailHandler = _customer => {
-		setView(1)
 		setCustomer(_customer)
+		setView(1)
 	}
 
 	let container

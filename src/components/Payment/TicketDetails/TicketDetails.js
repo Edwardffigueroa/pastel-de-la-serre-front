@@ -19,7 +19,7 @@ const TicketDetails = ({ next, buttonLabel, titleLabel, nameLabel, emailLabel, p
 		const isValidName = regex.test(name)
 		const isValidEmail = regexEmail.test(email.toLocaleLowerCase())
 
-		if (isValidName && isValidEmail) {
+		if (isValidName && isValidEmail && phone.length > 6) {
 			const _customer = {
 				name: name,
 				email: email,

@@ -16,7 +16,7 @@ import {
 const stripePromise = loadStripe("pk_test_51Hgd7fLNYvKIoqTP0Ppxros0gTuijF8K9LUFPKAD5EKPxrg2wryXL4VzSgeynbHoTIFkEe0pM96sPFLYf3r6WPQs00IbqFvhE6");
 
 
-const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel, buttonLabel, next }) => {
+const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel, buttonLabel, next, isValid }) => {
 
 	const [name, setName] = useState('')
 	const [card, setCard] = useState('')

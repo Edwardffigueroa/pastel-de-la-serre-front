@@ -61,6 +61,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             return acc
         }, 0)
 
+
+        console.log(_prevProds)
+
         setProducts(_prevProds)
         Cart.setProducts(_prevProds, totalPrice)
         setSlide(0)
@@ -242,6 +245,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const refreshCartStateHandler = _prods => {
         setProducts(_prods)
+        Cart.setProducts([], 0)
+
     }
 
     const languageHandler = _lang => {
