@@ -367,6 +367,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                pubkey={boutique.stripe_public_key}
                 _products={products}
                 translations={checkoutTrans}
                 background={`url('${shopTrans.Background_image.url}')`}

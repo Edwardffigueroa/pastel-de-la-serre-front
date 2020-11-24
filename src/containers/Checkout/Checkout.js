@@ -12,7 +12,7 @@ import Modal from '../../components/Modal/Modal'
 import Cart from '../../utils/Cart'
 
 
-const Checkout = ({ refreshCartState, _products, background, translations }) => {
+const Checkout = ({ pubkey, refreshCartState, _products, background, translations }) => {
 
 
 	const _price = parseFloat(Cart.getPrice()).toFixed(2)
@@ -113,6 +113,7 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 							/>
 							<section className={classes.Payment}>
 								<Payment
+									pubkey={pubkey}
 									isPurchasable={isPurchasable}
 									translations={translations}
 									confirmed={confirmed}

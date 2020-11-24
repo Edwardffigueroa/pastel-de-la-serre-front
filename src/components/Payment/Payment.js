@@ -6,7 +6,7 @@ import TicketDetails from './TicketDetails/TicketDetails'
 import Confirmation from './Confirmation/Confirmation'
 
 
-const Payment = ({ confirmed, isPurchasable, resumeDeclined, resumeAccepted, products, translations }) => {
+const Payment = ({ confirmed, pubkey, isPurchasable, resumeDeclined, resumeAccepted, products, translations }) => {
 
 	const [view, setView] = useState(0)
 	const [card, setCard] = useState('')
@@ -84,6 +84,7 @@ const Payment = ({ confirmed, isPurchasable, resumeDeclined, resumeAccepted, pro
 			break;
 		case 1:
 			container = <PaymentMethod
+				pubkey={pubkey}
 				titleLabel={translations.payment_title}
 				nameLabel={translations.payment_name}
 				numberLabel={translations.payment_number}
