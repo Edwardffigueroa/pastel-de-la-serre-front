@@ -14,13 +14,15 @@ import Cart from '../../utils/Cart'
 
 const Checkout = ({ refreshCartState, _products, background, translations }) => {
 
-	const _price = Cart.getPrice()
+
+	const _price = parseFloat(Cart.getPrice()).toFixed(2)
 	const history = useHistory()
 
 	const [approved, setApproved] = useState(false)
 	const [confirmed, setConfirmed] = useState(false)
 	const [products, setProducts] = useState(_products)
 	const [totalPrice, setTotalPrice] = useState(_price)
+	const [isPurchasable, setIsPurchasable] = useState(false)
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1, backgroundImage: background }))
 
 
@@ -81,10 +83,15 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 			const _prevProds = Cart.getProducts()
 			setProducts(_prevProds)
 		}
-
-		console.log(Cart.getPrice())
-
 	}, [])
+
+	useEffect(() => {
+		if (products.length < 1) {
+			setIsPurchasable(false)
+		} else {
+			setIsPurchasable(true)
+		}
+	}, [products])
 
 	return (
 		<div>
@@ -106,6 +113,7 @@ const Checkout = ({ refreshCartState, _products, background, translations }) => 
 							/>
 							<section className={classes.Payment}>
 								<Payment
+									isPurchasable={isPurchasable}
 									translations={translations}
 									confirmed={confirmed}
 									resumeAccepted={confirmHandler}

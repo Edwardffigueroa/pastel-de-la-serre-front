@@ -77,12 +77,12 @@ const DetailView = (props) => {
 
 	useEffect(() => {
 
-		if (props.index === 0 && slide === 1) {
+		if (props.index === 0 && slide === 1 && !isShop) {
 			similarSwiper.slideTo(0)
 			setSlide(0)
 		}
 
-		if (similarSwiper.activeIndex !== undefined) {
+		if (similarSwiper.activeIndex !== undefined && !isShop) {
 			similarSwiper.slideTo(props.index)
 		}
 		setSlide(props.index)
@@ -93,6 +93,7 @@ const DetailView = (props) => {
 		setArticle(props.products[props.index])
 		setTimeout(() => setSlide(0), 500)
 	}, [])
+
 
 	const buyHanlder = e => {
 

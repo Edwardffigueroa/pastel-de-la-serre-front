@@ -5,7 +5,7 @@ import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
 
-const TicketDetails = ({ next, buttonLabel, titleLabel, nameLabel, emailLabel, phoneLabel, addressLabel }) => {
+const TicketDetails = ({ next, buttonLabel, titleLabel, nameLabel, emailLabel, phoneLabel, addressLabel, isPurchasable }) => {
 
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -48,7 +48,7 @@ const TicketDetails = ({ next, buttonLabel, titleLabel, nameLabel, emailLabel, p
 			{/* <input value={phone} onChange={e => setPhone(e.target.value)} type="text" required /> */}
 			<label>{addressLabel}</label>
 			<input value={address} onChange={e => setAdress(e.target.value)} type="text" required />
-			<Button clicked={saveTicketHandler} isCheckout >{buttonLabel}</Button>
+			<Button clicked={saveTicketHandler} isCheckout disabled={!isPurchasable} >{buttonLabel}</Button>
 		</div>
 	)
 }

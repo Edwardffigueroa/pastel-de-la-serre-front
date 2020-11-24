@@ -6,7 +6,7 @@ import TicketDetails from './TicketDetails/TicketDetails'
 import Confirmation from './Confirmation/Confirmation'
 
 
-const Payment = ({ confirmed, resumeDeclined, resumeAccepted, products, translations }) => {
+const Payment = ({ confirmed, isPurchasable, resumeDeclined, resumeAccepted, products, translations }) => {
 
 	const [view, setView] = useState(0)
 	const [card, setCard] = useState('')
@@ -34,7 +34,6 @@ const Payment = ({ confirmed, resumeDeclined, resumeAccepted, products, translat
 		}
 
 		if (products.length > 0) {
-			console.log('data to send', _data)
 			fetch('https://pastel-de-la-serre-backend.uc.r.appspot.com/orders/complete', {
 				method: 'POST',
 				body: JSON.stringify(_data),
@@ -74,6 +73,7 @@ const Payment = ({ confirmed, resumeDeclined, resumeAccepted, products, translat
 	switch (view) {
 		case 0:
 			container = <TicketDetails
+				isPurchasable={isPurchasable}
 				titleLabel={translations.personal_information_title}
 				nameLabel={translations.personal_information_name}
 				emailLabel={translations.personal_information_mail}
