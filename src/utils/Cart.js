@@ -88,7 +88,6 @@ class Cart {
         const updatedProds = this.products.map(p => p.id === prodId ? found : p)
         this.products = updatedProds
         this.totalPrice = this.totalPrice + found.price
-
         savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, updatedProds)
     }
@@ -158,7 +157,6 @@ class Cart {
         const quantity = Object.values(product.amount)[0]
         const found = this.products.find(p => p.id === product.id)
         const _price = product.price * quantity
-
 
         if (!found) {
             this.products.push(product)

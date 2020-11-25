@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import master from '../../../assets/checkout/master.svg'
 import visa from '../../../assets/checkout/visa.svg'
+import american from '../../../assets/checkout/american.svg'
 import Button from '../../UI/Button/Button';
 import classes from './PaymentMethod.module.css'
 
@@ -81,6 +82,7 @@ const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel
 				<section className={classes.Logos}>
 					<img src={visa} alt="visa" />
 					<img src={master} alt="master" />
+					<img src={american} width="45px" alt="american express" />
 				</section>
 				<label htmlFor="name">{nameLabel}</label>
 				<input className={inputNameClasses}

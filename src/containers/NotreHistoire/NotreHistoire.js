@@ -241,28 +241,65 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const addItemHandler = product => {
 
-        const prodSize = Object.keys(product.amount)[0]
-        const quantity = Object.values(product.amount)[0]
-        const found = products.find(p => p.id === product.id)
+        const _exist = products.find(p => p.id === product.id)
+        let updatedProds = [...products]
 
-        if (!found) {
-            setProducts(prev => ([...prev, product]))
+        if (!_exist) {
+            updatedProds.push(product)
             Cart.addItem(product)
         }
 
-        if (found) {
-            const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
-            if (_sizeExist) {
-                found.amount[_sizeExist] += quantity
-            } else {
-                found.amount[prodSize] = quantity
+        if (_exist) {
+            console.log(_exist)
+            const _size = Object.keys(product.amount)[0]
+            const _quantity = Object.values(product.amount)[0]
+
+            const _sizeExist = Object.keys(_exist.amount).find(size => size === _size)
+            if (!_sizeExist) {
+
+                const _itemIndex = updatedProds.findIndex(p => p.id === product.id)
+                updatedProds[_itemIndex].amount[_size] = _quantity
+                console.log(updatedProds)
+                // _exist.amount[_size] = _quantity
             }
-
-            const updatedProds = products.map(p => (p.id === product.id ? found : p))
-
-            setProducts(updatedProds)
-            Cart.increaseItem(product.id, prodSize)
         }
+
+        setProducts(updatedProds)
+        // const prodSize = Object.keys(product.amount)[0]
+        // const quantity = Object.values(product.amount)[0]
+        // const found = [...products].find(p => p.id === product.id)
+        // debugger
+        // console.log('encontrado ', found)
+
+        // if (!found) {
+
+        //     setProducts(prev => ([...prev, product]))
+        //     debugger
+        //     Cart.addItem(product)
+        // }
+
+        // if (found) {
+        //     console.log('found.amount ------------> ', found.amount)
+        //     console.log('llega cuaanqititiiii ---> ', quantity)
+        //     const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
+        //     debugger
+        //     if (_sizeExist) {
+        //         found.amount[_sizeExist] = found.amount[_sizeExist] + quantity
+        //         debugger
+        //         Cart.increaseItem(product.id, prodSize)
+        //         debugger
+        //     } else {
+        //         found.amount[prodSize] = quantity
+        //         Cart.addItem(product)
+        //         debugger
+        //     }
+        //     console.log('found ------> changed:', found)
+        //     const updatedProds = products.map(p => (p.id === product.id ? found : p))
+        //     debugger
+        //     console.log('prods a actualizar', updatedProds)
+        //     setProducts(updatedProds)
+
+        // }
     }
 
     const refreshCartStateHandler = _prods => {

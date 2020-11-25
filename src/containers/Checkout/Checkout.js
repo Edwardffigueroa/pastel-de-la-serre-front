@@ -16,6 +16,7 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 
 
 	const _price = parseFloat(Cart.getPrice()).toFixed(2)
+	console.log('_price : Checkout 19', _price)
 	const history = useHistory()
 
 	const [approved, setApproved] = useState(false)
