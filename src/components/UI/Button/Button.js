@@ -28,10 +28,10 @@ const Button = props => {
         myClasses.push(classes.Aligned)
     }
 
-    
     myClasses = myClasses.join(' ')
 
     return <button
+        disabled={props.disabled}
         className={myClasses}
         onClick={props.clicked}>
         {props.children}

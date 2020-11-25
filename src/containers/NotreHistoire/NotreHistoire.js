@@ -42,8 +42,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const [indexSelected, setIndexSelected] = useState(0)
 
     const [products, setProducts] = useState([])
-    useEffect(() => {
 
+    useEffect(() => {
 
         const _prevProds = Cart.getProducts().map(prod => {
             const _found = shopItems.find(pr => pr.id === prod.id)
@@ -61,13 +61,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             return acc
         }, 0)
 
-
-        console.log(_prevProds)
-
         setProducts(_prevProds)
         Cart.setProducts(_prevProds, totalPrice)
         setSlide(0)
     }, [])
+
 
     let mySwiper = new Swiper(".swiper-container", {
         initialSlide: slide,
@@ -239,14 +237,33 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const goBooking = e => history.push('/booking')
 
     const addItemHandler = product => {
-        setProducts(prev => ([...prev, product]))
-        Cart.addItem(product)
+
+        const prodSize = Object.keys(product.amount)[0]
+        const quantity = Object.values(product.amount)[0]
+        const found = products.find(p => p.id === product.id)
+
+        if (!found) {
+            setProducts(prev => ([...prev, product]))
+            Cart.addItem(product)
+        }
+
+        if (found) {
+            const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
+            if (_sizeExist) {
+                found.amount[_sizeExist] += quantity
+            } else {
+                found.amount[prodSize] = quantity
+            }
+
+            const updatedProds = products.map(p => (p.id === product.id ? found : p))
+
+            setProducts(updatedProds)
+            Cart.increaseItem(product.id, prodSize)
+        }
     }
 
     const refreshCartStateHandler = _prods => {
         setProducts(_prods)
-        Cart.setProducts([], 0)
-
     }
 
     const languageHandler = _lang => {
@@ -350,9 +367,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
-                background={`url('${shopTrans.Background_image.url}')`}
+                pubkey={boutique.stripe_public_key}
                 _products={products}
                 translations={checkoutTrans}
+                background={`url('${shopTrans.Background_image.url}')`}
                 refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );
