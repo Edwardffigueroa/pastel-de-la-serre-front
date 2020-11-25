@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   font-family: 'Helvetica neue', helvetica, sans-serif;
-  -webkit-animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1)
-    both;
+  -webkit-animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: scale-up-center 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
