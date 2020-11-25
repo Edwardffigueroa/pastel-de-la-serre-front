@@ -33,6 +33,7 @@ const DetailView = (props) => {
 
 	const [quantity, setQuantity] = useState(0)
 
+	console.log(props.index)
 	const [size, setSize] = useState(isShop ? props.products[props.index].Product_variation[0].Variation_item[0].Value : 0)
 
 	const [slide, setSlide] = useState(0)
@@ -198,6 +199,7 @@ const DetailView = (props) => {
 			</h1>
 		)
 
+	console.log(props.products)
 
 	return (
 		<a.div style={exitSpring}>
