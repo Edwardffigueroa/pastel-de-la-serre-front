@@ -103,7 +103,7 @@
 
 @media (min-width: 1080px) {
   .Marker {
-    transform: translate(-20px, -115%);
+    transform: translate(-55px, -115%);
   }
   .Card {
     border-radius: 40px;

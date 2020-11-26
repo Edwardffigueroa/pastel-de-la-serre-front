@@ -48,6 +48,10 @@
     display: flex;
     left: 21px;
   }
+  .RowsNavigation div {
+    width: 40px;
+    height: 40px;
+  }
   .RowsNavigation.Detail {
     /* width: 15%; */
     width: 100%;

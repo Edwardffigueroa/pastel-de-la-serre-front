@@ -148,6 +148,7 @@
     padding-left: 0%;
   }
   .SectionSliderWrapper div[class^='swiper-container'] {
+    margin-top: -129px;
     transform: translateX(-35%);
   }
 }
@@ -223,8 +224,8 @@
     width: 100%;
   }
   .TitleWrapper h1 {
-    font-size: 66px;
-    line-height: 66px;
+    font-size: 88px;
+    line-height: 88px;
     color: white;
     font-weight: bold;
     margin: 0;
@@ -232,9 +233,24 @@
   }
   .TitleWrapper p {
     font-size: 1.3rem;
+    line-height: 1.4rem;
     letter-spacing: 1px;
-    height: 100px;
+    /* height: 100px; */
+    height: 20vh;
     color: white;
+  }
+  .TitleWrapper p::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+    height: 4px;
+  }
+  .TitleWrapper p::-webkit-scrollbar-track {
+    background: rgba(128, 128, 128, 0.308);
+    border-radius: 100px;
+  }
+  .TitleWrapper p::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 100px;
   }
   .SectionSliderWrapper {
     height: 60%;

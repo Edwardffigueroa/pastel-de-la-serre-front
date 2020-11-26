@@ -21,9 +21,7 @@
   --border-bottom: 2px solid transparent;
 }
 
-.NavigationItem span:hover,
-.NavigationItem span:active,
-.NavigationItem span.active {
+.NavigationItem span:hover, .NavigationItem span:active, .NavigationItem span.active {
   --border-bottom: 2px solid #f8cfc9;
 }
 
@@ -33,7 +31,6 @@
     height: 100%;
     width: auto;
   }
-
   .NavigationItem span {
     color: #f8cfc9;
     height: 100%;
@@ -47,6 +44,7 @@
 @media (min-width: 1080px) {
   .NavigationItem span {
     font-size: 12px;
+    white-space: nowrap;
   }
 }
 

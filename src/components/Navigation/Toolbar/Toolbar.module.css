@@ -96,7 +96,7 @@
 
 @media (min-width: 1080px) {
   .Toolbar {
-    padding: 0 60px 0 20px;
+    padding: 0 60px 0 40px;
   }
   .Logo {
     width: auto;
@@ -106,12 +106,15 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
-    width: 600px;
+    justify-content: space-between;
+    width: 50%;
+    /* width: 600px; */
   }
   .DesktopOnly {
     display: flex;
     animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    width: 100%;
+    /* width: 100%; */
+    width: 42%;
   }
   .Beside {
     margin: 0 60px;
