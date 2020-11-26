@@ -40,6 +40,12 @@
 
 @media (min-width: 1080px) {
   .Details {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .Details {
     width: 55%;
   }
 }

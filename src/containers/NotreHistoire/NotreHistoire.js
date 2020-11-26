@@ -34,9 +34,10 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const slidersCards = [...generalTrans.slider_navigation, ...generalTrans.slider_navigation, ...generalTrans.slider_navigation, ...generalTrans.slider_navigation];
 
     const current = items[slide]
-
+    const shopItemsFiltered = shopItems.filter(item => item.available === true)
 
     const [tours, setTours] = useState(visitTrans)
+
 
     const [itemSelected, setItemSelected] = useState(false);
     const [indexSelected, setIndexSelected] = useState(0)
@@ -46,7 +47,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     useEffect(() => {
 
         const _prevProds = Cart.getProducts().map(prod => {
-            const _found = shopItems.find(pr => pr.id === prod.id)
+            const _found = shopItemsFiltered.find(pr => (pr.id === prod.id))
             if (_found) {
                 if (_found.price !== prod.price) {
                     prod.price = _found.price
@@ -172,24 +173,26 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 _i = _i === 0 ? (visitTrans.length - 1) : (indexSelected - 1)
             }
             if (slide === 2 || slide === 5 || slide === 8 || slide === 11) {
-                _i = _i === 0 ? (shopItems.length - 1) : (indexSelected - 1)
+                _i = _i === 0 ? (shopItemsFiltered.length - 1) : (indexSelected - 1)
             }
         } else if (direction === 'foward') {
             if (slide === 1 || slide === 4 || slide === 7 || slide === 10) {
                 _i = _i === (visitTrans.length - 1) ? 0 : (indexSelected + 1)
             }
             if (slide === 2 || slide === 5 || slide === 8 || slide === 11) {
-                _i = _i === (shopItems.length - 1) ? 0 : (indexSelected + 1)
+                _i = _i === (shopItemsFiltered.length - 1) ? 0 : (indexSelected + 1)
             }
         } else {
             _i = visitTrans.findIndex(visit => visit.id === direction)
         }
 
+
         if (slide === 1 || slide === 4 || slide === 7 || slide === 10) {
             setItemSelected(visitTrans[_i])
         } else {
-            setItemSelected(shopItems[_i])
+            setItemSelected(shopItemsFiltered[_i])
         }
+
 
         setIndexSelected(_i)
     }
@@ -223,11 +226,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 setIndexSelected(0)
                 break;
             case 2:
-                setItemSelected(shopItems[0])
+                setItemSelected(shopItemsFiltered[0])
                 setIndexSelected(0)
                 break;
             default:
-                setItemSelected(shopItems[0])
+                setItemSelected(shopItemsFiltered[0])
                 setIndexSelected(0)
                 break;
         }
@@ -238,28 +241,65 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
 
     const addItemHandler = product => {
 
-        const prodSize = Object.keys(product.amount)[0]
-        const quantity = Object.values(product.amount)[0]
-        const found = products.find(p => p.id === product.id)
+        const _exist = products.find(p => p.id === product.id)
+        let updatedProds = [...products]
 
-        if (!found) {
-            setProducts(prev => ([...prev, product]))
+        if (!_exist) {
+            updatedProds.push(product)
             Cart.addItem(product)
         }
 
-        if (found) {
-            const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
-            if (_sizeExist) {
-                found.amount[_sizeExist] += quantity
-            } else {
-                found.amount[prodSize] = quantity
+        if (_exist) {
+            console.log(_exist)
+            const _size = Object.keys(product.amount)[0]
+            const _quantity = Object.values(product.amount)[0]
+
+            const _sizeExist = Object.keys(_exist.amount).find(size => size === _size)
+            if (!_sizeExist) {
+
+                const _itemIndex = updatedProds.findIndex(p => p.id === product.id)
+                updatedProds[_itemIndex].amount[_size] = _quantity
+                console.log(updatedProds)
+                // _exist.amount[_size] = _quantity
             }
-
-            const updatedProds = products.map(p => (p.id === product.id ? found : p))
-
-            setProducts(updatedProds)
-            Cart.increaseItem(product.id, prodSize)
         }
+
+        setProducts(updatedProds)
+        // const prodSize = Object.keys(product.amount)[0]
+        // const quantity = Object.values(product.amount)[0]
+        // const found = [...products].find(p => p.id === product.id)
+        // debugger
+        // console.log('encontrado ', found)
+
+        // if (!found) {
+
+        //     setProducts(prev => ([...prev, product]))
+        //     debugger
+        //     Cart.addItem(product)
+        // }
+
+        // if (found) {
+        //     console.log('found.amount ------------> ', found.amount)
+        //     console.log('llega cuaanqititiiii ---> ', quantity)
+        //     const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
+        //     debugger
+        //     if (_sizeExist) {
+        //         found.amount[_sizeExist] = found.amount[_sizeExist] + quantity
+        //         debugger
+        //         Cart.increaseItem(product.id, prodSize)
+        //         debugger
+        //     } else {
+        //         found.amount[prodSize] = quantity
+        //         Cart.addItem(product)
+        //         debugger
+        //     }
+        //     console.log('found ------> changed:', found)
+        //     const updatedProds = products.map(p => (p.id === product.id ? found : p))
+        //     debugger
+        //     console.log('prods a actualizar', updatedProds)
+        //     setProducts(updatedProds)
+
+        // }
     }
 
     const refreshCartStateHandler = _prods => {
@@ -344,7 +384,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 {itemSelected ? (
                     <DetailView
                         lang={lang}
-                        products={shopItems}
+                        products={shopItemsFiltered}
                         shop={shopTrans}
                         visits={[...visitTrans, ...visitTrans, ...visitTrans, ...visitTrans]}
                         tours={itemSelected}

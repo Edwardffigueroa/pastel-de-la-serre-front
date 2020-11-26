@@ -198,7 +198,6 @@ const DetailView = (props) => {
 			</h1>
 		)
 
-
 	return (
 		<a.div style={exitSpring}>
 			<div className={isShop ? [classes.DetailView, classes.Shop].join(' ') : classes.DetailView}>
