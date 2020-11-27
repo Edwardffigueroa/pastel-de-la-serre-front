@@ -58,8 +58,8 @@
 }
 
 .Flag {
-  display: none;
-  background: rgba(255, 255, 255, 0.5);
+  display: block;
+  background: #303868;
   border-radius: 40px;
   width: 29px;
   height: 29px;

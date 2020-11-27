@@ -249,7 +249,7 @@
     border-radius: 100px;
   }
   .TitleWrapper p::-webkit-scrollbar-thumb {
-    background: white;
+    background: #f8cfc9;
     border-radius: 100px;
   }
   .SectionSliderWrapper {

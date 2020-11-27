@@ -1,22 +1,26 @@
 /* width */
+
 ::-webkit-scrollbar {
   width: 3px;
   transform: translateX(10px);
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
   background: transparent;
   transform: translateX(10px);
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #f8cfc9;
   transform: translateX(10px);
 }
 
 /* Handle on hover */
+
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
@@ -28,9 +32,11 @@
   color: white;
   line-height: 1.2rem;
   text-align: justify;
-  scrollbar-width: thin;
-  scrollbar-color: darkgray lightgray;
-  scrollbar-darkshadow-color: #bebebe;
+  /* scrollbar-color: darkgray lightgray;
+  scrollbar-darkshadow-color: #bebebe; */
+  scrollbar-width: none;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 200;
 }
 
 @media (min-width: 1080px) {
