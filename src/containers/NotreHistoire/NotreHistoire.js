@@ -62,8 +62,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             return acc
         }, 0)
 
-        setProducts(_prevProds)
-        Cart.setProducts(_prevProds, totalPrice)
+        if (products.length < 1 && _prevProds.length > 0) {
+            setProducts(_prevProds)
+            Cart.setProducts(_prevProds, totalPrice)
+        }
+
         setSlide(0)
     }, [])
 
@@ -240,66 +243,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const goBooking = e => history.push('/booking')
 
     const addItemHandler = product => {
-
-        const _exist = products.find(p => p.id === product.id)
-        let updatedProds = [...products]
-
-        if (!_exist) {
-            updatedProds.push(product)
-            Cart.addItem(product)
-        }
-
-        if (_exist) {
-            console.log(_exist)
-            const _size = Object.keys(product.amount)[0]
-            const _quantity = Object.values(product.amount)[0]
-
-            const _sizeExist = Object.keys(_exist.amount).find(size => size === _size)
-            if (!_sizeExist) {
-
-                const _itemIndex = updatedProds.findIndex(p => p.id === product.id)
-                updatedProds[_itemIndex].amount[_size] = _quantity
-                console.log(updatedProds)
-                // _exist.amount[_size] = _quantity
-            }
-        }
-
-        setProducts(updatedProds)
-        // const prodSize = Object.keys(product.amount)[0]
-        // const quantity = Object.values(product.amount)[0]
-        // const found = [...products].find(p => p.id === product.id)
-        // debugger
-        // console.log('encontrado ', found)
-
-        // if (!found) {
-
-        //     setProducts(prev => ([...prev, product]))
-        //     debugger
-        //     Cart.addItem(product)
-        // }
-
-        // if (found) {
-        //     console.log('found.amount ------------> ', found.amount)
-        //     console.log('llega cuaanqititiiii ---> ', quantity)
-        //     const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
-        //     debugger
-        //     if (_sizeExist) {
-        //         found.amount[_sizeExist] = found.amount[_sizeExist] + quantity
-        //         debugger
-        //         Cart.increaseItem(product.id, prodSize)
-        //         debugger
-        //     } else {
-        //         found.amount[prodSize] = quantity
-        //         Cart.addItem(product)
-        //         debugger
-        //     }
-        //     console.log('found ------> changed:', found)
-        //     const updatedProds = products.map(p => (p.id === product.id ? found : p))
-        //     debugger
-        //     console.log('prods a actualizar', updatedProds)
-        //     setProducts(updatedProds)
-
-        // }
+        Cart.addItem(product, udpatedProds => {
+            setProducts(udpatedProds)
+        })
     }
 
     const refreshCartStateHandler = _prods => {

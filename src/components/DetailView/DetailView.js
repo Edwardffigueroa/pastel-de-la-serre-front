@@ -19,6 +19,7 @@ import 'swiper/swiper-bundle.css'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
+import Cart from '../Cart/Cart'
 
 
 const DetailView = (props) => {
@@ -109,7 +110,6 @@ const DetailView = (props) => {
 			}
 
 			props.addItem(_product)
-
 		}
 
 	}
@@ -152,7 +152,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider {...settings}>{
-			article ? article.images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>) : null
+			props.products[props.index].images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>)
 		}</Slider>
 	) : null
 
@@ -161,8 +161,6 @@ const DetailView = (props) => {
 			<Button isOverImage clicked={props.goBooking} >{props.visits[props.index].button}</Button>
 		</div>
 	) : null
-
-
 
 	const _productTitle = isShop ? props.products[props.index]['name_' + props.lang].split(' ')
 		.reduce((acc, current, currentIndex, fullTitle) => {

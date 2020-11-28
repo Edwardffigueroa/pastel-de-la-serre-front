@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 import master from '../../../assets/checkout/master.svg'
 import visa from '../../../assets/checkout/visa.svg'
 import american from '../../../assets/checkout/american.svg'
-import Button from '../../UI/Button/Button';
+import Button from '../../UI/Button/Button'
 import classes from './PaymentMethod.module.css'
 
-import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js"
 import {
 	Elements,
 	CardElement,

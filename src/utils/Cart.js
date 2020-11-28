@@ -1,5 +1,4 @@
 import ClientJS from 'clientjs'
-import { products } from './FetchAll'
 
 const CONSTANTS = {
     CLIENT: 'CLIENT',
@@ -34,8 +33,6 @@ class Cart {
         const prevPrice = getPersistance(CONSTANTS.PRICE) || null
 
 
-
-
         if (prevClient) {
             this.client = prevClient
         } else {
@@ -64,7 +61,6 @@ class Cart {
             savePersistance(CONSTANTS.PRICE, this.totalPrice)
         }
 
-
     }
 
     setProducts(products, totalPrice) {
@@ -83,6 +79,7 @@ class Cart {
     }
 
     increaseItem(prodId, size) {
+        console.log('no se porque me llaman  X2')
         const found = this.products.find(p => p.id === prodId)
         found.amount[size]++
         const updatedProds = this.products.map(p => p.id === prodId ? found : p)
@@ -151,31 +148,40 @@ class Cart {
         savePersistance(CONSTANTS.PRODUCTS, updatedProds)
     }
 
-    addItem(product) {
+    addItem(product, cb) {
 
         const prodSize = Object.keys(product.amount)[0]
         const quantity = Object.values(product.amount)[0]
-        const found = this.products.find(p => p.id === product.id)
         const _price = product.price * quantity
 
-        if (!found) {
+        const _exist = this.getItem(product.id)
+
+        if (!_exist) {
             this.products.push(product)
+            this.totalPrice = +this.totalPrice + _price
+            savePersistance(CONSTANTS.PRODUCTS, this.products)
+            savePersistance(CONSTANTS.PRICE, this.totalPrice)
+            cb(this.products)
+            return
         }
 
-        if (found) {
-            const _sizeExist = Object.keys(found.amount).find(size => size === prodSize)
-            if (_sizeExist) {
-                found.amount[_sizeExist] += quantity
-            } else {
-                found.amount[prodSize] = quantity
-            }
-            const updatedProds = this.products.map(p => (p.id === product.id ? found : p))
-            this.products = updatedProds
+        const _sizeExist = Object.keys(_exist.amount).find(size => size === prodSize)
+
+        if (_sizeExist) {
+            _exist.amount[_sizeExist] += quantity
+            this.totalPrice = +this.totalPrice + _price
+            savePersistance(CONSTANTS.PRODUCTS, this.products)
+            savePersistance(CONSTANTS.PRICE, this.totalPrice)
+            cb(this.products)
+            return
         }
 
+        _exist.amount[prodSize] = quantity
         this.totalPrice = +this.totalPrice + _price
-        savePersistance(CONSTANTS.PRICE, this.totalPrice)
         savePersistance(CONSTANTS.PRODUCTS, this.products)
+        savePersistance(CONSTANTS.PRICE, this.totalPrice)
+        cb(this.products)
+        return
     }
 
 }
