@@ -27,10 +27,10 @@ class Cart {
         this.products = []
         this.totalPrice = 0
 
-        const prevClient = getPersistance(CONSTANTS.CLIENT) || null
-        const prevProducts = getPersistance(CONSTANTS.PRODUCTS) || null
-        const prevTours = getPersistance(CONSTANTS.TOURS) || null
-        const prevPrice = getPersistance(CONSTANTS.PRICE) || null
+        const prevClient = getPersistance(CONSTANTS.CLIENT)
+        const prevProducts = getPersistance(CONSTANTS.PRODUCTS)
+        const prevTours = getPersistance(CONSTANTS.TOURS)
+        const prevPrice = getPersistance(CONSTANTS.PRICE)
 
 
         if (prevClient) {
@@ -79,7 +79,6 @@ class Cart {
     }
 
     increaseItem(prodId, size) {
-        console.log('no se porque me llaman  X2')
         const found = this.products.find(p => p.id === prodId)
         found.amount[size]++
         const updatedProds = this.products.map(p => p.id === prodId ? found : p)

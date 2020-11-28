@@ -31,7 +31,7 @@ const sideDrawer = (props) => {
     const supportsPassive = false;
     try {
         window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-            get: function () { supportsPassive = true; }
+            get: function () { return supportsPassive }
         }));
     } catch (e) { }
 

@@ -19,8 +19,6 @@ import {
 const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel, buttonLabel, next, isValid, pubkey }) => {
 
 	const [name, setName] = useState('')
-	const [card, setCard] = useState('')
-
 	const stripePromise = loadStripe(pubkey);
 
 	let inputNameClasses = classes.Input
@@ -49,7 +47,6 @@ const PaymentMethod = ({ titleLabel, nameLabel, numberLabel, expLabel, codeLabel
 			})
 
 			if (!error) {
-				setCard(paymentMethod.id)
 				next(paymentMethod.id)
 			} else {
 				response = error

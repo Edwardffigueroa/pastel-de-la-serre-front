@@ -22,7 +22,7 @@
   transition: all ease-in-out 300ms;
 }
 
-.Wrapper>section {
+.Wrapper > section {
   z-index: 1;
   opacity: 1;
   display: flex;
@@ -32,7 +32,7 @@
   transition: all ease-in 400ms;
 }
 
-.Wrapper.WrapperOnTop>section {
+.Wrapper.WrapperOnTop > section {
   z-index: -1;
   opacity: 0;
   display: none;
@@ -59,14 +59,19 @@
   left: 0;
   --z-index: -1;
   background: rgb(0, 0, 0);
-  background: linear-gradient( 0deg, rgba(0, 0, 0, 1) 0%, rgba(12, 30, 48, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(12, 30, 48, 0) 100%
+  );
 }
 
 .TitleWrapper {
   padding: 20px;
 }
 
-.TitleWrapper h1, .TitleWrapper p {
+.TitleWrapper h1,
+.TitleWrapper p {
   animation: slide-in-bottom 400ms cubic-bezier(0.23, 1, 0.32, 1) 1.3s both;
   font-family: 'operetta-18', serif;
 }
@@ -77,8 +82,14 @@
 }
 
 .TitleWrapper p {
-  height: 92px;
+  font-size: 16px;
+  line-height: 18px;
+  height: 100px;
   overflow-y: scroll;
+  margin-bottom: 25px;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-weight: 200;
+  color: white;
   scrollbar-color: darkgray transparent;
   scrollbar-width: thin;
   -ms-overflow-style: none;
@@ -128,8 +139,20 @@
   overflow: hidden;
   height: 222px;
   animation: slide-in-right 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
-  mask-image: linear-gradient( to right, transparent, rgba(0, 0, 0, 1) 0.3%, rgba(0, 0, 0, 1) 70%, transparent);
-  -webkit-mask-image: linear-gradient( to right, transparent, rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 90%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 1) 0.3%,
+    rgba(0, 0, 0, 1) 70%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 0, 0, 1) 1%,
+    rgba(0, 0, 0, 1) 90%,
+    transparent
+  );
 }
 
 @media (min-width: 768px) {
@@ -160,7 +183,7 @@
     height: calc(100% - 100px);
     box-sizing: border-box;
   }
-  .Wrapper>section:first-of-type {
+  .Wrapper > section:first-of-type {
     justify-content: flex-start;
     height: 478px;
   }
@@ -209,11 +232,11 @@
       width: 100%;
       flex-flow: row wrap;
     }
-    .Wrapper>section {
+    .Wrapper > section {
       width: 50%;
     }
   }
-  .Wrapper>section:first-of-type {
+  .Wrapper > section:first-of-type {
     height: 100%;
   }
   .Wrapper::after {
@@ -231,14 +254,7 @@
     margin: 0;
     z-index: 1;
   }
-  .TitleWrapper p {
-    font-size: 1.3rem;
-    line-height: 1.4rem;
-    letter-spacing: 1px;
-    /* height: 100px; */
-    height: 20vh;
-    color: white;
-  }
+
   .TitleWrapper p::-webkit-scrollbar {
     display: block;
     width: 4px;

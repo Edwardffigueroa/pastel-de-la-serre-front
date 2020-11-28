@@ -12,17 +12,14 @@ import Modal from '../../components/Modal/Modal'
 import Cart from '../../utils/Cart'
 
 
-const Checkout = ({ pubkey, refreshCartState, _products, background, translations }) => {
+const Checkout = ({ pubkey, refreshCartState, _products, background, translations, goFirstProductHandler }) => {
 
-
-	const _price = parseFloat(Cart.getPrice()).toFixed(2)
-	console.log('_price : Checkout 19', _price)
 	const history = useHistory()
 
 	const [approved, setApproved] = useState(false)
 	const [confirmed, setConfirmed] = useState(false)
 	const [products, setProducts] = useState(_products)
-	const [totalPrice, setTotalPrice] = useState(_price)
+	const [totalPrice, setTotalPrice] = useState(0)
 	const [isPurchasable, setIsPurchasable] = useState(false)
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1, backgroundImage: background }))
 
@@ -43,6 +40,11 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 
 	const exitHandler = e => {
 		setExitSpring({ opacity: 0 })
+
+		if (confirmed && approved) {
+			Cart.setProducts([], 0)
+		}
+
 		setTimeout(() => {
 			stop()
 			history.push('/')
@@ -84,6 +86,9 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 			const _prevProds = Cart.getProducts()
 			setProducts(_prevProds)
 		}
+
+		const _prevPrice = Cart.getPrice()
+		setTotalPrice(_prevPrice)
 	}, [])
 
 	useEffect(() => {
@@ -103,6 +108,7 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 						<h1 className={classes.Title}>{translations.title}</h1>
 						<section className={classes.Content}>
 							<Table
+								goFirstProduct={goFirstProductHandler}
 								products={products}
 								totalPrice={totalPrice}
 								goBackHandler={goBackHandler}

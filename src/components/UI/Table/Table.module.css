@@ -49,6 +49,17 @@
   margin-right: 10px;
 }
 
+.NoProducts {
+  display: flex;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  align-items: center;
+  height: 100%;
+}
+.NoProducts p {
+  color: #1f86ff;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .Table {
     justify-content: space-between;

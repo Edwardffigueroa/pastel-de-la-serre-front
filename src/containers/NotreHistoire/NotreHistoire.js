@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import classes from './NotreHistoire.module.css'
 import Shadow from '../../components/UI/Shadow/Shadow'
@@ -36,7 +36,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
     const current = items[slide]
     const shopItemsFiltered = shopItems.filter(item => item.available === true)
 
-    const [tours, setTours] = useState(visitTrans)
+    const [tours] = useState(visitTrans)
 
 
     const [itemSelected, setItemSelected] = useState(false);
@@ -56,15 +56,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             return prod
         })
 
-        const totalPrice = _prevProds.reduce((acc, prod, index) => {
-            const _amount = Object.values(prod.amount)
-            acc += (_amount * prod.price)
-            return acc
-        }, 0)
-
         if (products.length < 1 && _prevProds.length > 0) {
             setProducts(_prevProds)
-            Cart.setProducts(_prevProds, totalPrice)
         }
 
         setSlide(0)
@@ -248,6 +241,12 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         })
     }
 
+    const goFirstProductHandler = e => {
+        setSlide(2)
+        setItemSelected(shopItemsFiltered[0])
+        setIndexSelected(0)
+    }
+
     const refreshCartStateHandler = _prods => {
         setProducts(_prods)
     }
@@ -353,6 +352,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 ) : null}
             </div>
             {!match.isExact ? <Checkout
+                goFirstProductHandler={goFirstProductHandler}
                 pubkey={boutique.stripe_public_key}
                 _products={products}
                 translations={checkoutTrans}

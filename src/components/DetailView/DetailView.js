@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import classes from './DetailView.module.css'
 import CardList from '../CardList/CardList'
@@ -19,8 +19,6 @@ import 'swiper/swiper-bundle.css'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Cart from '../Cart/Cart'
-
 
 const DetailView = (props) => {
 
@@ -28,8 +26,6 @@ const DetailView = (props) => {
 	const isShop = props.currentActive === 2 || props.currentActive === 5 || props.currentActive === 8 || props.currentActive === 11
 	const isHistoire = props.currentActive === 0 || props.currentActive === 3 || props.currentActive === 6 || props.currentActive === 9
 
-	const [article, setArticle] = useState(null)
-	const [items, setItems] = useState(props.items ? props.items : [])
 	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1 }))
 
 	const [quantity, setQuantity] = useState(0)
@@ -91,8 +87,13 @@ const DetailView = (props) => {
 	}, [props.index])
 
 	useEffect(() => {
-		setArticle(props.products[props.index])
-		setTimeout(() => setSlide(0), 500)
+		setTimeout(() => {
+			if (isShop) {
+				imgSlideRef.current.slickGoTo(0)
+			}
+			setSlide(0)
+		}, 500)
+
 	}, [])
 
 
@@ -122,6 +123,7 @@ const DetailView = (props) => {
 		}, 1200)
 	}
 
+	const imgSlideRef = useRef()
 	const settings = {
 		className: classes.SliderShop,
 		dots: true,
@@ -151,7 +153,7 @@ const DetailView = (props) => {
 	}
 
 	const imgOrSlide = isShop ? (
-		<Slider {...settings}>{
+		<Slider ref={imgSlideRef} {...settings}>{
 			props.products[props.index].images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>)
 		}</Slider>
 	) : null

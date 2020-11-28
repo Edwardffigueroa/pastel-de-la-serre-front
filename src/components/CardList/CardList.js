@@ -1,12 +1,9 @@
 import React from 'react';
-// import GoToDetail from '../../utils/GoToDetails';
 import Card from '../UI/Card/Card';
-import { useHistory } from "react-router-dom";
 import classes from './CardList.module.css'
 
 const CardList = (props) => {
 
-	const history = useHistory()
 	const list = props.items.map((item, i) => (
 		i < 4 ?
 			<div key={i} className={classes.CardWrapper}>
