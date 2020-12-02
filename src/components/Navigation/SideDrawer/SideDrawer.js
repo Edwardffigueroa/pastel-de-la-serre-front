@@ -5,6 +5,7 @@ import classes from './SideDrawer.module.css'
 import Backdrop from '../../UI/Backdrop/Backdrop'
 
 import closeX from '../../../assets/images/nav/close.svg'
+import Languages from '../../Languages/Languages'
 
 const sideDrawer = (props) => {
     let attachedClasses = [classes.SideDrawer, classes.Close]
@@ -70,6 +71,7 @@ const sideDrawer = (props) => {
                     <span onClick={props.closed}>
                         <img className={classes.closeX} src={closeX} alt="close" />
                     </span>
+                    <Languages drawer={true} lang={['fr', 'en']} changeLang={props.languageHandler} />
                 </nav>
             </div>
         </div>

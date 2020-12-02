@@ -7,15 +7,11 @@ import RowsNavigation from '../../components/Navigation/RowsNavigation/RowsNavig
 
 
 import DotNav from '../../components/Navigation/DotNav/DotNav'
-
 import Layout from '../../hoc/layout/Layout'
-
 import Card from '../../components/UI/Card/Card'
-
 import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
 import Checkout from '../Checkout/Checkout'
-
 import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 
@@ -90,11 +86,11 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 slidesPerView: 4
             },
             320: {
-                spaceBetween: 0,
+                spaceBetween: 150,
                 slidesPerView: 3,
             },
-            120: {
-                spaceBetween: 0,
+            120: {                
+                
                 slidesPerView: 2,
             }
         },
@@ -357,7 +353,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 _products={products}
                 translations={checkoutTrans}
                 background={`url('${shopTrans.Background_image.url}')`}
-                refreshCartState={refreshCartStateHandler} /> : null}
+                refreshCartState={refreshCartStateHandler} /> : null}                
         </Layout >
     );
 }

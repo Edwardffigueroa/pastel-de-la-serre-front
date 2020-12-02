@@ -19,7 +19,9 @@ const Languages = (props) => {
 	options.splice(1, 0, <span key={'separator'} className={classes.Separator}>/</span>);
 
 	return (
+		!props.drawer ?
 		<div className={classes.Languages}>{options}</div>
+		: <div className={classes.LanguagesDrawer}>{options}</div>
 	)
 
 }

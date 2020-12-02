@@ -1,7 +1,7 @@
 .Card {
   position: relative;
-  width: 168px;
-  height: 215px;
+  width: 224px;
+  height: 339px;
   --margin: 0 20px;
   background-size: cover;
   background-color: lightgray;
@@ -103,7 +103,7 @@
 
 @media (min-width: 1080px) {
   .Marker {
-    transform: translate(-55px, -115%);
+    transform: translate(-25px, -115%);
   }
   .Card {
     border-radius: 40px;

@@ -2,7 +2,14 @@
   display: none;
   flex-flow: row nowrap;
   align-items: center;
-  font-size: 12px;
+  font-size: 12px;  
+}
+
+.LanguagesDrawer{
+  display: block;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 12px;  
 }
 
 /* 

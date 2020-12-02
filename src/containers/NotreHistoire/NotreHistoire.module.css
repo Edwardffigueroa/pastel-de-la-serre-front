@@ -78,13 +78,13 @@
 
 .TitleWrapper h1 {
   color: white;
-  font-size: 30px;
+  font-size: 45px;
 }
 
 .TitleWrapper p {
   font-size: 16px;
   line-height: 18px;
-  height: 100px;
+  height: 108px;
   overflow-y: scroll;
   margin-bottom: 25px;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import classes from './Layout.module.css'
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
+import sponsor from '../../assets/logo_sponsors.svg'
 
 const Layout = props => {
 
@@ -19,7 +20,8 @@ const Layout = props => {
                 open={showSideDrawer}
                 closed={sideDrawerClosedHandler}
                 currentActive={props.currentActive}
-                goSectionHandler={props.goSectionHandler} />
+                goSectionHandler={props.goSectionHandler}
+                languageHandler={props.languageHandler} />
             <main className={classes.Content}>
                 {props.children}
             </main>
@@ -33,6 +35,9 @@ const Layout = props => {
                 goSectionHandler={props.goSectionHandler}
                 languageHandler={props.languageHandler}
             />
+            <div className={classes.Brand}>
+                <img src={sponsor}></img>
+            </div>
         </div>
     )
 
