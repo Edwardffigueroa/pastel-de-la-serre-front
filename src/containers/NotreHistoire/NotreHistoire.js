@@ -89,8 +89,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 spaceBetween: 150,
                 slidesPerView: 3,
             },
-            120: {                
-                
+            120: {
+
                 slidesPerView: 2,
             }
         },
@@ -327,7 +327,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         lang={lang}
                         products={shopItemsFiltered}
                         shop={shopTrans}
-                        visits={[...visitTrans, ...visitTrans, ...visitTrans, ...visitTrans]}
+                        visits={visitTrans}
                         tours={itemSelected}
                         histoireTitle={[histoireTrans.title1, histoireTrans.title2, histoireTrans.title3]}
                         histoire={histoireTrans.body}
@@ -353,7 +353,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 _products={products}
                 translations={checkoutTrans}
                 background={`url('${shopTrans.Background_image.url}')`}
-                refreshCartState={refreshCartStateHandler} /> : null}                
+                refreshCartState={refreshCartStateHandler} /> : null}
         </Layout >
     );
 }

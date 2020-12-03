@@ -4,9 +4,17 @@ import classes from './CardList.module.css'
 
 const CardList = (props) => {
 
+	const goToTop = event => {
+		window.scrollTo({
+			top: 100,
+			left: 0,
+			behavior: 'smooth'
+		})
+	}
+
 	const list = props.items.map((item, i) => (
 		i < 4 ?
-			<div key={i} className={classes.CardWrapper}>
+			<div onClick={goToTop} key={i} className={classes.CardWrapper}>
 				<Card
 					noFlag
 					index={i}
