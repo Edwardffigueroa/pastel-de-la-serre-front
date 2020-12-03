@@ -32,7 +32,7 @@ const DetailView = (props) => {
 
 	const [size, setSize] = useState(isShop ? props.products[props.index].Product_variation[0].Variation_item[0].Value : 0)
 
-	const [slide, setSlide] = useState(0)
+	const [slide, setSlide] = useState(1)
 	const similarSwiper = new Swiper(".swiper-container-similarItems", {
 		initialSlide: slide,
 		speed: 700,
@@ -75,8 +75,10 @@ const DetailView = (props) => {
 	useEffect(() => {
 
 		if (props.index === 0 && slide === 1 && !isShop) {
-			similarSwiper.slideTo(0)
-			setSlide(0)
+			if (similarSwiper.activeIndex !== undefined) {
+				similarSwiper.slideTo(0)
+				setSlide(0)
+			}
 		}
 
 		if (similarSwiper.activeIndex !== undefined && !isShop) {
@@ -92,7 +94,7 @@ const DetailView = (props) => {
 				imgSlideRef.current.slickGoTo(0)
 			}
 			setSlide(0)
-		}, 500)
+		}, 800)
 
 	}, [])
 
