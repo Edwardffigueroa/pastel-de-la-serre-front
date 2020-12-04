@@ -14,6 +14,7 @@ import 'swiper/swiper-bundle.css'
 import Checkout from '../Checkout/Checkout'
 import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
+import sponsor from '../../assets/logo_sponsors.svg'
 
 const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems, checkout }) => {
     const [lang, setLang] = useState('fr')
@@ -321,6 +322,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         </div>
                     </div>
                     <RowsNavigation goHandler={rowsHandler} />
+                    <div className={classes.Brand}>
+                        <img src={sponsor}></img>
+                    </div>
                 </section>
                 {itemSelected ? (
                     <DetailView

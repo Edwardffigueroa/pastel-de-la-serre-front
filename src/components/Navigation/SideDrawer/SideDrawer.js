@@ -45,6 +45,8 @@ const sideDrawer = (props) => {
         window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
         window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
         window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+        document.documentElement.style.overflow = 'hidden';
+        document.body.scroll = "no";
     }
 
     // call this to Enable
@@ -53,8 +55,9 @@ const sideDrawer = (props) => {
         window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
         window.removeEventListener('touchmove', preventDefault, wheelOpt);
         window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+        document.documentElement.style.overflow = 'scroll';
+        document.body.scroll = "yes";
     }
-
 
     if (props.open) {
         disableScroll()

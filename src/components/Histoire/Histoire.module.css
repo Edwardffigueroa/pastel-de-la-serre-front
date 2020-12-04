@@ -42,5 +42,6 @@
 @media (min-width: 1080px) {
   .Histoire {
     max-height: 250px;
+    padding-right: 15px;
   }
 }

@@ -35,9 +35,9 @@ const Layout = props => {
                 goSectionHandler={props.goSectionHandler}
                 languageHandler={props.languageHandler}
             />
-            <div className={classes.Brand}>
+            {/* <div className={classes.Brand}>
                 <img src={sponsor}></img>
-            </div>
+            </div> */}
         </div>
     )
 

@@ -4,6 +4,7 @@
   top: 0;
   left: 0;
   overflow-x: hidden;
+  overflow: hidden;
   width: 100vw;
   min-height: 100vh;
   opacity: 1;
@@ -17,7 +18,7 @@
 
 @supports (-webkit-touch-callout: none) {
   .Checkout {
-    height: calc(100vh + 10px);
+    /* height: calc(100vh + 10px); */
   }
 }
 
@@ -52,7 +53,7 @@
   margin: 100px 0 0 0;
   border-radius: 40px;
   background-color: rgba(255, 255, 255, 0.8);
-  overflow: overlay;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -76,8 +77,7 @@
     height: 100vh;
     overflow: hidden;
   }
-
-  .Checkout > div {
+  .Checkout>div {
     height: 100%;
     width: 100%;
     background-repeat: no-repeat;
@@ -86,11 +86,9 @@
     align-items: center;
     display: flex;
   }
-
   .Title {
     margin-left: 30px;
   }
-
   .CheckoutWrapper {
     max-height: 862px;
     max-width: 742px;
@@ -104,8 +102,7 @@
     flex-direction: row;
     height: calc(100% - 100px);
   }
-  .Content > div,
-  .Content > section {
+  .Content>div, .Content>section {
     flex-basis: 50%;
   }
   .Payment {
@@ -114,7 +111,7 @@
 }
 
 @media (min-width: 1080px) {
-  .Checkout > div {
+  .Checkout>div {
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -122,7 +119,6 @@
     align-items: center;
     display: flex;
   }
-
   .Close {
     display: flex;
     position: absolute;
@@ -148,13 +144,12 @@
     font-size: 70px;
     margin: 0px;
   }
-
   .Content {
     transform: translateY(-40px);
     align-items: center;
     height: 83%;
   }
-  .Content > div {
+  .Content>div {
     flex-basis: 80%;
     height: 89%;
   }

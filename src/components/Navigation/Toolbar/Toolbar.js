@@ -18,10 +18,10 @@ const toolbar = ({ products, options, currentActive, drawerToggleClicked, goSect
         <section className={classes.Wrapper}>
             <Languages capitalize lang={['fr', 'en']} changeLang={languageHandler} />
             <section className={classes.Beside}>
-                <label htmlFor="search">
+                {/* <label htmlFor="search">
                     <input name="search" type="text" placeholder="search" />
                     <img src={lupa} alt="search" />
-                </label>
+                </label> */}
                 <span>
                     <Cart goCart={goCartHandler} products={products} />
                 </span>
