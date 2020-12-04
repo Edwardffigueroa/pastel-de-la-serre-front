@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "pastel-de-la-serre-d115f"
+    "default": "pastel-de-la-serre-d115f",
+    "prod": "pastel-de-la-serre-d115f"
   }
 }

@@ -48,7 +48,7 @@ const NotreHistoire = props => {
                 <div className={classes.TitleWrapper}>
                     <h1>{t("title.part1")} <br /> {t("title.part2")} <br /> {t("title.part3")}</h1>
                     <p>{t("description")}</p>
-                    <a href="/visitez-nous">
+                    <a href="https://marchenoelcastres2020.fr/lepastel/4-maroquinerie-cuir-et-accessoires">
                         <Button type="First">
                             {t("main_button")}
                         </Button>
