@@ -1,12 +1,17 @@
 .Content {
   height: 100vh;
 }
-.Brand{
+
+.Brand {
   display: none;
   position: absolute;
-    /* top: 0; */
-    bottom: 160px;
-    right: 92px;
+  /* top: 0; */
+  bottom: 8vh;
+  right: 92px;
+}
+
+.Brand img {
+  width: 120px;
 }
 
 @media screen and (min-width: 768px) {
@@ -16,7 +21,7 @@
 }
 
 @media screen and (min-width: 1080px) {
-  .Brand{
+  .Brand {
     display: block;
   }
 }
