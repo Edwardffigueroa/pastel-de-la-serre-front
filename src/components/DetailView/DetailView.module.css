@@ -446,13 +446,26 @@
   .Close {
     display: flex;
     position: absolute;
-    opacity: 1;
+    /* opacity: 1; */
     top: 38px;
     right: 38px;
     border: 2px solid #f8cfc9;
     padding: 10px;
     border-radius: 50%;
     background-color: inherit;
+    transition: 0.5s;
+  }
+  .Close:hover {
+    background-color: rgba(0, 0, 0, 0.123);
+    border: 2px solid #f8cfc971;
+    transition: 0.5s;
+  }
+  .Close img {
+    transition: 0.5s;
+  }
+  .Close img:hover {
+    transition: 0.5s;
+    opacity: 0.5;
   }
   .Navigations {
     order: inherit;
@@ -476,6 +489,9 @@
   .Shop.DesktopControllers>button:nth-child(2) {
     margin: inherit;
     width: inherit;
+  }
+  .Shop.DesktopControllers>button:nth-child(2):hover {
+    background-color: #303868;
   }
 }
 

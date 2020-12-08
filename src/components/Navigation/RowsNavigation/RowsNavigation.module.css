@@ -28,6 +28,10 @@
   justify-content: center;
 }
 
+.RowsNavigation div:hover {
+  background: rgba(255, 255, 255, 0.205);
+}
+
 .RowsNavigation div img {
   height: 13px;
 }

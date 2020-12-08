@@ -55,6 +55,7 @@
   align-items: center;
   height: 100%;
 }
+
 .NoProducts p {
   color: #1f86ff;
   cursor: pointer;
@@ -91,12 +92,16 @@
     padding: 20px;
     scrollbar-width: none;
   }
+  .BackButton span {
+    margin-top: 5px;
+  }
   .BackButton {
     display: flex;
     position: absolute;
     left: 0px;
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
     align-items: center;
+    justify-content: center;
     bottom: 30px;
     width: inherit;
     margin-top: inherit;

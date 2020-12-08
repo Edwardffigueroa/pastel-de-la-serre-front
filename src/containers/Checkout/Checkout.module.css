@@ -146,7 +146,8 @@
   }
   .Content {
     transform: translateY(-40px);
-    align-items: center;
+    /* align-items: center; */
+    align-items: end;
     height: 83%;
   }
   .Content>div {
@@ -155,6 +156,7 @@
   }
   .Payment {
     transform: translateY(35px);
+    margin-top: calc(2% - 80px);
   }
 }
 
@@ -162,6 +164,7 @@
   .Content {
     transform: none;
     height: 83%;
+    align-items: end;
     /* height: calc(100% - 100px); */
   }
 }

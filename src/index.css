@@ -1,5 +1,4 @@
 @import 'https://use.typekit.net/wsr1opn.css';
-
 body {
   margin: 0;
   font-size: 100%;
@@ -11,8 +10,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 p {
@@ -25,9 +23,6 @@ input {
   color: white;
 }
 
-input:active,
-input:focus,
-textarea:focus,
-select:focus {
+input:active, input:focus, textarea:focus, select:focus {
   outline: none;
 }

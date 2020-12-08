@@ -123,6 +123,11 @@
   .Beside label img, .Beside span img {
     width: 18px;
     height: 18px;
+    transition: 1s;
+  }
+  .Beside label img, .Beside span img:hover {
+    opacity: 0.5;
+    transition: 1s;
   }
 }
 

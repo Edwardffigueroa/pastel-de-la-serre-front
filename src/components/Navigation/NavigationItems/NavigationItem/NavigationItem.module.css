@@ -42,6 +42,11 @@
 }
 
 @media (min-width: 1080px) {
+  .NavigationItem span:hover {
+    color: #f8cfc97a;
+    /* background-color: #303868; */
+    transition: 1s;
+  }
   .NavigationItem span {
     font-size: 12px;
     white-space: nowrap;

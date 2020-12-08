@@ -95,8 +95,8 @@
   /* height: 108px; */
   overflow-y: scroll;
   margin-bottom: 25px;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 200;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
   color: white;
   scrollbar-color: darkgray transparent;
   scrollbar-width: thin;
@@ -106,6 +106,12 @@
 
 .TitleWrapper p::-webkit-scrollbar {
   display: none;
+}
+
+.TitleWrapper p::-webkit-scrollbar-track {
+  display: none;
+  background: transparent;
+  transform: translateX(10px);
 }
 
 /* ================ Slider css for Active and Previous Card ========================= */
