@@ -111,7 +111,7 @@
   animation: entrance 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 1s both;
   scrollbar-width: none;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-weight: 200;
+  font-weight: 400;
   color: white;
 }
 
@@ -196,7 +196,7 @@
 }
 
 .SimilarItems div[class^='swiper-slide swiper-slide-active'] {
-  transform: scale(1);
+  /* transform: scale(1); */
 }
 
 .SimilarItems div[class^='swiper-slide swiper-slide-prev'] {
@@ -413,7 +413,7 @@
   .TitleWrapper .Description {
     font-size: 16px;
     line-height: 18px;
-    height: 100px;
+    height: 109px;
     overflow-y: scroll;
     padding-right: 15px;
     /* scrollbar-color: orange lightyellow;*/
