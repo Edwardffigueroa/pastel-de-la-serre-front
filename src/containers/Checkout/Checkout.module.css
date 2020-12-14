@@ -1,179 +1,191 @@
 .Checkout {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  overflow-x: hidden;
-  overflow: hidden;
-  width: 100vw;
-  min-height: 100vh;
-  opacity: 1;
-  animation: entrance 1s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
-  background-color: transparent;
-  background-size: cover;
-  background-repeat: no-repeat;
-  transition: all ease-in-out 300ms;
-  --overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    overflow: hidden;
+    width: 100vw;
+    min-height: 100vh;
+    opacity: 1;
+    animation: entrance 1s cubic-bezier(0.39, 0.575, 0.565, 1) 0.2s both;
+    background-color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all ease-in-out 300ms;
+    --overflow: hidden;
 }
 
 @supports (-webkit-touch-callout: none) {
-  .Checkout {
-    /* height: calc(100vh + 10px); */
-  }
+    .Checkout {
+        /* height: calc(100vh + 10px); */
+    }
 }
 
 .Title {
-  flex-basis: 100%;
-  color: #183c77;
-  font-family: 'Operetta-18';
-  font-size: 35px;
+    flex-basis: 100%;
+    color: #183c77;
+    font-family: 'Operetta-18';
+    font-size: 35px;
 }
 
 .Exit {
-  animation: exit 1s ease-out both;
+    animation: exit 1s ease-out both;
 }
 
 .Close {
-  display: none;
-  opacity: 0;
-  transition: all ease-in-out 1s;
-  cursor: pointer;
-  z-index: 109;
+    display: none;
+    opacity: 0;
+    transition: all ease-in-out 1s;
+    cursor: pointer;
+    z-index: 109;
 }
 
 .CheckoutWrapper {
-  width: 100%;
-  box-sizing: border-box;
-  --height: 90vh;
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  margin: 100px 0 0 0;
-  border-radius: 40px;
-  background-color: rgba(255, 255, 255, 0.8);
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    --height: 90vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    margin: 100px 0 0 0;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .CheckoutWrapper::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .Content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 @media (min-width: 768px) {
-  .Checkout {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
-  .Checkout>div {
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Title {
-    margin-left: 30px;
-  }
-  .CheckoutWrapper {
-    max-height: 862px;
-    max-width: 742px;
-    width: 95vw;
-    height: 80vh;
-    margin: 100px auto;
-    padding: 20px;
-    margin-bottom: 30px;
-  }
-  .Content {
-    flex-direction: row;
-    height: calc(100% - 100px);
-  }
-  .Content>div, .Content>section {
-    flex-basis: 50%;
-  }
-  .Payment {
-    max-width: 370px;
-  }
+    .Checkout {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .Checkout>div {
+        height: 100%;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .Title {
+        margin-left: 30px;
+    }
+    .CheckoutWrapper {
+        max-height: 862px;
+        max-width: 742px;
+        width: 95vw;
+        height: 80vh;
+        margin: 100px auto;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+    .Content {
+        flex-direction: row;
+        height: calc(100% - 100px);
+    }
+    .Content>div,
+    .Content>section {
+        flex-basis: 50%;
+    }
+    .Payment {
+        max-width: 370px;
+    }
 }
 
 @media (min-width: 1080px) {
-  .Checkout>div {
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .Close {
-    display: flex;
-    position: absolute;
-    opacity: 1;
-    top: 80px;
-    right: 80px;
-    border: 2px solid #183c77;
-    background-color: transparent;
-    padding: 10px;
-    border-radius: 50%;
-  }
-  .CheckoutWrapper {
-    width: 85vw;
-    height: 80vh;
-    max-width: 1698px;
-    max-height: 831px;
-    /* max-width: 1110px; */
-    padding: 80px;
-    border-radius: 40px;
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-  .Title {
-    font-size: 70px;
-    margin: 0px;
-  }
-  .Content {
-    transform: translateY(-40px);
-    /* align-items: center; */
-    align-items: end;
-    height: 83%;
-  }
-  .Content>div {
-    flex-basis: 80%;
-    height: 89%;
-  }
-  .Payment {
-    transform: translateY(35px);
-    margin-top: calc(2% - 80px);
-  }
+    .Checkout>div {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    .Close {
+        display: flex;
+        position: absolute;
+        opacity: 1;
+        top: 80px;
+        right: 80px;
+        border: 2px solid #183c77;
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 50%;
+        transition: 0.5s;
+        background-image: url('../../assets/checkout/closeBlue.svg') ;        
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 20px;
+        width: 20px;
+    }
+    .Close:hover {
+        transition: 0.5s;
+        background-image: url('../../assets/checkout/closeWhite.svg') ;       
+        background-color: #183c77;
+    }
+    .CheckoutWrapper {
+        width: 85vw;
+        height: 80vh;
+        max-width: 1698px;
+        max-height: 831px;
+        /* max-width: 1110px; */
+        padding: 80px;
+        border-radius: 40px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    .Title {
+        font-size: 70px;
+        margin: 0px;
+    }
+    .Content {
+        transform: translateY(-40px);
+        /* align-items: center; */
+        align-items: end;
+        height: 83%;
+    }
+    .Content>div {
+        flex-basis: 80%;
+        height: 89%;
+    }
+    .Payment {
+        transform: translateY(35px);
+        margin-top: calc(2% - 80px);
+    }
 }
 
 @media (min-width: 1900px) {
-  .Content {
-    transform: none;
-    height: 83%;
-    align-items: end;
-    /* height: calc(100% - 100px); */
-  }
+    .Content {
+        transform: none;
+        height: 83%;
+        align-items: end;
+        /* height: calc(100% - 100px); */
+    }
 }
 
 @keyframes entrance {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

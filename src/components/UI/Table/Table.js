@@ -1,15 +1,27 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 import classes from './Table.module.css'
 import Item from './Item/Item'
 import backRow from '../../../assets/checkout/back.svg'
+import backRowDark from '../../../assets/checkout/backDark.svg'
 
 const Table = ({ translations, products, goFirstProduct, totalPrice, goBackHandler, increaseItemHandler, decreaseItemHandler, deleteAllHandler }) => {
+
+	const [hoverBack, setHoverBack] = useState(false)
 
 	const goBuy = e => {
 		goBackHandler()
 		goFirstProduct()
 	}
+	
+	const mouseover =() => {
+        setHoverBack(true)
+        
+    }
+    const mouseout =() => {        
+        setHoverBack(false)
+    }
+
 
 	const value = Object.values(products)
 	const _products = products.length < 1 ? (
@@ -35,7 +47,7 @@ const Table = ({ translations, products, goFirstProduct, totalPrice, goBackHandl
 		<div className={classes.Table}>
 			<ul className={classes.List}>{_products}</ul>
 			<div className={classes.TotalPrice}><span>{translations.subtotal_text}</span><h3> {parseFloat(totalPrice).toFixed(2)} €</h3></div>
-			<div className={classes.BackButton} onClick={goBackHandler}><span><img src={backRow} alt="Back" /> </span> {translations.back_button}</div>
+			<div onMouseOver={mouseover} onMouseOut={mouseout} className={classes.BackButton} onClick={goBackHandler}><span><img src={hoverBack? backRowDark:backRow} alt="Back" /> </span> {translations.back_button}</div>
 		</div>
 	)
 }

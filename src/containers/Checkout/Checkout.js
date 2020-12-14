@@ -130,7 +130,7 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 							</section>
 						</section>
 						<span className={classes.Close} onClick={exitHandler} >
-							<img src={closeX} alt="close" />
+							{/* <img src={closeX} alt="close" /> */}
 						</span>
 					</div>
 				</a.div>
