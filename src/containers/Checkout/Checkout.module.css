@@ -13,7 +13,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     transition: all ease-in-out 300ms;
-    --overflow: hidden;
+    display: flex;
 }
 
 @supports (-webkit-touch-callout: none) {

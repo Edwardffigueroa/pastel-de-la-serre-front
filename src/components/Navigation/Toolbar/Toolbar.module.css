@@ -1,7 +1,7 @@
 .Toolbar {
   height: 120px;
   z-index: 1;
-  width: 100%;
+  width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
@@ -120,12 +120,14 @@
     margin: 0 60px;
     justify-content: space-between;
   }
-  .Beside label img, .Beside span img {
+  .Beside label img,
+  .Beside span img {
     width: 18px;
     height: 18px;
     transition: 1s;
   }
-  .Beside label img, .Beside span img:hover {
+  .Beside label img,
+  .Beside span img:hover {
     opacity: 0.5;
     transition: 1s;
   }

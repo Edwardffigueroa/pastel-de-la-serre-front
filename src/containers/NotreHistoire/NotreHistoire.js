@@ -254,7 +254,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         setLang(_lang)
     }
 
-    const myClasses = itemSelected
+    const myClasses = itemSelected || !match.isExact
         ? [classes.Wrapper, classes.WrapperOnTop].join(' ')
         : [classes.Wrapper].join('')
 

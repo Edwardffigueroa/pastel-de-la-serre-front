@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import classes from './Layout.module.css'
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar'
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer'
-import sponsor from '../../assets/logo_sponsors.svg'
 
 const Layout = props => {
 

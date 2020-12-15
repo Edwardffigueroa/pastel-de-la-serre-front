@@ -4,7 +4,6 @@ import classes from './Checkout.module.css'
 
 import { useHistory } from 'react-router-dom'
 import { a, useSpring } from 'react-spring'
-import closeX from '../../assets/checkout/closeBlue.svg'
 import Table from '../../components/UI/Table/Table'
 import Payment from '../../components/Payment/Payment'
 import Shadow from '../../components/UI/Shadow/Shadow'
@@ -21,7 +20,13 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 	const [products, setProducts] = useState(_products)
 	const [totalPrice, setTotalPrice] = useState(0)
 	const [isPurchasable, setIsPurchasable] = useState(false)
-	const [exitSpring, setExitSpring, stop] = useSpring(() => ({ opacity: 1, backgroundImage: background }))
+	const [exitSpring, setExitSpring, stop] = useSpring(() => ({
+		opacity: 1, 
+		backgroundImage: background, 
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		width: '100%'
+	}))
 
 
 	const confirmHandler = () => {
@@ -33,7 +38,6 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 	}
 
 	const declinedHandler = () => {
-
 		setApproved(false)
 		setConfirmed(true)
 	}
@@ -89,6 +93,7 @@ const Checkout = ({ pubkey, refreshCartState, _products, background, translation
 
 		const _prevPrice = Cart.getPrice()
 		setTotalPrice(_prevPrice)
+
 	}, [])
 
 	useEffect(() => {
