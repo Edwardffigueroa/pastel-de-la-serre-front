@@ -20,6 +20,9 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+
 const DetailView = (props) => {
 
 
@@ -234,7 +237,11 @@ const DetailView = (props) => {
 										<div>
 											{isShop ? <h2 className={classes.Price}>{props.shop.price_text} {props.products[props.index].price + ' ' + props.shop.currency_symbol}</h2> : null}
 										</div>
-										<p className={classes.Description}>{isShop ? props.products[props.index]['description_' + props.lang] : props.visits[props.index].description}</p>
+
+										<p className={classes.Description}>
+											<ReactMarkdown plugins={[gfm]} allowDangerousHtml children={isShop ? props.products[props.index]['description_' + props.lang] : props.visits[props.index].description} />
+										</p>
+
 									</div>
 									{
 										!isShop ?

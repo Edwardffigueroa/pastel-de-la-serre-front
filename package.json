@@ -12,6 +12,7 @@
     "ipdata": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-markdown": "^5.0.3",
     "react-phone-input-2": "^2.13.8",
     "react-router-dom": "^5.2.0",
     "react-router-transition": "^2.0.0",
@@ -21,6 +22,7 @@
     "react-spring": "9.0.0-rc.3",
     "react-transition-group": "^4.4.1",
     "react-use-gesture": "latest",
+    "remark-gfm": "^1.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "4.3.2",
     "swiper": "^6.3.4"

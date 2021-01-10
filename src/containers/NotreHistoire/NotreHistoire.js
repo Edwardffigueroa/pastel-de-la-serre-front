@@ -16,6 +16,9 @@ import Cart from '../../utils/Cart'
 import DetailView from '../../components/DetailView/DetailView'
 import sponsor from '../../assets/logo_sponsors.svg'
 
+import ReactMarkdown from 'react-markdown'
+import gfm from 'remark-gfm'
+
 const NotreHistoire = ({ match, history, general, histoire, visit, boutique, shopItems, checkout }) => {
     const [lang, setLang] = useState('fr')
 
@@ -295,7 +298,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 <section>
                     <div className={classes.TitleWrapper}>
                         <h1>{current.title_1}<br />{current.title_2}<br />{current.title_3}</h1>
-                        <p>{current.description}</p>
+                        <p>
+                            <ReactMarkdown plugins={[gfm]} allowDangerousHtml children={current.description} />
+                        </p>
                         <Button
                             clicked={CTAHandler}
                             invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
