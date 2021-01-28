@@ -301,9 +301,14 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                         <p>
                             <ReactMarkdown plugins={[gfm]} allowDangerousHtml children={current.description} />
                         </p>
-                        <Button
-                            clicked={CTAHandler}
-                            invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
+                        {
+                            slide !== 0 ? (
+                                <Button
+                                    clicked={CTAHandler}
+                                    invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
+
+                            ) : null
+                        }
                     </div>
                 </section>
                 <section className={classes.SectionSliderWrapper}>
