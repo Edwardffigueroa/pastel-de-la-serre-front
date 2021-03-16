@@ -148,7 +148,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             }
 
             if (id === 3 || id === 6) {
-                setItemSelected(shopTrans)
+                // setItemSelected(shopTrans)
+                goSectionHandler(0)
                 setIndexSelected(0)
             }
 
@@ -222,7 +223,9 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 setIndexSelected(0)
                 break;
             case 2:
-                setItemSelected(shopItemsFiltered[0])
+
+                // setItemSelected(shopItemsFiltered[0])
+                goSectionHandler(0)
                 setIndexSelected(0)
                 break;
             default:
