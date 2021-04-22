@@ -228,9 +228,9 @@ const DetailView = (props) => {
 										{_title}
 										<IconList
 											isShop={isShop}
-											time={props.visits[props.index].time}
-											level={props.visits[props.index].type}
-											people={props.visits[props.index].people}
+											time={props.visits[props.index]?.time}
+											level={props.visits[props.index]?.type}
+											people={props.visits[props.index]?.people}
 											madeof={props.shop.handmade_text}
 											organic={props.shop.organic_text}
 											recycle={props.shop.recyclable_text} />
