@@ -136,7 +136,7 @@ const DetailView = (props) => {
 		speed: 500,
 		slidesToShow: 1,
 		slidesToScroll: 1,
-		variableWidth: true
+		variableWidth: false
 	}
 
 	const changeSlide = (value) => {
@@ -159,7 +159,7 @@ const DetailView = (props) => {
 
 	const imgOrSlide = isShop ? (
 		<Slider ref={imgSlideRef} {...settings}>{
-			props.products[props.index].images.map((im, i) => <div key={i} style={{ width: '20%' }}><img src={im.url} alt={props.title} /> </div>)
+			props.products[props.index].images.map((im, i) => <div key={i} style={{ width: '20%' }}><img width="100%" src={im.url} alt={props.title} /> </div>)
 		}</Slider>
 	) : null
 

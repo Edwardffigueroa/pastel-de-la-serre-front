@@ -148,8 +148,8 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
             }
 
             if (id === 3 || id === 6) {
-                // setItemSelected(shopTrans)
-                goSectionHandler(0)
+                setItemSelected(shopTrans)
+                // goSectionHandler(0)
                 setIndexSelected(0)
             }
 
@@ -224,7 +224,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                 break;
             case 2:
 
-                // setItemSelected(shopItemsFiltered[0])
+                setItemSelected(shopItemsFiltered[0])
                 goSectionHandler(0)
                 setIndexSelected(0)
                 break;
@@ -277,6 +277,7 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
         }
 
         if (!itemSelected) {
+            console.log(current)
             background = `url(${current.background_hero.url})`
         }
     }
@@ -305,12 +306,12 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                             <ReactMarkdown plugins={[gfm]} allowDangerousHtml children={current.description} />
                         </p>
                         {
-                            slide !== 0 ? (
-                                <Button
-                                    clicked={CTAHandler}
-                                    invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
 
-                            ) : null
+                            <Button
+                                clicked={CTAHandler}
+                                invert={slide === 2 || slide === 5 || slide === 8 || slide === 11 ? true : false}>{current.button_name} </Button>
+
+
                         }
                     </div>
                 </section>
@@ -318,25 +319,27 @@ const NotreHistoire = ({ match, history, general, histoire, visit, boutique, sho
                     <div className="swiper-container" style={{ width: '154%' }}>
                         <div className="swiper-wrapper">
                             {items.map((item, i) => {
-                                return (
-                                    <div key={i} className={"swiper-slide"}>
-                                        <Card
-                                            key={i}
-                                            index={i}
-                                            active={slide}
-                                            id={item.id}
-                                            title={slidersCards[i].subtitle}
-                                            image={slidersCards[i].image.formats.small.url}
-                                            clicked={goToDetail}>
-                                        </Card>
-                                    </div>
-                                );
+
+                                return slidersCards[i] ?
+                                    (
+                                        <div key={i} className={"swiper-slide"}>
+                                            <Card
+                                                key={i}
+                                                index={i}
+                                                active={slide}
+                                                id={item.id}
+                                                title={slidersCards[i].subtitle}
+                                                image={slidersCards[i].image.formats.small.url}
+                                                clicked={goToDetail}>
+                                            </Card>
+                                        </div>
+                                    ) : null
                             })}
                         </div>
                     </div>
                     <RowsNavigation goHandler={rowsHandler} />
                     <div className={classes.Brand}>
-                        <img src={sponsor}></img>
+                        <img alt="sponsor" src={sponsor}></img>
                     </div>
                 </section>
                 {itemSelected ? (
